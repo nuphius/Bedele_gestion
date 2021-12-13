@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="accueil_40.png" />
+    <None Remove="Icon\addbox_40.png" />
+    <None Remove="Icon\addprice_40.png" />
+    <None Remove="Icon\addticket_40.png" />
+    <None Remove="Icon\adduser_40.png" />
+    <None Remove="Icon\Bredele_logo.png" />
+    <None Remove="Icon\logout_40.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icon\accueil_40.png" />
+    <Resource Include="Icon\addbox_40.png" />
+    <Resource Include="Icon\addprice_40.png" />
+    <Resource Include="Icon\addticket_40.png" />
+    <Resource Include="Icon\adduser_40.png" />
+    <Resource Include="Icon\Bredele_logo.png" />
+    <Resource Include="Icon\logout_40.png" />
+  </ItemGroup>
+
+</Project>

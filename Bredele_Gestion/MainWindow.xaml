@@ -1,0 +1,82 @@
+﻿<Window x:Class="Bredele_Gestion.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bredele_Gestion"
+        mc:Ignorable="d"
+        Title="Bredele Gestion"
+        WindowState="Maximized"
+        Icon="/Icon/Bredele_logo.png">
+    <Grid MinHeight="450px" MinWidth="400">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50px"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <DockPanel Background="#FFEEF5FD" Grid.Row="0" Grid.ColumnSpan="2">
+            <ToolBar x:Name="ToolBarNav" ToolBarTray.IsLocked="True" ToolBar.OverflowMode="Never">
+                <Button x:Name="BtnHome" Height="40" Width="40" Margin="10,0,0,0" ToolTip="Page d'accueil">
+                    <Image Source="/Icon/accueil_40.png"></Image>
+                </Button>
+                <Button x:Name="BtnAddCustomer" Height="40" Width="40" Margin="10,0,0,0" ToolTip="Ajouter un adhérent / Tiers">
+                    <Image Source="/Icon/adduser_40.png"></Image>
+                </Button>
+                <Button x:Name="BtnAddTicket" Height="40" Width="40" Margin="10,0,0,0" ToolTip="Ajouter une réservation">
+                    <Image Source="/Icon/addticket_40.png"/>
+                </Button>
+                <Button x:Name="BtnAddBox" Height="40" Width="40" Margin="10,0,0,0" ToolTip="Ajouter une loge">
+                    <Image Source="/Icon/addbox_40.png"/>
+                </Button>
+                <Button x:Name="BtnAddPrice" Height="40" Width="40" Margin="10,0,0,0" ToolTip="Ajouter / supprimer un tarif">
+                    <Image Source="/Icon/addprice_40.png"/>
+                </Button>
+
+            </ToolBar>
+            <ToolBar DockPanel.Dock="Right" HorizontalAlignment="Right" ToolBarTray.IsLocked="True" ToolBar.OverflowMode="Never">
+                <Button x:Name="BtnLogOut" Height="40" Width="40" ToolTip="Déconnexion">
+                    <Image Source="/Icon/logout_40.png"/>
+                </Button>
+            </ToolBar>
+        </DockPanel>
+        
+        <Frame x:Name="FrameLeft" 
+               Grid.Row="1" 
+               Grid.Column="0">
+            
+        </Frame>
+        <Frame x:Name="FrameRight" 
+               Grid.Row="1" 
+               Grid.Column="1">
+
+        </Frame>
+
+        <Grid x:Name="InputBox" Grid.RowSpan="2" Grid.ColumnSpan="2" Visibility="Collapsed" >
+            <Grid Background="Black" Opacity="0.7"/>
+            <Border
+            MinWidth="350"
+                MinHeight="200"
+            Background="white" 
+            BorderBrush="Black" 
+            BorderThickness="1" 
+            CornerRadius="20,20,20,20" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center">
+                <StackPanel>
+                    <Label Content="Connexion" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20" Margin="0,10"/>
+                    <TextBox MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="InputTextBox"/>
+                    <PasswordBox MinWidth="150" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="YesButton" Margin="5" Content="Yes" Background="{x:Null}" />
+                        <Button x:Name="NoButton" Margin="5" Content="No" Background="{x:Null}"  />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
