@@ -24,5 +24,17 @@ namespace Bredele_Gestion
         {
             InitializeComponent();
         }
+
+        private void TxtBoxNameReservation_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (string.IsNullOrEmpty(TxtBoxNameReservation.Text.ToString()))
+            {
+                TxtBoxNameReservation.Text = "Nom du réservant";
+            }
+        }
+        private void TxtBoxNameReservation_MouseEnter(object sender, MouseEventArgs e)
+        {
+            TxtBoxNameReservation.Text = "";
+        }
     }
 }

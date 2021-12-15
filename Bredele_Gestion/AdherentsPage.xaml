@@ -55,10 +55,12 @@
                VerticalAlignment="Top"/>
         <Button x:Name="BtnModifyAdherentSearch" 
                 Content="Modifier" 
-                HorizontalAlignment="Right" 
+                HorizontalAlignment="Right"
                 Margin="0,0,20,0" 
+                Padding="15,2,15,2"
                 Grid.Row="4" 
-                VerticalAlignment="Top"/>
+                VerticalAlignment="Top" 
+                BorderThickness="1,1,1,1"/>
         <StackPanel Orientation="Horizontal" Grid.Row="6" HorizontalAlignment="Center">
             <Image HorizontalAlignment="Center"
                    VerticalAlignment="Center"
@@ -87,7 +89,8 @@
         <Button x:Name="BtnModifyTiersSearch" 
                 Content="Modifier" 
                 HorizontalAlignment="Right" 
-                Margin="0,0,20,0" 
+                Margin="0,0,20,0"
+                Padding="15,2,15,2"
                 Grid.Row="9" 
                 VerticalAlignment="Top"/>
 

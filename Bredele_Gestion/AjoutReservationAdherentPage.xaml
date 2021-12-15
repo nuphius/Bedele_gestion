@@ -8,7 +8,87 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AjoutReservationAdherentPage">
 
-    <Grid>
-        
+    <Grid Background="#FFEEF5FD">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="170"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="33"/>
+            <RowDefinition Height="33"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="25"/>
+
+        </Grid.RowDefinitions>
+
+        <Label x:Name="LblTitleReservation" Content="Ajouter / Modifier Réservation" 
+               Grid.Row="0"
+               HorizontalAlignment="Center" 
+               Margin="0,0,0,0" 
+               VerticalAlignment="Top" 
+               FontWeight="Bold"/>
+        <TextBox x:Name="TxtBoxNameReservation" 
+                 Text="Nom du réservant"
+                 Grid.Row="1"
+                 HorizontalAlignment="Stretch"
+                 VerticalAlignment="Center"
+                 TextWrapping="Wrap"
+                 Margin="40,0,40,0" 
+                 MouseLeave="TxtBoxNameReservation_MouseLeave"
+                 MouseEnter="TxtBoxNameReservation_MouseEnter"/>
+        <Calendar x:Name="CalendarReservation" 
+                  HorizontalAlignment="Stretch" 
+                  Margin="20,0,20,0" 
+                  Grid.Row="2" 
+                  VerticalAlignment="Top"/>
+        <TextBox x:Name="TxtBoxHourStartReservation" 
+                 Text="Heure de début"
+                 Grid.Row="3"
+                 HorizontalAlignment="Stretch"
+                 VerticalAlignment="Center"
+                 TextWrapping="Wrap" 
+                 Margin="40,0,40,0"/>
+        <TextBox x:Name="TxtBoxHourEndReservation" 
+                 Text="Heure de fin"
+                 Grid.Row="4"
+                 HorizontalAlignment="Stretch"
+                 VerticalAlignment="Center"
+                 TextWrapping="Wrap" 
+                 Margin="40,0,40,0"/>
+        <ComboBox x:Name="ComboBoxActivityReservation"
+                  Grid.Row="5"
+                  HorizontalAlignment="Stretch"
+                  Height="22"
+                  Margin="40,0,40,0" />
+        <ComboBox x:Name="ComboBoxNbPlaceReservation"
+                  Grid.Row="6"
+                  HorizontalAlignment="Stretch"
+                  Height="22"
+                  Margin="40,0,40,0"/>
+        <StackPanel Grid.Row="7" 
+                    Orientation="Horizontal">
+            <Label x:Name="LblTarifReservation"
+                   Content="Tarif : "
+                   Margin="40,0,0,0"/>
+            <Label x:Name="LblTarifReservationDisplay"
+                   Content="XXXX €"/>
+
+        </StackPanel>
+        <StackPanel Grid.Row="8" 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button x:Name="BtnModifyReservation"
+                   Content="Modifier"
+                   Margin="0,10,80,0"
+                    Width="80"/>
+            <Button x:Name="BtnValidReservation"
+                   Content="Valider"
+                    Margin="0,10,0,0"
+                    Width="80"/>
+
+        </StackPanel>
+ 
     </Grid>
 </Page>

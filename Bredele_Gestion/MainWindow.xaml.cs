@@ -23,9 +23,34 @@ namespace Bredele_Gestion
         public MainWindow()
         {
             InitializeComponent();
-            //FrameLeft.Content = new AdherentsPage();
-            FrameLeft.Content = new AjoutAdherentPage();
-
+            FrameLeft.Content = new AdherentsPage();
         }
+
+        #region Evenement toolBar
+        private void BtnAddCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            FrameLeft.Content = new AjoutAdherentPage();
+        }
+
+        private void BtnHome_Click(object sender, RoutedEventArgs e)
+        {
+            FrameLeft.Content = new AdherentsPage();
+        }
+
+        private void BtnAddTicket_Click(object sender, RoutedEventArgs e)
+        {
+            FrameLeft.Content = new AjoutReservationAdherentPage();
+        }
+
+        private void BtnAddBox_Click(object sender, RoutedEventArgs e)
+        {
+            FrameLeft.Content = new AjoutLocauxPage();
+        }
+
+        private void BtnAddPrice_Click(object sender, RoutedEventArgs e)
+        {
+            FrameLeft.Content = new AjoutTarifsPage();
+        }
+        #endregion
     }
 }

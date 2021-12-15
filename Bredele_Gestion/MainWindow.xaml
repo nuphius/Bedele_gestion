@@ -21,19 +21,19 @@
 
         <DockPanel Background="#FFEEF5FD" Grid.Row="0" Grid.ColumnSpan="2">
             <ToolBar x:Name="ToolBarNav" ToolBarTray.IsLocked="True" ToolBar.OverflowMode="Never">
-                <Button x:Name="BtnHome" Height="40" Width="40" Margin="10,0,0,0" ToolTip="Page d'accueil">
+                <Button x:Name="BtnHome" Height="40" Width="40" Margin="10,0,0,0" ToolTip="Page d'accueil" Click="BtnHome_Click">
                     <Image Source="/Icon/accueil_40.png"></Image>
                 </Button>
-                <Button x:Name="BtnAddCustomer" Height="40" Width="40" Margin="10,0,0,0" ToolTip="Ajouter un adhérent / Tiers">
+                <Button x:Name="BtnAddCustomer" Height="40" Width="40" Margin="10,0,0,0" ToolTip="Ajouter un adhérent / Tiers" Click="BtnAddCustomer_Click">
                     <Image Source="/Icon/adduser_40.png"></Image>
                 </Button>
-                <Button x:Name="BtnAddTicket" Height="40" Width="40" Margin="10,0,0,0" ToolTip="Ajouter une réservation">
+                <Button x:Name="BtnAddTicket" Height="40" Width="40" Margin="10,0,0,0" ToolTip="Ajouter une réservation" Click="BtnAddTicket_Click">
                     <Image Source="/Icon/addticket_40.png"/>
                 </Button>
-                <Button x:Name="BtnAddBox" Height="40" Width="40" Margin="10,0,0,0" ToolTip="Ajouter une loge">
+                <Button x:Name="BtnAddBox" Height="40" Width="40" Margin="10,0,0,0" ToolTip="Ajouter une loge" Click="BtnAddBox_Click">
                     <Image Source="/Icon/addbox_40.png"/>
                 </Button>
-                <Button x:Name="BtnAddPrice" Height="40" Width="40" Margin="10,0,0,0" ToolTip="Ajouter / supprimer un tarif">
+                <Button x:Name="BtnAddPrice" Height="40" Width="40" Margin="10,0,0,0" ToolTip="Ajouter / supprimer un tarif" Click="BtnAddPrice_Click">
                     <Image Source="/Icon/addprice_40.png"/>
                 </Button>
 
@@ -47,12 +47,14 @@
         
         <Frame x:Name="FrameLeft" 
                Grid.Row="1" 
-               Grid.Column="0">
+               Grid.Column="0" 
+               NavigationUIVisibility="Hidden">
             
         </Frame>
         <Frame x:Name="FrameRight" 
                Grid.Row="1" 
-               Grid.Column="1">
+               Grid.Column="1"
+               NavigationUIVisibility="Hidden">
 
         </Frame>
 
