@@ -5,12 +5,196 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Bredele_Gestion"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="800"
       Title="AjoutAdherentPage">
 
-    <Grid>
-        <StackPanel MinHeight="300px" Background="White">
-            <TextBlock>dfsfsdfsdfs</TextBlock>
-        </StackPanel>
+    <!-- Grid pour l'agencement de la page-->
+    <Grid Background="#FFEEF5FD" Margin="0,0,0,-174">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40px"/>
+            <RowDefinition Height="40px"/>
+            <RowDefinition Height="40px"/>
+            <RowDefinition Height="40px"/>
+            <RowDefinition Height="40px"/>
+            <RowDefinition Height="40px"/>
+            <RowDefinition Height="40px"/>
+            <RowDefinition Height="40px"/>
+            <RowDefinition Height="40px"/>
+            <RowDefinition Height="40px"/>
+            <RowDefinition Height="40px"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Titre-->
+        <Label x:Name="lblTitleAddAdherent"
+                Content="Ajouter / Modifier Personnes"
+                FontWeight="Bold"
+                FontFamily="Tw Cen MT"
+                FontSize="20"
+                Margin="50,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Height="35"
+                Width="253"/>
+        <!-- Liste déroulente - Civilité-->
+        <ComboBox x:Name="cmbBoxCivility"
+                Grid.Row="1"
+                Margin="50,10,0,10"
+                HorizontalAlignment="Left"
+                Width="120"/>
+        <!-- TextBox - Nom-->
+        <TextBox x:Name="txtBoxName"
+                Grid.Row="2"
+                Text="Nom"
+                TextWrapping="Wrap"
+                FontFamily="Tw Cen MT"
+                FontSize="18"
+                Margin="50,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Height="30"
+                Width="253"/>
+        <!-- TextBox - Prénom-->
+        <TextBox x:Name="txtBoxFirstName"
+                Grid.Row="3"
+                Text="Prénom"
+                TextWrapping="Wrap"
+                FontFamily="Tw Cen MT"
+                FontSize="18"
+                Margin="50,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Height="30"
+                Width="253"/>
+        <!-- TextBox - Adresse première ligne-->
+        <TextBox x:Name="txtBoxAddress1"
+                Grid.Row="4"
+                Text="Adresse1"
+                TextWrapping="Wrap"
+                FontFamily="Tw Cen MT"
+                FontSize="18"
+                Margin="50,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Height="30"
+                Width="253"/>
+        <!-- TextBox - Adresse deuxième ligne-->
+        <TextBox x:Name="txtBoxAddress2"
+                Grid.Row="5"
+                Text="Adresse2"
+                TextWrapping="Wrap"
+                FontFamily="Tw Cen MT"
+                FontSize="18"
+                Margin="50,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Height="30"
+                Width="253"/>
+        <!-- TextBox - Coxde Postal-->
+        <TextBox x:Name="txtBoxCP"
+                Grid.Row="6"
+                Text="CP"
+                TextWrapping="Wrap"
+                FontFamily="Tw Cen MT"
+                FontSize="18"
+                Margin="50,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Height="30"
+                Width="80"/>
+        <!-- TextBox - Ville-->
+        <TextBox x:Name="txtBoxCity"
+                Grid.Row="6"
+                Text="Ville"
+                TextWrapping="Wrap"
+                FontFamily="Tw Cen MT"
+                FontSize="18"
+                Margin="143,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Height="30"
+                Width="160"/>
+        <!-- TextBox - Date de naissance-->
+        <TextBox x:Name="txtBoxBirthDate"
+                Grid.Row="7"
+                Text="Date de naissance"
+                TextWrapping="Wrap"
+                FontFamily="Tw Cen MT"
+                FontSize="18"
+                Margin="50,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Height="30"
+                Width="253"/>
+        <!-- TextBox - Téléphone-->
+        <TextBox x:Name="txtBoxPhone"
+                Grid.Row="8"
+                Text="Téléphone"
+                TextWrapping="Wrap"
+                FontFamily="Tw Cen MT"
+                FontSize="18"
+                Margin="50,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Height="30"
+                Width="253"/>
+        <!-- TextBox - Email-->
+        <TextBox x:Name="txtBoxMail"
+                Grid.Row="9"
+                Text="Email"
+                TextWrapping="Wrap"
+                FontFamily="Tw Cen MT"
+                FontSize="18"
+                Margin="50,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Height="30"
+                Width="253"/>
+        <!-- CheckBox - Membre de l'association-->
+        <CheckBox x:Name="ChkBoxMember"
+                Grid.Row="10"
+                Content="Adhérent"
+                FontFamily="Tw Cen MT"
+                FontSize="18"
+                Margin="50,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"                  
+                Height="20"/>
+        <!-- Boutton Supprimer-->
+        <Button x:Name="btnDel"
+                Grid.Row="11"
+                Content="Supprimer"
+                FontFamily="Tw Cen MT"
+                FontSize="18"
+                Margin="50,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Height="30"
+                Width="110"/>
+        <!-- Bouton Valider-->
+        <Button x:Name="btnSub"
+                Grid.Row="11"
+                Content="Valider"
+                FontFamily="Tw Cen MT"
+                FontSize="18"
+                Margin="193,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Height="30"
+                Width="110"/>
+        <!-- Label - Message si erreur-->
+        <Label x:Name="LblError"
+                Grid.Row="12"
+                Content="Label"
+                Margin="50,5,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Height="280"
+                Width="253"
+                RenderTransformOrigin="0.82,0.417"
+                IsEnabled="False"
+                Visibility="Hidden"/>
     </Grid>
 </Page>

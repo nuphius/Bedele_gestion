@@ -23,7 +23,9 @@ namespace Bredele_Gestion
         public MainWindow()
         {
             InitializeComponent();
-            FrameLeft.Content = new AdherentsPage();
+            //FrameLeft.Content = new AdherentsPage();
+            FrameLeft.Content = new AjoutAdherentPage();
+
         }
     }
 }
