@@ -25,16 +25,15 @@ namespace Bredele_Gestion
             InitializeComponent();
         }
 
-        private void TxtBoxNameReservation_MouseLeave(object sender, MouseEventArgs e)
+        private bool _flagTxtBoxNameReservation = true;
+
+        private void TxtBoxNameReservation_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(TxtBoxNameReservation.Text.ToString()))
+            if (_flagTxtBoxNameReservation)
             {
-                TxtBoxNameReservation.Text = "Nom du réservant";
+                TxtBoxNameReservation.Text = "";
+                _flagTxtBoxNameReservation = false;
             }
-        }
-        private void TxtBoxNameReservation_MouseEnter(object sender, MouseEventArgs e)
-        {
-            TxtBoxNameReservation.Text = "";
         }
     }
 }

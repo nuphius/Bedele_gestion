@@ -36,8 +36,7 @@
                  VerticalAlignment="Center"
                  TextWrapping="Wrap"
                  Margin="40,0,40,0" 
-                 MouseLeave="TxtBoxNameReservation_MouseLeave"
-                 MouseEnter="TxtBoxNameReservation_MouseEnter"/>
+                 GotFocus="TxtBoxNameReservation_GotFocus"/>
         <Calendar x:Name="CalendarReservation" 
                   HorizontalAlignment="Stretch" 
                   Margin="20,0,20,0" 
