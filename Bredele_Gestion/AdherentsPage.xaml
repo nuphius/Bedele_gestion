@@ -5,90 +5,47 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Bredele_Gestion"
       mc:Ignorable="d" 
-      d:DesignHeight="550" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="800"
       Title="AdherentsPage">
 
     <Grid Background="#FFEEF5FD">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="25px"/>
+            <RowDefinition Height="150px"/>
+            <RowDefinition Height="20px"/>
+            <RowDefinition Height="25px"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         
-        <Label x:Name="LblAdherentTiersSearch" Content="Adhérent et Tiers" 
+        <Label Content="Adhérent et Tiers" 
                Grid.Row="0"
                HorizontalAlignment="Center" 
                Margin="0,0,0,0" 
                VerticalAlignment="Top" 
                FontWeight="Bold"/>
-        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-            <Image HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Source="/Icon/loupe_40.png"
-                   Height="20"
-                   Width="20"
-                   Margin="0,0,10,0"/>
-            <TextBox x:Name="TxtBoxNameAdherentSearch" d:Text="Nom adhérent"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Center"
-                     TextWrapping="Wrap" 
-                     Text="TextBox"
-                     Width="120"/>
-        </StackPanel>
-        
-        <ListBox x:Name="ListBoxAdherentSearch" Grid.Row="2"
+        <TextBox HorizontalAlignment="center"
+                 Grid.Row="1"
+                 TextWrapping="Wrap" 
+                 Text="TextBox" 
+                 VerticalAlignment="Center" 
+                 Width="120"/>
+        <ListBox Grid.Row="2"
                  Margin="20,0,20,0"/>
-        <Label x:Name="LblCounterAdherentDisplay" 
-               Content="Actuellement XXXXX adhérents" 
+        <Label Content="Actuellement XXXXX adhérents" 
                HorizontalAlignment="Left" 
                Margin="20,0,0,0" 
                Grid.Row="3"
                FontSize="8px"
                VerticalAlignment="Top"/>
-        <Button x:Name="BtnModifyAdherentSearch" 
-                Content="Modifier" 
+        <Button Content="Modifier" 
                 HorizontalAlignment="Right" 
                 Margin="0,0,20,0" 
                 Grid.Row="4" 
-                VerticalAlignment="Top"/>
-        <StackPanel Orientation="Horizontal" Grid.Row="6" HorizontalAlignment="Center">
-            <Image HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Source="/Icon/loupe_40.png"
-                   Height="20"
-                   Width="20"
-                   Margin="0,0,10,0"/>
-            <TextBox x:Name="TxtBoxNameTiersSearch" 
-                     d:Text="Nom tiers"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Center"
-                     TextWrapping="Wrap" 
-                     Text="TextBox"
-                     Width="120"/>
-        </StackPanel>
-        <ListBox x:Name="ListBoxTiersSearch" 
-                 Grid.Row="7"
-                 Margin="20,0,20,0"/>
-        <Label x:Name="LblCounterTiersDisplay" 
-               Content="Actuellement XXXXX tiers" 
-               HorizontalAlignment="Left" 
-               Margin="20,0,0,0" 
-               Grid.Row="8"
-               FontSize="8px"
-               VerticalAlignment="Top"/>
-        <Button x:Name="BtnModifyTiersSearch" 
-                Content="Modifier" 
-                HorizontalAlignment="Right" 
-                Margin="0,0,20,0" 
-                Grid.Row="9" 
                 VerticalAlignment="Top"/>
 
     </Grid>

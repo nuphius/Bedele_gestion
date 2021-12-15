@@ -15,7 +15,6 @@
     <None Remove="Icon\adduser_40.png" />
     <None Remove="Icon\Bredele_logo.png" />
     <None Remove="Icon\logout_40.png" />
-    <None Remove="Icon\loupe_40.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,7 +25,6 @@
     <Resource Include="Icon\adduser_40.png" />
     <Resource Include="Icon\Bredele_logo.png" />
     <Resource Include="Icon\logout_40.png" />
-    <Resource Include="Icon\loupe_40.png" />
   </ItemGroup>
 
 </Project>
