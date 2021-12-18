@@ -13,23 +13,20 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="60px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>           
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="90px"/>           
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="90px"/>
+            <RowDefinition Height="40px"/>            
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
        
 
-        <!-- Titre-->
-        <Label x:Name="lblTitleAddBox"
+        <!-- Label - Titre-->
+        <Label x:Name="lblTitleBoxLocaux"
                 Grid.Row="0"
                 Content="Ajouter / Modifier&#x0d;&#x0a;Local"
                 FontWeight="Bold"
@@ -39,153 +36,175 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Stretch"
                 Height="60"/>
+        
         <!-- TextBox - Nom du local-->
         <TextBox x:Name="txtBoxBoxName"
                 Grid.Row="1"
                 Text="Nom du local"
                 TextWrapping="Wrap"
                 FontFamily="Georgia"
-                FontSize="14"
-                Margin="30,0,30,0"
+                FontSize="12"
+                Margin="40,0,40,0"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
-                Height="30"/>
+                VerticalAlignment="Center"/>
+        
         <!-- TextBox - Capacité du local-->
         <TextBox x:Name="txtBoxBoxCapacity"
                 Grid.Row="2"
                 Text="Capacité de la salle"
                 TextWrapping="Wrap"
                 FontFamily="Georgia"
-                FontSize="14"
-                Margin="30,0,30,0"
+                FontSize="12"
+                Margin="40,0,40,0"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
-                Height="30"/>
+                VerticalAlignment="Center"/>
+        
         <!-- TextBox - Superficie du local-->
         <TextBox x:Name="txtBoxBoxArea"
                 Grid.Row="3"
                 Text="Superficie du local"
                 TextWrapping="Wrap"
                 FontFamily="Georgia"
-                FontSize="14"
-                Margin="30,0,30,0"
+                FontSize="12"
+                Margin="40,0,40,0"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
-                Height="30"/>
+                VerticalAlignment="Center"/>
+        
         <!-- Liste déroulente - Tarif-->
         <ComboBox x:Name="cmbBoxPrice"
                 Grid.Row="4"
                 FontFamily="Georgia"
-                Margin="30,10,30,10"
+                Margin="40,5,40,5"
                 HorizontalAlignment="Stretch"/>
+
+        <!-- Grid - Equipements-->
+        <StackPanel Grid.Row="5" HorizontalAlignment="Center"  Orientation="Horizontal">
+
+            <Grid Background="#FFEEF5FD" Margin="0,0,0,-20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>                    
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30px"/>
+                    <RowDefinition Height="30px"/>
+                    <RowDefinition Height="30px"/>
+            </Grid.RowDefinitions>
+
+                <CheckBox x:Name="chkBoxEquip1"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Content="EquipName1"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center"/>
+                <CheckBox x:Name="chkBoxEquip2"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Content="EquipName2"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center"/>
+                <CheckBox x:Name="chkBoxEquip3"
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Content="EquipName3"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center"/>
+                <CheckBox x:Name="chkBoxEquip4"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Content="EquipName4"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center"/>
+                <CheckBox x:Name="chkBoxEquip5"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Content="EquipName5"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center"/>
+                <CheckBox x:Name="chkBoxEquip6"
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    Content="EquipName6"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center"/>
+            </Grid>
+        </StackPanel>
+
+
+
+        <!-- Separator - Ligne de séparation-->
+        <Separator HorizontalAlignment="Stretch" Margin="40,0,40,0" Grid.Row="6" VerticalAlignment="Center" Background="Black"/>
+
+
+        <!-- Grid - Activity-->
+        <StackPanel Grid.Row="7" HorizontalAlignment="Center"  Orientation="Horizontal">
+
+            <Grid Background="#FFEEF5FD" Margin="0,0,0,-20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30px"/>
+                    <RowDefinition Height="30px"/>
+                    <RowDefinition Height="30px"/>
+                </Grid.RowDefinitions>
+
+                <CheckBox x:Name="chkBoxActiv1"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Content="ActivName1"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center"/>
+                <CheckBox x:Name="chkBoxActiv2"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Content="ActivName2"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center"/>
+                <CheckBox x:Name="chkBoxActiv3"
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Content="ActivName3"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center"/>
+                <CheckBox x:Name="chkBoxActiv4"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Content="ActivName4"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center"/>
+                <CheckBox x:Name="chkBoxActiv5"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Content="ActivName5"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center"/>
+                <CheckBox x:Name="chkBoxActiv6"
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    Content="ActivName6"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center"/>
+            </Grid>
+        </StackPanel>
         
-        <!-- TextBox - Adresse deuxième ligne-->
-        <TextBox x:Name="txtBoxAddress2"
-                Grid.Row="5"
-                Text="Adresse2"
-                TextWrapping="Wrap"
-                FontFamily="Geogia"
-                FontSize="14"
-                Margin="50,0,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Height="30"
-                Width="253"/>
-        <!-- TextBox - Coxde Postal-->
-        <TextBox x:Name="txtBoxCP"
-                Grid.Row="6"
-                Text="CP"
-                TextWrapping="Wrap"
-                FontFamily="Geogia"
-                FontSize="14"
-                Margin="50,0,0,0"
-                HorizontalAlignment="Left"
+        <!-- Bouton Ajouter-->
+        <Button x:Name="btnBoxAdd"
+                Grid.Row="8"
+                Content="Valider"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                Margin="0,10,0,0"
+                HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Height="30"
                 Width="80"/>
-        <!-- TextBox - Ville-->
-        <TextBox x:Name="txtBoxCity"
-                Grid.Row="6"
-                Text="Ville"
-                TextWrapping="Wrap"
-                FontFamily="Geogia"
-                FontSize="14"
-                Margin="143,0,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Height="30"
-                Width="160"/>
-        <!-- TextBox - Date de naissance-->
-        <TextBox x:Name="txtBoxBirthDate"
-                Grid.Row="7"
-                Text="Date de naissance"
-                TextWrapping="Wrap"
-                FontFamily="Tw Cen MT"
-                FontSize="14"
-                Margin="50,0,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Height="30"
-                Width="253"/>
-        <!-- TextBox - Téléphone-->
-        <TextBox x:Name="txtBoxPhone"
-                Grid.Row="8"
-                Text="Téléphone"
-                TextWrapping="Wrap"
-                FontFamily="Tw Cen MT"
-                FontSize="14"
-                Margin="50,0,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Height="30"
-                Width="253"/>
-        <!-- TextBox - Email-->
-        <TextBox x:Name="txtBoxMail"
-                Grid.Row="9"
-                Text="Email"
-                TextWrapping="Wrap"
-                FontFamily="Tw Cen MT"
-                FontSize="14"
-                Margin="50,0,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Height="30"
-                Width="253"/>
-        <!-- CheckBox - Membre de l'association-->
-        <CheckBox x:Name="ChkBoxMember"
-                Grid.Row="10"
-                Content="Adhérent"
-                FontFamily="Tw Cen MT"
-                FontSize="14"
-                Margin="50,0,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"                  
-                Height="20"/>
-        <!-- Boutton Supprimer-->
-        <Button x:Name="btnDel"
-                Grid.Row="11"
-                Content="Supprimer"
-                FontFamily="Tw Cen MT"
-                FontSize="16"
-                Margin="50,0,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Height="30"
-                Width="110"/>
-        <!-- Bouton Valider-->
-        <Button x:Name="btnSub"
-                Grid.Row="11"
-                Content="Valider"
-                FontFamily="Tw Cen MT"
-                FontSize="16"
-                Margin="193,0,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Height="30"
-                Width="110"/>
+        
         <!-- Label - Message si erreur-->
-        <Label x:Name="LblError"
-                Grid.Row="12"
+        <Label x:Name="LblBoxError"
+                Grid.Row="9"
                 Content="Label"
                 Margin="50,5,0,0"
                 HorizontalAlignment="Left"
@@ -195,5 +214,7 @@
                 RenderTransformOrigin="0.82,0.417"
                 IsEnabled="False"
                 Visibility="Hidden"/>
+        
+
     </Grid>
 </Page>

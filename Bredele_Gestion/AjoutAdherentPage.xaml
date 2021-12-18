@@ -13,174 +13,180 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="60px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition Height="40px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
             <RowDefinition Height="40px"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Titre-->
-        <Label x:Name="lblTitleAddAdherent"
+        <!-- Label - Titre-->
+        <Label x:Name="lblTitleCustAdherent"
                 Grid.Row="0"
-                Content="Ajouter / Modifier&#x0d;&#x0a;Personnes"
-                FontWeight="Bold"
+                Content="Ajouter / Modifier&#x0d;&#x0a;Personnes"                
                 FontFamily="Georgia"
                 FontSize="16"
+                FontWeight="Bold"
                 Margin="40,0,40,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Stretch"
                 Height="60"/>
-        <!-- Liste déroulente - Civilité-->
-        <ComboBox x:Name="cmbBoxCivility"
+        
+        <!-- ComboBox - Liste déroulente Civilité-->
+        <ComboBox x:Name="cmbBoxCustCivility"
                 Grid.Row="1"
                 FontFamily="Georgia"
                 Margin="40,5,40,5"
                 HorizontalAlignment="Stretch"/>
+        
         <!-- TextBox - Nom-->
-        <TextBox x:Name="txtBoxName"
+        <TextBox x:Name="txtBoxCustName"
                 Grid.Row="2"
                 Text="Nom"
                 TextWrapping="Wrap"
                 FontFamily="Georgia"
-                FontSize="14"
+                FontSize="12"
                 Margin="40,0,40,0"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
-                Height="30"/>
+                VerticalAlignment="Center"/>
+        
         <!-- TextBox - Prénom-->
-        <TextBox x:Name="txtBoxFirstName"
+        <TextBox x:Name="txtBoxCustFirstName"
                 Grid.Row="3"
                 Text="Prénom"
                 TextWrapping="Wrap"
                 FontFamily="Georgia"
-                FontSize="14"
+                FontSize="12"
                 Margin="40,0,40,0"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
-                Height="30"/>
+                VerticalAlignment="Center"/>
+        
         <!-- TextBox - Adresse première ligne-->
-        <TextBox x:Name="txtBoxAddress1"
+        <TextBox x:Name="txtBoxCustAddress1"
                 Grid.Row="4"
                 Text="Adresse1"
                 TextWrapping="Wrap"
                 FontFamily="Georgia"
-                FontSize="14"
+                FontSize="12"
                 Margin="40,0,40,0"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
-                Height="30"/>
+                VerticalAlignment="Center"/>
+        
         <!-- TextBox - Adresse deuxième ligne-->
-        <TextBox x:Name="txtBoxAddress2"
+        <TextBox x:Name="txtBoxCustAddress2"
                 Grid.Row="5"
                 Text="Adresse2"
                 TextWrapping="Wrap"
                 FontFamily="Georgia"
-                FontSize="14"
+                FontSize="12"
                 Margin="40,0,40,0"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
-                Height="30"/>
+                VerticalAlignment="Center"/>
+
         <StackPanel Grid.Row="6" HorizontalAlignment="Center" Orientation="Horizontal">
-        <!-- TextBox - Code Postal-->
-        <TextBox x:Name="txtBoxCP"
+            <!-- TextBox - Code Postal-->
+            <TextBox x:Name="txtBoxAddCP"
                 Grid.Row="6"
                 Text="CP"
                 TextWrapping="Wrap"
                 FontFamily="Georgia"
-                FontSize="14"
+                FontSize="12"
                 Margin="40,0,10,0"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
-                Height="30"/>        
-        <!-- TextBox - Ville-->
-        <TextBox x:Name="txtBoxCity"
+                Width="80"/>
+            
+            <!-- TextBox - Ville-->
+            <TextBox x:Name="txtBoxAddCity"
                 Grid.Row="6"
                 Text="Ville"
                 TextWrapping="Wrap"
                 FontFamily="Georgia"
-                FontSize="14"
+                FontSize="12"
                 Margin="10,0,40,0"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
-                Height="30"/>
+                Width="Auto"/>
         </StackPanel>
+
         <!-- TextBox - Date de naissance-->
-        <TextBox x:Name="txtBoxBirthDate"
+        <TextBox x:Name="txtBoxCustBirthDate"
                 Grid.Row="7"
                 Text="Date de naissance"
                 TextWrapping="Wrap"
                 FontFamily="Georgia"
-                FontSize="14"
+                FontSize="12"
                 Margin="40,0,40,0"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
-                Height="30"/>
+                VerticalAlignment="Center"/>
+        
         <!-- TextBox - Téléphone-->
-        <TextBox x:Name="txtBoxPhone"
+        <TextBox x:Name="txtBoxCustPhone"
                 Grid.Row="8"
                 Text="Téléphone"
                 TextWrapping="Wrap"
                 FontFamily="Georgia"
-                FontSize="14"
+                FontSize="12"
                 Margin="40,0,40,0"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
-                Height="30"/>
+                VerticalAlignment="Center"/>
+        
         <!-- TextBox - Email-->
-        <TextBox x:Name="txtBoxMail"
+        <TextBox x:Name="txtBoxCustMail"
                 Grid.Row="9"
                 Text="Email"
                 TextWrapping="Wrap"
                 FontFamily="Georgia"
-                FontSize="14"
+                FontSize="12"
                 Margin="40,0,40,0"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
-                Height="30"/>
+                VerticalAlignment="Center"/>
+        
         <!-- CheckBox - Membre de l'association-->
-        <CheckBox x:Name="ChkBoxMember"
+        <CheckBox x:Name="chkBoxCustMember"
                 Grid.Row="10"
                 Content="Adhérent"
                 FontFamily="Georgia"
-                FontSize="14"
+                FontSize="12"
                 Margin="40,0,40,0"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"                  
-                Height="20"/>
+                VerticalAlignment="Center"/>
+        
         <StackPanel Grid.Row="11" Orientation="Horizontal" HorizontalAlignment="Center">
-        <!-- Boutton Supprimer-->
-            <Button x:Name="btnDel"
+            <!-- Button - Supprimer-->
+            <Button x:Name="btnCustDel"
                 Grid.Row="11"
-                Content="Supprimer"
-                FontWeight="Bold"
+                Content="Supprimer"                
                 FontFamily="Georgia"
-                FontSize="16"
-                Margin="0,10,60,00"
-                Height="30"
-                Width="110"/>
-            <!-- Bouton Valider-->
-        <Button x:Name="btnSub"
+                FontSize="12"
+                FontWeight="Bold"
+                Margin="0,10,80,00"
+                Width="80"/>
+            
+            <!-- Button - Valider-->
+            <Button x:Name="btnCustSub"
                 Grid.Row="11"
-                Content="Valider"
-                FontWeight="Bold"
+                Content="Valider"                
                 FontFamily="Georgia"
-                FontSize="16"
+                FontSize="12"
+                FontWeight="Bold"
                 Margin="0,10,0,0"
-                Height="30"
-                Width="110"/>
+                Width="80"/>
         </StackPanel>
+        
         <!-- Label - Message si erreur-->
-        <Label x:Name="LblError"
+        <Label x:Name="lblCustError"
                 Grid.Row="12"
                 Content="Label"
+                FontFamily="Georgia"
+                FontSize="12"
                 Margin="40,0,40,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
