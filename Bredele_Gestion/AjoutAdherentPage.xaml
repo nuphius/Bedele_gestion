@@ -193,6 +193,6 @@
                 Height="280"
                 RenderTransformOrigin="0.82,0.417"
                 IsEnabled="False"
-                Visibility="Visible"/>        
+                Visibility="Hidden"/>        
     </Grid>
 </Page>
