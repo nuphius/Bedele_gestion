@@ -29,4 +29,8 @@
     <Resource Include="Icon\loupe_40.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Log\" />
+  </ItemGroup>
+
 </Project>

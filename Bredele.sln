@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bredele_Gestion", "Bredele_Gestion\Bredele_Gestion.csproj", "{272C3CD3-D4BC-4113-BBCB-3B37899181AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BredeleGestion.Services", "BredeleGestion.Services\BredeleGestion.Services.csproj", "{11FF059B-792D-4878-BA64-0F0FD988BFE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BredeleGestion.Services", "BredeleGestion.Services\BredeleGestion.Services.csproj", "{11FF059B-792D-4878-BA64-0F0FD988BFE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BredeleGestion.Data", "BredeleGestion.Data\BredeleGestion.Data.csproj", "{06525B74-5B07-4805-A6B5-772BCDFEB248}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BredeleGestion.Data", "BredeleGestion.Data\BredeleGestion.Data.csproj", "{06525B74-5B07-4805-A6B5-772BCDFEB248}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

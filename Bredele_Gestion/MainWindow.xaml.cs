@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Bredele_Gestion.Controller;
 
 namespace Bredele_Gestion
 {
@@ -20,6 +21,7 @@ namespace Bredele_Gestion
     /// </summary>
     public partial class MainWindow : Window
     {
+        ConnectionController connectionController = new ConnectionController();
         public MainWindow()
         {
             InitializeComponent();
@@ -52,5 +54,31 @@ namespace Bredele_Gestion
             FrameLeft.Content = new AjoutTarifsPage();
         }
         #endregion
+
+        private void MainWindows_Loaded(object sender, RoutedEventArgs e)
+        {
+            connectionController.Load();
+        }
+
+        private void BtnYesLogin_Click(object sender, RoutedEventArgs e)
+        {
+            string connectUser = connectionController.ConnectUser(TxtLoginConnection.Text, PwdConnection.Password);
+            
+            if (connectUser !="")
+            {
+                LblErrorConnection.Visibility = Visibility;
+                LblErrorConnection.Content = connectUser;
+            }
+            else
+            {
+                BoxLoginConnection.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void BtnNoLogin_Click(object sender, RoutedEventArgs e)
+        {
+            connectionController.Close();
+            this.Close();
+        }
     }
 }
