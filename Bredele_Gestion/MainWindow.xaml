@@ -8,6 +8,20 @@
         Title="Bredele Gestion"
         WindowState="Maximized"
         Icon="/Icon/Bredele_logo.png" Loaded="MainWindows_Loaded">
+    <Window.Resources>
+        <Style x:Key="Toolbar" TargetType="{x:Type ToolBar}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToolBar}">
+                        <DockPanel >
+                            <ToggleButton Visibility="Hidden"/>
+                            <ToolBarPanel x:Name="PART_ToolBarPanel" IsItemsHost="true" Margin="0,1,2,2"/>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid MinHeight="450px" MinWidth="400">
         <Grid.RowDefinitions>
             <RowDefinition Height="50px"/>
@@ -19,8 +33,9 @@
         </Grid.ColumnDefinitions>
 
 
+
         <DockPanel Background="#FFEEF5FD" Grid.Row="0" Grid.ColumnSpan="2">
-            <ToolBar x:Name="ToolBarNav" ToolBarTray.IsLocked="True" ToolBar.OverflowMode="Never">
+            <ToolBar Style="{StaticResource Toolbar}" x:Name="ToolBarNav" ToolBarTray.IsLocked="True" ToolBar.OverflowMode="Never">
                 <Button x:Name="BtnHome" Height="40" Width="40" Margin="10,0,0,0" ToolTip="Page d'accueil" Click="BtnHome_Click">
                     <Image Source="/Icon/accueil_40.png"></Image>
                 </Button>
@@ -38,7 +53,7 @@
                 </Button>
 
             </ToolBar>
-            <ToolBar DockPanel.Dock="Right" HorizontalAlignment="Right" ToolBarTray.IsLocked="True" ToolBar.OverflowMode="Never">
+            <ToolBar Style="{StaticResource Toolbar}" DockPanel.Dock="Right" HorizontalAlignment="Right" ToolBarTray.IsLocked="True" ToolBar.OverflowMode="Never">
                 <Button x:Name="BtnLogOut" Height="40" Width="40" ToolTip="Déconnexion">
                     <Image Source="/Icon/logout_40.png"/>
                 </Button>
@@ -63,7 +78,7 @@
         <Grid x:Name="BoxLoginConnection" 
               Grid.RowSpan="2" 
               Grid.ColumnSpan="2" 
-              Visibility="Visible" >
+              Visibility="Collapsed" >
             <Grid Background="Black" Opacity="0.9"/>
             <Border MinWidth="450"
                     MinHeight="250"
