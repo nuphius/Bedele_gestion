@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BredeleGestion.Services", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BredeleGestion.Data", "BredeleGestion.Data\BredeleGestion.Data.csproj", "{06525B74-5B07-4805-A6B5-772BCDFEB248}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUnitaireBredele", "TestUnitaireBredele\TestUnitaireBredele.csproj", "{1561B666-BBD0-4FF2-B519-1F3235E44D08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{06525B74-5B07-4805-A6B5-772BCDFEB248}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06525B74-5B07-4805-A6B5-772BCDFEB248}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06525B74-5B07-4805-A6B5-772BCDFEB248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1561B666-BBD0-4FF2-B519-1F3235E44D08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1561B666-BBD0-4FF2-B519-1F3235E44D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1561B666-BBD0-4FF2-B519-1F3235E44D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1561B666-BBD0-4FF2-B519-1F3235E44D08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

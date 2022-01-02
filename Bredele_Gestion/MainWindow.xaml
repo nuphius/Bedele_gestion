@@ -8,12 +8,14 @@
         Title="Bredele Gestion"
         WindowState="Maximized"
         Icon="/Icon/Bredele_logo.png" Loaded="MainWindows_Loaded">
+    <!-- Section déclaration des styles personnalisées -->
     <Window.Resources>
+        <!--Style de la Toolbar-->
         <Style x:Key="Toolbar" TargetType="{x:Type ToolBar}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ToolBar}">
-                        <DockPanel >
+                        <DockPanel>
                             <ToggleButton Visibility="Hidden"/>
                             <ToolBarPanel x:Name="PART_ToolBarPanel" IsItemsHost="true" Margin="0,1,2,2"/>
                         </DockPanel>
@@ -21,7 +23,72 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <!--Style des TxtBox avec un arrondi de 3px-->
+        <ControlTemplate x:Key="TextBoxCornerRadius3" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+                    CornerRadius="3"
+                     BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                <ScrollViewer x:Name="PART_ContentHost" HorizontalScrollBarVisibility="Hidden"/>
+            </Border>
+        </ControlTemplate>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonStyleCorner3" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="3" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
+    <!-- Fin section déclaration des styles personnalisées-->
     <Grid MinHeight="450px" MinWidth="400">
         <Grid.RowDefinitions>
             <RowDefinition Height="50px"/>
@@ -78,11 +145,11 @@
         <Grid x:Name="BoxLoginConnection" 
               Grid.RowSpan="2" 
               Grid.ColumnSpan="2" 
-              Visibility="Collapsed" >
+              Visibility="Visible" >
             <Grid Background="Black" Opacity="0.9"/>
             <Border MinWidth="450"
                     MinHeight="250"
-                    Background="white" 
+                    Background="White" 
                     BorderBrush="Black" 
                     BorderThickness="1" 
                     CornerRadius="20,20,20,20" 
@@ -99,19 +166,20 @@
                     <TextBox x:Name="TxtLoginConnection"
                              MinWidth="200" 
                              HorizontalAlignment="Center" 
-                             Margin="5"/>
+                             Margin="5"
+                             Template="{StaticResource TextBoxCornerRadius3}"/>
                     <PasswordBox x:Name="PwdConnection" 
                                  MinWidth="200" 
                                  HorizontalAlignment="Center"
                                  Margin="5"/>
                     <StackPanel Orientation="Horizontal" 
                                 HorizontalAlignment="Center">
-                        <Button x:Name="BtnYesLogin" 
+                        <Button Style="{DynamicResource ButtonStyleCorner3}" x:Name="BtnYesLogin" 
                                 Margin="5" 
                                 Padding="5" 
                                 Content="Valider"
                                 Width="70px" Click="BtnYesLogin_Click"/>
-                        <Button x:Name="BtnNoLogin" 
+                        <Button Style="{DynamicResource ButtonStyleCorner3}" x:Name="BtnNoLogin" 
                                 Margin="5" 
                                 Padding="5" 
                                 Content="Annuler"
