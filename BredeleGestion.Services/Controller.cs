@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bredele_Gestion.Controller
+namespace BredeleGestion.Services
 {
     //---------------------------------------------------------------------
     //classe pour le moment inutile. En attente des bases de données.

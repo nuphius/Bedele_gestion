@@ -1,8 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
+using Bredele_Gestion;
 
-namespace Bredele_Gestion.Controller
+namespace BredeleGestion.Services
 {
     static class LogTools
     {
@@ -48,8 +49,9 @@ namespace Bredele_Gestion.Controller
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                Application.Current.Shutdown();
+                Console.WriteLine("Problème de création du dossier log !" + ex);
+                //MessageBox.Show(ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                //Application.Current.Shutdown();
             }
 
 
@@ -75,8 +77,9 @@ namespace Bredele_Gestion.Controller
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                Application.Current.Shutdown();
+                Console.WriteLine("problème création ou écriture dans le fichier log ! " + ex);
+                //MessageBox.Show(ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                //Application.Current.Shutdown();
             }
 
             // Création de la ligne log a écrire dans le fichier suivant un format spécifique.

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bredele_Gestion.Controller
+namespace BredeleGestion.Services
 {
-    internal class ConnectionController
+    public class ConnectionController
 
 
     {/// <summary>
