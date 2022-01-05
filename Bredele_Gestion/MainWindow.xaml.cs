@@ -67,16 +67,24 @@ namespace Bredele_Gestion
             
             if (connectUser !="")
             {
-                LblErrorConnection.Visibility = Visibility;
+                LblErrorConnection.Visibility = Visibility.Visible;
                 LblErrorConnection.Content = connectUser;
             }
             else
             {
                 BoxLoginConnection.Visibility = Visibility.Hidden;
+                LblErrorConnection.Visibility = Visibility.Hidden;
+                LblErrorConnection.Content = "";
             }
         }
 
         private void BtnNoLogin_Click(object sender, RoutedEventArgs e)
+        {
+            connectionController.Close();
+            this.Close();
+        }
+
+        private void MainWindows_Closed(object sender, EventArgs e)
         {
             connectionController.Close();
             this.Close();

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
-using Bredele_Gestion;
 
 namespace BredeleGestion.Services
 {

@@ -19,21 +19,31 @@ namespace BredeleGestion.Services
         {
             try
             {
-                if (string.IsNullOrEmpty(login.Trim()) || string.IsNullOrEmpty(pwd.Trim()))
+                login = login.Trim();
+                pwd = pwd.Trim();
+
+                if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(pwd))
                 {
                     LogTools.AddLog(LogTools.LogType.ERREUR, "Connexion - Login ou Mot de passe vide");
                     return "Erreur : Login ou mot de passe vide !";
                 }
-
-                if (true)
+                else
                 {
+                    ConnexionBddService connexion = new ConnexionBddService("SELECT * FROM users", "users");
+                    List<string[]> rstRequete = connexion.ExecuteRequet();
 
+                    if (!ControlUserServices.CheckLogin(login, rstRequete) || !ControlUserServices.CheckPwd(pwd, ControlUserServices.pwdBdd))
+                    {
+                        LogTools.AddLog(LogTools.LogType.ERREUR, "Connexion - Login ou mot de passe incorrect !");
+                        return "Login ou mot de passe incorrect !";
+                    }
+
+                    LogTools.AddLog(LogTools.LogType.TRACE, "Connexion - Identification réussite - " + ControlUserServices.userConnected);
                 }
             }
             catch (Exception ex)
             {
-
-                throw;
+                Console.WriteLine("Erreur lors de la connection " + ex);
             }
             return "";
         }
