@@ -26,13 +26,13 @@ namespace Bredele_Gestion
         public MainWindow()
         {
             InitializeComponent();
-            FrameLeft.Content = new AdherentsPage();
+            FrameLeft.Navigate(new AdherentsPage());
         }
 
         #region Evenement toolBar
         private void BtnAddCustomer_Click(object sender, RoutedEventArgs e)
         {
-            FrameLeft.Content = new AjoutAdherentPage();
+            FrameRight.Navigate(new AjoutAdherentPage());
         }
 
         private void BtnHome_Click(object sender, RoutedEventArgs e)

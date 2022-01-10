@@ -31,7 +31,7 @@ namespace BredeleGestion.Services
                 {
                     flag = true;
                     userConnected = login;
-                    pwdBdd = user[1];
+                    pwdBdd = user[2];
                 }
             }
             return flag;

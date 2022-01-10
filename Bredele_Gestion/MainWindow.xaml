@@ -62,7 +62,7 @@
         <Grid x:Name="BoxLoginConnection" 
               Grid.RowSpan="2" 
               Grid.ColumnSpan="2" 
-              Visibility="Visible" >
+              Visibility="Hidden">
             <Grid Background="Black" Opacity="0.9"/>
             <Border MinWidth="450"
                     MinHeight="250"

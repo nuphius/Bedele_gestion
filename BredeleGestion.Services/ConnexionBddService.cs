@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 
 namespace BredeleGestion.Services
@@ -13,7 +10,7 @@ namespace BredeleGestion.Services
     {
         private string _requeteSql;
         private string _table;
-        private List<string[]> _rstRequete;
+        private List<DataRow> _rstRequete;
 
         private string NameTable
         {
@@ -31,15 +28,15 @@ namespace BredeleGestion.Services
         {
             RequeteSql = requeteSql;
             NameTable = table;
-            _rstRequete = new List<string[]>();
+            _rstRequete = new List<DataRow>();
         }
 
 
         /// <summary>
-        /// Execute une requete SQL SELECT et retourne une liste tableau des résultats
+        /// Execute une requete SQL SELECT et retourne une liste tableau des résultats en DataRow
         /// </summary>
         /// <returns></returns>
-        public List<string[]> ExecuteRequet()
+        public List<DataRow> ExecuteRequet()
         {
             //Connection à la base de donnée
             SqlConnection connexion = new SqlConnection(@"Server=tcp:bredeleprojet.database.windows.net,1433;Initial Catalog=BredeleGestionBdd;Persist Security Info=False;User ID=bredele;Password=MIKAELmathieu21;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
@@ -54,6 +51,7 @@ namespace BredeleGestion.Services
             try
             {
                 connexion.Open();
+                //Récupère les données.
                 adapter.Fill(data, _table);
             }
             catch (Exception ex)
@@ -67,12 +65,8 @@ namespace BredeleGestion.Services
 
             foreach (DataRow row in data.Tables[_table].Rows)
             {
-                _rstRequete.Add(new string[] { row["usersname"].ToString(), row["userspassword"].ToString()});
-
-                Debug.WriteLine(row["usersname"].ToString());
-                Debug.WriteLine(row["userspassword"].ToString());
+                _rstRequete.Add(row);
             }
-
             return _rstRequete;
         }
     }

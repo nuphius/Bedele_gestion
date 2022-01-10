@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace BredeleGestion.Services
                 login = login.Trim();
                 pwd = pwd.Trim();
 
+                //Si les champs sont vides
                 if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(pwd))
                 {
                     LogTools.AddLog(LogTools.LogType.ERREUR, "Connexion - Login ou Mot de passe vide");
@@ -29,10 +31,17 @@ namespace BredeleGestion.Services
                 }
                 else
                 {
+                    //Création de la requete et de la table souhaitée.
                     ConnexionBddService connexion = new ConnexionBddService("SELECT * FROM users", "users");
-                    List<string[]> rstRequete = connexion.ExecuteRequet();
 
-                    if (!ControlUserServices.CheckLogin(login, rstRequete) || !ControlUserServices.CheckPwd(pwd, ControlUserServices.pwdBdd))
+                    //Récupération d'une liste en DataRow .
+                    List<DataRow> rstRequete = connexion.ExecuteRequet();
+
+                    //Conversion de la liste en array liste et string afin de pouvour l'exploiter.
+                    List<string[]> listRstRequete = rstRequete.Select(x => x.ItemArray.Select(y => y.ToString()).ToArray()).ToList();
+
+                    //Si login ou password ne sont pas dans la BDD alors message d'erreur
+                    if (!ControlUserServices.CheckLogin(login, listRstRequete) || !ControlUserServices.CheckPwd(pwd, ControlUserServices.pwdBdd))
                     {
                         LogTools.AddLog(LogTools.LogType.ERREUR, "Connexion - Login ou mot de passe incorrect !");
                         return "Login ou mot de passe incorrect !";

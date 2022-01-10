@@ -49,8 +49,6 @@ namespace BredeleGestion.Services
             catch (Exception ex)
             {
                 Console.WriteLine("Problème de création du dossier log !" + ex);
-                //MessageBox.Show(ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                //Application.Current.Shutdown();
             }
 
 
@@ -77,8 +75,6 @@ namespace BredeleGestion.Services
             catch (Exception ex)
             {
                 Console.WriteLine("problème création ou écriture dans le fichier log ! " + ex);
-                //MessageBox.Show(ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                //Application.Current.Shutdown();
             }
 
             // Création de la ligne log a écrire dans le fichier suivant un format spécifique.
