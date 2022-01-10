@@ -5,47 +5,49 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Bredele_Gestion"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="700" d:DesignWidth="800"
       Title="InfoAjoutAdherentPage">
 
     <!-- Grid pour l'agencement de la page-->
     <Grid Background="#FFEEF5FD">
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100px"/>
-            <RowDefinition Height="100px"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <!-- Label - Titre-->
-        <Label x:Name="lblInfoComplete"
+        <!-- TextBlock - Info Adhérent-->
+        <TextBlock x:Name="LblInfoComplete"
                Grid.Row="0"
-               Content="Merci de remplir&#x0a;tous les champs"
+               Text="Merci de remplir&#x0a;tous les champs"
                FontWeight="Bold"
                FontFamily="Georgia"
-               FontSize="18"
+               FontSize="16"
+               TextWrapping="WrapWithOverflow"
                Margin="40,0,40,0"
                HorizontalAlignment="Center"
-               VerticalAlignment="Top"/>
-        
-        <!-- Image - Loupe-->
-        <Image Source="/Icon/loupe_40.png"
-               Grid.Row="1"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Margin="0,0,10,0"
-                Height="20"
-                Width="20"/>
+               VerticalAlignment="Center"/>
 
-        <!-- Label - Titre-->
-        <Label x:Name="lblInfoAdherent"
-               Grid.Row="2"
-               Content="N'oubliez pas de cocher&#x0a;la case Adhérent si&#x0a;la cotisation a été réglé"
-               FontWeight="Bold"
-               FontFamily="Georgia"
-               FontSize="18"
-               Margin="40,0,40,0"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Top"/>        
+        <!-- Image - Info-->
+        <Image Source="/Icon/info_img_80.png"
+               Grid.Row="1"
+               VerticalAlignment="Center"
+               Height="80"
+               Width="80"
+               StretchDirection="Both"
+               Stretch="UniformToFill"/>
+
+        <!-- TextBlock - Notification Adhérent-->
+        <TextBlock x:Name="TxtBlockInfoAdherent"
+            Grid.Row="2"
+            Text="N'oubliez pas de cocher la case Adhérent si la cotisation a été réglé"
+            FontWeight="Bold"
+            FontFamily="Georgia"
+            FontSize="16"
+            TextWrapping="WrapWithOverflow"
+            Margin="40,0,40,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
     </Grid>
 </Page>

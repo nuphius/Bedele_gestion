@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Bredele_Gestion"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="700" d:DesignWidth="800"
       Title="AjoutReservationAdherentPage">
     
     <!-- Grid pour l'agencement de la page-->
@@ -13,7 +13,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="60px"/>
             <RowDefinition Height="30px"/>
+            <RowDefinition Height="200px"/>            
             <RowDefinition Height="170px"/>
+            <RowDefinition Height="30px"/>
             <RowDefinition Height="30px"/>
             <RowDefinition Height="30px"/>
             <RowDefinition Height="30px"/>
@@ -22,18 +24,43 @@
             <RowDefinition Height="40px"/>
         </Grid.RowDefinitions>
 
-        <!-- Label - Titre-->
-        <Label x:Name="LblTitleReservation"
-                Grid.Row="0"
-                Content="Ajouter / Modifier&#x0d;&#x0a;Réservation"
-                FontFamily="Georgia"
-                FontSize="16"
-                FontWeight="Bold"
-                Margin="0,0,0,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"/>
+        
+        <!-- TextBlock - Titre-->
+        <TextBlock x:Name="TxtBlockTitleReservation"
+            Grid.Row="0"
+            Text="Ajouter / Modifier Réservation"            
+            FontFamily="Georgia"
+            FontSize="16"
+            FontWeight="Bold"
+            TextWrapping="WrapWithOverflow"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"/>
+        
+        <!-- Affichage adhérents-->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+            <!-- Image - Loupe-->
+            <Image Source="/Icon/loupe_40.png"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Margin="0,0,10,0"
+                   Height="20"
+                   Width="20"/>
 
-        <!-- TextBox - Nom de la réservation-->
+            <!-- TextBox - Recherche adhérents-->
+            <TextBox x:Name="TxtBoxNameReservation"
+                     d:Text="Nom du réservant"
+                     FontFamily="Georgia"
+                     FontSize="12"
+                     TextWrapping="WrapWithOverflow"                     
+                     Text="TextBox"
+                     MinWidth="100"
+                     MaxWidth="200"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Center"
+                     GotFocus="TxtBoxNameReservation_GotFocus"/>
+        </StackPanel>
+
+        <!-- TextBox - Nom de la réservation
         <TextBox x:Name="TxtBoxNameReservation"
                  Grid.Row="1"
                  Text="Nom du réservant"
@@ -43,18 +70,38 @@
                  Margin="40,0,40,0"
                  HorizontalAlignment="Stretch"
                  VerticalAlignment="Center"
-                 GotFocus="TxtBoxNameReservation_GotFocus"/>
+                 GotFocus="TxtBoxNameReservation_GotFocus"/>-->
+
+        <!-- Liste adhérents-->
+        <ListBox x:Name="listBoxAdherentSearch"
+                 Grid.Row="2"
+                 FontWeight="Bold"
+                 FontFamily="Georgia"
+                 FontSize="12"
+                 Margin="40,0,40,0"/>
 
         <!-- Calendar - Calendrier de réservation-->
         <Calendar x:Name="CalendarReservation"
-                  Grid.Row="2"
+                  Grid.Row="3"
                   Margin="20,0,20,0"
                   HorizontalAlignment="Stretch"
                   VerticalAlignment="Top"/>
 
+        <!-- TextBlock - Notification Adhérent-->
+        <TextBlock x:Name="TxtBlockHourFormat"
+            Grid.Row="4"
+            Text="Heure au format hh:mm"
+            FontWeight="Bold"
+            FontFamily="Georgia"
+            FontSize="12"
+            TextWrapping="WrapWithOverflow"
+            Margin="40,0,40,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
+
         <!-- TextBox - Heure de début de la réservation-->
         <TextBox x:Name="TxtBoxHourStartReservation"
-                 Grid.Row="3"
+                 Grid.Row="5"
                  Text="Heure de début"
                  FontFamily="Georgia"
                  FontSize="12"
@@ -65,7 +112,7 @@
 
         <!-- TextBox - Heure de début de la réservation-->
         <TextBox x:Name="TxtBoxHourEndReservation"
-                 Grid.Row="4"
+                 Grid.Row="6"
                  Text="Heure de fin"
                  FontFamily="Georgia"
                  FontSize="12"
@@ -76,17 +123,17 @@
         
         <!-- ComboBox - Activité-->
         <ComboBox x:Name="ComboBoxActivityReservation"
-                  Grid.Row="5"
+                  Grid.Row="7"
                   HorizontalAlignment="Stretch"                  
                   Margin="40,5,40,5" />
 
         <!-- ComboBox - Nombre de place-->
         <ComboBox x:Name="ComboBoxNbPlaceReservation"
-                  Grid.Row="6"
+                  Grid.Row="8"
                   HorizontalAlignment="Stretch"                
                   Margin="40,5,40,5" />
         
-        <StackPanel Grid.Row="7" Orientation="Horizontal">
+        <StackPanel Grid.Row="9" Orientation="Horizontal">
             <!-- Label - Tarif-->
             <Label x:Name="LblTarifReservation"
                    Content="Tarif : "
@@ -101,10 +148,10 @@
                    FontSize="12"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="8" HorizontalAlignment="Center" Orientation="Horizontal">
+        <StackPanel Grid.Row="10" HorizontalAlignment="Center" Orientation="Horizontal">
             <!-- Button - Modifier-->
-            <Button x:Name="BtnModifyReservation"
-                    Content="Modifier"                    
+            <Button x:Name="BtnDeleteReservation"
+                    Content="Supprimer"                    
                     FontFamily="Georgia"
                     FontSize="12"
                     FontWeight="Bold"
