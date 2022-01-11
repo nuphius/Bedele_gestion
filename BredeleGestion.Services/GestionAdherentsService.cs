@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Text.RegularExpressions;
@@ -93,11 +92,6 @@ namespace BredeleGestion.Services
                         if (regex.IsMatch(value))
                         {
                             _cp = value;
-
-                            //if (_cp.Length == 5)
-                            //{
-                            //    SelectCity(_cp);
-                            //}
                         }
                         else
                         {

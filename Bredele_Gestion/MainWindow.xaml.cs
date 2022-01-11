@@ -53,7 +53,9 @@ namespace Bredele_Gestion
 
         private void BtnAddPrice_Click(object sender, RoutedEventArgs e)
         {
-            FrameLeft.Content = new AjoutTarifsPage();
+            FrameRight.Navigate(new AjoutTarifsPage());
+            FrameLeft.Navigate(new InfoAjoutTarifsPage());
+
         }
         #endregion
 
