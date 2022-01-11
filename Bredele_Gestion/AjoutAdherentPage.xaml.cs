@@ -50,6 +50,10 @@ namespace Bredele_Gestion
             {
                 txtBoxAddCity.Text = adherentsService.SelectCity(adherentsService.Cp);
             }
+            else
+            {
+                txtBoxAddCity.Text = string.Empty;
+            }
         }
 
         private void txtBoxCustBirthDate_LostFocu(object sender, RoutedEventArgs e)

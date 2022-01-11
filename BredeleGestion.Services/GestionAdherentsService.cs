@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Text.RegularExpressions;
 
 namespace BredeleGestion.Services
 {
-    public partial class GestionAdherentsService
+    public partial class GestionAdherentsService : INotifyPropertyChanged
     {
         private string _errorMessage = string.Empty;
         private string _name;
@@ -16,6 +18,8 @@ namespace BredeleGestion.Services
         public bool birthDateFlag = false;
         private string _phone;
         private string _mail;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #region Déclaration des Proprietés
         public string Name
@@ -31,6 +35,8 @@ namespace BredeleGestion.Services
                 {
                     _name = string.Empty;
                 }
+                if (PropertyChanged != null)
+                    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
             }
         }
 
@@ -47,6 +53,8 @@ namespace BredeleGestion.Services
                 {
                     _firstName = string.Empty;
                 }
+                if (PropertyChanged != null)
+                    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(FirstName)));
             }
         }
 
@@ -63,6 +71,8 @@ namespace BredeleGestion.Services
                 {
                     _address = string.Empty;
                 }
+                if (PropertyChanged != null)
+                    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(Address)));
             }
         }
 
@@ -100,16 +110,27 @@ namespace BredeleGestion.Services
                         Cp = "";
                     }
                 }
+
+                if (PropertyChanged != null)
+                    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(Cp)));
             }
         }
 
         public string City
         {
             get { return _city; }
-            set { _city = value; }
+            set
+            {
+                _city = value;
+
+                if (PropertyChanged != null)
+                    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(City)));
+            }
         }
 
-
+        /// <summary>
+        /// Contrôle que la date de naiossance est bien saisie au format jj/mm/aaaa
+        /// </summary>
         public string BirthDate
         {
             get { return _birthDate; }
@@ -139,6 +160,9 @@ namespace BredeleGestion.Services
 
                     }
                 }
+
+                if (PropertyChanged != null)
+                    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(BirthDate)));
             }
         }
 
@@ -219,10 +243,6 @@ namespace BredeleGestion.Services
             if (string.IsNullOrEmpty(_birthDate))
             {
                 _errorMessage += "- Le champ DATE DE NAISSANCE est obligatoire\n";
-            }
-            if (!birthDateFlag)
-            {
-                _errorMessage += "- Date au mauvais format ! (JJ/MM/AAAA)\n";
             }
             if (string.IsNullOrEmpty(_phone))
             {
