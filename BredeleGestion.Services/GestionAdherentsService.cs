@@ -109,9 +109,7 @@ namespace BredeleGestion.Services
             set { _city = value; }
         }
 
-        /// <summary>
-        /// Contrôle que la date de naiossance est bien saisie au format jj/mm/aaaa
-        /// </summary>
+
         public string BirthDate
         {
             get { return _birthDate; }
@@ -221,6 +219,10 @@ namespace BredeleGestion.Services
             if (string.IsNullOrEmpty(_birthDate))
             {
                 _errorMessage += "- Le champ DATE DE NAISSANCE est obligatoire\n";
+            }
+            if (!birthDateFlag)
+            {
+                _errorMessage += "- Date au mauvais format ! (JJ/MM/AAAA)\n";
             }
             if (string.IsNullOrEmpty(_phone))
             {
