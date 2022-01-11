@@ -116,7 +116,8 @@
         </StackPanel>
 
         <!-- Button - Modifier adhérents-->
-        <Button x:Name="btnModifyAdherentSearch"
+        <Button Style="{DynamicResource ButtonStyleCorner3}"
+                x:Name="btnModifyAdherentSearch"
                 Grid.Row="5"
                 Content="Modifier"
                 FontFamily="Georgia"

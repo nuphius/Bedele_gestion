@@ -7,13 +7,13 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="800"
       Title="AjoutReservationAdherentPage">
-    
+
     <!-- Grid pour l'agencement de la page-->
     <Grid Background="#FFEEF5FD">
         <Grid.RowDefinitions>
             <RowDefinition Height="60px"/>
             <RowDefinition Height="30px"/>
-            <RowDefinition Height="200px"/>            
+            <RowDefinition Height="200px"/>
             <RowDefinition Height="170px"/>
             <RowDefinition Height="30px"/>
             <RowDefinition Height="30px"/>
@@ -23,10 +23,9 @@
             <RowDefinition Height="30px"/>
             <RowDefinition Height="40px"/>
         </Grid.RowDefinitions>
-        
+
         <!-- TextBlock - Titre-->
         <TextBlock x:Name="TxtBlockTitleReservation"
-<<<<<<< HEAD
                 Grid.Row="0"
                 Text="Ajouter / Modifier Réservation"            
                 FontFamily="Georgia"
@@ -38,19 +37,6 @@
 
 
         <!-- DockPanel - Recherche adhérents-->
-=======
-            Grid.Row="0"
-            Text="Ajouter / Modifier Réservation"            
-            FontFamily="Georgia"
-            FontSize="16"
-            FontWeight="Bold"
-            TextWrapping="WrapWithOverflow"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"/>
-        
-        <!-- Affichage adhérents-->
-        <!--<StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">-->
->>>>>>> 4aabc5472ba7d50cc4795c023e6a6310af0f839c
         <DockPanel Grid.Row="1">
             <!-- Image - Loupe-->
             <Image Source="/Icon/loupe_40.png"
@@ -61,7 +47,6 @@
                     Width="20"/>
             <!-- TextBox - Recherche adhérents-->
             <TextBox x:Name="TxtBoxNameReservation"
-<<<<<<< HEAD
                     Text="Nom du réservant"
                     FontFamily="Georgia"
                     FontSize="12"
@@ -71,33 +56,7 @@
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
                     GotFocus="TxtBoxNameReservation_GotFocus"/>
-        </DockPanel>            
-=======
-                     d:Text="Nom du réservant"
-                     FontFamily="Georgia"
-                     FontSize="12"
-                     TextWrapping="WrapWithOverflow"                     
-                     Text="TextBox"
-                     MinWidth="100"
-                     Margin="0,0,15,0"
-                     HorizontalAlignment="Stretch"
-                     VerticalAlignment="Center"
-                     GotFocus="TxtBoxNameReservation_GotFocus"/>
-        <!--</StackPanel>-->
         </DockPanel>
-
-        <!-- TextBox - Nom de la réservation
-        <TextBox x:Name="TxtBoxNameReservation"
-                 Grid.Row="1"
-                 Text="Nom du réservant"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 TextWrapping="Wrap"
-                 Margin="40,0,40,0"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Center"
-                 GotFocus="TxtBoxNameReservation_GotFocus"/>-->
->>>>>>> 4aabc5472ba7d50cc4795c023e6a6310af0f839c
 
         <!-- ListBox - Liste adhérents-->
         <ListBox x:Name="listBoxAdherentSearch"
@@ -179,25 +138,31 @@
                    FontFamily="Georgia"
                    FontSize="12"/>
         </StackPanel>
-        
+
         <!--</StackPanel - Button>-->
         <DockPanel Grid.Row="10" HorizontalAlignment="Stretch" Margin="40,0,40,0">
             <!-- Button - Modifier-->
-            <Button x:Name="BtnDeleteReservation"
+            <Button Style="{DynamicResource ButtonStyleCorner3}"
+                    x:Name="BtnDeleteReservation"
                     Content="Supprimer"                    
                     FontFamily="Georgia"
                     FontSize="12"
-                    FontWeight="Bold"                    
+                    FontWeight="Bold"
+                    HorizontalAlignment="Left"
+                    Height="30"
                     Width="80"
                     MaxWidth="80"/>
             <!-- Button - Supprimer-->
-            <Button x:Name="BtnValidReservation"
+            <Button Style="{DynamicResource ButtonStyleCorner3}"
+                    x:Name="BtnValidReservation"
                     Content="Valider"
                     FontFamily="Georgia"
                     FontSize="12"
                     FontWeight="Bold"
+                    HorizontalAlignment="Right"
+                    Height="30"
                     Width="80"
                     MaxWidth="80"/>
-        </DockPanel> 
+        </DockPanel>
     </Grid>
 </Page>
