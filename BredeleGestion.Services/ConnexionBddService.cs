@@ -8,6 +8,8 @@ namespace BredeleGestion.Services
 {
     public class ConnexionBddService
     {
+        #region Proriétés
+        //Déclaration des propriétés
         private string _requeteSql;
         private string _table;
         private List<DataRow> _rstRequete;
@@ -30,8 +32,9 @@ namespace BredeleGestion.Services
             NameTable = table;
             _rstRequete = new List<DataRow>();
         }
+        #endregion
 
-
+        #region SQL Select --> Tableau des résultats
         /// <summary>
         /// Execute une requete SQL SELECT et retourne une liste tableau des résultats en DataRow
         /// </summary>
@@ -69,5 +72,6 @@ namespace BredeleGestion.Services
             }
             return _rstRequete;
         }
+        #endregion
     }
 }

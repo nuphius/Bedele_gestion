@@ -109,7 +109,9 @@ namespace BredeleGestion.Services
             set { _city = value; }
         }
 
-
+        /// <summary>
+        /// Contrôle que la date de naiossance est bien saisie au format jj/mm/aaaa
+        /// </summary>
         public string BirthDate
         {
             get { return _birthDate; }

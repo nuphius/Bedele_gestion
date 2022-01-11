@@ -9,13 +9,14 @@ namespace BredeleGestion.Services
 {
     public class ConnectionController
 
-
-    {/// <summary>
-    /// Gestion de l'authentification du logiciel
-    /// </summary>
-    /// <param name="login"></param>
-    /// <param name="pwd"></param>
-    /// <returns></returns>
+    {
+        #region Authentification du logiciel
+        /// <summary>
+        /// Gestion de l'authentification du logiciel
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="pwd"></param>
+        /// <returns></returns>
         public string ConnectUser(string login, string pwd)
         {
             try
@@ -56,7 +57,9 @@ namespace BredeleGestion.Services
             }
             return "";
         }
+        #endregion
 
+        #region Démarrage de l'application
         /// <summary>
         /// Insertion dans le fichier log d'une ligne pour informer du démarrage du logiciel
         /// </summary>
@@ -64,7 +67,9 @@ namespace BredeleGestion.Services
         {
             LogTools.AddLog(LogTools.LogType.TRACE, "---------- Démarrage de l'application ----------");
         }
+        #endregion
 
+        #region Fermeture de l'application
         /// <summary>
         /// Insertion dans le fichier log d'une ligne pour informer de la fermeture du logiciel
         /// </summary>
@@ -72,5 +77,6 @@ namespace BredeleGestion.Services
         {
             LogTools.AddLog(LogTools.LogType.TRACE, "---------- Fermeture de l'application ----------");
         }
+        #endregion
     }
 }
