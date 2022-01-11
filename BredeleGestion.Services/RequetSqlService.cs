@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 namespace BredeleGestion.Services
 {
-    static class RequestSqlService
+    public static class RequetSqlService
     {
         #region Table User
         /// <summary>
         /// Sélectionne les utilisateurs
         /// </summary>
         public const string SELECTALLUSERS = "SELECT * FROM users";
+
+        /// <summary>
+        /// Sélectionne toutes les villes, CP et Id de la table
+        /// </summary>
+        public const string SELECTCPCITY = "SELECT * FROM city WHERE addpostal=";
+        public const string TABLECITY = "city";
 
         /// <summary>
         /// Supprime un utilisateur

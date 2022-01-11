@@ -57,11 +57,17 @@ namespace BredeleGestion.Services
             return "";
         }
 
+        /// <summary>
+        /// Insertion dans le fichier log d'une ligne pour informer du démarrage du logiciel
+        /// </summary>
         public void Load()
         {
             LogTools.AddLog(LogTools.LogType.TRACE, "---------- Démarrage de l'application ----------");
         }
 
+        /// <summary>
+        /// Insertion dans le fichier log d'une ligne pour informer de la fermeture du logiciel
+        /// </summary>
         public void Close()
         {
             LogTools.AddLog(LogTools.LogType.TRACE, "---------- Fermeture de l'application ----------");

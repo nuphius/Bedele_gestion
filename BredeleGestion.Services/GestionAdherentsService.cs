@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Text.RegularExpressions;
 
 namespace BredeleGestion.Services
@@ -10,19 +11,24 @@ namespace BredeleGestion.Services
         private string _firstName;
         private string _address;
         private string _cp;
+        private string _city;
         private string _birthDate;
+        private string _phone;
+        private string _mail;
+
+        #region Déclaration des Proprietés
         public string Name
         {
             get { return _name; }
             set
             {
-                if (String.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrEmpty(value))
                 {
-                    _errorMessage += " - Le champ NOM est obligatoir\n";
+                    _name = value.Trim();
                 }
                 else
                 {
-                    _name = value.Trim();
+                    _name = string.Empty;
                 }
             }
         }
@@ -32,13 +38,13 @@ namespace BredeleGestion.Services
             get { return _firstName; }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrWhiteSpace(value))
                 {
-                    _errorMessage += " - Le champ PRENON est obligatoir\n";
+                    _firstName = value.Trim();
                 }
                 else
                 {
-                    _firstName = value.Trim();
+                    _firstName = string.Empty;
                 }
             }
         }
@@ -48,95 +54,179 @@ namespace BredeleGestion.Services
             get { return _address; }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrEmpty(value))
                 {
-                    _errorMessage += " - Le champ ADRESSE est obligatoir\n";
+                    _address = value.Trim();
                 }
                 else
                 {
-                    _address = value.Trim();
+                    _address = string.Empty;
                 }
             }
         }
 
+        /// <summary>
+        /// Contrôle que seul des chiffres sont saisies pour le code postal
+        /// </summary>
         public string Cp
         {
             get { return _cp; }
             set
             {
-                Regex regex = new Regex("[^0-9]+");
+                Regex regex = new Regex(@"^[0-9]*[0-9]$");
 
+                if (value != null)
+                {
+                    if (value.Length > 0)
+                    {
+                        if (regex.IsMatch(value))
+                        {
+                            _cp = value;
 
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    _errorMessage += " - Le champ CODE POSTAL est obligatoir\n";
-                }
-                //else if (value.Length != 5)
-                //{
-                //    _errorMessage += " - Entrez un CODE POSTAL Valide ! (5 chiffres)\n";
-                //}
-                else if (regex.IsMatch(value))
-                {
-                    _cp = value;
-                }
-                else
-                {
-                    Name = _cp;
+                            //if (_cp.Length == 5)
+                            //{
+                            //    SelectCity(_cp);
+                            //}
+                        }
+                        else
+                        {
+                            Cp = _cp;
+                        }
+                    }
+                    else if (value.Length == 0 && _cp.Length == 1)
+                    {
+                        _cp = "";
+                        Cp = "";
+                    }
                 }
             }
         }
+
+        public string City
+        {
+            get { return _city; }
+            set { _city = value; }
+        }
+
 
         public string BirthDate
         {
             get { return _birthDate; }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrEmpty(value))
                 {
-                    _errorMessage += " - Le champ DATE DE NAISSANCE est obligatoir\n";
+                    _birthDate = value.Trim();
                 }
                 else
                 {
-                    _birthDate = value.Trim();
+                    _birthDate = string.Empty;
                 }
             }
         }
 
-        private string _phone;
-
+        /// <summary>
+        /// Contrôle que seul des chiffres sont saisies pour le téléphone
+        /// </summary>
         public string Phone
         {
             get { return _phone; }
             set
             {
-                if (string.IsNullOrWhiteSpace(_phone))
+                Regex regex = new Regex(@"^[0-9]*[0-9]$");
+
+                if (value != null)
                 {
-                    _errorMessage += " - Le champ THELEPHONE est obligatoir\n";
-                }
-                else if (_phone.Length != 10)
-                {
-                    _errorMessage += "Entrer un TELEPHONE valide (10 chiffres)";
-                }
-                else
-                {
-                    _phone = value.Trim();
+                    if (value.Length > 0)
+                    {
+                        if (regex.IsMatch(value))
+                        {
+                            _phone = value;
+                        }
+                        else
+                        {
+                            Phone = _phone;
+                        }
+                    }
+                    else if (value.Length == 0 && _phone.Length == 1)
+                    {
+                        _phone = "";
+                        Phone = "";
+                    }
                 }
             }
         }
 
-
+        public string Mail
+        {
+            get { return _mail; }
+            set { _mail = value; }
+        }
+        #endregion
 
         public GestionAdherentsService()
         {
-            Name = _name;
+            //Name = _name;
         }
 
 
 
-
-        public void CheckInfos()
+        /// <summary>
+        /// Vérification que les champs obligatoire du formulaire ne sont pas vide
+        /// Renvoi une chaine de caractère avec les eventuelles erreurs
+        /// </summary>
+        /// <returns></returns>
+        public string CheckInfos()
         {
+            _errorMessage = string.Empty;
 
+            if (string.IsNullOrEmpty(_name))
+            {
+                _errorMessage += "- Le champ NOM est obligatoir\n";
+            }
+            if (string.IsNullOrEmpty(_firstName))
+            {
+                _errorMessage += "- Le champ PRENON est obligatoir\n";
+            }
+            if (string.IsNullOrEmpty(_address))
+            {
+                _errorMessage += "- Le champ ADRESSE est obligatoir\n";
+            }
+            if (string.IsNullOrEmpty(_cp))
+            {
+                _errorMessage += "- Le champ CODE POSTAL est obligatoir\n";
+            }
+            if (string.IsNullOrEmpty(_city))
+            {
+                _errorMessage += "- Le champ VILLE est obligatoir\n";
+            }
+            if (string.IsNullOrEmpty(_birthDate))
+            {
+                _errorMessage += "- Le champ DATE DE NAISSANCE est obligatoir\n";
+            }
+            if (string.IsNullOrEmpty(_phone))
+            {
+                _errorMessage += "- Le champ TELEPHONE est obligatoir\n";
+            }
+            if (string.IsNullOrEmpty(_mail))
+            {
+                _errorMessage += "- Le champ MAIL est obligatoir\n";
+            }
+            return _errorMessage;
+        }
+
+        public string SelectCity(string cp)
+        {
+            ConnexionBddService connexionBddService = new ConnexionBddService(RequetSqlService.SELECTCPCITY + cp, RequetSqlService.TABLECITY);
+
+            List<DataRow> listCity = connexionBddService.ExecuteRequet();
+
+            foreach (var item in listCity)
+            {
+                //City = $"id:{item["addid"]} CP:{item["addpostal"]} ville:{item["addcity"]}";         
+                City = item["addcity"].ToString();         
+            }
+            return City;
         }
 
         public string AddUser()

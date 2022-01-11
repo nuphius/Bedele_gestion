@@ -38,5 +38,18 @@ namespace TestUnitaireBredele
             }
             
         }
+
+        [TestMethod]
+        public void TestAddUsers()
+        {
+            GestionAdherentsService user = new GestionAdherentsService();
+            user.Name = "ekjln";
+            Debug.WriteLine(user.Name);
+            user.Name = "";
+            Debug.WriteLine(user.Name);
+
+            user.SelectCity("68350");
+            Debug.WriteLine(user.City);
+        }
     }
 }
