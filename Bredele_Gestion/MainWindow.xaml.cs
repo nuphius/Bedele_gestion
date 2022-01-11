@@ -38,17 +38,18 @@ namespace Bredele_Gestion
 
         private void BtnHome_Click(object sender, RoutedEventArgs e)
         {
-            FrameLeft.Content = new AdherentsPage();
+            FrameLeft.Navigate(new AdherentsPage());
         }
 
         private void BtnAddTicket_Click(object sender, RoutedEventArgs e)
         {
-            FrameLeft.Content = new AjoutReservationAdherentPage();
+            FrameLeft.Navigate(new AjoutReservationAdherentPage());
         }
 
         private void BtnAddBox_Click(object sender, RoutedEventArgs e)
         {
-            FrameLeft.Content = new AjoutLocauxPage();
+            FrameRight.Navigate(new AjoutLocauxPage());
+            FrameLeft.Navigate(new InfoAjoutLocauxPage());
         }
 
         private void BtnAddPrice_Click(object sender, RoutedEventArgs e)

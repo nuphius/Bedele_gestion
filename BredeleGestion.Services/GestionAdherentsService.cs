@@ -194,7 +194,20 @@ namespace BredeleGestion.Services
         public string Mail
         {
             get { return _mail; }
-            set { _mail = value; }
+            set 
+            {
+                Regex regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+                if (value != null)
+                {
+                    if (regex.IsMatch(value))
+                    {
+                        _mail = value;
+                    }
+
+                }
+                
+                _mail = value; 
+            }
         }
         #endregion
 
