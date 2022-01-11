@@ -144,7 +144,6 @@
                     Width="80"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"/>
-       <!-- </StackPanel> -->
 
         <!-- Separator - Ligne de séparation-->
         <Separator HorizontalAlignment="Stretch"
@@ -216,7 +215,7 @@
                     VerticalAlignment="Center"/>
 
         <!-- Label - Message si erreur-->
-        <Label x:Name="lblCustError"
+        <Label x:Name="lblPriceError"
                 Grid.Row="9"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"

@@ -9,137 +9,198 @@
       Title="AjoutLocauxPage">
 
     <!-- Grid pour l'agencement de la page-->
-    <Grid Background="#FFEEF5FD" Margin="0,0,0,-174">
+    <Grid Background="#FFEEF5FD">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="60px"/>
-            <RowDefinition Height="30px"/>
-            <RowDefinition Height="30px"/>
-            <RowDefinition Height="30px"/>
-            <RowDefinition Height="30px"/>
-            <RowDefinition Height="90px"/>           
-            <RowDefinition Height="30px"/>
-            <RowDefinition Height="90px"/>
-            <RowDefinition Height="40px"/>            
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="91"/>
+            <RowDefinition Height="51"/>
+            <RowDefinition Height="91"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-       
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto" MaxWidth="200"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
 
         <!-- Label - Titre-->
         <Label x:Name="lblTitleBox"
                 Grid.Row="0"
-                Content="Ajouter / Modifier&#x0d;&#x0a;Local"
-                FontWeight="Bold"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Content="Ajouter / Modifier Local"                
                 FontFamily="Georgia"
                 FontSize="16"
-                Margin="40,0,40,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Stretch"
-                Height="60"/>
-        
+                FontWeight="Bold"
+                Margin="0,50,0,0"
+                HorizontalAlignment="center"
+                VerticalAlignment="center"/>
+
+        <!-- Label - Nom du local-->
+        <Label x:Name="lblBoxName"
+               Grid.Row="1"
+               Grid.Column="1"
+               Content="Nom du local"
+               FontFamily="Georgia"
+               FontSize="12"
+               FontWeight="Bold"
+               VerticalAlignment="Bottom"
+               HorizontalAlignment="Left"/>
+
         <!-- TextBox - Nom du local-->
         <TextBox x:Name="txtBoxBoxName"
-                Grid.Row="1"
-                Text="Nom du local"
-                TextWrapping="Wrap"
-                FontFamily="Georgia"
-                FontSize="12"
-                Margin="40,0,40,0"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"/>
-        
-        <!-- TextBox - Capacité du local-->
+                 Text="{Binding Name, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                 Grid.Row="1"
+                 Grid.Column="2"
+                 TextWrapping="Wrap"
+                 FontFamily="Georgia"
+                 FontSize="12"
+                 MinWidth="200"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"/>
+
+        <!-- Label - Nombre de place-->
+        <Label x:Name="lblBoxCapacity"
+               Grid.Row="2"
+               Grid.Column="1"
+               Content="Nombre de place"
+               FontFamily="Georgia"
+               FontSize="12"
+               FontWeight="Bold"
+               VerticalAlignment="Bottom"
+               HorizontalAlignment="Left"/>
+
+        <!-- TextBox - Nom du local-->
         <TextBox x:Name="txtBoxBoxCapacity"
-                Grid.Row="2"
-                Text="Capacité de la salle"
-                TextWrapping="Wrap"
-                FontFamily="Georgia"
-                FontSize="12"
-                Margin="40,0,40,0"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"/>
+                 Text="{Binding Name, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                 Grid.Row="2"
+                 Grid.Column="2"
+                 TextWrapping="Wrap"
+                 FontFamily="Georgia"
+                 FontSize="12"
+                 MinWidth="200"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"/>
         
-        <!-- TextBox - Superficie du local-->
+
+        <!-- Label - Superficie-->
+        <Label x:Name="lblBoxArea"
+               Grid.Row="3"
+               Grid.Column="1"
+               Content="Superficie"
+               FontFamily="Georgia"
+               FontSize="12"
+               FontWeight="Bold"
+               VerticalAlignment="Bottom"
+               HorizontalAlignment="Left"/>
+
+        <!-- TextBox - Superficie-->
         <TextBox x:Name="txtBoxBoxArea"
-                Grid.Row="3"
-                Text="Superficie du local"
-                TextWrapping="Wrap"
-                FontFamily="Georgia"
-                FontSize="12"
-                Margin="40,0,40,0"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"/>
-        
-        <!-- Liste déroulente - Tarif-->
-        <ComboBox x:Name="cmbBoxPrice"
-                Grid.Row="4"
-                FontFamily="Georgia"
-                Margin="40,5,40,5"
-                HorizontalAlignment="Stretch"/>
+                 Text="{Binding Name, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                 Grid.Row="3"
+                 Grid.Column="2"
+                 TextWrapping="Wrap"
+                 FontFamily="Georgia"
+                 FontSize="12"
+                 MinWidth="200"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"/>        
+
+        <!-- Label - Equipments-->
+        <Label x:Name="lblBoxEquipments"
+               Grid.Row="4"
+               Grid.Column="1"
+               Content="Equipements"
+               FontFamily="Georgia"
+               FontSize="12"
+               FontWeight="Bold"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left"/>
 
         <!-- Grid - Equipements-->
-        <StackPanel Grid.Row="5" HorizontalAlignment="Center"  Orientation="Horizontal">
+        <StackPanel Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center"  Orientation="Horizontal">
 
-            <Grid Background="#FFEEF5FD" Margin="0,0,0,-20">
+            <Grid Background="#FFEEF5FD" Margin="0,0,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>                    
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30px"/>
                     <RowDefinition Height="30px"/>
                     <RowDefinition Height="30px"/>
-            </Grid.RowDefinitions>
+                </Grid.RowDefinitions>
 
                 <CheckBox x:Name="chkBoxEquip1"
                     Grid.Column="0"
                     Grid.Row="0"
                     Content="EquipName1"
-                          HorizontalAlignment="Stretch"
+                          HorizontalAlignment="Left"
                           VerticalAlignment="Center"/>
                 <CheckBox x:Name="chkBoxEquip2"
                     Grid.Column="0"
                     Grid.Row="1"
                     Content="EquipName2"
-                          HorizontalAlignment="Stretch"
+                          HorizontalAlignment="Left"
                           VerticalAlignment="Center"/>
                 <CheckBox x:Name="chkBoxEquip3"
                     Grid.Column="0"
                     Grid.Row="2"
                     Content="EquipName3"
-                          HorizontalAlignment="Stretch"
+                          HorizontalAlignment="Left"
                           VerticalAlignment="Center"/>
                 <CheckBox x:Name="chkBoxEquip4"
                     Grid.Column="1"
                     Grid.Row="0"
                     Content="EquipName4"
-                          HorizontalAlignment="Stretch"
+                          HorizontalAlignment="Left"
                           VerticalAlignment="Center"/>
                 <CheckBox x:Name="chkBoxEquip5"
                     Grid.Column="1"
                     Grid.Row="1"
                     Content="EquipName5"
-                          HorizontalAlignment="Stretch"
+                          HorizontalAlignment="Left"
                           VerticalAlignment="Center"/>
                 <CheckBox x:Name="chkBoxEquip6"
                     Grid.Column="1"
                     Grid.Row="2"
                     Content="EquipName6"
-                          HorizontalAlignment="Stretch"
+                          HorizontalAlignment="Left"
                           VerticalAlignment="Center"/>
             </Grid>
         </StackPanel>
 
-
-
         <!-- Separator - Ligne de séparation-->
-        <Separator HorizontalAlignment="Stretch" Margin="40,0,40,0" Grid.Row="6" VerticalAlignment="Center" Background="Black"/>
+        <Separator HorizontalAlignment="Stretch"
+            Margin="40,25,40,25"
+            Grid.Row="5"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            VerticalAlignment="Center"
+            Background="Black"/>
 
+        <!-- Label - Activity-->
+        <Label x:Name="lblBoxActivity"
+               Grid.Row="6"
+               Grid.Column="1"
+               Content="Activités"
+               FontFamily="Georgia"
+               FontSize="12"
+               FontWeight="Bold"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left"/>
 
         <!-- Grid - Activity-->
-        <StackPanel Grid.Row="7" HorizontalAlignment="Center"  Orientation="Horizontal">
+        <StackPanel Grid.Row="6" Grid.Column="2" HorizontalAlignment="Center"  Orientation="Horizontal">
 
-            <Grid Background="#FFEEF5FD" Margin="0,0,0,-20">
+            <Grid Background="#FFEEF5FD" Margin="0,0,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="2*"/>
@@ -188,33 +249,49 @@
                           VerticalAlignment="Center"/>
             </Grid>
         </StackPanel>
-        
-        <!-- Bouton Ajouter-->
-        <Button x:Name="btnBoxAdd"
+
+
+        <!-- Button - Supprimer-->
+        <Button Style="{DynamicResource ButtonStyleCorner3}"
+                    x:Name="btnBoxDel"
+                    Grid.Row="7"
+                    Grid.Column="2"
+                    Content="Supprimer"                
+                    FontFamily="Georgia"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Margin="0,10,80,00"
+                    Width="80"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"/>
+
+        <!-- Button - Valider-->
+        <Button Style="{DynamicResource ButtonStyleCorner3}"
+                    x:Name="btnBoxSub"
+                    Grid.Row="7"
+                    Grid.Column="2"
+                    Content="Valider"                
+                    FontFamily="Georgia"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Margin="0,10,0,0"
+                    Width="80"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"/>
+
+        <!-- Label - Message si erreur-->
+            <Label x:Name="lblBoxError"
                 Grid.Row="8"
-                Content="Valider"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Content="Label"
                 FontFamily="Georgia"
                 FontSize="12"
                 FontWeight="Bold"
-                Margin="0,10,0,0"
+                Foreground="#FFF21515"
+                Margin="0,10"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Height="30"
-                Width="80"/>
-        
-        <!-- Label - Message si erreur-->
-        <Label x:Name="LblBoxError"
-                Grid.Row="9"
-                Content="Label"
-                Margin="50,5,0,0"
-                HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Height="280"
-                Width="253"
-                RenderTransformOrigin="0.82,0.417"
-                IsEnabled="False"
-                Visibility="Hidden"/>
-        
-
+                Visibility="Hidden" />
     </Grid>
 </Page>
