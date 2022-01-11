@@ -212,7 +212,6 @@
                VerticalAlignment="Bottom"
                HorizontalAlignment="Left"/>
         <TextBox x:Name="txtBoxCustBirthDate"
-                 Text="{Binding BirthDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                  Grid.Row="8"
                  Grid.Column="2"
                  TextWrapping="Wrap"
@@ -220,8 +219,8 @@
                  FontSize="12"
                  MinWidth="100"
                  HorizontalAlignment="Left"
-                 VerticalAlignment="Center"/>
-
+                 VerticalAlignment="Center" LostFocus="txtBoxCustBirthDate_LostFocu"/>
+        <!--Text="{Binding BirthDate, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"-->
         <!-- TextBox - Téléphone-->
         <Label x:Name="lblBoxCustPhone"
                Content="Téléphone"
