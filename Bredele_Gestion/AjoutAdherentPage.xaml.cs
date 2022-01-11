@@ -51,5 +51,21 @@ namespace Bredele_Gestion
                 txtBoxAddCity.Text = adherentsService.SelectCity(adherentsService.Cp);
             }
         }
+
+        private void txtBoxCustBirthDate_LostFocu(object sender, RoutedEventArgs e)
+        {
+            adherentsService.BirthDate = txtBoxCustBirthDate.Text;
+
+            if (!adherentsService.birthDateFlag)
+            {
+                lblCustError.Visibility = Visibility.Visible;
+                lblCustError.Content = "- Date au mauvais format ! (JJ/MM/AAAA)";
+            }
+            else
+            {
+                lblCustError.Visibility = Visibility.Hidden;
+                lblCustError.Content = "";
+            }
+        }
     }
 }

@@ -37,7 +37,8 @@
             VerticalAlignment="Top"/>
         
         <!-- Affichage adhérents-->
-        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+        <!--<StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">-->
+        <DockPanel Grid.Row="1">
             <!-- Image - Loupe-->
             <Image Source="/Icon/loupe_40.png"
                    HorizontalAlignment="Center"
@@ -54,11 +55,12 @@
                      TextWrapping="WrapWithOverflow"                     
                      Text="TextBox"
                      MinWidth="100"
-                     MaxWidth="200"
+                     Margin="0,0,15,0"
                      HorizontalAlignment="Stretch"
                      VerticalAlignment="Center"
                      GotFocus="TxtBoxNameReservation_GotFocus"/>
-        </StackPanel>
+        <!--</StackPanel>-->
+        </DockPanel>
 
         <!-- TextBox - Nom de la réservation
         <TextBox x:Name="TxtBoxNameReservation"

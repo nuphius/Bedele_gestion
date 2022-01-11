@@ -13,6 +13,7 @@ namespace BredeleGestion.Services
         private string _cp;
         private string _city;
         private string _birthDate;
+        public bool birthDateFlag = false;
         private string _phone;
         private string _mail;
 
@@ -114,13 +115,29 @@ namespace BredeleGestion.Services
             get { return _birthDate; }
             set
             {
-                if (!string.IsNullOrEmpty(value))
+                Regex regex = new Regex(@"^[0-9]{2}/{1}[0-9]{2}/{1}[0-9]{4}$");
+
+                if (value != null)
                 {
-                    _birthDate = value.Trim();
-                }
-                else
-                {
-                    _birthDate = string.Empty;
+                    if (value.Length > 0)
+                    {
+                        if (regex.IsMatch(value))
+                        {
+                            _birthDate = value;
+                            birthDateFlag = true;
+                        }
+                        else
+                        {
+                            BirthDate = _birthDate;
+                            birthDateFlag = false;
+                        }
+                    }
+                    else if (value.Length == 0 && _birthDate.Length == 1)
+                    {
+                        _birthDate = "";
+                        BirthDate = "";
+
+                    }
                 }
             }
         }
@@ -134,7 +151,6 @@ namespace BredeleGestion.Services
             set
             {
                 Regex regex = new Regex(@"^[0-9]*[0-9]$");
-
                 if (value != null)
                 {
                     if (value.Length > 0)
@@ -182,35 +198,35 @@ namespace BredeleGestion.Services
 
             if (string.IsNullOrEmpty(_name))
             {
-                _errorMessage += "- Le champ NOM est obligatoir\n";
+                _errorMessage += "- Le champ NOM est obligatoire\n";
             }
             if (string.IsNullOrEmpty(_firstName))
             {
-                _errorMessage += "- Le champ PRENON est obligatoir\n";
+                _errorMessage += "- Le champ PRENON est obligatoire\n";
             }
             if (string.IsNullOrEmpty(_address))
             {
-                _errorMessage += "- Le champ ADRESSE est obligatoir\n";
+                _errorMessage += "- Le champ ADRESSE est obligatoire\n";
             }
             if (string.IsNullOrEmpty(_cp))
             {
-                _errorMessage += "- Le champ CODE POSTAL est obligatoir\n";
+                _errorMessage += "- Le champ CODE POSTAL est obligatoire\n";
             }
             if (string.IsNullOrEmpty(_city))
             {
-                _errorMessage += "- Le champ VILLE est obligatoir\n";
+                _errorMessage += "- Le champ VILLE est obligatoire\n";
             }
             if (string.IsNullOrEmpty(_birthDate))
             {
-                _errorMessage += "- Le champ DATE DE NAISSANCE est obligatoir\n";
+                _errorMessage += "- Le champ DATE DE NAISSANCE est obligatoire\n";
             }
             if (string.IsNullOrEmpty(_phone))
             {
-                _errorMessage += "- Le champ TELEPHONE est obligatoir\n";
+                _errorMessage += "- Le champ TELEPHONE est obligatoire\n";
             }
             if (string.IsNullOrEmpty(_mail))
             {
-                _errorMessage += "- Le champ MAIL est obligatoir\n";
+                _errorMessage += "- Le champ MAIL est obligatoire\n";
             }
             return _errorMessage;
         }
@@ -223,8 +239,7 @@ namespace BredeleGestion.Services
 
             foreach (var item in listCity)
             {
-                //City = $"id:{item["addid"]} CP:{item["addpostal"]} ville:{item["addcity"]}";         
-                City = item["addcity"].ToString();         
+                City = item["addcity"].ToString();
             }
             return City;
         }
