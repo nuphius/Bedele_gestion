@@ -5,10 +5,36 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Bredele_Gestion"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="700" d:DesignWidth="800"
       Title="InfoAjoutTarifsPage">
 
-    <Grid>
-        
+    <!-- Grid pour l'agencement de la page-->
+    <Grid Background="#FFEEF5FD">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- TextBlock - Liste des tarifs-->
+        <TextBlock x:Name="TxtBlockTarifList"
+                Grid.Row="0"
+                Text="Tarif..."            
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                TextWrapping="WrapWithOverflow"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"/>
+
+        <!-- Liste des tarifs-->
+        <ListBox x:Name="listBoxPrice"
+                 Grid.Row="1"
+                 FontWeight="Bold"
+                 FontFamily="Georgia"
+                 FontSize="12"
+                 Margin="40,0,40,0"/>
+
     </Grid>
 </Page>

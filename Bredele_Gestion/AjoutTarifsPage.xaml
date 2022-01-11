@@ -9,132 +9,225 @@
       Title="AjoutTarifsPage">
 
     <!-- Grid pour l'agencement de la page-->
-    <Grid Background="#FFEEF5FD" Margin="0,0,0,-174">
+    <Grid Background="#FFEEF5FD">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="60px"/>
-            <RowDefinition Height="30px"/>
-            <RowDefinition Height="30px"/>
-            <RowDefinition Height="30px"/>
-            <RowDefinition Height="30px"/>
-            <RowDefinition Height="30px"/>
-            <RowDefinition Height="30px"/>
-            <RowDefinition Height="30px"/>
-            <RowDefinition Height="30px"/>
-            <RowDefinition Height="30px"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="51"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto" MaxWidth="200"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
 
         <!-- Label - Titre-->
         <Label x:Name="lblTitlePrice"
                 Grid.Row="0"
-                Content="Ajouter / Modifier&#x0d;&#x0a;Tarif"
-                FontWeight="Bold"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Content="Ajouter / Modifier Tarif"                
                 FontFamily="Georgia"
                 FontSize="16"
-                Margin="40,0,40,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Stretch"
-                Height="60"/>
-
-        <!-- Label - Tarif adhérent-->
-        <Label x:Name="lblPriceMember"
-                Grid.Row="1"
-                Content="Tarif adhérent"
-                FontFamily="Georgia"
-                FontSize="12"
-                Margin="40,0,40,0"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"/>
-
-        <!-- TextBox - Indication du tarif adhérent-->
-        <TextBox x:Name="txtBoxPriceMember"
-                Grid.Row="2"                
-                TextWrapping="Wrap"
-                FontFamily="Georgia"
-                FontSize="12"
-                Margin="40,0,40,0"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"/>
-
-        <!-- Label - Tarif tiers-->
-        <Label x:Name="lblPriceThird"
-                Grid.Row="3"
-                Content="Tarif tiers"
-                FontFamily="Georgia"
-                FontSize="12"
-                Margin="40,0,40,0"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"/>
-
-        <!-- TextBox - Indication du tarif tiers-->
-        <TextBox x:Name="txtBoxPriceThird"
-                Grid.Row="4"                
-                TextWrapping="Wrap"
-                FontFamily="Georgia"
-                FontSize="12"
-                Margin="40,0,40,0"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"/>
-
-        <!-- Button - Modifier le tarif-->
-        <Button x:Name="BtnPriceModify"
-                Grid.Row="5"
-                Content="Modifier"
-                FontFamily="Georgia"
-                FontSize="12"
                 FontWeight="Bold"
-                Margin="0,10,40,0"
-                HorizontalAlignment="Right"
-                Width="80"/>
+                Margin="0,50,0,0"
+                HorizontalAlignment="center"
+                VerticalAlignment="center"/>
+
+        <!-- Label - Sélectionner tarif-->
+        <Label x:Name="lblSelectPrice"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   Content="Sélectionner tarif"
+                   FontFamily="Georgia"
+                   FontSize="12"
+                   FontWeight="Bold"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Left"/>
+
+        <!-- ComboBox - Liste déroulente Tarif-->
+        <ComboBox x:Name="cmbBoxSelectPrice"                  
+                  Height="20"
+                  Grid.Row="1"
+                  Grid.Column="2"
+                  FontFamily="Georgia"
+                  Width="200"
+                  HorizontalAlignment="Center">
+            <ComboBoxItem Content="Tarif Adhérent" IsSelected="True"/>
+            <ComboBoxItem Content="Tarif A"/>
+            <ComboBoxItem Content="Tarif B"/>
+        </ComboBox>
+
+        <!-- Label - Nouveau nom-->
+        <Label x:Name="lblModNamePrice"
+           Content="Nouveau nom"
+           Grid.Row="2"
+           Grid.Column="1"
+           FontFamily="Georgia"
+           FontSize="12"
+           FontWeight="Bold"
+           VerticalAlignment="Bottom"
+           HorizontalAlignment="Left"/>
+
+        <!-- TextBox - Nouveau nom-->
+        <TextBox x:Name="txtBoxModNamePrice"
+                 Text="{Binding Name, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                 Grid.Row="2"
+                 Grid.Column="2"
+                 TextWrapping="Wrap"
+                 FontFamily="Georgia"
+                 FontSize="12"
+                 MinWidth="200"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"/>
+
+        <!-- Label - Nouvelle valeur-->
+        <Label x:Name="lblModValuePrice"
+           Content="Nouvelle valeur"
+           Grid.Row="3"
+           Grid.Column="1"
+           FontFamily="Georgia"
+           FontSize="12"
+           FontWeight="Bold"
+           VerticalAlignment="Bottom"
+           HorizontalAlignment="Left"/>
+
+        <!-- TextBox - Nouvelle valeur-->
+        <TextBox x:Name="txtBoxModValuePrice"
+                 Text="{Binding Name, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                 Grid.Row="3"
+                 Grid.Column="2"
+                 TextWrapping="Wrap"
+                 FontFamily="Georgia"
+                 FontSize="12"
+                 MinWidth="200"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"/>
+
+        <!-- StackPanel - Button
+        <StackPanel Grid.Row="4" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">-->
+            <!-- Button - Supprimer-->
+            <Button Style="{DynamicResource ButtonStyleCorner3}"
+                    x:Name="btnCustDel"
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    Content="Supprimer"                
+                    FontFamily="Georgia"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Margin="0,10,20,00"
+                    Width="80"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"/>
+
+            <!-- Button - Valider-->
+            <Button Style="{DynamicResource ButtonStyleCorner3}"
+                    x:Name="btnModPriceSub"
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    Content="Modifier"                
+                    FontFamily="Georgia"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Margin="0,10,0,0"
+                    Width="80"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"/>
+       <!-- </StackPanel> -->
 
         <!-- Separator - Ligne de séparation-->
-        <Separator HorizontalAlignment="Stretch" Margin="40,0,40,0" Grid.Row="6" VerticalAlignment="Center" Background="Black"/>
+        <Separator HorizontalAlignment="Stretch"
+            Margin="40,25,40,25"
+            Grid.Row="5"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            VerticalAlignment="Center"
+            Background="Black"/>
 
-        <!-- TextBox - Nom du nouveau tarif-->
-        <TextBox x:Name="txtBoxPriceNewName"
-                Grid.Row="7"
-                Text="Nom du nouveau tarif"
-                TextWrapping="Wrap"
-                FontFamily="Georgia"
-                FontSize="12"
-                Margin="40,0,40,0"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"/>
+        <!-- Label - Nom du tarif-->
+        <Label x:Name="lblAddNamePrice"
+           Content="Nom du tarif"
+           Grid.Row="6"
+           Grid.Column="1"
+           FontFamily="Georgia"
+           FontSize="12"
+           FontWeight="Bold"
+           VerticalAlignment="Bottom"
+           HorizontalAlignment="Left"/>
 
-        <!-- TextBox - Nom du nouveau tarif-->
-        <TextBox x:Name="txtBoxPriceNewValue"
-                Grid.Row="8"
-                Text="Nom du nouveau tarif"
-                TextWrapping="Wrap"
-                FontFamily="Georgia"
-                FontSize="12"
-                Margin="40,0,40,0"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"/>
+        <!-- TextBox - Nom du tarif-->
+        <TextBox x:Name="txtBoxAddNamePrice"
+                 Text="{Binding Name, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                 Grid.Row="6"
+                 Grid.Column="2"
+                 TextWrapping="Wrap"
+                 FontFamily="Georgia"
+                 FontSize="12"
+                 MinWidth="200"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"/>
 
-        <!-- Button - Ajouter un nouveau tarif-->
-        <Button x:Name="BtnPriceAdd"
+        <!-- Label - Valeur-->
+        <Label x:Name="lblAddValuePrice"
+           Content="Valeur"
+           Grid.Row="7"
+           Grid.Column="1"
+           FontFamily="Georgia"
+           FontSize="12"
+           FontWeight="Bold"
+           VerticalAlignment="Bottom"
+           HorizontalAlignment="Left"/>
+
+        <!-- TextBox - Valeur-->
+        <TextBox x:Name="txtBoxAddValuePrice"
+                 Text="{Binding Name, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                 Grid.Row="7"
+                 Grid.Column="2"
+                 TextWrapping="Wrap"
+                 FontFamily="Georgia"
+                 FontSize="12"
+                 MinWidth="200"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"/>
+
+        <!-- Button - Ajouter-->
+        <Button Style="{DynamicResource ButtonStyleCorner3}"
+                    x:Name="btnAddPriceSub"
+                    Grid.Row="8"
+                    Grid.Column="2"
+                    Content="Valider"                
+                    FontFamily="Georgia"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Margin="0,10,0,0"
+                    Width="80"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"/>
+
+        <!-- Label - Message si erreur-->
+        <Label x:Name="lblCustError"
                 Grid.Row="9"
-                Content="Modifier"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Content="Label"
                 FontFamily="Georgia"
                 FontSize="12"
                 FontWeight="Bold"
-                Margin="0,10,40,0"
-                HorizontalAlignment="Right"
-                Width="80"/>        
-
-        <!-- Label - Message si erreur-->
-        <Label x:Name="LblPriceError"
-                Grid.Row="10"
-                Content="Label"
-                Margin="50,5,0,0"
-                HorizontalAlignment="Left"
+                Foreground="#FFF21515"
+                Margin="0,10"
+                HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Height="280"
-                Width="253"
-                RenderTransformOrigin="0.82,0.417"
-                IsEnabled="False"
-                Visibility="Hidden"/>
+                Visibility="Hidden" />
     </Grid>
 </Page>
