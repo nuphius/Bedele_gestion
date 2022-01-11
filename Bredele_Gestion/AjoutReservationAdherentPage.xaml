@@ -23,149 +23,140 @@
             <RowDefinition Height="30px"/>
             <RowDefinition Height="40px"/>
         </Grid.RowDefinitions>
-
         
         <!-- TextBlock - Titre-->
         <TextBlock x:Name="TxtBlockTitleReservation"
-            Grid.Row="0"
-            Text="Ajouter / Modifier Réservation"            
-            FontFamily="Georgia"
-            FontSize="16"
-            FontWeight="Bold"
-            TextWrapping="WrapWithOverflow"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"/>
-        
-        <!-- Affichage adhérents-->
-        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+                Grid.Row="0"
+                Text="Ajouter / Modifier Réservation"            
+                FontFamily="Georgia"
+                FontSize="16"
+                FontWeight="Bold"
+                TextWrapping="WrapWithOverflow"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"/>
+
+
+        <!-- DockPanel - Recherche adhérents-->
+        <DockPanel Grid.Row="1">
             <!-- Image - Loupe-->
             <Image Source="/Icon/loupe_40.png"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Margin="0,0,10,0"
-                   Height="20"
-                   Width="20"/>
-
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="40,0,10,0"
+                    Height="20"
+                    Width="20"/>
             <!-- TextBox - Recherche adhérents-->
             <TextBox x:Name="TxtBoxNameReservation"
-                     d:Text="Nom du réservant"
-                     FontFamily="Georgia"
-                     FontSize="12"
-                     TextWrapping="WrapWithOverflow"                     
-                     Text="TextBox"
-                     MinWidth="100"
-                     MaxWidth="200"
-                     HorizontalAlignment="Stretch"
-                     VerticalAlignment="Center"
-                     GotFocus="TxtBoxNameReservation_GotFocus"/>
-        </StackPanel>
+                    Text="Nom du réservant"
+                    FontFamily="Georgia"
+                    FontSize="12"
+                    TextWrapping="WrapWithOverflow"                    
+                    MinWidth="50"
+                    Margin="0,0,40,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    GotFocus="TxtBoxNameReservation_GotFocus"/>
+        </DockPanel>            
 
-        <!-- TextBox - Nom de la réservation
-        <TextBox x:Name="TxtBoxNameReservation"
-                 Grid.Row="1"
-                 Text="Nom du réservant"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 TextWrapping="Wrap"
-                 Margin="40,0,40,0"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Center"
-                 GotFocus="TxtBoxNameReservation_GotFocus"/>-->
-
-        <!-- Liste adhérents-->
+        <!-- ListBox - Liste adhérents-->
         <ListBox x:Name="listBoxAdherentSearch"
-                 Grid.Row="2"
-                 FontWeight="Bold"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 Margin="40,0,40,0"/>
+                Grid.Row="2"
+                FontWeight="Bold"
+                FontFamily="Georgia"
+                FontSize="12"
+                Margin="40,0,40,0"/>
 
         <!-- Calendar - Calendrier de réservation-->
         <Calendar x:Name="CalendarReservation"
-                  Grid.Row="3"
-                  Margin="20,0,20,0"
-                  HorizontalAlignment="Stretch"
-                  VerticalAlignment="Top"/>
+                Grid.Row="3"
+                Margin="20,0,20,0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"/>
 
         <!-- TextBlock - Notification Adhérent-->
         <TextBlock x:Name="TxtBlockHourFormat"
-            Grid.Row="4"
-            Text="Heure au format hh:mm"
-            FontWeight="Bold"
-            FontFamily="Georgia"
-            FontSize="12"
-            TextWrapping="WrapWithOverflow"
-            Margin="40,0,40,0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"/>
+                Grid.Row="4"
+                Text="Heure au format hh:mm"
+                FontWeight="Bold"
+                FontFamily="Georgia"
+                FontSize="12"
+                TextWrapping="WrapWithOverflow"
+                Margin="40,0,40,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
 
         <!-- TextBox - Heure de début de la réservation-->
         <TextBox x:Name="TxtBoxHourStartReservation"
-                 Grid.Row="5"
-                 Text="Heure de début"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 TextWrapping="Wrap" 
-                 Margin="40,0,40,0"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Center"/>
+                Grid.Row="5"
+                Text="Heure de début"
+                FontFamily="Georgia"
+                FontSize="12"
+                TextWrapping="Wrap" 
+                Margin="40,0,40,0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"/>
 
         <!-- TextBox - Heure de début de la réservation-->
         <TextBox x:Name="TxtBoxHourEndReservation"
-                 Grid.Row="6"
-                 Text="Heure de fin"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 TextWrapping="Wrap" 
-                 Margin="40,0,40,0"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Center"/>
-        
+                Grid.Row="6"
+                Text="Heure de fin"
+                FontFamily="Georgia"
+                FontSize="12"
+                TextWrapping="Wrap" 
+                Margin="40,0,40,0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"/>
+
         <!-- ComboBox - Activité-->
         <ComboBox x:Name="ComboBoxActivityReservation"
-                  Grid.Row="7"
-                  HorizontalAlignment="Stretch"                  
-                  Margin="40,5,40,5" />
+                Grid.Row="7"
+                FontFamily="Georgia"
+                FontSize="12"
+                HorizontalAlignment="Stretch"                  
+                Margin="40,5,40,5" />
 
         <!-- ComboBox - Nombre de place-->
         <ComboBox x:Name="ComboBoxNbPlaceReservation"
-                  Grid.Row="8"
-                  HorizontalAlignment="Stretch"                
-                  Margin="40,5,40,5" />
-        
-        <StackPanel Grid.Row="9" Orientation="Horizontal">
+                Grid.Row="8"
+                FontFamily="Georgia"
+                FontSize="12"
+                HorizontalAlignment="Stretch"                
+                Margin="40,5,40,5" />
+
+        <!--</StackPanel - Tarif>-->
+        <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Stretch">
             <!-- Label - Tarif-->
-            <Label x:Name="LblTarifReservation"
-                   Content="Tarif : "
+            <TextBlock x:Name="TxtBlockTarifReservation"
+                   Text="Tarif : "
                    FontFamily="Georgia"
                    FontSize="12"
                    Margin="40,0,0,0"/>
 
             <!-- Label - Montant-->
-            <Label x:Name="LblTarifReservationDisplay"                   
-                   Content="XXXX €"
+            <TextBlock x:Name="TxtBlockTarifReservationDisplay"                   
+                   Text="XXXX €"
                    FontFamily="Georgia"
                    FontSize="12"/>
         </StackPanel>
-
-        <StackPanel Grid.Row="10" HorizontalAlignment="Center" Orientation="Horizontal">
+        
+        <!--</StackPanel - Button>-->
+        <DockPanel Grid.Row="10" HorizontalAlignment="Stretch" Margin="40,0,40,0">
             <!-- Button - Modifier-->
             <Button x:Name="BtnDeleteReservation"
                     Content="Supprimer"                    
                     FontFamily="Georgia"
                     FontSize="12"
-                    FontWeight="Bold"
-                    Margin="0,10,80,0"
-                    Width="80"/>
+                    FontWeight="Bold"                    
+                    Width="80"
+                    MaxWidth="80"/>
             <!-- Button - Supprimer-->
             <Button x:Name="BtnValidReservation"
                     Content="Valider"
                     FontFamily="Georgia"
                     FontSize="12"
                     FontWeight="Bold"
-                    Margin="0,10,0,0"
-                    Width="80"/>
-        </StackPanel>
- 
+                    Width="80"
+                    MaxWidth="80"/>
+        </DockPanel> 
     </Grid>
 </Page>
