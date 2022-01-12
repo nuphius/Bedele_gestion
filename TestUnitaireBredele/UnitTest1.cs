@@ -45,14 +45,14 @@ namespace TestUnitaireBredele
             GestionAdherentsService user = new GestionAdherentsService();
             user.Name = "ekjln";
             Debug.WriteLine(user.Name);
-            user.Name = "";
-            Debug.WriteLine(user.Name);
 
             user.SelectCity("68350");
             Debug.WriteLine(user.City);
 
             user.BirthDate = "09/10/1984";
             Debug.WriteLine(user.BirthDate);
+
+            Debug.WriteLine(user.AddUser(true, "Mr"));
         }
     }
 }

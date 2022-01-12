@@ -21,9 +21,16 @@ namespace BredeleGestion.Services
         public const string TABLECITY = "city";
 
         /// <summary>
+        /// Ajouter un customer dans la table
+        /// </summary>
+        public const string TABLECUST = "customer";
+        public const string ADDCUST = "INSERT INTO customer(" +
+        "custcivility, custname, custfirstname, custphone, custmail, custbirthdate, custadherent, fkcityid) VALUES ";
+
+        /// <summary>
         /// Supprime un utilisateur
         /// </summary>
-        public const string ADDUSER = ".....";
+        public const string UPDATECUST = ".....";
 
         public const string DELETEUSER = ".....";
         #endregion

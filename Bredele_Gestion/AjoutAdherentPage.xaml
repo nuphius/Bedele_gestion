@@ -172,7 +172,7 @@
                  HorizontalAlignment="Left"
                  VerticalAlignment="Center"
                  MaxLength="5"
-                 Width="80" TextChanged="txtBoxAddCP_TextChanged"/>
+                 Width="80" LostFocus="txtBoxAddCP_LostFocus"/>
 
         <!-- TextBox - Ville-->
         <Label x:Name="lblBoxAddCity"
@@ -185,7 +185,7 @@
                VerticalAlignment="Bottom"
                HorizontalAlignment="Left"/>
         <TextBox x:Name="txtBoxAddCity"
-                 Text="{Binding City, Mode=OneWay}"
+                 Text="{Binding City, Mode=TwoWay}"
                  Grid.Row="7"
                  Grid.Column="2"
                  TextWrapping="Wrap"
@@ -246,7 +246,7 @@
                  MinWidth="200"
                  MaxLength="10"
                  HorizontalAlignment="Left"
-                 VerticalAlignment="Center"/>
+                 VerticalAlignment="Center" LostFocus="txtBoxCustPhone_LostFocus"/>
 
         <!-- TextBox - Email-->
         <Label x:Name="lblBoxCustMail"
@@ -259,7 +259,6 @@
                VerticalAlignment="Bottom"
                HorizontalAlignment="Left"/>
         <TextBox x:Name="txtBoxCustMail"
-                 Text="{Binding Mail, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
                  Grid.Row="10"
                  Grid.Column="2"
                  TextWrapping="Wrap"
@@ -267,10 +266,11 @@
                  FontSize="12"
                  MinWidth="200"
                  HorizontalAlignment="Left"
-                 VerticalAlignment="Center"/>
+                 VerticalAlignment="Center" LostFocus="txtBoxCustMail_LostFocus"/>
 
         <!-- CheckBox - Membre de l'association-->
         <CheckBox x:Name="chkBoxCustMember"
+                  IsChecked="False"
                   Grid.Row="11"
                   Grid.Column="2"
                   Content="Adhérent"

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Text.RegularExpressions;
@@ -7,14 +8,18 @@ namespace BredeleGestion.Services
 {
     public partial class GestionAdherentsService : INotifyPropertyChanged
     {
+        public bool birthDateFlag = false;
+        public bool mailFlag = false;
+
         private string _errorMessage = string.Empty;
+        private int _idCust = 0;
         private string _name;
         private string _firstName;
         private string _address;
         private string _cp;
+        private int _idCity;
         private string _city;
         private string _birthDate;
-        public bool birthDateFlag = false;
         private string _phone;
         private string _mail;
 
@@ -29,13 +34,13 @@ namespace BredeleGestion.Services
                 if (!string.IsNullOrEmpty(value))
                 {
                     _name = value.Trim();
+
                 }
                 else
                 {
                     _name = string.Empty;
                 }
-                if (PropertyChanged != null)
-                    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
+                this.NotifyPropertyChanged(nameof(Name));
             }
         }
 
@@ -52,8 +57,7 @@ namespace BredeleGestion.Services
                 {
                     _firstName = string.Empty;
                 }
-                if (PropertyChanged != null)
-                    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(FirstName)));
+                this.NotifyPropertyChanged(nameof(FirstName));
             }
         }
 
@@ -70,8 +74,7 @@ namespace BredeleGestion.Services
                 {
                     _address = string.Empty;
                 }
-                if (PropertyChanged != null)
-                    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(Address)));
+                this.NotifyPropertyChanged(nameof(Address));
             }
         }
 
@@ -90,8 +93,17 @@ namespace BredeleGestion.Services
                     if (value.Length > 0)
                     {
                         if (regex.IsMatch(value))
-                        {
+                        {   
                             _cp = value;
+
+                            if (_cp.Length == 5)
+                            {
+                                City = SelectCity(_cp);
+                            }
+                            else
+                            {
+                                City = string.Empty;
+                            }
                         }
                         else
                         {
@@ -104,26 +116,27 @@ namespace BredeleGestion.Services
                         Cp = "";
                     }
                 }
-
-                if (PropertyChanged != null)
-                    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(Cp)));
+                this.NotifyPropertyChanged(nameof(Cp));
             }
         }
 
+        #region Gestion par un ContextData de la ville
+        /// <summary>
+        /// Gestion par un ContextData de la ville
+        /// </summary>
         public string City
         {
             get { return _city; }
             set
             {
                 _city = value;
-
-                if (PropertyChanged != null)
-                    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(City)));
+                this.NotifyPropertyChanged(nameof(City));
             }
         }
+        #endregion
 
         /// <summary>
-        /// Contrôle que la date de naiossance est bien saisie au format jj/mm/aaaa
+        /// Contrôle que la date de naissance est bien saisie au format jj/mm/aaaa
         /// </summary>
         public string BirthDate
         {
@@ -132,7 +145,7 @@ namespace BredeleGestion.Services
             {
                 Regex regex = new Regex(@"^[0-9]{2}/{1}[0-9]{2}/{1}[0-9]{4}$");
 
-                if (value != null)
+                if (!string.IsNullOrEmpty(value))
                 {
                     if (value.Length > 0)
                     {
@@ -154,9 +167,7 @@ namespace BredeleGestion.Services
 
                     }
                 }
-
-                if (PropertyChanged != null)
-                    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(BirthDate)));
+                this.NotifyPropertyChanged(nameof(BirthDate));
             }
         }
 
@@ -169,6 +180,7 @@ namespace BredeleGestion.Services
             set
             {
                 Regex regex = new Regex(@"^[0-9]*[0-9]$");
+
                 if (value != null)
                 {
                     if (value.Length > 0)
@@ -188,6 +200,7 @@ namespace BredeleGestion.Services
                         Phone = "";
                     }
                 }
+                this.NotifyPropertyChanged(nameof(Phone));
             }
         }
 
@@ -197,27 +210,33 @@ namespace BredeleGestion.Services
             set 
             {
                 Regex regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+                
                 if (value != null)
-                {
+                {   
                     if (regex.IsMatch(value))
                     {
                         _mail = value;
-                    }
+                        mailFlag = true;
 
+                    }
+                    else
+                    {
+                        _mail = value;
+                        mailFlag = false;
+                    }
                 }
-                
-                _mail = value; 
+                this.NotifyPropertyChanged(nameof(Mail));
             }
         }
         #endregion
 
-        public GestionAdherentsService()
+        public GestionAdherentsService(int idCust = 0)
         {
-            //Name = _name;
+            _idCust = idCust;
         }
 
 
-
+        #region Vérification des champs si vide
         /// <summary>
         /// Vérification que les champs obligatoire du formulaire ne sont pas vide
         /// Renvoi une chaine de caractère avec les eventuelles erreurs
@@ -261,6 +280,7 @@ namespace BredeleGestion.Services
             }
             return _errorMessage;
         }
+        #endregion
 
         public string SelectCity(string cp)
         {
@@ -271,18 +291,48 @@ namespace BredeleGestion.Services
             foreach (var item in listCity)
             {
                 City = item["addcity"].ToString();
+
+                try
+                {
+                    _idCity = (int)item["addid"];
+                }
+                catch (Exception ex)
+                {
+                    LogTools.AddLog(LogTools.LogType.ERREUR, "Erreur - impossible de convertir id de la table city en INT" + ex);
+                }
+                
             }
             return City;
         }
 
-        public string AddUser()
+        public bool AddUser(bool adherent, string civility)
         {
-            return "";
+            string requetCust;
+
+            if (_idCust == 0)
+            {
+                requetCust = RequetSqlService.ADDCUST +
+                ($"('{civility}', '{_name}', '{_firstName}', '{_phone}', '{_mail}', '{_birthDate}', '{adherent}', '{_idCity}')");
+            }
+            else
+            {
+                requetCust = "";
+            }
+
+            ConnexionBddService connexionBddService = new ConnexionBddService(requetCust, RequetSqlService.TABLECUST);
+
+            return connexionBddService.InsertRequet();
         }
 
         public void DeleteUser()
         {
 
+        }
+
+        public void NotifyPropertyChanged(string propName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
     }
 }

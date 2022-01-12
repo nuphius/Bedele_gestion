@@ -10,6 +10,7 @@ namespace BredeleGestion.Services
     {
         #region Proriétés
         //Déclaration des propriétés
+        private string _logConnexion = @"Server=tcp:bredeleprojet.database.windows.net,1433;Initial Catalog=BredeleGestionBdd;Persist Security Info=False;User ID=bredele;Password=MIKAELmathieu21;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         private string _requeteSql;
         private string _table;
         private List<DataRow> _rstRequete;
@@ -42,7 +43,7 @@ namespace BredeleGestion.Services
         public List<DataRow> ExecuteRequet()
         {
             //Connection à la base de donnée
-            SqlConnection connexion = new SqlConnection(@"Server=tcp:bredeleprojet.database.windows.net,1433;Initial Catalog=BredeleGestionBdd;Persist Security Info=False;User ID=bredele;Password=MIKAELmathieu21;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlConnection connexion = new SqlConnection(_logConnexion);
 
             //constitution de la requete 
             SqlCommand selectCommand = new SqlCommand(_requeteSql, connexion);
@@ -51,11 +52,13 @@ namespace BredeleGestion.Services
             SqlDataAdapter adapter = new SqlDataAdapter(selectCommand);
             DataSet data = new DataSet();
 
+            int nbReturnLigne = 0;
+
             try
             {
                 connexion.Open();
                 //Récupère les données.
-                adapter.Fill(data, _table);
+                nbReturnLigne = adapter.Fill(data, _table);
             }
             catch (Exception ex)
             {
@@ -66,12 +69,54 @@ namespace BredeleGestion.Services
                 connexion.Close();
             }
 
-            foreach (DataRow row in data.Tables[_table].Rows)
+            if (nbReturnLigne != 0)
             {
-                _rstRequete.Add(row);
+                foreach (DataRow row in data.Tables[_table].Rows)
+                {
+                    _rstRequete.Add(row);
+                }
+
+                return _rstRequete;
             }
-            return _rstRequete;
+
+            return null;
         }
         #endregion
+
+        public bool InsertRequet()
+        {
+            SqlConnection connexion = new SqlConnection(_logConnexion);
+
+            //constitution de la requete 
+            SqlCommand selectCommand = new SqlCommand(_requeteSql, connexion);
+
+            //Adaptation des données pour les lires
+            SqlDataAdapter adapter = new SqlDataAdapter(selectCommand);
+            DataSet data = new DataSet();
+
+            int nbReturnLigne = 0;
+
+            try
+            {
+                connexion.Open();
+                //Récupère les données.
+                nbReturnLigne = adapter.Fill(data, _table);
+            }
+            catch (Exception ex)
+            {
+                LogTools.AddLog(LogTools.LogType.ERREUR, "Erreur de récupération dans la BDD" + ex.Message);
+            }
+            finally
+            {
+                connexion.Close();
+            }
+
+            if (nbReturnLigne != 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

@@ -23,36 +23,49 @@ namespace Bredele_Gestion
     /// </summary>
     public partial class AjoutAdherentPage : Page
     {
+        private int _idCust = 0;
+
+        private string errorCp = string.Empty;
+        private string errorPhone = string.Empty;
+        private string errorBirthDay = string.Empty;
+        private string errorMail = string.Empty;
+
         GestionAdherentsService adherentsService = new GestionAdherentsService();
-        public AjoutAdherentPage()
+        public AjoutAdherentPage(int idCust = 0)
         {
+            _idCust = idCust;
             InitializeComponent();
             this.DataContext = adherentsService;
-
-            //Binding binding = new Binding("Text");
-            //binding.Source = txtBoxCustFirstName;
-            //lblCustError.SetBinding(Label.ContentProperty, binding);
         }
 
         private void btnCustSub_Click(object sender, RoutedEventArgs e)
         {
             string error = adherentsService.CheckInfos();
-            if (!string.IsNullOrEmpty(error))
+            if (DisplayErrorForm(error))
             {
-                lblCustError.Visibility = Visibility.Visible;
-                lblCustError.Content = error;
+                string civility = cmbBoxCustCivility.Text;
+                bool adherent = (chkBoxCustMember.IsChecked == true);
+
+                if (adherentsService.AddUser(adherent, civility))
+                {
+                    lblCustError.Foreground = new SolidColorBrush(Colors.Green); ;
+                    lblCustError.Content = "Nouvel utilisateur ajouté !";
+                    lblCustError.Visibility = Visibility.Visible;
+                }
             }
         }
 
-        private void txtBoxAddCP_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtBoxAddCP_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (txtBoxAddCP.Text.Length == 5)
+            if (txtBoxAddCP.Text.Length != 5)
             {
-                txtBoxAddCity.Text = adherentsService.SelectCity(adherentsService.Cp);
+                errorCp = "- Code postal au mauvais format ! (5 chiffres!)\n";
+                DisplayErrorForm();
             }
             else
             {
-                txtBoxAddCity.Text = string.Empty;
+                errorCp = string.Empty;
+                DisplayErrorForm();
             }
         }
 
@@ -62,14 +75,65 @@ namespace Bredele_Gestion
 
             if (!adherentsService.birthDateFlag)
             {
+                errorBirthDay = "- Date au mauvais format ! (JJ/MM/AAAA)\n";
+                DisplayErrorForm();
+            }
+            else
+            {
+                errorBirthDay = string.Empty;
+                DisplayErrorForm();
+            }
+        }
+
+        private void txtBoxCustPhone_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtBoxCustPhone.Text.Length != 10)
+            {
+                errorPhone = "- Téléphone au mauvais format ! (10 chiffres!)\n";
+                DisplayErrorForm();
+            }
+            else
+            {
+                errorPhone = string.Empty;
+                DisplayErrorForm();
+            }
+        }
+
+        private void txtBoxCustMail_LostFocus(object sender, RoutedEventArgs e)
+        {
+            adherentsService.Mail = txtBoxCustMail.Text;
+
+            if (!adherentsService.mailFlag)
+            {
+                errorMail = "- E-Mail au mauvais format !\n";
+                DisplayErrorForm();
+            }
+            else
+            {
+                errorMail = string.Empty;
+                DisplayErrorForm();
+            }
+        }
+
+        private bool DisplayErrorForm(string error = "")
+        {
+            lblCustError.Foreground = new SolidColorBrush(Colors.Red);
+            lblCustError.Visibility = Visibility.Hidden;
+
+            if (!string.IsNullOrEmpty(errorCp) || !string.IsNullOrEmpty(errorBirthDay) || !string.IsNullOrEmpty(errorPhone) || !string.IsNullOrEmpty(errorMail) || !string.IsNullOrEmpty(error))
+            {
                 lblCustError.Visibility = Visibility.Visible;
-                lblCustError.Content = "- Date au mauvais format ! (JJ/MM/AAAA)";
+                lblCustError.Content = errorCp + errorBirthDay + errorPhone + errorMail + error;
+                return false;
             }
             else
             {
                 lblCustError.Visibility = Visibility.Hidden;
-                lblCustError.Content = "";
             }
+
+            return true;
         }
+
+        
     }
 }
