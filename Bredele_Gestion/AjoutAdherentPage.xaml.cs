@@ -23,8 +23,6 @@ namespace Bredele_Gestion
             InitializeComponent();
             this.DataContext = adherentsService;
 
-            //_idCust = idCust;
-            _idCust = 14;
             if (_idCust != 0)
             {
                 adherentsService.LoadUser(_idCust);
@@ -54,6 +52,18 @@ namespace Bredele_Gestion
                     lblCustError.Visibility = Visibility.Visible;
                 }
 
+            }
+        }
+
+        private void btnCustDel_Click(object sender, RoutedEventArgs e)
+        {
+            if (_idCust !=0)
+            {
+                var warning = MessageBox.Show("Etes-vous sûr de vouloir supprimer cette utilisateur ?", "Suppression utilisateur", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                if (warning == MessageBoxResult.OK)
+                {
+                    adherentsService.DeleteUser(_idCust);
+                }
             }
         }
 
@@ -135,7 +145,5 @@ namespace Bredele_Gestion
 
             return true;
         }
-
-
     }
 }

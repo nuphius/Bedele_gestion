@@ -25,9 +25,16 @@ namespace BredeleGestion.Services
         /// </summary>
         public const string SELECTUSER = "SELECT * FROM customer INNER JOIN city ON fkcityid=addid WHERE custid=";
 
-
+        /// <summary>
+        /// Update des des information d'un utilisateur en particulier.
+        /// </summary>
         public const string UPDATECUST = "UPDATE customer SET custcivility={0}, custname={1}, custfirstname={2}," +
         " custphone={3}, custmail={4}, custbirthdate={5}, custadherent={6}, fkcityid={7}, custaddress={8}, custaddress2={9} WHERE custid={10}";
+
+        /// <summary>
+        /// Suppression d'un utilisateur en fonction de l'id
+        /// </summary>
+        public const string DELETECUST = "DELETE FROM {0} WHERE custid={1}";
 
         /// <summary>
         /// Ajouter un customer dans la table
@@ -40,7 +47,7 @@ namespace BredeleGestion.Services
         /// Supprime un utilisateur
         /// </summary>
 
-        public const string DELETEUSER = ".....";
+        
         #endregion
     }
 }

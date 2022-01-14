@@ -407,9 +407,12 @@ namespace BredeleGestion.Services
             return connexionBddService.InsertRequet();
         }
 
-        public void DeleteUser()
+        public bool DeleteUser(int id)
         {
+            string requetCust = String.Format(RequetSqlService.DELETECUST, RequetSqlService.TABLECUST, $"'{id}'");
+            ConnexionBddService connexionBddService = new ConnexionBddService(requetCust, RequetSqlService.TABLECUST);
 
+            return connexionBddService.InsertRequet();
         }
 
         public void NotifyPropertyChanged(string propName)
