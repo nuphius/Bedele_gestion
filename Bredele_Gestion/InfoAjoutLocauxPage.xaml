@@ -8,7 +8,45 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="InfoAjoutLocauxPage">
 
-    <Grid>
-        
+
+
+    <!-- Grid pour l'agencement de la page-->
+    <Grid Background="#FFEEF5FD">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- TextBlock - Titre Locaux Info-->
+        <TextBlock x:Name="TxtBlockBoxTitlePage"
+                Grid.Row="0"
+                Text="Locaux"            
+                FontFamily="Georgia"
+                FontSize="18"
+                FontWeight="Bold"
+                TextWrapping="WrapWithOverflow"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Stretch"/>
+
+        <!-- TextBlock - Titre Liste des locaux-->
+        <TextBlock x:Name="TxtBlockBoxListTitle"
+                Grid.Row="0"
+                Text="Liste des locaux"            
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                TextWrapping="WrapWithOverflow"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"/>
+
+        <!-- Liste adhérents-->
+        <ListBox x:Name="listBoxAllBox"
+                 Grid.Row="1"
+                 FontWeight="Bold"
+                 FontFamily="Georgia"
+                 FontSize="12"
+                 Margin="40,0,40,0"/>
     </Grid>
 </Page>

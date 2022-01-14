@@ -115,55 +115,53 @@
                  HorizontalAlignment="Left"
                  VerticalAlignment="Center"/>
 
-        <!-- StackPanel - Button
-        <StackPanel Grid.Row="4" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">-->
-            <!-- Button - Supprimer-->
-            <Button Style="{DynamicResource ButtonStyleCorner3}"
-                    x:Name="btnCustDel"
-                    Grid.Row="4"
-                    Grid.Column="2"
-                    Content="Supprimer"                
-                    FontFamily="Georgia"
-                    FontSize="12"
-                    FontWeight="Bold"
-                    Margin="0,10,20,00"
-                    Width="80"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"/>
+        <!-- Button - Supprimer-->
+        <Button Style="{DynamicResource ButtonStyleCorner3}"
+                x:Name="btnCustDel"
+                Grid.Row="4"
+                Grid.Column="2"
+                Content="Supprimer"                
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                Margin="0,10,20,00"
+                Width="80"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"/>
 
-            <!-- Button - Valider-->
-            <Button Style="{DynamicResource ButtonStyleCorner3}"
-                    x:Name="btnModPriceSub"
-                    Grid.Row="4"
-                    Grid.Column="2"
-                    Content="Modifier"                
-                    FontFamily="Georgia"
-                    FontSize="12"
-                    FontWeight="Bold"
-                    Margin="0,10,0,0"
-                    Width="80"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"/>
+        <!-- Button - Valider-->
+        <Button Style="{DynamicResource ButtonStyleCorner3}"
+                x:Name="btnModPriceSub"
+                Grid.Row="4"
+                Grid.Column="2"
+                Content="Modifier"                
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                Margin="0,10,0,0"
+                Width="80"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"/>
 
         <!-- Separator - Ligne de séparation-->
         <Separator HorizontalAlignment="Stretch"
-            Margin="40,25,40,25"
-            Grid.Row="5"
-            Grid.Column="1"
-            Grid.ColumnSpan="2"
-            VerticalAlignment="Center"
-            Background="Black"/>
+                Margin="40,25,40,25"
+                Grid.Row="5"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                VerticalAlignment="Center"
+                Background="Black"/>
 
         <!-- Label - Nom du tarif-->
         <Label x:Name="lblAddNamePrice"
-           Content="Nom du tarif"
-           Grid.Row="6"
-           Grid.Column="1"
-           FontFamily="Georgia"
-           FontSize="12"
-           FontWeight="Bold"
-           VerticalAlignment="Bottom"
-           HorizontalAlignment="Left"/>
+                   Content="Nom du tarif"
+                   Grid.Row="6"
+                   Grid.Column="1"
+                   FontFamily="Georgia"
+                   FontSize="12"
+                   FontWeight="Bold"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Left"/>
 
         <!-- TextBox - Nom du tarif-->
         <TextBox x:Name="txtBoxAddNamePrice"
@@ -179,14 +177,14 @@
 
         <!-- Label - Valeur-->
         <Label x:Name="lblAddValuePrice"
-           Content="Valeur"
-           Grid.Row="7"
-           Grid.Column="1"
-           FontFamily="Georgia"
-           FontSize="12"
-           FontWeight="Bold"
-           VerticalAlignment="Bottom"
-           HorizontalAlignment="Left"/>
+                 Content="Valeur"
+                 Grid.Row="7"
+                 Grid.Column="1"
+                 FontFamily="Georgia"
+                 FontSize="12"
+                 FontWeight="Bold"
+                 VerticalAlignment="Bottom"
+                 HorizontalAlignment="Left"/>
 
         <!-- TextBox - Valeur-->
         <TextBox x:Name="txtBoxAddValuePrice"
@@ -202,17 +200,17 @@
 
         <!-- Button - Ajouter-->
         <Button Style="{DynamicResource ButtonStyleCorner3}"
-                    x:Name="btnAddPriceSub"
-                    Grid.Row="8"
-                    Grid.Column="2"
-                    Content="Valider"                
-                    FontFamily="Georgia"
-                    FontSize="12"
-                    FontWeight="Bold"
-                    Margin="0,10,0,0"
-                    Width="80"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"/>
+                x:Name="btnAddPriceSub"
+                Grid.Row="8"
+                Grid.Column="2"
+                Content="Valider"                
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                Margin="0,10,0,0"
+                Width="80"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"/>
 
         <!-- Label - Message si erreur-->
         <Label x:Name="lblPriceError"
