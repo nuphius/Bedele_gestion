@@ -57,13 +57,14 @@
                FontWeight="Bold"
                VerticalAlignment="Bottom"
                HorizontalAlignment="Left"/>
-        <ComboBox x:Name="cmbBoxCustCivility"                  
+        <ComboBox x:Name="cmbBoxCustCivility"
+                  SelectedIndex="{Binding Civility, UpdateSourceTrigger=Explicit}"
                   Height="20"
                   Grid.Row="1"
                   Grid.Column="2"
                   FontFamily="Georgia"
                   HorizontalAlignment="Left">
-            <ComboBoxItem Content="Mme" IsSelected="True"/>
+            <ComboBoxItem Content="Mme"/>
             <ComboBoxItem Content="Mlle"/>
             <ComboBoxItem Content="M"/>
         </ComboBox>
@@ -142,6 +143,7 @@
                VerticalAlignment="Bottom"
                HorizontalAlignment="Left"/>
         <TextBox x:Name="txtBoxCustAddress2"
+                 Text="{Binding Address2, UpdateSourceTrigger=LostFocus}"
                  Grid.Row="5"
                  Grid.Column="2"
                  TextWrapping="Wrap"
@@ -216,6 +218,7 @@
                VerticalAlignment="Bottom"
                HorizontalAlignment="Left"/>
         <TextBox x:Name="txtBoxCustBirthDate"
+                 Text="{Binding BirthDate, UpdateSourceTrigger=Explicit}"
                  Grid.Row="8"
                  Grid.Column="2"
                  TextWrapping="Wrap"
@@ -259,6 +262,7 @@
                VerticalAlignment="Bottom"
                HorizontalAlignment="Left"/>
         <TextBox x:Name="txtBoxCustMail"
+                 Text="{Binding Mail, UpdateSourceTrigger=Explicit}"
                  Grid.Row="10"
                  Grid.Column="2"
                  TextWrapping="Wrap"
@@ -270,7 +274,7 @@
 
         <!-- CheckBox - Membre de l'association-->
         <CheckBox x:Name="chkBoxCustMember"
-                  IsChecked="False"
+                  IsChecked="{Binding Adherent, UpdateSourceTrigger=Explicit}"
                   Grid.Row="11"
                   Grid.Column="2"
                   Content="Adhérent"

@@ -111,6 +111,8 @@ namespace BredeleGestion.Services
                 connexion.Close();
             }
 
+            Debug.WriteLine(nbReturnLigne);
+
             if (nbReturnLigne != 0)
             {
                 return false;

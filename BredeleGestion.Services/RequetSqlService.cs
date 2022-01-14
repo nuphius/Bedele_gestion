@@ -21,16 +21,24 @@ namespace BredeleGestion.Services
         public const string TABLECITY = "city";
 
         /// <summary>
+        /// Selectionne le customer suivant l'id donné
+        /// </summary>
+        public const string SELECTUSER = "SELECT * FROM customer INNER JOIN city ON fkcityid=addid WHERE custid=";
+
+
+        public const string UPDATECUST = "UPDATE customer SET custcivility={0}, custname={1}, custfirstname={2}," +
+        " custphone={3}, custmail={4}, custbirthdate={5}, custadherent={6}, fkcityid={7}, custaddress={8}, custaddress2={9} WHERE custid={10}";
+
+        /// <summary>
         /// Ajouter un customer dans la table
         /// </summary>
         public const string TABLECUST = "customer";
         public const string ADDCUST = "INSERT INTO customer(" +
-        "custcivility, custname, custfirstname, custphone, custmail, custbirthdate, custadherent, fkcityid) VALUES ";
+        "custcivility, custname, custfirstname, custphone, custmail, custbirthdate, custadherent, fkcityid, custaddress, custaddress2) VALUES ";
 
         /// <summary>
         /// Supprime un utilisateur
         /// </summary>
-        public const string UPDATECUST = ".....";
 
         public const string DELETEUSER = ".....";
         #endregion

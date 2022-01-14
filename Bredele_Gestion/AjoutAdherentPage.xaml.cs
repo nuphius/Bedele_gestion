@@ -1,20 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BredeleGestion.Services;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using BredeleGestion.Services;
 
 namespace Bredele_Gestion
 {
@@ -33,25 +20,40 @@ namespace Bredele_Gestion
         GestionAdherentsService adherentsService = new GestionAdherentsService();
         public AjoutAdherentPage(int idCust = 0)
         {
-            _idCust = idCust;
             InitializeComponent();
             this.DataContext = adherentsService;
+
+            //_idCust = idCust;
+            _idCust = 14;
+            if (_idCust != 0)
+            {
+                adherentsService.LoadUser(_idCust);
+            }
         }
 
         private void btnCustSub_Click(object sender, RoutedEventArgs e)
         {
             string error = adherentsService.CheckInfos();
+
             if (DisplayErrorForm(error))
             {
                 string civility = cmbBoxCustCivility.Text;
                 bool adherent = (chkBoxCustMember.IsChecked == true);
 
-                if (adherentsService.AddUser(adherent, civility))
+                if (adherentsService.AddUpdateUser(adherent, civility, _idCust))
                 {
                     lblCustError.Foreground = new SolidColorBrush(Colors.Green); ;
-                    lblCustError.Content = "Nouvel utilisateur ajouté !";
+                    if (_idCust != 0)
+                    {
+                        lblCustError.Content = "Utilisateur Modifié !";
+                    }
+                    else
+                    {
+                        lblCustError.Content = "Nouvel utilisateur ajouté !";
+                    }
                     lblCustError.Visibility = Visibility.Visible;
                 }
+
             }
         }
 
@@ -134,6 +136,6 @@ namespace Bredele_Gestion
             return true;
         }
 
-        
+
     }
 }

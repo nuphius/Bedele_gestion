@@ -53,6 +53,8 @@ namespace TestUnitaireBredele
             Debug.WriteLine(user.BirthDate);
 
             Debug.WriteLine(user.AddUser(true, "Mr"));
+
+
         }
     }
 }
