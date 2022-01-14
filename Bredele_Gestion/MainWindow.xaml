@@ -14,8 +14,8 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition MinWidth="250" Width="*"/>
+            <ColumnDefinition MinWidth="350" Width="5*"/>
         </Grid.ColumnDefinitions>
 
         <DockPanel Background="#FFEEF5FD" Grid.Row="0" Grid.ColumnSpan="2">

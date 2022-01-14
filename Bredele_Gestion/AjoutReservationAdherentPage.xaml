@@ -164,8 +164,9 @@
                     Height="30"
                     Width="80"
                     MaxWidth="80"/>
-            
-            <!-- Label - Message si erreur-->
+        </DockPanel>
+
+        <!-- Label - Message si erreur-->
             <Label x:Name="lblReservationError"
                 Grid.Row="11"
                 Grid.Column="1"
@@ -178,6 +179,6 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 Visibility="Hidden" />
-        </DockPanel>
+        
     </Grid>
 </Page>

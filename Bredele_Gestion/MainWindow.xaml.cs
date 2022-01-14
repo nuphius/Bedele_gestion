@@ -32,7 +32,7 @@ namespace Bredele_Gestion
         #region Evenement toolBar
         private void BtnAddCustomer_Click(object sender, RoutedEventArgs e)
         {
-            FrameLeft.Navigate(new InfoAjoutAdherentPage());
+            FrameLeft.Navigate(new AdherentsPage());
             FrameRight.Navigate(new AjoutAdherentPage());
         }
 
