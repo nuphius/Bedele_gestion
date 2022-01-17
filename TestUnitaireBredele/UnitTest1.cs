@@ -11,6 +11,19 @@ namespace TestUnitaireBredele
     public class UnitTest1
     {
         [TestMethod]
+        public void ListCustomer()
+        {
+            ListAdherentService adherentService = new ListAdherentService();
+            adherentService.FilterSearchAdherent = 3;
+
+            foreach (var item in adherentService.ListCust)
+            {
+                Debug.WriteLine(item.ToString());
+            }
+
+        }
+
+        [TestMethod]
         public void TestAuthentificationUser()
         {
             ConnexionBddService connexion = new ConnexionBddService("SELECT * FROM users", "users");
@@ -52,9 +65,7 @@ namespace TestUnitaireBredele
             user.BirthDate = "09/10/1984";
             Debug.WriteLine(user.BirthDate);
 
-            Debug.WriteLine(user.AddUser(true, "Mr"));
-
-
+            //Debug.WriteLine(user.AddUser(true, "Mr"));
         }
     }
 }

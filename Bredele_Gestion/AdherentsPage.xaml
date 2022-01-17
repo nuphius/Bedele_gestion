@@ -7,6 +7,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="800"
       Title="AdherentsPage">
+    <Page.Resources>
+        <local:RadioConverter x:Key="RadioConverter" />
+    </Page.Resources>
 
     <!-- Grid pour l'agencement de la page-->
     <Grid Background="#FFEEF5FD">
@@ -30,7 +33,7 @@
                Margin="40,0,40,0"
                HorizontalAlignment="Center"
                VerticalAlignment="Top"/>
-        
+
         <!-- Affichage adhérents-->
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
             <!-- Image - Loupe-->
@@ -43,10 +46,9 @@
 
             <!-- TextBox - Recherche adhérents-->
             <TextBox x:Name="txtBoxNameAdherentSearch"
-                     d:Text="Nom"
+                     Text="{Binding NameSearch, UpdateSourceTrigger=PropertyChanged}"
                      FontFamily="Georgia"
-                     TextWrapping="Wrap" 
-                     Text="TextBox"
+                     TextWrapping="Wrap"
                      MinWidth="100"
                      MaxWidth="200"
                      HorizontalAlignment="Stretch"
@@ -57,23 +59,29 @@
         <StackPanel Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Left">
             <!-- Radio Button - Sélection adhérents-->
             <RadioButton x:Name="rdButtonAdherentSearch"
+                         
                          Content="Adhérents"
                          FontWeight="Bold"
                          FontFamily="Georgia"
                          FontSize="12"
                          Margin="40,10,0,0"
                          HorizontalAlignment="Left"
-                         VerticalAlignment="Top"/>
+                         VerticalAlignment="Top"
+                         IsChecked="{Binding FilterSearchAdherent, 
+                                     Converter={StaticResource RadioConverter}, ConverterParameter=1}" Checked="rdButtonAdherentSearch_Checked"/>
 
             <!-- Radio Button - Sélection tiers-->
             <RadioButton x:Name="rdButtonTiersSearch"
+                         
                          Content="Tiers"
                          FontWeight="Bold"
                          FontFamily="Georgia"
                          FontSize="12"                         
                          Margin="40,10,0,0"            
                          HorizontalAlignment="Left"
-                         VerticalAlignment="Center"/>
+                         VerticalAlignment="Center"
+                         IsChecked="{Binding FilterSearchAdherent,
+                                     Converter={StaticResource RadioConverter}, ConverterParameter=2}" Checked="rdButtonTiersSearch_Checked"/>
 
             <!-- Radio Button - Sélection tous-->
             <RadioButton x:Name="rdButtonAllSearch"
@@ -83,7 +91,9 @@
                          FontSize="12"                         
                          Margin="40,10,0,0"
                          HorizontalAlignment="Left"
-                         VerticalAlignment="Bottom"/>
+                         IsChecked="{Binding FilterSearchAdherent,
+                                             Converter={StaticResource RadioConverter}, ConverterParameter=3}"/>
+
         </StackPanel>
 
         <!-- Liste adhérents-->
@@ -98,7 +108,7 @@
         <StackPanel Orientation="Vertical" Grid.Row="4" HorizontalAlignment="Left">
             <!-- Label - Compteur adhérents-->
             <Label x:Name="lblCounterAdherentDisplay"
-                   Content="Actuellement XXXXX adhérents"
+                   Content="{Binding NbAdherents}"
                    FontFamily="Georgia"
                    FontSize="12"
                    Margin="40,0,0,0"
@@ -107,7 +117,7 @@
 
             <!-- Label - Compteur tiers-->
             <Label x:Name="lblCounterTiersDisplay"
-                   Content="Actuellement XXXXX tiers"
+                   Content="{Binding NbTiers}"
                    FontFamily="Georgia"
                    FontSize="12"
                    Margin="40,0,0,0"
@@ -127,6 +137,6 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Height="30"
-                Width="80"/>
+                Width="80" Click="btnModifyAdherentSearch_Click"/>
     </Grid>
 </Page>

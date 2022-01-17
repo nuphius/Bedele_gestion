@@ -38,7 +38,7 @@
 
             </ToolBar>
             <ToolBar Style="{StaticResource Toolbar}" DockPanel.Dock="Right" HorizontalAlignment="Right" ToolBarTray.IsLocked="True" ToolBar.OverflowMode="Never">
-                <Button x:Name="BtnLogOut" Height="40" Width="40" ToolTip="Déconnexion">
+                <Button x:Name="BtnLogOut" Height="40" Width="40" ToolTip="Déconnexion" Click="BtnLogOut_Click">
                     <Image Source="/Icon/logout_40.png"/>
                 </Button>
             </ToolBar>

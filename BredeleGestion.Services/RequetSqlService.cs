@@ -8,6 +8,10 @@ namespace BredeleGestion.Services
 {
     public static class RequetSqlService
     {
+        public const string COUNTADHERENT = "SELECT count(*) AS nb FROM customer WHERE custadherent='true'";
+        public const string COUNTNOADHERENT = "SELECT count(*) AS nb FROM customer WHERE custadherent='false'";
+        public const string SELECTCUSTSEARCH = "SELECT custid, custname, custfirstname FROM customer";
+
         #region Table User
         /// <summary>
         /// Sélectionne les utilisateurs
@@ -26,13 +30,13 @@ namespace BredeleGestion.Services
         public const string SELECTUSER = "SELECT * FROM customer INNER JOIN city ON fkcityid=addid WHERE custid=";
 
         /// <summary>
-        /// Update des des information d'un utilisateur en particulier.
+        /// Update des informations d'un utilisateur en particulier (10 parametres).
         /// </summary>
         public const string UPDATECUST = "UPDATE customer SET custcivility={0}, custname={1}, custfirstname={2}," +
         " custphone={3}, custmail={4}, custbirthdate={5}, custadherent={6}, fkcityid={7}, custaddress={8}, custaddress2={9} WHERE custid={10}";
 
         /// <summary>
-        /// Suppression d'un utilisateur en fonction de l'id
+        /// Suppression d'un utilisateur en fonction de l'id (2 parametres)
         /// </summary>
         public const string DELETECUST = "DELETE FROM {0} WHERE custid={1}";
 

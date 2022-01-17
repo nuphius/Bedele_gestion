@@ -93,5 +93,15 @@ namespace Bredele_Gestion
             connectionController.Close();
             this.Close();
         }
+
+        private void BtnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            BoxLoginConnection.Visibility = Visibility.Visible;
+            LblErrorConnection.Visibility = Visibility.Hidden;
+            LblErrorConnection.Content = "";
+            TxtLoginConnection.Clear();
+            PwdConnection.Clear();
+            FrameLeft.Navigate(new AdherentsPage());
+        }
     }
 }
