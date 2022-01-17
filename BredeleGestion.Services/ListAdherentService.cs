@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 
 namespace BredeleGestion.Services
 {
@@ -10,7 +9,7 @@ namespace BredeleGestion.Services
     {
         #region CDéclaration des prorpiétés
 
-        private int _id;
+        public int id;
         private string _name;
         private string _fisrtname;
         private bool _adherent;
@@ -52,7 +51,7 @@ namespace BredeleGestion.Services
             }
         }
 
-        
+
 
         public string NbTiers
         {
@@ -69,7 +68,12 @@ namespace BredeleGestion.Services
         public string NameSearch
         {
             get { return _nameSearch; }
-            set { _nameSearch = value; }
+            set
+            {
+                _nameSearch = value;
+                SelectCustomers(_nameSearch);
+                this.NotifyPropertyChanged(nameof(_nameSearch));
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -77,7 +81,7 @@ namespace BredeleGestion.Services
 
         public ListAdherentService(int id = 0, string name = "", string firstname = "", bool adherent = false)
         {
-            _id = id;
+            this.id = id;
             _name = name ?? string.Empty;
             _fisrtname = firstname ?? string.Empty;
             _adherent = adherent;
@@ -87,25 +91,33 @@ namespace BredeleGestion.Services
         }
 
 
-        private void SelectCustomers()
+        private void SelectCustomers( string nameSearch="")
         {
             if (_listCust.Count > 0)
             {
                 _listCust.Clear();
             }
+
             string where = " WHERE custadherent=";
 
-            switch (FilterSearchAdherent)
+            if (!string.IsNullOrEmpty(nameSearch))
             {
-                case 1:
-                    where += $"'{true}'";
-                    break;
-                case 2:
-                    where += $"'{false}'";
-                    break;
-                default:
-                    where = "";
-                    break;
+                where = $" WHERE custname LIKE '%{nameSearch}%'";
+            }
+            else
+            {
+                switch (FilterSearchAdherent)
+                {
+                    case 1:
+                        where += $"'{true}'";
+                        break;
+                    case 2:
+                        where += $"'{false}'";
+                        break;
+                    default:
+                        where = "";
+                        break;
+                }
             }
 
             string requetSql = RequetSqlService.SELECTCUSTSEARCH + where;
@@ -154,7 +166,8 @@ namespace BredeleGestion.Services
         /// <returns></returns>
         public override string ToString()
         {
-            return _name.ToUpper() + " " + _fisrtname + " " + (_adherent ? "Adhérent" : "");
+            //return _name.ToUpper() + " " + _fisrtname + " " + (_adherent ? "Adhérent" : "");
+            return _name.ToUpper() + " " + _fisrtname;
         }
         #endregion
     }

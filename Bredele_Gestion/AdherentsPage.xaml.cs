@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BredeleGestion.Services;
+using System;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using BredeleGestion.Services;
 
 namespace Bredele_Gestion
 {
@@ -34,19 +24,31 @@ namespace Bredele_Gestion
             listBoxAdherentSearch.ItemsSource = cust.ListCust;
         }
 
-        private void rdButtonAdherentSearch_Checked(object sender, RoutedEventArgs e)
-        {
-            cust.FilterSearchAdherent = 1;
-        }
 
-        private void rdButtonTiersSearch_Checked(object sender, RoutedEventArgs e)
-        {
-            cust.FilterSearchAdherent = 2;
-        }
-
+        /// <summary>
+        /// Fonction qui si un nom est séléctionné dans la listView, récupère la section et
+        /// envoi l'Id de nom selectionné sur la page AjoutAdherentPage
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnModifyAdherentSearch_Click(object sender, RoutedEventArgs e)
         {
-            //FrameRight.Navigate(new AjoutAdherentPage());
+            if (listBoxAdherentSearch.SelectedIndex != -1)
+            {
+                var custSelected = listBoxAdherentSearch.SelectedItems[0] as ListAdherentService;
+
+                if (int.TryParse(custSelected?.id.ToString(), out int id))
+                {
+                    var mainWindow = Application.Current.MainWindow;
+                    var frame = mainWindow.FindName("FrameRight") as Frame;
+                    frame?.Navigate(new AjoutAdherentPage(id));
+                }
+            }
+            else
+            {
+                MessageBox.Show("Sélectionnez une ligne a modifier.", "Aucune ligne séléctionnée", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
     }
 
@@ -57,7 +59,7 @@ namespace Bredele_Gestion
     public class RadioConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-       {
+        {
             return (int)value == int.Parse(parameter.ToString());
         }
 
@@ -74,8 +76,6 @@ namespace Bredele_Gestion
             {
                 return 0;
             }
-            //return parameter;
-            //throw new NotImplementedException();
         }
     }
 }

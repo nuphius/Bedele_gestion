@@ -27,6 +27,7 @@ namespace Bredele_Gestion
         {
             InitializeComponent();
             FrameLeft.Navigate(new AdherentsPage());
+            //FrameRight.Navigate(new AjoutLocauxPage());
         }
 
         #region Evenement toolBar

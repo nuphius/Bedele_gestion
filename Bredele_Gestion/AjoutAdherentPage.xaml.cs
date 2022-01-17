@@ -23,6 +23,8 @@ namespace Bredele_Gestion
             InitializeComponent();
             this.DataContext = adherentsService;
 
+            _idCust = idCust;
+
             if (_idCust != 0)
             {
                 adherentsService.LoadUser(_idCust);
@@ -63,6 +65,8 @@ namespace Bredele_Gestion
                 if (warning == MessageBoxResult.OK)
                 {
                     adherentsService.DeleteUser(_idCust);
+                    _idCust = 0;
+                    CleanTxtBox();
                 }
             }
         }
@@ -144,6 +148,15 @@ namespace Bredele_Gestion
             }
 
             return true;
+        }
+
+        private void CleanTxtBox()
+        {
+            var mainWindow = Application.Current.MainWindow;
+            var frameRight = mainWindow.FindName("FrameRight") as Frame;
+            var frameLeft = mainWindow.FindName("FrameLeft") as Frame;
+            frameRight?.Navigate(new AjoutAdherentPage());
+            frameLeft?.Navigate(new AdherentsPage());
         }
     }
 }

@@ -68,7 +68,7 @@
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
                          IsChecked="{Binding FilterSearchAdherent, 
-                                     Converter={StaticResource RadioConverter}, ConverterParameter=1}" Checked="rdButtonAdherentSearch_Checked"/>
+                                     Converter={StaticResource RadioConverter}, ConverterParameter=1}"/>
 
             <!-- Radio Button - Sélection tiers-->
             <RadioButton x:Name="rdButtonTiersSearch"
@@ -81,7 +81,7 @@
                          HorizontalAlignment="Left"
                          VerticalAlignment="Center"
                          IsChecked="{Binding FilterSearchAdherent,
-                                     Converter={StaticResource RadioConverter}, ConverterParameter=2}" Checked="rdButtonTiersSearch_Checked"/>
+                                     Converter={StaticResource RadioConverter}, ConverterParameter=2}"/>
 
             <!-- Radio Button - Sélection tous-->
             <RadioButton x:Name="rdButtonAllSearch"
