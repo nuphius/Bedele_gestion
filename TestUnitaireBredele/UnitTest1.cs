@@ -11,6 +11,36 @@ namespace TestUnitaireBredele
     public class UnitTest1
     {
         [TestMethod]
+        public void NewPrice()
+        {
+            GestionTarifsService gestionTarifsService = new GestionTarifsService();
+
+            gestionTarifsService.NewPrice = "1.2";
+            Debug.WriteLine(gestionTarifsService.NewPrice + " 1");
+
+            gestionTarifsService.NewPrice = "1";
+            Debug.WriteLine(gestionTarifsService.NewPrice + " 2");
+
+            gestionTarifsService.NewPrice = "1,2";
+            Debug.WriteLine(gestionTarifsService.NewPrice + "  3");
+
+            gestionTarifsService.NewPrice = "1235.2442";
+            Debug.WriteLine(gestionTarifsService.NewPrice + " 4");
+
+            gestionTarifsService.NewPrice = "1,2f";
+            Debug.WriteLine(gestionTarifsService.NewPrice + " 6");
+
+            gestionTarifsService.NewPrice = "1d,2";
+            Debug.WriteLine(gestionTarifsService.NewPrice + " 7");
+
+            gestionTarifsService.NewPrice = "1d";
+            Debug.WriteLine(gestionTarifsService.NewPrice + " 8");
+
+            gestionTarifsService.NewPrice = "d";
+            Debug.WriteLine(gestionTarifsService.NewPrice + " 9");
+        }
+
+        [TestMethod]
         public void ListCustomer()
         {
             ListAdherentService adherentService = new ListAdherentService();

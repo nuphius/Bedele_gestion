@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BredeleGestion.Services;
 
 namespace Bredele_Gestion
 {
@@ -20,11 +21,16 @@ namespace Bredele_Gestion
     /// </summary>
     public partial class AjoutTarifsPage : Page
     {
+        GestionTarifsService tarifsService = new GestionTarifsService();
         public AjoutTarifsPage()
         {
             InitializeComponent();
+            this.DataContext = tarifsService;
         }
 
-        
+        private void btnAddPriceSub_Click(object sender, RoutedEventArgs e)
+        {
+            tarifsService.AddUpdatePrice(0);
+        }
     }
 }
