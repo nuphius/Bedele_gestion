@@ -79,7 +79,7 @@
 
         <!-- TextBox - Nom du local-->
         <TextBox x:Name="txtBoxBoxCapacity"
-                 Text="{Binding Name, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                 Text="{Binding NbPlace, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                  Grid.Row="2"
                  Grid.Column="2"
                  TextWrapping="Wrap"
@@ -103,7 +103,7 @@
 
         <!-- TextBox - Superficie-->
         <TextBox x:Name="txtBoxBoxArea"
-                 Text="{Binding Name, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                 Text="{Binding Size, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                  Grid.Row="3"
                  Grid.Column="2"
                  TextWrapping="Wrap"

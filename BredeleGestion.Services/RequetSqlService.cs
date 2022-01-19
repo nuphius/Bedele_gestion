@@ -8,9 +8,18 @@ namespace BredeleGestion.Services
 {
     public static class RequetSqlService
     {
+
+        #region Ajout/modifier prix
+
+        public const string ADDPRICE = "INSERT INTO ";
+
+        #endregion
+
+        #region filtre adherent
         public const string COUNTADHERENT = "SELECT count(*) AS nb FROM customer WHERE custadherent='true'";
         public const string COUNTNOADHERENT = "SELECT count(*) AS nb FROM customer WHERE custadherent='false'";
         public const string SELECTCUSTSEARCH = "SELECT custid, custname, custfirstname FROM customer";
+        #endregion
 
         #region Table User
         /// <summary>

@@ -13,7 +13,7 @@ namespace BredeleGestion.Services
 
         private int _civility;
         private string _errorMessage = string.Empty;
-        private int _idCust = 0;
+        //private int _idCust = 0;
         private string _name;
         private string _firstName;
         private string _address;
@@ -318,6 +318,12 @@ namespace BredeleGestion.Services
         }
         #endregion
 
+        #region Fonction de récupération des informations d'un customer dans la BDD
+        /// <summary>
+        /// Fonction de récupération des informations d'un customer dans la BDD
+        /// suivant un Id passé en argument
+        /// </summary>
+        /// <param name="idUser"></param>
         public void LoadUser(int idUser)
         {
             ConnexionBddService connexionBddService = new ConnexionBddService(RequetSqlService.SELECTUSER + idUser, RequetSqlService.TABLECUST);
@@ -360,7 +366,15 @@ namespace BredeleGestion.Services
                 }
             }
         }
+        #endregion
 
+        #region  Fonction de récupération la ligne dans la base de donnée city
+        /// <summary>
+        /// Fonction de récupération la ligne dans la base de donnée city
+        /// suivant un CP passé en argument
+        /// </summary>
+        /// <param name="cp"></param>
+        /// <returns></returns>
         public string SelectCity(string cp)
         {
             ConnexionBddService connexionBddService = new ConnexionBddService(RequetSqlService.SELECTCPCITY + cp, RequetSqlService.TABLECITY);
@@ -383,7 +397,16 @@ namespace BredeleGestion.Services
             }
             return City;
         }
+        #endregion
 
+        #region  Fonction d'ajout ou de modification d'un custome, retourne un bool
+        /// <summary>
+        /// Fonction d'ajout ou de modification d'un custome, retourne un bool
+        /// </summary>
+        /// <param name="adherent"></param>
+        /// <param name="civility"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool AddUpdateUser(bool adherent, string civility,int id)
         {
             string requetCust;
@@ -406,7 +429,14 @@ namespace BredeleGestion.Services
 
             return connexionBddService.InsertRequet();
         }
+        #endregion
 
+        #region Fonction de suppression de customer suivant un id fournit
+        /// <summary>
+        /// Supprime le customer suivant l'id founir et retourne un bool
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool DeleteUser(int id)
         {
             string requetCust = String.Format(RequetSqlService.DELETECUST, RequetSqlService.TABLECUST, $"'{id}'");
@@ -414,17 +444,30 @@ namespace BredeleGestion.Services
 
             return connexionBddService.InsertRequet();
         }
+        #endregion
 
+        #region NotifyChanged
+        /// <summary>
+        /// Fonction de gestion des propriétés modifiés
+        /// </summary>
+        /// <param name="propName"></param>
         public void NotifyPropertyChanged(string propName)
         {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
+        #endregion
 
+        #region fonction de convertion de la date  jj/mm/aaaa ---> aaaa-mm-jj
+        /// <summary>
+        /// Fonction de convertion de la date jj/mm/aaaa ---> aaaa-mm-jj
+        /// </summary>
+        /// <returns></returns>
         private string ConvertDate()
         {
             string[] tabConvertDate = _birthDate.Split('/');
             return $"{tabConvertDate[2]}-{tabConvertDate[1]}-{tabConvertDate[0]}";
         }
+        #endregion
     }
 }
