@@ -31,8 +31,6 @@ namespace Bredele_Gestion
             }
         }
 
-        #region btnCustSub
-        // Paramètre du bouton Valider avec information si l'utilisateur est ajouté ou modifié //////////////////////////////////////////////////////////////////////////
         private void btnCustSub_Click(object sender, RoutedEventArgs e)
         {
             string error = adherentsService.CheckInfos();
@@ -58,10 +56,7 @@ namespace Bredele_Gestion
 
             }
         }
-        #endregion
 
-        #region btnCustDel
-        // Paramètre du bouton supprimer avec demande de confirmation de suppression ////////////////////////////////////////////////////////////////////////////////////
         private void btnCustDel_Click(object sender, RoutedEventArgs e)
         {
             if (_idCust !=0)
@@ -75,10 +70,7 @@ namespace Bredele_Gestion
                 }
             }
         }
-        #endregion
 
-        #region txtBoxAddCP
-        // Message d'erreur si le champ code postal est mal renseigné ///////////////////////////////////////////////////////////////////////////////////////////////////
         private void txtBoxAddCP_LostFocus(object sender, RoutedEventArgs e)
         {
             if (txtBoxAddCP.Text.Length != 5)
@@ -92,10 +84,7 @@ namespace Bredele_Gestion
                 DisplayErrorForm();
             }
         }
-        #endregion
 
-        #region txtBoxCustBirthDate
-        // Message dr'erreur si le champ date de naissance est au mauvais format ////////////////////////////////////////////////////////////////////////////////////////
         private void txtBoxCustBirthDate_LostFocu(object sender, RoutedEventArgs e)
         {
             adherentsService.BirthDate = txtBoxCustBirthDate.Text;
@@ -111,10 +100,7 @@ namespace Bredele_Gestion
                 DisplayErrorForm();
             }
         }
-        #endregion
 
-        #region txtBoxCustPhone
-        // Message d'erreur si le champ téléphone est au mauvais format (10 chiffres) ///////////////////////////////////////////////////////////////////////////////////
         private void txtBoxCustPhone_LostFocus(object sender, RoutedEventArgs e)
         {
             if (txtBoxCustPhone.Text.Length != 10)
@@ -128,10 +114,7 @@ namespace Bredele_Gestion
                 DisplayErrorForm();
             }
         }
-        #endregion
 
-        #region txtBoxCustMail
-        // Message d'erreur si le champ adresse email n'est pas conforme ////////////////////////////////////////////////////////////////////////////////////////////////
         private void txtBoxCustMail_LostFocus(object sender, RoutedEventArgs e)
         {
             adherentsService.Mail = txtBoxCustMail.Text;
@@ -147,10 +130,7 @@ namespace Bredele_Gestion
                 DisplayErrorForm();
             }
         }
-        #endregion
 
-        #region DisplayErrorForm
-        // Affichage des messages d'erreur si erreur ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         private bool DisplayErrorForm(string error = "")
         {
             lblCustError.Foreground = new SolidColorBrush(Colors.Red);
@@ -169,10 +149,7 @@ namespace Bredele_Gestion
 
             return true;
         }
-        #endregion
 
-        #region CleanTxtBox
-        // Nettoie tous les champs quand un utilisateur est supprimé ////////////////////////////////////////////////////////////////////////////////////////////////////
         private void CleanTxtBox()
         {
             var mainWindow = Application.Current.MainWindow;
@@ -181,6 +158,5 @@ namespace Bredele_Gestion
             frameRight?.Navigate(new AjoutAdherentPage());
             frameLeft?.Navigate(new AdherentsPage());
         }
-        #endregion
     }
 }
