@@ -21,13 +21,35 @@ namespace Bredele_Gestion
     /// </summary>
     public partial class AjoutLocauxPage : Page
     {
+        private int _idBox;
+
         GestionLocauxService gestionLocaux = new GestionLocauxService();
-        public AjoutLocauxPage()
+        public AjoutLocauxPage(int id = 0)
         {
             InitializeComponent();
             this.DataContext = gestionLocaux;
+
+            _idBox = id;
         }
 
-        
+        private void btnBoxSub_Click(object sender, RoutedEventArgs e)
+        {
+            if (gestionLocaux.InsertUpdateBox(_idBox))
+            {
+                txtBoxError.Foreground = new SolidColorBrush(Colors.Green);
+
+                if (_idBox != 0)
+                {
+                    txtBoxError.Text = "La Box a bien été modifié !";
+                }
+                else
+                {
+                    txtBoxError.Text = "La box a bien été ajouté !";
+                }
+                txtBoxError.Visibility = Visibility.Visible;
+                txtBoxError.Visibility = Visibility.Visible;
+            }
+            
+        }
     }
 }

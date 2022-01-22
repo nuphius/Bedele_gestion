@@ -10,6 +10,32 @@ namespace TestUnitaireBredele
     [TestClass]
     public class UnitTest1
     {
+        #region Add log
+        [TestMethod]
+        public void AddLog()
+        {
+            GestionLocauxService gestionLocauxService = new GestionLocauxService();
+
+            //List<string> listActivitys = new List<string>();
+            //List<string> listEquipments = new List<string>();
+
+            //listActivitys = gestionLocauxService.LoadEquipActiv(RequetSqlService.SELECTACTIVITY, RequetSqlService.TABLEACTIVITY);
+            //listEquipments = gestionLocauxService.LoadEquipActiv(RequetSqlService.SELECTEQUIPMENTS, RequetSqlService.TABLEEQUIPMENT);
+
+            //foreach (var item in listActivitys)
+            //{
+            //    Debug.WriteLine(item);
+            //}
+
+            //foreach (var item in listEquipments)
+            //{
+            //    Debug.WriteLine(item);
+            //}
+
+        }
+        #endregion
+
+        #region NewPrice
         [TestMethod]
         public void NewPrice()
         {
@@ -39,7 +65,9 @@ namespace TestUnitaireBredele
             gestionTarifsService.NewPrice = "d";
             Debug.WriteLine(gestionTarifsService.NewPrice + " 9");
         }
+        #endregion
 
+        #region List customer
         [TestMethod]
         public void ListCustomer()
         {
@@ -52,7 +80,9 @@ namespace TestUnitaireBredele
             }
 
         }
+        #endregion
 
+        #region authentification user
         [TestMethod]
         public void TestAuthentificationUser()
         {
@@ -81,7 +111,9 @@ namespace TestUnitaireBredele
             }
             
         }
+        #endregion
 
+        #region Add user
         [TestMethod]
         public void TestAddUsers()
         {
@@ -97,5 +129,6 @@ namespace TestUnitaireBredele
 
             //Debug.WriteLine(user.AddUser(true, "Mr"));
         }
+        #endregion
     }
 }

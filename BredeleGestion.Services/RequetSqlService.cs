@@ -9,9 +9,52 @@ namespace BredeleGestion.Services
     public static class RequetSqlService
     {
 
+        #region requet activitybox
+
+        public const string INSERTACTIVITYBOX = "INSERT INTO activitybox(activboxpricename, activboxpricevalue, fkboxid, fkactiid) VALUES ('0', '0','{0}','{1}');";
+        public const string TABLEACTIVITYBOX = "activitybox";
+
+        #endregion
+
+        #region requet equipmentBox
+
+        public const string INSERTEQUIPMENTBOX = "INSERT INTO equipmentbox(equipboxqte, fkboxid, fkequipid) VALUES ('0','{0}','{1}');";
+        public const string TABLEEQUIPMENTBOX = "equipmentbox";
+
+        #endregion
+
+        #region requet box
+        public const string INSERBOX = "INSERT INTO box(boxname, boxcapacity, boxsurface) " +
+            "VALUES ('{0}','{1}','{2}');";
+        /// <summary>
+        /// selectionne l'ID d'une box en fonction de son name
+        /// </summary>
+        public const string SELECTBOXID = "SELECT boxid FROM box WHERE boxname='{0}';";
+        public const string TABLEBOX = "box";
+        #endregion
+
+        #region requete equipment
+        /// <summary>
+        /// Selectionne tous les champs de la table equipment
+        /// </summary>
+        public const string SELECTEQUIPMENTS = "SELECT * FROM equipment";
+        public const string TABLEEQUIPMENT = "equipment";
+
+
+        //public const string INSER
+        #endregion
+
+        #region requet activity
+        /// <summary>
+        /// Sélctionne tous les champs de la table activité
+        /// </summary>
+        public const string SELECTACTIVITY = "SELECT * FROM activity";
+        public const string TABLEACTIVITY = "activity";
+        #endregion
+
         #region Ajout/modifier prix
 
-        public const string ADDPRICE = "INSERT INTO ";
+        public const string ADDPRICE = "INSERT ";
 
         #endregion
 
