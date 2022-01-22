@@ -13,7 +13,7 @@
     <!-- Grid pour l'agencement de la page-->
     <Grid Background="#FFEEF5FD">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition/>
@@ -42,11 +42,25 @@
                 VerticalAlignment="Bottom"/>
 
         <!-- Liste adhérents-->
-        <ListBox x:Name="listBoxAllBox"
+        <ListView x:Name="listBoxAllBox"
                  Grid.Row="1"
                  FontWeight="Bold"
                  FontFamily="Georgia"
                  FontSize="12"
-                 Margin="40,0,40,0"/>
+                 Margin="40,0,40,0">
+        </ListView>
+
+        <Button Style="{DynamicResource ButtonStyleCorner3}"
+                x:Name="btnModifyBox"
+                Grid.Row="2"
+                Content="Modifier"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                Margin="0,20,40,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="top"
+                Height="30"
+                Width="80" Click="btnModifyBox_Click"/>
     </Grid>
 </Page>

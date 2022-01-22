@@ -24,6 +24,14 @@ namespace BredeleGestion.Services
         #endregion
 
         #region requet box
+
+        /// <summary>
+        /// Selectection de tous les champs box
+        /// </summary>
+        public const string SELECTBOX = "SELECT * FROM box";
+        /// <summary>
+        /// INSERT INTO box(boxname, boxcapacity, boxsurface)
+        /// </summary>
         public const string INSERBOX = "INSERT INTO box(boxname, boxcapacity, boxsurface) " +
             "VALUES ('{0}','{1}','{2}');";
         /// <summary>

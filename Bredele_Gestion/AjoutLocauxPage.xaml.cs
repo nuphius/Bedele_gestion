@@ -49,7 +49,15 @@ namespace Bredele_Gestion
                 txtBoxError.Visibility = Visibility.Visible;
                 txtBoxError.Visibility = Visibility.Visible;
             }
-            
+
+            var mainWindow = Application.Current.MainWindow;
+            //var frameRight = mainWindow.FindName("FrameRight") as Frame;
+            var frameLeft = mainWindow.FindName("FrameLeft") as Frame;
+
+            if (frameLeft != null)
+            {
+                frameLeft.Navigate(new AdherentsPage());
+            }   
         }
     }
 }

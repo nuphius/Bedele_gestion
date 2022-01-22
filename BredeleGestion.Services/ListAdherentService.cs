@@ -39,8 +39,6 @@ namespace BredeleGestion.Services
             }
         }
 
-
-
         public string NbAdherents
         {
             get { return _nbAdherents; }
@@ -51,8 +49,6 @@ namespace BredeleGestion.Services
             }
         }
 
-
-
         public string NbTiers
         {
             get { return _nbTiers; }
@@ -62,8 +58,6 @@ namespace BredeleGestion.Services
                 this.NotifyPropertyChanged(nameof(_nbTiers));
             }
         }
-
-
 
         public string NameSearch
         {

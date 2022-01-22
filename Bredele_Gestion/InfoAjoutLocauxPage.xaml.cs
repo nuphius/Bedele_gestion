@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BredeleGestion.Services;
 
 namespace Bredele_Gestion
 {
@@ -20,9 +21,16 @@ namespace Bredele_Gestion
     /// </summary>
     public partial class InfoAjoutLocauxPage : Page
     {
+        ListLocauxService listLocaux = new ListLocauxService();
         public InfoAjoutLocauxPage()
         {
             InitializeComponent();
+            listBoxAllBox.ItemsSource = listLocaux.ListLocaux;
+        }
+
+        private void btnModifyBox_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
