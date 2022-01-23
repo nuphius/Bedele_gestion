@@ -30,7 +30,29 @@ namespace Bredele_Gestion
 
         private void btnModifyBox_Click(object sender, RoutedEventArgs e)
         {
+            if (listBoxAllBox.SelectedIndex != -1)
+            {
+                var boxSelected = listBoxAllBox.SelectedItems[0] as Locaux;
 
+                if (boxSelected != null)
+                {
+                    if (int.TryParse(boxSelected.Id.ToString(), out int id))
+                    {
+                        var mainWindow = Application.Current.MainWindow;
+                        var frame = mainWindow.FindName("FrameRight") as Frame;
+
+                        if (frame != null)
+                            frame.Navigate(new AjoutLocauxPage(id));
+                    }
+                }
+                else
+                    Console.WriteLine("Erreur sélection de la bos dans la liste box est NULL !!");
+                
+            }
+            else
+            {
+                MessageBox.Show("Sélectionnez une ligne a modifier.", "Aucune ligne séléctionnée", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

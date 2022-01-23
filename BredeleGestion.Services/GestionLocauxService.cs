@@ -366,6 +366,77 @@ namespace BredeleGestion.Services
             _nameActiv4 = _listActivitys[3].Name;
         }
 
+        #region LoadBox charge les infos de l'ID box passé en parametre
+        /// <summary>
+        /// Chargement du box par l'id passé en parametre
+        /// </summary>
+        /// <param name="id"></param>
+        public void LoadBox(int id)
+        {
+            ConnexionBddService connexionBddService = new ConnexionBddService(string.Format(RequetSqlService.SELECTBOXWITHID, id), RequetSqlService.TABLEBOX);
+            List<DataRow> rstBddBox = connexionBddService.ExecuteRequet();
+
+            Name = rstBddBox[0]["boxname"].ToString();
+            NbPlace = rstBddBox[0]["boxcapacity"].ToString();
+            Size = rstBddBox[0]["boxsurface"].ToString();
+
+            connexionBddService = new ConnexionBddService(string.Format(RequetSqlService.SELECTBOXINNEREQUIPMENT, id), RequetSqlService.TABLEBOX);
+            rstBddBox = connexionBddService.ExecuteRequet();
+
+            if (rstBddBox != null)
+            {
+                foreach (DataRow row in rstBddBox)
+                {
+                    int fkequipid = (int)row["fkequipid"];
+
+                    if (fkequipid == _listEquipments[0].Id)
+                        CheckEquip1 = true;
+                    else if (fkequipid == _listEquipments[1].Id)
+                        CheckEquip2 = true;
+                    else if (fkequipid == _listEquipments[2].Id)
+                        CheckEquip3 = true;
+                    else if (fkequipid == _listEquipments[3].Id)
+                        CheckEquip4 = true;
+                    else if (fkequipid == _listEquipments[4].Id)
+                        CheckEquip5 = true;
+                    else if (fkequipid == _listEquipments[5].Id)
+                        CheckEquip6 = true;
+                }
+            }
+
+            connexionBddService = new ConnexionBddService(string.Format(RequetSqlService.SELECTBOXINNERACTIVITY, id), RequetSqlService.TABLEBOX);
+            rstBddBox = connexionBddService.ExecuteRequet();
+
+            if (rstBddBox != null)
+            {
+                foreach (DataRow row in rstBddBox)
+                {
+                    int fkactivid = (int)row["fkactiid"];
+
+                    if (fkactivid == _listActivitys[0].Id)
+                        CheckActiv1 = true;
+                    else if (fkactivid == _listActivitys[1].Id)
+                        CheckActiv2 = true;
+                    else if (fkactivid == _listActivitys[2].Id)
+                        CheckActiv3 = true;
+                    else if (fkactivid == _listActivitys[3].Id)
+                        CheckActiv4 = true;
+                    else if (fkactivid == _listActivitys[4].Id)
+                        CheckActiv5 = true;
+                    else if (fkactivid == _listActivitys[5].Id)
+                        CheckActiv6 = true;
+                }
+            }
+
+        }
+        #endregion
+
+        #region Fonction pour ajouter ou modifier les box
+        /// <summary>
+        /// Fonction pour ajouter ou modifier les box
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool InsertUpdateBox(int id = 0)
         {
             string requetBox;
@@ -379,7 +450,7 @@ namespace BredeleGestion.Services
                 }
                 else
                 {
-                    requetBox = string.Format(RequetSqlService.INSERBOX, _name, _nbPlace, _size);
+                    requetBox = string.Format(RequetSqlService.UPDATEBOX, _name, _nbPlace, _size, id);
                 }
 
                 ConnexionBddService connexionBddService = new ConnexionBddService(requetBox, RequetSqlService.TABLEBOX);
@@ -388,49 +459,44 @@ namespace BredeleGestion.Services
                 {
                     if (id == 0)
                     {
-                        string requetEquipBox= string.Empty;
-                        string requetActivBox = string.Empty;
-
                         connexionBddService = new ConnexionBddService(string.Format(RequetSqlService.SELECTBOXID, _name), RequetSqlService.TABLEBOX);
                         List<DataRow> listRstRequet = new List<DataRow>(connexionBddService.ExecuteRequet());
 
                         boxId = (int)listRstRequet[0]["boxid"];
 
-                        foreach (var equip in _listIdEquipments)
-                        {
-                            requetEquipBox += string.Format(RequetSqlService.INSERTEQUIPMENTBOX, boxId, equip);
-                        }
+                        bool flag = true;
 
-                        foreach (var activ in _listIdActivitys)
-                        {
-                            requetActivBox += string.Format(RequetSqlService.INSERTACTIVITYBOX, boxId, activ);
-                        }
+                        flag = SendOptionBox(boxId, RequetSqlService.INSERTEQUIPMENTBOX, _listIdEquipments, RequetSqlService.TABLEEQUIPMENTBOX);
 
-                        connexionBddService = new ConnexionBddService(requetEquipBox, RequetSqlService.TABLEEQUIPMENTBOX);
+                        flag = SendOptionBox(boxId, RequetSqlService.INSERTACTIVITYBOX, _listIdActivitys, RequetSqlService.TABLEACTIVITYBOX);
 
-                        if (connexionBddService.InsertRequet())
-                        {
-                            connexionBddService = new ConnexionBddService(requetActivBox, RequetSqlService.TABLEEQUIPMENTBOX);
-
-                            if (connexionBddService.InsertRequet())
-                            {
-                                return true;
-                            }
-                            else
-                            {
-                                LogTools.AddLog(LogTools.LogType.ERREUR, "Echec de l'insertion de activityBox dans la BDD");
-                            }
-                        }
-                        else
-                        {
-                            LogTools.AddLog(LogTools.LogType.ERREUR, "Echec de l'insertion de equipmentBox dans la BDD");
-                        }
+                        return flag;
                     }
                     else
                     {
-                        return false;
+                        bool flag = true;
+
+                        if (_listIdEquipments.Count > 0)
+                        {
+                            DeleteBdd(id, string.Format(RequetSqlService.DELETEEQUIPMENTBOXID, id), RequetSqlService.TABLEEQUIPMENTBOX);
+
+                            flag = SendOptionBox(id, RequetSqlService.INSERTEQUIPMENTBOX, _listIdEquipments, RequetSqlService.TABLEEQUIPMENTBOX);
+                        }
+                        else
+                            DeleteBdd(id, string.Format(RequetSqlService.DELETEEQUIPMENTBOXID, id), RequetSqlService.TABLEEQUIPMENTBOX);
+
+
+                        if (_listIdActivitys.Count > 0)
+                        {
+                            DeleteBdd(id, string.Format(RequetSqlService.DELETEACTIVITYBOXID, id), RequetSqlService.TABLEACTIVITYBOX);
+
+                            flag = SendOptionBox(id, RequetSqlService.INSERTACTIVITYBOX, _listIdActivitys, RequetSqlService.TABLEACTIVITYBOX);
+                        }
+                        else
+                            DeleteBdd(id, string.Format(RequetSqlService.DELETEACTIVITYBOXID, id), RequetSqlService.TABLEACTIVITYBOX);
+
+                        return flag;
                     }
-                    return true;
                 }
                 else
                 {
@@ -440,9 +506,46 @@ namespace BredeleGestion.Services
             }
             catch (System.Exception ex)
             {
-                LogTools.AddLog(LogTools.LogType.ERREUR, "ERREUR - lors de l'execution de la fonction InsertBox." + ex.Message);
+                LogTools.AddLog(LogTools.LogType.ERREUR, "lors de l'execution de la fonction InsertBox." + ex.Message);
                 return false;
             }
+        }
+        #endregion
+
+        #region SendOptionBox
+        /// <summary>
+        /// Enregistrement des options equipment et activity box
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="requetoption"></param>
+        /// <param name="listOption"></param>
+        /// <param name="table"></param>
+        /// <returns></returns>
+        private bool SendOptionBox(int id, string requetoption, List<int> listOption, string table)
+        {
+            string requet = string.Empty;
+
+            foreach (var option in listOption)
+            {
+                requet += string.Format(requetoption, id, option);
+            }
+            ConnexionBddService connexionBddService = new ConnexionBddService(requet, table);
+
+            if (connexionBddService.InsertRequet())
+                return true;
+            else
+            {
+                LogTools.AddLog(LogTools.LogType.ERREUR, $"Echec de l'insertion des option box dans la BDD {table} - {requet} - {requetoption}");
+                return false;
+            }
+        }
+        #endregion
+
+        public void DeleteBdd(int id, string requet = "", string table = "")
+        {
+            ConnexionBddService connexionBddService = new ConnexionBddService(requet, table);
+
+            connexionBddService.InsertRequet();
         }
 
         #region CheckAvtivity

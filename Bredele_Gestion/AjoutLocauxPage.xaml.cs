@@ -30,10 +30,16 @@ namespace Bredele_Gestion
             this.DataContext = gestionLocaux;
 
             _idBox = id;
+
+            if (_idBox != 0)
+                gestionLocaux.LoadBox(_idBox);
         }
 
         private void btnBoxSub_Click(object sender, RoutedEventArgs e)
         {
+            txtBoxError.Visibility = Visibility.Hidden;
+            txtBoxError.Text = "";
+
             if (gestionLocaux.InsertUpdateBox(_idBox))
             {
                 txtBoxError.Foreground = new SolidColorBrush(Colors.Green);
@@ -47,17 +53,50 @@ namespace Bredele_Gestion
                     txtBoxError.Text = "La box a bien été ajouté !";
                 }
                 txtBoxError.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                txtBoxError.Foreground = new SolidColorBrush(Colors.Red);
                 txtBoxError.Visibility = Visibility.Visible;
+
+                txtBoxError.Text = "Une erreur c'est produite !";
             }
 
             var mainWindow = Application.Current.MainWindow;
-            //var frameRight = mainWindow.FindName("FrameRight") as Frame;
             var frameLeft = mainWindow.FindName("FrameLeft") as Frame;
 
             if (frameLeft != null)
             {
-                frameLeft.Navigate(new AdherentsPage());
+                frameLeft.Navigate(new InfoAjoutLocauxPage());
             }   
+        }
+
+        private void btnBoxDel_Click(object sender, RoutedEventArgs e)
+        {
+            if (_idBox != 0)
+            {
+                var warning = MessageBox.Show("Etes-vous sûr de vouloir supprimer ce local ?", "Suppression local", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                if (warning == MessageBoxResult.OK)
+                {
+                    gestionLocaux.DeleteBdd(_idBox, string.Format(RequetSqlService.DELETEEQUIPMENTBOXID, _idBox), RequetSqlService.TABLEEQUIPMENTBOX);
+                    gestionLocaux.DeleteBdd(_idBox, string.Format(RequetSqlService.DELETEACTIVITYBOXID, _idBox), RequetSqlService.TABLEACTIVITYBOX);
+                    gestionLocaux.DeleteBdd(_idBox, string.Format(RequetSqlService.DELETEBOX, _idBox), RequetSqlService.TABLEEQUIPMENTBOX);
+
+                    _idBox = 0;
+
+                    var mainWindow = Application.Current.MainWindow;
+                    var frameLeft = mainWindow.FindName("FrameLeft") as Frame;
+                    var frameRight = mainWindow.FindName("FrameRight") as Frame;
+
+                    MessageBox.Show("Le local a bien été supprimé", "Suppression local", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    if (frameLeft != null)
+                        frameLeft.Navigate(new InfoAjoutLocauxPage());
+                    if (frameRight != null)
+                        frameRight.Navigate(new AjoutLocauxPage());
+
+                }
+            }
         }
     }
 }

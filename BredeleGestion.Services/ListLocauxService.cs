@@ -49,7 +49,7 @@ namespace BredeleGestion.Services
 
         public override string ToString()
         {
-            return $"id : {Id} Name : {Name} Capacité : {Capacity}";
+            return $"{Name}       Capacité : {Capacity}";
         }
     }
 }

@@ -13,6 +13,7 @@ namespace BredeleGestion.Services
 
         public const string INSERTACTIVITYBOX = "INSERT INTO activitybox(activboxpricename, activboxpricevalue, fkboxid, fkactiid) VALUES ('0', '0','{0}','{1}');";
         public const string TABLEACTIVITYBOX = "activitybox";
+        public const string DELETEACTIVITYBOXID = "DELETE FROM activitybox WHERE fkboxid={0}";
 
         #endregion
 
@@ -20,10 +21,33 @@ namespace BredeleGestion.Services
 
         public const string INSERTEQUIPMENTBOX = "INSERT INTO equipmentbox(equipboxqte, fkboxid, fkequipid) VALUES ('0','{0}','{1}');";
         public const string TABLEEQUIPMENTBOX = "equipmentbox";
+        public const string DELETEEQUIPMENTBOXID = "DELETE FROM equipmentbox WHERE fkboxid={0}";
 
         #endregion
 
         #region requet box
+        /// <summary>
+        /// supprimer la box suivant l'id en argument
+        /// </summary>
+        public const string DELETEBOX = "DELETE FROM box WHERE boxid={0}";
+        /// <summary>
+        /// Mise a jour des champs d'une box avec 0->boxname 1->boxcapacity 2->boxsurface 3->where boxid
+        /// </summary>
+        public const string UPDATEBOX = "UPDATE box SET boxname='{0}', boxcapacity='{1}', boxsurface='{2}' " +
+            "WHERE boxid={3}";
+
+        /// <summary>
+        /// Selectionne la box avec tous les jointures
+        /// </summary>
+        public const string SELECTBOXINNEREQUIPMENT = "SELECT boxname, boxcapacity, boxsurface, fkequipid FROM box " +
+            "INNER JOIN equipmentbox ON boxid=equipmentbox.fkboxid WHERE boxid={0}";
+        public const string SELECTBOXINNERACTIVITY = "SELECT fkactiid  FROM box " +
+            "INNER JOIN activitybox ON boxid=activitybox.fkboxid WHERE boxid={0}";
+
+        /// <summary>
+        /// Selectionne tous les champs de la table box avec l'id en parametre WHERE
+        /// </summary>
+        public const string SELECTBOXWITHID = "SELECT * FROM box WHERE boxid={0}";
 
         /// <summary>
         /// Selectection de tous les champs box

@@ -12,25 +12,15 @@ namespace TestUnitaireBredele
     {
         #region Add log
         [TestMethod]
-        public void AddLog()
+        public void loadbox()
         {
             GestionLocauxService gestionLocauxService = new GestionLocauxService();
 
-            //List<string> listActivitys = new List<string>();
-            //List<string> listEquipments = new List<string>();
+            gestionLocauxService.LoadBox(8);
 
-            //listActivitys = gestionLocauxService.LoadEquipActiv(RequetSqlService.SELECTACTIVITY, RequetSqlService.TABLEACTIVITY);
-            //listEquipments = gestionLocauxService.LoadEquipActiv(RequetSqlService.SELECTEQUIPMENTS, RequetSqlService.TABLEEQUIPMENT);
-
-            //foreach (var item in listActivitys)
-            //{
-            //    Debug.WriteLine(item);
-            //}
-
-            //foreach (var item in listEquipments)
-            //{
-            //    Debug.WriteLine(item);
-            //}
+            Debug.WriteLine(gestionLocauxService.Name);
+            Debug.WriteLine(gestionLocauxService.NbPlace);
+            Debug.WriteLine(gestionLocauxService.Size);
 
         }
         #endregion
