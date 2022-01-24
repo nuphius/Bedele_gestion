@@ -19,15 +19,15 @@
             <RowDefinition Height="91"/>
             <RowDefinition Height="51"/>
             <RowDefinition Height="91"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto" MaxWidth="300"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="320"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <!-- Label - Titre-->
@@ -62,7 +62,7 @@
                  TextWrapping="Wrap"
                  FontFamily="Georgia"
                  FontSize="12"
-                 MinWidth="200"
+                 MinWidth="320"
                  HorizontalAlignment="Left"
                  VerticalAlignment="Center"/>
 
@@ -85,10 +85,10 @@
                  TextWrapping="Wrap"
                  FontFamily="Georgia"
                  FontSize="12"
-                 MinWidth="200"
+                 MinWidth="320"
                  HorizontalAlignment="Left"
                  VerticalAlignment="Center"/>
-        
+
 
         <!-- Label - Superficie-->
         <Label x:Name="lblBoxArea"
@@ -109,9 +109,9 @@
                  TextWrapping="Wrap"
                  FontFamily="Georgia"
                  FontSize="12"
-                 MinWidth="200"
+                 MinWidth="320"
                  HorizontalAlignment="Left"
-                 VerticalAlignment="Center"/>        
+                 VerticalAlignment="Center"/>
 
         <!-- Label - Equipments-->
         <Label x:Name="lblBoxEquipments"
@@ -125,12 +125,12 @@
                HorizontalAlignment="Left"/>
 
         <!-- Grid - Equipements-->
-        <StackPanel Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center"  Orientation="Horizontal">
+        <StackPanel Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left"  Orientation="Horizontal">
 
             <Grid Background="#FFEEF5FD" Margin="0,0,0,0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="160"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30px"/>
@@ -204,12 +204,12 @@
                HorizontalAlignment="Left"/>
 
         <!-- Grid - Activity-->
-        <StackPanel Grid.Row="6" Grid.Column="2" HorizontalAlignment="Center"  Orientation="Horizontal">
+        <StackPanel Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left"  Orientation="Horizontal">
 
             <Grid Background="#FFEEF5FD" Margin="0,0,0,0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="160"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30px"/>
@@ -264,37 +264,35 @@
             </Grid>
         </StackPanel>
 
-
-        <!-- Button - Supprimer-->
-        <Button Style="{DynamicResource ButtonStyleCorner3}"
-                    x:Name="btnBoxDel"
+        <!-- StackPanel - Button-->
+        <StackPanel Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <!-- Button - Supprimer-->
+            <Button Style="{DynamicResource ButtonStyleCorner3}"
+                    x:Name="btnCustDel"
                     Grid.Row="7"
-                    Grid.Column="2"
                     Content="Supprimer"                
                     FontFamily="Georgia"
                     FontSize="12"
                     FontWeight="Bold"
                     Margin="0,10,80,00"
-                    Width="80"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center" Click="btnBoxDel_Click"/>
+                    Width="80" 
+                    Click="btnBoxDel_Click"/>
 
-        <!-- Button - Valider-->
-        <Button Style="{DynamicResource ButtonStyleCorner3}"
-                    x:Name="btnBoxSub"
+            <!-- Button - Valider-->
+            <Button Style="{DynamicResource ButtonStyleCorner3}"
+                    x:Name="btnCustSub"
                     Grid.Row="7"
-                    Grid.Column="2"
                     Content="Valider"                
                     FontFamily="Georgia"
                     FontSize="12"
                     FontWeight="Bold"
                     Margin="0,10,0,0"
                     Width="80"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center" Click="btnBoxSub_Click"/>
+                    Click="btnBoxSub_Click"/>
+        </StackPanel>
 
         <!-- Label - Message si erreur-->
-            <TextBlock x:Name="txtBoxError"
+        <TextBlock x:Name="txtBoxError"
                 Grid.Row="8"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
