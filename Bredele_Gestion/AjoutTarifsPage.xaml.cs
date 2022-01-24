@@ -21,16 +21,128 @@ namespace Bredele_Gestion
     /// </summary>
     public partial class AjoutTarifsPage : Page
     {
-        GestionTarifsService tarifsService = new GestionTarifsService();
+        GestionTarifsService priceService = new GestionTarifsService();
         public AjoutTarifsPage()
         {
             InitializeComponent();
-            this.DataContext = tarifsService;
+            this.DataContext = priceService;
+
+            //List<Prices> listPrices = priceService.LoadListPrice();
+            priceService.LoadListPrice();
+
+            //if (listPrices != null)
+            //    LoadComboBox(listPrices);
+
+
         }
 
-        private void btnAddPriceSub_Click(object sender, RoutedEventArgs e)
+        private void btnAddPriceSub_Click_1(object sender, RoutedEventArgs e)
         {
-            tarifsService.AddUpdatePrice(0);
+            txtPriceError.Visibility = Visibility.Hidden;
+            txtPriceError.Text = "";
+
+            cmbBoxSelectPrice.Items.Add("dsfdskfdskfjls");
+
+            if (priceService.AddUpdatePrice())
+            {
+                txtPriceError.Foreground = new SolidColorBrush(Colors.Green);
+                txtPriceError.Text = "La box a bien été ajouté !";
+                txtPriceError.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                LogTools.AddLog(LogTools.LogType.ERREUR, "Problème lors je l'ajout d'un prix dans la BDD");
+            }
+
+        }
+
+        private void btnModPriceSub_Click(object sender, RoutedEventArgs e)
+        {
+            //if (cmbBoxSelectPrice.SelectedItem != null)
+            //{
+            //    Prices prices = cmbBoxSelectPrice.SelectedItem as Prices;
+            //}
+
+            txtPriceError.Foreground = new SolidColorBrush(Colors.Red);
+            txtPriceError.Visibility = Visibility.Hidden;
+            txtPriceError.Text = "";
+
+            if (cmbBoxSelectPrice.SelectedItem == null)
+            {
+                MessageBox.Show("Merci de sélectionner un tarif !", "Sélectionner un tarif !", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(txtBoxModNamePrice.Text) && !string.IsNullOrEmpty(txtBoxModValuePrice.Text))
+                {
+                    Prices priceSelect = cmbBoxSelectPrice.SelectedItem as Prices;
+
+                    if (priceSelect != null)
+                    {
+                        int id = (int)priceSelect.Id;
+
+                        if (priceService.AddUpdatePrice(id))
+                        {
+                            priceService.LoadListPrice();
+
+                            txtPriceError.Foreground = new SolidColorBrush(Colors.Green);
+                            txtPriceError.Visibility = Visibility.Visible;
+                            txtPriceError.Text = "Tarif modifié !";
+                        }
+                        else
+                        {
+                            LogTools.AddLog(LogTools.LogType.ERREUR, "Problème lors de la modification du prix");
+                        }
+                    }
+                    else
+                    {
+                        LogTools.AddLog(LogTools.LogType.ERREUR, "Problème liste combo box vide !!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Merci de remplir tous les champs pour la modification !", "Champs vides ! !", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                //MessageBox.Show(cmbBoxSelectPrice.SelectedItem.ToString());
+            }
+
+        }
+
+        private void btnCustDel_Click(object sender, RoutedEventArgs e)
+        {
+            txtPriceError.Foreground = new SolidColorBrush(Colors.Red);
+            txtPriceError.Visibility = Visibility.Hidden;
+            txtPriceError.Text = "";
+
+            if (cmbBoxSelectPrice.SelectedItem == null)
+            {
+                MessageBox.Show("Merci de sélectionner un tarif !", "Sélectionner un tarif !", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                Prices priceSelect = cmbBoxSelectPrice.SelectedItem as Prices;
+
+                if (priceSelect != null)
+                {
+                    var warning = MessageBox.Show($"Etes-vous sûr de vouloir supprimer le tarif : {priceSelect.Name} ?", "Suppression tarif", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+
+                    if (warning == MessageBoxResult.OK)
+                    {
+                        int id = (int)priceSelect.Id;
+
+                        priceService.DeletePrice(id);
+                        priceService.LoadListPrice();
+
+                        txtPriceError.Foreground = new SolidColorBrush(Colors.Green);
+                        txtPriceError.Visibility = Visibility.Visible;
+                        txtPriceError.Text = "Tarif supprimé !";
+                    }
+                }
+                else
+                {
+                    LogTools.AddLog(LogTools.LogType.ERREUR, "Problème liste combo box vide !!");
+                }
+            }
         }
     }
 }

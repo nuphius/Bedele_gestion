@@ -52,6 +52,7 @@ namespace BredeleGestion.Services
         #endregion
 
         #region prorpiete Name, Nbplace, Size
+
         public string Name
         {
             get { return _name; }
@@ -541,12 +542,20 @@ namespace BredeleGestion.Services
         }
         #endregion
 
+        #region DeleteBdd
+        /// <summary>
+        /// Supprime la box passé en parametre
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="requet"></param>
+        /// <param name="table"></param>
         public void DeleteBdd(int id, string requet = "", string table = "")
         {
             ConnexionBddService connexionBddService = new ConnexionBddService(requet, table);
 
             connexionBddService.InsertRequet();
         }
+        #endregion
 
         #region CheckAvtivity
         /// <summary>

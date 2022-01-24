@@ -1,15 +1,67 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace BredeleGestion.Services
 {
     public class GestionTarifsService : INotifyPropertyChanged
     {
-        private double _newPriceDouble;
+        //private double _newPriceDouble;
 
         private string _nameNewPrice;
         private string _newPrice;
+        private List<Prices> _priceSelected;
+        private string _updateName;
+        private string _updateValue;
+
+        #region Liste des propriétés
+        public string UpdateValue
+        {
+            get { return _updateValue; }
+            set
+            {
+                Regex regex = new Regex("^[0-9]+\\.?,?[0-9]{0,2}$");
+
+                if (regex.IsMatch(value.ToString()))
+                {
+                    _updateValue = value.Replace(",", ".");
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(_updateValue) && !string.IsNullOrEmpty(value))
+                    {
+                        value = _updateValue;
+                    }
+                    else
+                    {
+                        _updateValue = string.Empty;
+                        value = string.Empty;
+                    }
+                }
+                NotifyPropertyChanged(nameof(UpdateValue));
+            }
+        }
+
+        public string UpdateName
+        {
+            get { return _updateName; }
+            set { _updateName = value; }
+        }
+
+
+        public List<Prices> PriceSelected
+        {
+            get { return _priceSelected; }
+            set
+            {
+                _priceSelected = value;
+                this.NotifyPropertyChanged(nameof(PriceSelected));
+            }
+        }
 
         public string NameNewPrice
         {
@@ -30,18 +82,11 @@ namespace BredeleGestion.Services
             get { return _newPrice; }
             set
             {
-                Regex regex = new Regex("^[0-9]+\\.?,?[0-9]*$");
+                Regex regex = new Regex("^[0-9]+\\.?,?[0-9]{0,2}$");
 
                 if (regex.IsMatch(value.ToString()))
                 {
-                    string checkNb = value.Replace(".", ",");
-
-                    if (Double.TryParse(checkNb, out _newPriceDouble))
-                    {
-                        _newPrice = checkNb;
-                    }
-                    else
-                        LogTools.AddLog(LogTools.LogType.ERREUR, "Erreur - Convertion de l'ajout d'un nouveau prix en double");
+                    _newPrice = value.Replace(",", ".");
                 }
                 else
                 {
@@ -49,7 +94,6 @@ namespace BredeleGestion.Services
                     {
                         value = _newPrice;
                     }
-
                     else
                     {
                         _newPrice = string.Empty;
@@ -60,10 +104,11 @@ namespace BredeleGestion.Services
             }
         }
         #endregion
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-
+        #region NotifyPropertyChanged
         /// <summary>
         /// Fonction pour actualiser SI changement de valeur d'une propriété.
         /// </summary>
@@ -73,29 +118,86 @@ namespace BredeleGestion.Services
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
+        #endregion
 
-        public bool AddUpdatePrice(int id)
+        #region LoadListPrice
+        /// <summary>
+        /// Chargement de tous les tarifs dans le menu déroulant tarif
+        /// </summary>
+        public void LoadListPrice()
         {
-            //string requetprice;
+            try
+            {
+               List<Prices> listePrice = new List<Prices>();
 
+                ConnexionBddService connexionBddService = new ConnexionBddService(RequetSqlService.SELECTALLPRICE, RequetSqlService.TABLEPRICE);
+                List<DataRow> ListBddPrice = connexionBddService.ExecuteRequet();
 
-            //if (id == 0)
-            //{
-            //    requetPrice = RequetSqlService.ADDCUST +
-            //    ($"('{civility}', '{_name}', '{_firstName}', '{_phone}', '{_mail}', '{dateConverted}', '{adherent}', '{_idCity}', '{_address}', '{_address2}')");
-            //}
-            //else
-            //{
+                foreach (DataRow row in ListBddPrice)
+                {
+                    listePrice.Add(new Prices { Id = (int)row["priceid"], Name = row["pricename"].ToString(), Price = (decimal)row["pricevalue"] });
+                }
 
-            //    //requetCust = string.Format(RequetSqlService.UPDATECUST, $"'{civility}'", $"'{_name}'", $"'{_firstName}'", $"'{_phone}'", $"'{_mail}'",
-            //    //    $"'{dateConverted}'", $"'{adherent}'", $"'{_idCity}'", $"'{_address}'", $"'{_address2}'", $"'{id}'");
-            //}
+                PriceSelected = listePrice;
 
-            //ConnexionBddService connexionBddService = new ConnexionBddService(requetCust, RequetSqlService.TABLECUST);
+            }
+            catch (Exception ex)
+            {
+                LogTools.AddLog(LogTools.LogType.ERREUR, "Problème de récupération de la table Price" + ex.Message);
+                //return null;
+            }
+        }
+        #endregion
 
-            //return connexionBddService.InsertRequet();
+        #region AddUpdatePrice
+        /// <summary>
+        /// Ajouter ou modifie dans la BDD le tarif séléctionné
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool AddUpdatePrice(int id = 0)
+        {
+            string requetPrice;
 
-            return true;
+            if (id == 0)
+            {
+                requetPrice = string.Format(RequetSqlService.ADDPRICE, _nameNewPrice, _newPrice);
+            }
+            else
+            {
+                requetPrice = string.Format(RequetSqlService.UPDATEPRICE, _updateName, _updateValue, id);
+            }
+
+            ConnexionBddService connexionBddService = new ConnexionBddService(requetPrice, RequetSqlService.TABLEPRICE);
+
+            return connexionBddService.InsertRequet();
+        }
+        #endregion
+
+        #region DeletePrice
+        /// <summary>
+        /// Supprime le tarif passé en parametre
+        /// </summary>
+        /// <param name="id"></param>
+        public void DeletePrice(int id)
+        {
+            ConnexionBddService connexionBddService = new ConnexionBddService(string.Format(RequetSqlService.DELETEPRICE, id), RequetSqlService.TABLEPRICE);
+
+            connexionBddService.InsertRequet();
+        }
+        #endregion
+    }
+
+    public class Prices
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public decimal Price { get; set; }
+
+        public override string ToString()
+        {
+            return Name.ToString() + " " + Price.ToString() + "€";
         }
     }
 }

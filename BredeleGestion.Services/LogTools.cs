@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace BredeleGestion.Services
 {
-    static class LogTools
+    public static class LogTools
     {
         const string LOG_TRACE = "TRACE";
         const string LOG_ERREUR = "ERREUR";

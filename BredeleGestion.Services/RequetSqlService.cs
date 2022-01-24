@@ -86,7 +86,23 @@ namespace BredeleGestion.Services
 
         #region Ajout/modifier prix
 
-        public const string ADDPRICE = "INSERT ";
+        public const string DELETEPRICE = "DELETE FROM price WHERE priceid={0}";
+        /// <summary>
+        /// Selectionne tous les éléments de la table price
+        /// </summary>
+        public const string SELECTALLPRICE = "SELECT * FROM price";
+        /// <summary>
+        /// Ajouter un prix dans la BDD
+        /// </summary>
+        public const string ADDPRICE = "INSERT INTO price(pricename, pricevalue) VALUES ('{0}', {1})";
+        /// <summary>
+        /// Mettre ) jour un prix de la BDD suivant l'ID en parametre
+        /// </summary>
+        public const string UPDATEPRICE = "UPDATE price SET pricename='{0}', pricevalue={1} WHERE priceid={2}";
+        /// <summary>
+        /// table price
+        /// </summary>
+        public const string TABLEPRICE = "price";
 
         #endregion
 
