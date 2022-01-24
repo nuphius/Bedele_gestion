@@ -217,12 +217,12 @@
                 VerticalAlignment="Center"
                 Click="btnAddPriceSub_Click_1"/>
 
-        <!-- Label - Message si erreur-->
-        <Label x:Name="lblPriceError"
+        <!-- TextBlock - Message si erreur-->
+        <TextBlock x:Name="txtPriceError"
                 Grid.Row="9"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
-                Content="Label"
+                Text="Label"
                 FontFamily="Georgia"
                 FontSize="12"
                 FontWeight="Bold"
