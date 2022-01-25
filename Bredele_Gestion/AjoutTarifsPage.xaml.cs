@@ -27,13 +27,7 @@ namespace Bredele_Gestion
             InitializeComponent();
             this.DataContext = priceService;
 
-            //List<Prices> listPrices = priceService.LoadListPrice();
             priceService.LoadListPrice();
-
-            //if (listPrices != null)
-            //    LoadComboBox(listPrices);
-
-
         }
 
         private void btnAddPriceSub_Click_1(object sender, RoutedEventArgs e)
@@ -41,13 +35,15 @@ namespace Bredele_Gestion
             txtPriceError.Visibility = Visibility.Hidden;
             txtPriceError.Text = "";
 
-            cmbBoxSelectPrice.Items.Add("dsfdskfdskfjls");
+           // cmbBoxSelectPrice.Items.Add("dsfdskfdskfjls");
 
             if (priceService.AddUpdatePrice())
             {
                 txtPriceError.Foreground = new SolidColorBrush(Colors.Green);
                 txtPriceError.Text = "La box a bien été ajouté !";
                 txtPriceError.Visibility = Visibility.Visible;
+
+                priceService.LoadListPrice();
             }
             else
             {
@@ -58,11 +54,6 @@ namespace Bredele_Gestion
 
         private void btnModPriceSub_Click(object sender, RoutedEventArgs e)
         {
-            //if (cmbBoxSelectPrice.SelectedItem != null)
-            //{
-            //    Prices prices = cmbBoxSelectPrice.SelectedItem as Prices;
-            //}
-
             txtPriceError.Foreground = new SolidColorBrush(Colors.Red);
             txtPriceError.Visibility = Visibility.Hidden;
             txtPriceError.Text = "";
@@ -103,7 +94,6 @@ namespace Bredele_Gestion
                 {
                     MessageBox.Show("Merci de remplir tous les champs pour la modification !", "Champs vides ! !", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
-                //MessageBox.Show(cmbBoxSelectPrice.SelectedItem.ToString());
             }
 
         }

@@ -27,7 +27,7 @@ namespace Bredele_Gestion
         {
             InitializeComponent();
             FrameLeft.Navigate(new AdherentsPage());
-            //FrameRight.Navigate(new AjoutLocauxPage());
+            FrameRight.Navigate(new ViewBoxPage());
         }
 
         #region Evenement toolBar
@@ -40,6 +40,7 @@ namespace Bredele_Gestion
         private void BtnHome_Click(object sender, RoutedEventArgs e)
         {
             FrameLeft.Navigate(new AdherentsPage());
+            FrameRight.Navigate(new ViewBoxPage());
         }
 
         private void BtnAddTicket_Click(object sender, RoutedEventArgs e)
