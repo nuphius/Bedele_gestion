@@ -11,7 +11,7 @@ namespace BredeleGestion.Services
         #region Déclaration des prorpiétés
 
         public int id;
-        private string _name;
+        public string Name;
         private string _fisrtname;
         private bool _adherent;
         private ObservableCollection<ListAdherentService> _listCust = new ObservableCollection<ListAdherentService>();
@@ -75,7 +75,7 @@ namespace BredeleGestion.Services
         public ListAdherentService(int id = 0, string name = "", string firstname = "", bool adherent = false)
         {
             this.id = id;
-            _name = name ?? string.Empty;
+            Name = name ?? string.Empty;
             _fisrtname = firstname ?? string.Empty;
             _adherent = adherent;
 
@@ -83,7 +83,13 @@ namespace BredeleGestion.Services
             NbTiers = CountTypeCust(RequetSqlService.COUNTNOADHERENT, "tiers");
         }
 
-        private void SelectCustomers( string nameSearch="")
+        #region SelectCustomers
+        /// <summary>
+        /// Récupère dans la BDD la liste des customers et crée une list observable
+        /// gère égalemement la recherche par nom
+        /// </summary>
+        /// <param name="nameSearch"></param>
+        public void SelectCustomers( string nameSearch="")
         {
             if (_listCust.Count > 0)
             {
@@ -112,7 +118,7 @@ namespace BredeleGestion.Services
                 }
             }
 
-            string requetSql = RequetSqlService.SELECTCUSTSEARCH + where;
+            string requetSql = RequetSqlService.SELECTCUSTSEARCH + where + " ORDER BY custname";
 
             ConnexionBddService connexionBddService = new ConnexionBddService(requetSql, RequetSqlService.TABLECUST);
             List<DataRow> listCust = connexionBddService.ExecuteRequet();
@@ -133,7 +139,16 @@ namespace BredeleGestion.Services
                 LogTools.AddLog(LogTools.LogType.ERREUR, "Erreur récupération customer par filtre adherent" + ex.Message);
             }
         }
+        #endregion
 
+
+        #region CountTypeCust
+        /// <summary>
+        /// Compte le nombre d'adhérent et tiers
+        /// </summary>
+        /// <param name="requet"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         private string CountTypeCust(string requet, string type)
         {
             ConnexionBddService connexionBddService = new ConnexionBddService(requet, RequetSqlService.TABLECUST);
@@ -141,6 +156,7 @@ namespace BredeleGestion.Services
 
             return $"Actuellement {nbCust[0]["nb"]} {type}";
         }
+        #endregion
 
         #region NotifyPropertyChanged
         /// <summary>
@@ -162,7 +178,7 @@ namespace BredeleGestion.Services
         public override string ToString()
         {
             //return _name.ToUpper() + " " + _fisrtname + " " + (_adherent ? "Adhérent" : "");
-            return _name.ToUpper() + " " + _fisrtname;
+            return Name.ToUpper() + " " + _fisrtname;
         }
         #endregion
     }

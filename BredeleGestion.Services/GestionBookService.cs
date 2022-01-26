@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BredeleGestion.Services
 {
-    internal class GestionReservationsService
+    public class GestionBookService
     {
     }
 }

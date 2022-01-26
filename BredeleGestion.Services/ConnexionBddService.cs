@@ -89,8 +89,13 @@ namespace BredeleGestion.Services
 
             return null;
         }
-#endregion
+        #endregion
 
+        #region InsertRequet
+        /// <summary>
+        /// Execute une requete SQL UPDATE ou DELETE et renvoi un BOOL
+        /// </summary>
+        /// <returns></returns>
         public bool InsertRequet()
         {
             SqlConnection connexion = new SqlConnection(_logConnexion);
@@ -128,5 +133,6 @@ namespace BredeleGestion.Services
 
             return true;
         }
+        #endregion
     }
 }

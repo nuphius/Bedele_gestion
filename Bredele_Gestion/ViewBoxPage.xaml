@@ -3,17 +3,21 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Bredele_Gestion"
+      xmlns:local="clr-namespace:Bredele_Gestion" 
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ViewBoxPage">
 
     <Grid Background="#FFEEF5FD">
-
-        <ListView x:Name="listViewBox" 
+        <!--<List.itemconteneur style gettype listview item set property =" focusabl value false"-->
+        <ListView x:Name="listViewBox"
                   ItemsSource="{Binding ListBox, UpdateSourceTrigger=Explicit, Mode=TwoWay}" 
+                  SelectedItem="{Binding SelectedBox, UpdateSourceTrigger=PropertyChanged}"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   Margin="50">
+            <!--<ListView.ItemContainerStyle>
+                
+            </ListView.ItemContainerStyle>-->
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel/>
@@ -78,12 +82,14 @@
                                        Cursor="Hand"
                                        Margin="10,0"
                                        ToolTip="Modifier la loge"
+                                       Tag="{Binding DateLock, Mode=OneWay}"
                                        Uid="{Binding Id, Mode=OneWay}"/>
                                 <Image x:Name="btnCalendar" Source="/Icon/calendar_40.png" 
                                        DockPanel.Dock="left"
                                        HorizontalAlignment="Center"
                                        Cursor="Hand"
                                        Margin="10,0"
+                                       Tag="{Binding DateLock, Mode=OneWay}"
                                        Uid="{Binding Id, Mode=OneWay}"
                                        ToolTip="Afficher les réservations de cette loge"/>
                                 <Image x:Name="btnLock" Source="/Icon/lock_40.png" 
@@ -91,11 +97,16 @@
                                        HorizontalAlignment="Right"
                                        Cursor="Hand"
                                        Margin="10,0"
+                                       Tag="{Binding DateLock, Mode=OneWay}"
                                        Uid="{Binding Id, Mode=OneWay}"
                                        MouseDown="btnLock_MouseDown" 
                                        ToolTip="Verrouiller la loge jusqu'a une date" />
                             </DockPanel>
-                            <Button Content="boutonnn" Grid.Row="4" />
+                            <TextBlock x:Name="txtDateLock"
+                                       Text="{Binding DateLockString, Mode=OneWay}"
+                                       Grid.Row="4"
+                                       Margin="0,10,0,0"
+                                       HorizontalAlignment="Center"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

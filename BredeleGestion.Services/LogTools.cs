@@ -15,7 +15,7 @@ namespace BredeleGestion.Services
             ERREUR
         };
 
-        static StreamWriter? _logFileStream;
+        static StreamWriter _logFileStream;
         static string pathLog = Directory.GetCurrentDirectory() + "\\Log";
 
         public static void AddLog(LogType logType, string logMessage)

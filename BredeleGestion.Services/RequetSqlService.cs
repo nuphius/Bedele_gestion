@@ -32,6 +32,8 @@ namespace BredeleGestion.Services
         #endregion
 
         #region requet box
+
+        public const string UPDATEDATEBOX = "UPDATE box SET boxendlock='{0}' WHERE boxid={1}";
         /// <summary>
         /// supprimer la box suivant l'id en argument
         /// </summary>

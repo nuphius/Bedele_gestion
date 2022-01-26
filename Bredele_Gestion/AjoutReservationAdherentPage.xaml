@@ -48,7 +48,7 @@
                     Width="20"/>
             <!-- TextBox - Recherche adhérents-->
             <TextBox x:Name="TxtBoxNameReservation"
-                    Text="Nom du réservant"
+                    Text="{Binding SearchName, UpdateSourceTrigger=PropertyChanged}"
                     FontFamily="Georgia"
                     FontSize="12"
                     TextWrapping="WrapWithOverflow"                    
@@ -60,12 +60,13 @@
         </DockPanel>
 
         <!-- ListBox - Liste adhérents-->
-        <ListBox x:Name="listBoxAdherentSearch"
-                Grid.Row="2"
-                FontWeight="Bold"
-                FontFamily="Georgia"
-                FontSize="12"
-                Margin="40,0,40,0"/>
+        <ListView x:Name="listBoxAdherentSearch"
+                  ItemsSource="{Binding ListCust, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                  Grid.Row="2"
+                  FontWeight="Bold"
+                  FontFamily="Georgia"
+                  FontSize="12"
+                  Margin="40,0,40,0"/>
 
         <!-- Calendar - Calendrier de réservation-->
         <Calendar x:Name="CalendarReservation"

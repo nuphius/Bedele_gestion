@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,23 +27,18 @@ namespace Bredele_Gestion
         {
             InitializeComponent();
             this.DataContext = viewBox;
-            //viewBox.LoadBoxBdd();
-
-            //List<ViewBoxService> listBox = viewBox.LoadBoxBdd();
-
-            //listViewBox.ItemsSource = listBox;
+            //this.DataContext = new ViewBoxViewModel();
         }
-
 
         private void ModifyBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (int.TryParse(((Image)sender).Uid, out int id))
             {
                 var mainWindow = Application.Current.MainWindow;
-                var frameRight = mainWindow.FindName("FrameRight") as Frame;
-                //var frameLeft = mainWindow.FindName("FrameLeft") as Frame;
+                Frame frameRight = mainWindow.FindName("FrameRight") as Frame;
+                Frame frameLeft = mainWindow.FindName("FrameLeft") as Frame;
                 frameRight.Navigate(new AjoutLocauxPage(id));
-                //rameLeft?.Navigate(new AdherentsPage());
+                frameLeft.Navigate(new InfoAjoutLocauxPage());
             }
         }
 
@@ -58,9 +54,7 @@ namespace Bredele_Gestion
             if (int.TryParse(((Image)sender).Uid, out int id))
             {
                 var mainWindow = Application.Current.MainWindow;
-                //var frameRight = mainWindow.FindName("FrameRight") as Frame;
-                var frameLeft = mainWindow.FindName("FrameLeft") as Frame;
-                //frameRight.Navigate(new AjoutLocauxPage(id));
+                Frame frameLeft = mainWindow.FindName("FrameLeft") as Frame;
                 frameLeft.Navigate(new LockDatePage(id));
             }
         }

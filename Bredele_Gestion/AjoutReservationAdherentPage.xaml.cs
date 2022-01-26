@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bredele_Gestion.viewmodel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Bredele_Gestion
         public AjoutReservationAdherentPage()
         {
             InitializeComponent();
+            this.DataContext = new ViewBookViewModel();
         }
 
         private bool _flagTxtBoxNameReservation = true;
