@@ -354,6 +354,8 @@ namespace BredeleGestion.Services
             _listActivitys = LoadEquipActiv(RequetSqlService.SELECTACTIVITY, RequetSqlService.TABLEACTIVITY);
             _listEquipments = LoadEquipActiv(RequetSqlService.SELECTEQUIPMENTS, RequetSqlService.TABLEEQUIPMENT);
 
+            //pour faire du dynamique, utiliser une listview avec un ListView.ItemTemplate avec des chexbox dedans.oui
+
             _nameEquip1 = _listEquipments[0].Name;
             _nameEquip2 = _listEquipments[1].Name;
             _nameEquip3 = _listEquipments[2].Name;

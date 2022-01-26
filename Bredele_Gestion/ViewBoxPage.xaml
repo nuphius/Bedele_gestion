@@ -10,19 +10,106 @@
 
     <Grid Background="#FFEEF5FD">
 
-        <ListView x:Name="listViewBox" Margin="40">
+        <ListView x:Name="listViewBox" 
+                  ItemsSource="{Binding ListBox, UpdateSourceTrigger=Explicit, Mode=TwoWay}" 
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  Margin="50">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
             <ListView.ItemTemplate>
-                <DataTemplate>
-                    <WrapPanel>
-                        <StackPanel Orientation="Vertical" MinHeight="100" Width="100" Background="#FFE68E8E">
-                            <Image Source="/Icon/Bredele_logo.png" />
-                            <TextBlock Text="{Binding Name}"/>
-                            <TextBlock Text="{Binding Capacity}"/>
-                            <TextBlock Text="{Binding Surface}"/>
-                        </StackPanel>
-                    </WrapPanel>
+                <DataTemplate >
+                    <Border x:Name="listBorder" 
+                            Height="260" 
+                            Width="200" 
+                            BorderBrush="Black" 
+                            BorderThickness="1" 
+                            CornerRadius="10" 
+                            Margin="10" Padding="5">
+                        <Grid>
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/Icon/Bredele_logo.png" Opacity="0.1"/>
+                            </Grid.Background>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="110"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <StackPanel>
+
+                            </StackPanel>
+                            <TextBlock Text="{Binding Name}" Grid.Row="0" 
+                                       HorizontalAlignment="Center" 
+                                       FontWeight="Bold" 
+                                       FontSize="15" 
+                                       Foreground="#FFDE3A3A"
+                                       TextWrapping="WrapWithOverflow"/>
+                            <DockPanel Grid.Row="1" HorizontalAlignment="Stretch">
+                                <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <TextBlock Text="Capacité : " FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Capacity}" />
+                                </StackPanel>
+                                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock Text="Surface : " FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Surface}" Grid.Row="2"/>
+                                </StackPanel>
+                            </DockPanel>
+
+                            <DockPanel Grid.Row="2" HorizontalAlignment="Stretch" Cursor="Hand">
+                                <StackPanel DockPanel.Dock="Left" HorizontalAlignment="Left">
+                                    <TextBlock Text="Equipements : " FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding OptionEquip}" />
+                                </StackPanel>
+                                <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right">
+                                    <TextBlock Text="Activités : " FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding OptionActiv}"/>
+                                </StackPanel>
+                            </DockPanel>
+
+                            <DockPanel Grid.Row="3" HorizontalAlignment="Stretch">
+                                <Image x:Name="btnModify" Source="/Icon/modify_40.png" 
+                                       DockPanel.Dock="Left"
+                                       HorizontalAlignment="Left"
+                                       MouseDown="ModifyBox_MouseDown" 
+                                       Cursor="Hand"
+                                       Margin="10,0"
+                                       ToolTip="Modifier la loge"
+                                       Uid="{Binding Id, Mode=OneWay}"/>
+                                <Image x:Name="btnCalendar" Source="/Icon/calendar_40.png" 
+                                       DockPanel.Dock="left"
+                                       HorizontalAlignment="Center"
+                                       Cursor="Hand"
+                                       Margin="10,0"
+                                       Uid="{Binding Id, Mode=OneWay}"
+                                       ToolTip="Afficher les réservations de cette loge"/>
+                                <Image x:Name="btnLock" Source="/Icon/lock_40.png" 
+                                       DockPanel.Dock="Right"
+                                       HorizontalAlignment="Right"
+                                       Cursor="Hand"
+                                       Margin="10,0"
+                                       Uid="{Binding Id, Mode=OneWay}"
+                                       MouseDown="btnLock_MouseDown" 
+                                       ToolTip="Verrouiller la loge jusqu'a une date" />
+                            </DockPanel>
+                            <Button Content="boutonnn" Grid.Row="4" />
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <DockPanel VerticalAlignment="Bottom">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" Margin="10">
+                <Image Source="/Icon/modify_40.png" Height="30"/>
+                <TextBlock Text="Modifier la loge" VerticalAlignment="Center"/>
+                <Image Source="/Icon/calendar_40.png" Height="30" Margin="10,0,5,0"/>
+                <TextBlock Text="Afficher le planning" VerticalAlignment="Center"/>
+                <Image Source="/Icon/lock_40.png" Height="30" Margin="10,0,5,0"/>
+                <TextBlock Text="Verrouiller la log" VerticalAlignment="Center"/>
+            </StackPanel>
+        </DockPanel>
     </Grid>
 </Page>

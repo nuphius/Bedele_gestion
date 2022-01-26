@@ -26,10 +26,43 @@ namespace Bredele_Gestion
         {
             InitializeComponent();
             this.DataContext = viewBox;
+            //viewBox.LoadBoxBdd();
 
-            List<ViewBoxService> listBox = viewBox.LoadBoxBdd();
+            //List<ViewBoxService> listBox = viewBox.LoadBoxBdd();
 
-            listViewBox.ItemsSource = listBox;
+            //listViewBox.ItemsSource = listBox;
+        }
+
+
+        private void ModifyBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (int.TryParse(((Image)sender).Uid, out int id))
+            {
+                var mainWindow = Application.Current.MainWindow;
+                var frameRight = mainWindow.FindName("FrameRight") as Frame;
+                //var frameLeft = mainWindow.FindName("FrameLeft") as Frame;
+                frameRight.Navigate(new AjoutLocauxPage(id));
+                //rameLeft?.Navigate(new AdherentsPage());
+            }
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var a = ((Border)sender).Uid;
+            MessageBox.Show("border !!" + a);
+          
+        }
+
+        private void btnLock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (int.TryParse(((Image)sender).Uid, out int id))
+            {
+                var mainWindow = Application.Current.MainWindow;
+                //var frameRight = mainWindow.FindName("FrameRight") as Frame;
+                var frameLeft = mainWindow.FindName("FrameLeft") as Frame;
+                //frameRight.Navigate(new AjoutLocauxPage(id));
+                frameLeft.Navigate(new LockDatePage(id));
+            }
         }
     }
 }

@@ -25,6 +25,12 @@ namespace BredeleGestion.Services
 
         #endregion
 
+        #region ViewBox
+
+        public const string SELECTEQUIPBOXVIEW = "SELECT equipname from equipmentbox INNER JOIN equipment ON fkequipid=equipid WHERE fkboxid={0}";
+        public const string SELECTACTIVBOXVIEW = "SELECT activname from activitybox INNER JOIN activity ON fkactiid=activid WHERE fkboxid={0}";
+        #endregion
+
         #region requet box
         /// <summary>
         /// supprimer la box suivant l'id en argument
@@ -85,6 +91,8 @@ namespace BredeleGestion.Services
         #endregion
 
         #region Ajout/modifier prix
+
+        public const string LASTINSERT = "SELECT TOP 1 priceid FROM price ORDER BY priceid DESC;";
 
         public const string DELETEPRICE = "DELETE FROM price WHERE priceid={0}";
         /// <summary>

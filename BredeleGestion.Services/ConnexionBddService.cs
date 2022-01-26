@@ -10,10 +10,18 @@ namespace BredeleGestion.Services
     {
         #region Proriétés
         //Déclaration des propriétés
+
+//#if DEBUG
+//string a = @"Server=tcp:bredeleprojet.database.windows.net,1433;Initial Catalog=BredeleGestionBdd;Persist Security Info=False;User ID=bredele;Password=MIKAELmathieu21;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+//#else
+//string a = @"Server=tcp:bredeleprojet.database.windows.net,1433;Initial Catalog=BredeleGestionBdd;Persist Security Info=False;User ID=bredele;Password=MIKAELmathieu21;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+//#endif
+
         private string _logConnexion = @"Server=tcp:bredeleprojet.database.windows.net,1433;Initial Catalog=BredeleGestionBdd;Persist Security Info=False;User ID=bredele;Password=MIKAELmathieu21;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         private string _requeteSql;
         private string _table;
         private List<DataRow> _rstRequete;
+
 
         private string NameTable
         {
@@ -33,9 +41,9 @@ namespace BredeleGestion.Services
             NameTable = table;
             _rstRequete = new List<DataRow>();
         }
-        #endregion
+#endregion
 
-        #region SQL Select --> Tableau des résultats
+#region SQL Select --> Tableau des résultats
         /// <summary>
         /// Execute une requete SQL SELECT et retourne une liste tableau des résultats en DataRow
         /// </summary>
@@ -81,7 +89,7 @@ namespace BredeleGestion.Services
 
             return null;
         }
-        #endregion
+#endregion
 
         public bool InsertRequet()
         {

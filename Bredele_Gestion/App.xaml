@@ -82,6 +82,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
         <!-- Fin section déclaration des styles personnalisées-->
     </Application.Resources>
 </Application>

@@ -14,10 +14,13 @@
     <None Remove="Icon\addticket_40.png" />
     <None Remove="Icon\adduser_40.png" />
     <None Remove="Icon\Bredele_logo.png" />
+    <None Remove="Icon\calendar_40.png" />
     <None Remove="Icon\info_img.png" />
     <None Remove="Icon\info_img_80.png" />
+    <None Remove="Icon\lock_40.png" />
     <None Remove="Icon\logout_40.png" />
     <None Remove="Icon\loupe_40.png" />
+    <None Remove="Icon\modify_40.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,10 +30,13 @@
     <Resource Include="Icon\addticket_40.png" />
     <Resource Include="Icon\adduser_40.png" />
     <Resource Include="Icon\Bredele_logo.png" />
+    <Resource Include="Icon\calendar_40.png" />
     <Resource Include="Icon\info_img.png" />
     <Resource Include="Icon\info_img_80.png" />
+    <Resource Include="Icon\lock_40.png" />
     <Resource Include="Icon\logout_40.png" />
     <Resource Include="Icon\loupe_40.png" />
+    <Resource Include="Icon\modify_40.png" />
   </ItemGroup>
 
   <ItemGroup>

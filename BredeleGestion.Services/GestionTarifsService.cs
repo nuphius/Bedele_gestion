@@ -14,7 +14,7 @@ namespace BredeleGestion.Services
 
         private string _nameNewPrice;
         private string _newPrice;
-        private List<Prices> _priceSelected;
+        private ObservableCollection<Prices> _priceSelected = new ObservableCollection<Prices>();
         private string _updateName;
         private string _updateValue;
 
@@ -53,7 +53,7 @@ namespace BredeleGestion.Services
         }
 
 
-        public List<Prices> PriceSelected
+        public ObservableCollection<Prices> PriceSelected
         {
             get { return _priceSelected; }
             set
@@ -128,17 +128,17 @@ namespace BredeleGestion.Services
         {
             try
             {
-               List<Prices> listePrice = new List<Prices>();
+                //List<Prices> listePrice = new List<Prices>();
 
                 ConnexionBddService connexionBddService = new ConnexionBddService(RequetSqlService.SELECTALLPRICE, RequetSqlService.TABLEPRICE);
                 List<DataRow> ListBddPrice = connexionBddService.ExecuteRequet();
 
                 foreach (DataRow row in ListBddPrice)
                 {
-                    listePrice.Add(new Prices { Id = (int)row["priceid"], Name = row["pricename"].ToString(), Price = (decimal)row["pricevalue"] });
+                    PriceSelected.Add(new Prices { Id = (int)row["priceid"], Name = row["pricename"].ToString(), Price = (decimal)row["pricevalue"] });
                 }
 
-                PriceSelected = listePrice;
+                //PriceSelected = listePrice;
 
             }
             catch (Exception ex)
@@ -155,7 +155,7 @@ namespace BredeleGestion.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool AddUpdatePrice(int id = 0)
+        public bool AddUpdatePrice(int id = 0, Prices price = null)
         {
             string requetPrice;
 
@@ -166,11 +166,26 @@ namespace BredeleGestion.Services
             else
             {
                 requetPrice = string.Format(RequetSqlService.UPDATEPRICE, _updateName, _updateValue, id);
+
+                //_priceSelected.Where(x => x.Id == id).Select(y => y.Price = decimal.Parse(_updateValue));
+
+                PriceSelected.Remove(price);
+                PriceSelected.Add(new Prices { Id = (int)price.Id, Name = _updateName, Price = decimal.Parse(_updateValue.Replace(".", ",")) });
             }
 
             ConnexionBddService connexionBddService = new ConnexionBddService(requetPrice, RequetSqlService.TABLEPRICE);
 
-            return connexionBddService.InsertRequet();
+            bool flag = connexionBddService.InsertRequet();
+
+            if (id == 0)
+            {
+                connexionBddService = new ConnexionBddService(RequetSqlService.LASTINSERT, RequetSqlService.TABLEPRICE);
+                List<DataRow> lastBdd = connexionBddService.ExecuteRequet();
+
+                PriceSelected.Add(new Prices { Id = (int)lastBdd[0]["priceid"], Name = _nameNewPrice, Price = decimal.Parse(_newPrice.Replace(".", ",")) });
+            }
+
+            return flag;
         }
         #endregion
 
@@ -179,11 +194,13 @@ namespace BredeleGestion.Services
         /// Supprime le tarif passé en parametre
         /// </summary>
         /// <param name="id"></param>
-        public void DeletePrice(int id)
+        public void DeletePrice(Prices price)
         {
-            ConnexionBddService connexionBddService = new ConnexionBddService(string.Format(RequetSqlService.DELETEPRICE, id), RequetSqlService.TABLEPRICE);
+            ConnexionBddService connexionBddService = new ConnexionBddService(string.Format(RequetSqlService.DELETEPRICE, price.Id), RequetSqlService.TABLEPRICE);
 
             connexionBddService.InsertRequet();
+
+            PriceSelected.Remove(price);
         }
         #endregion
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,15 +36,11 @@ namespace Bredele_Gestion
             txtPriceError.Visibility = Visibility.Hidden;
             txtPriceError.Text = "";
 
-           // cmbBoxSelectPrice.Items.Add("dsfdskfdskfjls");
-
             if (priceService.AddUpdatePrice())
             {
                 txtPriceError.Foreground = new SolidColorBrush(Colors.Green);
                 txtPriceError.Text = "La box a bien été ajouté !";
                 txtPriceError.Visibility = Visibility.Visible;
-
-                priceService.LoadListPrice();
             }
             else
             {
@@ -72,10 +69,8 @@ namespace Bredele_Gestion
                     {
                         int id = (int)priceSelect.Id;
 
-                        if (priceService.AddUpdatePrice(id))
+                        if (priceService.AddUpdatePrice(priceSelect.Id, priceSelect))
                         {
-                            priceService.LoadListPrice();
-
                             txtPriceError.Foreground = new SolidColorBrush(Colors.Green);
                             txtPriceError.Visibility = Visibility.Visible;
                             txtPriceError.Text = "Tarif modifié !";
@@ -120,8 +115,7 @@ namespace Bredele_Gestion
                     {
                         int id = (int)priceSelect.Id;
 
-                        priceService.DeletePrice(id);
-                        priceService.LoadListPrice();
+                        priceService.DeletePrice(priceSelect);
 
                         txtPriceError.Foreground = new SolidColorBrush(Colors.Green);
                         txtPriceError.Visibility = Visibility.Visible;
