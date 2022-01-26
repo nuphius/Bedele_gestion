@@ -8,7 +8,7 @@ namespace BredeleGestion.Services
     public class ListAdherentService : INotifyPropertyChanged
     {
         //Affichage de la liste des adhérents /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        #region CDéclaration des prorpiétés
+        #region Déclaration des prorpiétés
 
         public int id;
         private string _name;
@@ -49,7 +49,6 @@ namespace BredeleGestion.Services
                 this.NotifyPropertyChanged(nameof(_nbAdherents));
             }
         }
-
         public string NbTiers
         {
             get { return _nbTiers; }
@@ -59,7 +58,6 @@ namespace BredeleGestion.Services
                 this.NotifyPropertyChanged(nameof(_nbTiers));
             }
         }
-
         public string NameSearch
         {
             get { return _nameSearch; }
@@ -84,7 +82,6 @@ namespace BredeleGestion.Services
             NbAdherents = CountTypeCust(RequetSqlService.COUNTADHERENT, "adhérents");
             NbTiers = CountTypeCust(RequetSqlService.COUNTNOADHERENT, "tiers");
         }
-
 
         private void SelectCustomers( string nameSearch="")
         {

@@ -34,8 +34,6 @@ namespace BredeleGestion.Services
                 _listLocaux.Add(new Locaux { Id = (int)row["boxid"], Name = row["boxname"].ToString(), Capacity = (int)row["boxcapacity"] });
             }
         }
-
-
     }
 
     public class Locaux
@@ -45,8 +43,6 @@ namespace BredeleGestion.Services
         public string Name { get; set; }
 
         public int Capacity { get; set; }
-
-
 
         public override string ToString()
         {
