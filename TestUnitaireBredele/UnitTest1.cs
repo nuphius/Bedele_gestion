@@ -10,6 +10,7 @@ namespace TestUnitaireBredele
     [TestClass]
     public class UnitTest1
     {
+        // Test unitaire pour l'ajout de locaux ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region Add log
         [TestMethod]
         public void loadbox()
@@ -25,6 +26,7 @@ namespace TestUnitaireBredele
         }
         #endregion
 
+        // Test unitaire sur le format des tarifs /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region NewPrice
         [TestMethod]
         public void NewPrice()
@@ -57,6 +59,7 @@ namespace TestUnitaireBredele
         }
         #endregion
 
+        // Test unitaire pour vérifier les utilisateurs ///////////////////////////////////////////////////////////////////////////////////////////////////////
         #region List customer
         [TestMethod]
         public void ListCustomer()
@@ -72,6 +75,7 @@ namespace TestUnitaireBredele
         }
         #endregion
 
+        // Test unitaire pour vérifier le criptage du mot de passe d'authentification /////////////////////////////////////////////////////////////////////////
         #region authentification user
         [TestMethod]
         public void TestAuthentificationUser()
@@ -103,6 +107,7 @@ namespace TestUnitaireBredele
         }
         #endregion
 
+        // Test unitaire sur l'ajout de membre ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region Add user
         [TestMethod]
         public void TestAddUsers()
