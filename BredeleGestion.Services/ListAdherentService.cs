@@ -122,10 +122,13 @@ namespace BredeleGestion.Services
 
             try
             {
-                foreach (var cust in listCust)
+                if (listCust != null)
                 {
-                    _listCust.Add(new ListAdherentService((int)cust["custid"],
-                        cust["custname"].ToString(), cust["custfirstname"].ToString()));
+                    foreach (var cust in listCust)
+                    {
+                        _listCust.Add(new ListAdherentService((int)cust["custid"],
+                            cust["custname"].ToString(), cust["custfirstname"].ToString()));
+                    }
                 }
             }
             catch (System.Exception ex)
