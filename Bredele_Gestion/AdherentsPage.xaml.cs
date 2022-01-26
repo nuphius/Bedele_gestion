@@ -18,7 +18,7 @@ namespace Bredele_Gestion
             InitializeComponent();
             this.DataContext = cust;
 
-            //Valeur du viltre par défaut.
+            //Valeur du filtre par défaut.
             cust.FilterSearchAdherent = 3;
             //affichage des customer dans la listView
             listBoxAdherentSearch.ItemsSource = cust.ListCust;
@@ -48,7 +48,6 @@ namespace Bredele_Gestion
             {
                 MessageBox.Show("Sélectionnez une ligne a modifier.", "Aucune ligne séléctionnée", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
         }
     }
 

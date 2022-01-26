@@ -10,6 +10,7 @@ namespace BredeleGestion.Services
 {
     public class ListLocauxService
     {
+        //Affichage de la liste des locaut ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         private ObservableCollection<Locaux> _listLocaux = new ObservableCollection<Locaux>();
 
         public ObservableCollection<Locaux> ListLocaux

@@ -33,19 +33,21 @@
                 Grid.Row="0"
                 Text="Liste des tarifs"            
                 FontFamily="Georgia"
-                FontSize="12"
+                FontSize="14"
                 FontWeight="Bold"
                 TextWrapping="WrapWithOverflow"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"/>
 
-        <!-- Liste adhérents-->
-        <ListBox x:Name="listBoxAllPrice"
-                 Grid.Row="1"
-                 FontWeight="Bold"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 Margin="40,0,40,0"/>
+        <!-- Liste tarifs-->
+        <ListView x:Name="listBoxAllPrice" Grid.Row="1" FontWeight="Bold" FontFamily="Georgia" FontSize="12" Margin="40,0,40,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="auto" Header="Nom" DisplayMemberBinding="{Binding Name}"></GridViewColumn> 
+                    <GridViewColumn Width="auto" Header="Valeur" DisplayMemberBinding="{Binding Value}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Page>

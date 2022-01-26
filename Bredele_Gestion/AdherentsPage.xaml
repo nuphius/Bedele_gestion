@@ -103,7 +103,7 @@
                  FontFamily="Georgia"
                  FontSize="12"
                  Margin="40,0,40,0"/>
-
+        
         <!-- Affichage adhérents-->
         <StackPanel Orientation="Vertical" Grid.Row="4" HorizontalAlignment="Left">
             <!-- Label - Compteur adhérents-->

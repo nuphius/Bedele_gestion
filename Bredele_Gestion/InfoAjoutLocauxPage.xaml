@@ -35,7 +35,7 @@
                 Grid.Row="0"
                 Text="Liste des locaux"            
                 FontFamily="Georgia"
-                FontSize="12"
+                FontSize="14"
                 FontWeight="Bold"
                 TextWrapping="WrapWithOverflow"
                 HorizontalAlignment="Center"

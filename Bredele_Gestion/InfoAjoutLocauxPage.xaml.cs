@@ -46,7 +46,7 @@ namespace Bredele_Gestion
                     }
                 }
                 else
-                    Console.WriteLine("Erreur sélection de la bos dans la liste box est NULL !!");
+                    Console.WriteLine("Erreur sélection de la box dans la liste box est NULL !!");
                 
             }
             else

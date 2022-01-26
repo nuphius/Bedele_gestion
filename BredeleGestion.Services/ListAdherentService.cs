@@ -7,6 +7,7 @@ namespace BredeleGestion.Services
 {
     public class ListAdherentService : INotifyPropertyChanged
     {
+        //Affichage de la liste des adhérents /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region CDéclaration des prorpiétés
 
         public int id;
