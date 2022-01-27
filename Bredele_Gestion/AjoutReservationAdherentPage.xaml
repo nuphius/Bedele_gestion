@@ -70,6 +70,7 @@
 
         <!-- Calendar - Calendrier de réservation-->
         <Calendar x:Name="CalendarReservation"
+                  SelectedDate="{Binding SelectedDate}"
                 Grid.Row="3"
                 Margin="20,0,20,0"
                 HorizontalAlignment="Stretch"
@@ -78,7 +79,7 @@
         <!-- TextBlock - Notification Adhérent-->
         <TextBlock x:Name="TxtBlockHourFormat"
                 Grid.Row="4"
-                Text="Heure au format hh:mm"
+                Text="Heure au format hh"
                 FontWeight="Bold"
                 FontFamily="Georgia"
                 FontSize="12"
@@ -88,42 +89,78 @@
                 VerticalAlignment="Center"/>
 
         <!-- TextBox - Heure de début de la réservation-->
-        <TextBox x:Name="TxtBoxHourStartReservation"
-                Grid.Row="5"
-                Text="Heure de début"
+        <DockPanel Grid.Row="5">
+            <TextBlock Text="Heure de début" 
+                       FontFamily="Georgia"
+                       FontSize="12"
+                       TextWrapping="Wrap"
+                       Margin="40,0,5,0"
+                       HorizontalAlignment="Stretch" 
+                       VerticalAlignment="Center"/>
+            <TextBox x:Name="TxtBoxHourStartReservation"
+                Text="{Binding HoursStart, UpdateSourceTrigger=PropertyChanged}"
                 FontFamily="Georgia"
                 FontSize="12"
                 TextWrapping="Wrap" 
-                Margin="40,0,40,0"
+                Margin="0,0,40,0"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"/>
-
+        </DockPanel>
         <!-- TextBox - Heure de début de la réservation-->
-        <TextBox x:Name="TxtBoxHourEndReservation"
-                Grid.Row="6"
-                Text="Heure de fin"
+        <DockPanel Grid.Row="6">
+            <TextBlock Text="Heure de fin" 
+                       FontFamily="Georgia"
+                       FontSize="12"
+                       TextWrapping="Wrap"
+                       Margin="40,0,5,0"
+                       HorizontalAlignment="Stretch" 
+                       VerticalAlignment="Center"/>
+            <TextBox x:Name="TxtBoxHourEndReservation"
+                Text="{Binding HoursEnd, UpdateSourceTrigger=PropertyChanged}"
                 FontFamily="Georgia"
                 FontSize="12"
                 TextWrapping="Wrap" 
-                Margin="40,0,40,0"
+                Margin="0,0,40,0"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"/>
+        </DockPanel>
 
         <!-- ComboBox - Activité-->
-        <ComboBox x:Name="ComboBoxActivityReservation"
-                Grid.Row="7"
-                FontFamily="Georgia"
-                FontSize="12"
-                HorizontalAlignment="Stretch"                  
-                Margin="40,5,40,5" />
+        <DockPanel Grid.Row="7">
+            <TextBlock Text="Activités : " 
+                       FontFamily="Georgia"
+                       FontSize="12"
+                       TextWrapping="Wrap"
+                       Margin="40,0,5,0"
+                       HorizontalAlignment="Stretch" 
+                       VerticalAlignment="Center"/>
+            <ComboBox x:Name="ComboBoxActivityReservation"
+                  ItemsSource="{Binding ListActivity}"
+                  SelectedItem="{Binding SelectedActivity}"
+                  FontFamily="Georgia"
+                  FontSize="12"
+                  HorizontalAlignment="Stretch"                  
+                  Margin="0,5,40,5">
+            </ComboBox>
+        </DockPanel>
 
         <!-- ComboBox - Nombre de place-->
-        <ComboBox x:Name="ComboBoxNbPlaceReservation"
-                Grid.Row="8"
-                FontFamily="Georgia"
-                FontSize="12"
-                HorizontalAlignment="Stretch"                
-                Margin="40,5,40,5" />
+        <DockPanel Grid.Row="8">
+            <TextBlock Text="Places : " 
+                       FontFamily="Georgia"
+                       FontSize="12"
+                       TextWrapping="Wrap"
+                       Margin="40,0,5,0"
+                       HorizontalAlignment="Stretch" 
+                       VerticalAlignment="Center"/>
+            <ComboBox x:Name="ComboBoxNbPlaceReservation"
+                      ItemsSource="{Binding ListPlaces}"
+                      SelectedItem="{Binding SelectedPlace}"
+                      FontFamily="Georgia"
+                      FontSize="12"
+                      HorizontalAlignment="Stretch"                
+                      Margin="0,5,40,5" />
+        </DockPanel>
 
         <!--</StackPanel - Tarif>-->
         <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Stretch">
@@ -168,10 +205,9 @@
         </DockPanel>
 
         <!-- Label - Message si erreur-->
-            <Label x:Name="lblReservationError"
+            <TextBlock x:Name="txtReservationError"
                 Grid.Row="11"
                 Grid.Column="1"
-                Content="Label"
                 FontFamily="Georgia"
                 FontSize="12"
                 FontWeight="Bold"

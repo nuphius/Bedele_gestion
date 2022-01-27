@@ -5,6 +5,9 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <BaseOutputPath></BaseOutputPath>
+    <DocumentationFile>C:\Users\alsc-adaitp21-bmi\OneDrive - CCI Campus Alsace\Documents\Projet-1\commentaires.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

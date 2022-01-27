@@ -23,7 +23,6 @@
             </Viewbox>
             <Button Style="{DynamicResource ButtonStyleCorner3}"
                 x:Name="btnCalendar"
-                Grid.Row="5"
                 Content="Verrouiller"
                 FontFamily="Georgia"
                 FontSize="12"
