@@ -13,7 +13,6 @@ namespace BredeleGestion.Services
 
         public ViewBookService(int id = 0)
         {
-            //return LoadBookBox(id);
         }
 
         public List<BookBox> LoadBookBox(int id)
@@ -57,6 +56,14 @@ namespace BredeleGestion.Services
                 }
             }
             return _listeBookBox;
+        }
+
+        public bool DeleteBook(int idBook)
+        {
+            string requet = string.Format(RequetSqlService.DELETEBOOK, idBook);
+            ConnexionBddService connexionBddService = new ConnexionBddService(requet, RequetSqlService.TABLEBOOK);
+
+            return connexionBddService.InsertRequet();
         }
     }
 

@@ -183,7 +183,7 @@
         <!--</StackPanel - Button>-->
         <DockPanel Grid.Row="10" HorizontalAlignment="Stretch" Margin="40,0,40,0">
             <!-- Button - Modifier-->
-            <Button Style="{DynamicResource ButtonStyleCorner3}"
+            <!--<Button Style="{DynamicResource ButtonStyleCorner3}"
                 x:Name="BtnDeleteReservation"
                 Content="Supprimer"                    
                 FontFamily="Georgia"
@@ -192,7 +192,7 @@
                 HorizontalAlignment="Left"
                 Height="30"
                 Width="80"
-                MaxWidth="80"/>
+                MaxWidth="80"/>-->
             <!-- Button - Supprimer-->
             <Button Style="{DynamicResource ButtonStyleCorner3}"
                 x:Name="BtnValidReservation"

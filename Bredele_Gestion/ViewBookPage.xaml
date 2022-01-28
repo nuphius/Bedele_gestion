@@ -5,16 +5,24 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Bredele_Gestion"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="800"
       Title="ViewBookPage">
 
     <Grid Background="#FFEEF5FD">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
         <!-- ListView - Conteneur -->
         <ListView x:Name="listViewBook"
                   ItemsSource="{Binding ListBookBox}"
                   FontWeight="Bold"
+                  Grid.Row="0"
                   FontSize="14"   
-                  Margin="50" HorizontalContentAlignment="Center">
+                  MaxHeight="800"
+                  MinHeight="400"
+                  VerticalAlignment="Top"
+                  Margin="50,50,50,10" HorizontalContentAlignment="Center">
             <ListView.View>
                 <GridView>
                     <GridViewColumn 
@@ -49,7 +57,18 @@
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
-
         </ListView>
+        <Button Style="{DynamicResource ButtonStyleCorner3}"
+                x:Name="btnDeleteBook"
+                Grid.Row="1"
+                Content="Supprimer"                    
+                FontFamily="Georgia"
+                HorizontalAlignment="Right"
+                FontSize="12"
+                Margin="0,0,50,50"
+                FontWeight="Bold"
+                Height="30"
+                Width="80"
+                MaxWidth="80" Click="btnDeleteBook_Click"/>
     </Grid>
 </Page>

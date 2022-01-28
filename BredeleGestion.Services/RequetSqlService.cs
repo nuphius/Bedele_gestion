@@ -15,6 +15,7 @@ namespace BredeleGestion.Services
 
         public const string SELECTBOOK = "SELECT * FROM box INNER JOIN book ON box.boxid=book.fkboxid INNER JOIN customer " +
             "ON book.fkcustid=customer.custid WHERE boxid={0} ORDER BY bookbegindate";
+        public const string DELETEBOOK = "DELETE FROM book WHERE bookid={0}";
 
         #endregion
 
