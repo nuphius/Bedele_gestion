@@ -29,6 +29,8 @@ namespace Bredele_Gestion
             _idBox = id;
         }
 
+        // Intéraction du bouton Verrouiller qui verrouille la loge jusqu'à la date sélectionné avec message de confirmation surgissant /////////////////////////////////
+        #region Bouton Verrouiller
         private void btnCalendar_Click(object sender, RoutedEventArgs e)
         {
             if (calendarLock.SelectedDate.HasValue)
@@ -45,7 +47,7 @@ namespace Bredele_Gestion
                 if (warning == MessageBoxResult.OK)
                 {
                     if (!connexionBddService.InsertRequet())
-                        LogTools.AddLog(LogTools.LogType.ERREUR, "Problème lors de l'insertion de la date verrouillage dans la BDD");
+                        LogTools.AddLog(LogTools.LogType.ERREUR, "Problème lors de l'insertion de la date de verrouillage dans la BDD");
                     else
                         MessageBox.Show("La Loge a bien été verrouillée.", "Confirmation Verrouillage", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -55,10 +57,8 @@ namespace Bredele_Gestion
                 Frame frameLeft = mainWindow.FindName("FrameLeft") as Frame;
                 frameLeft.Navigate(new AdherentsPage());
                 frameRight.Navigate(new ViewBoxPage());
-
             }
-            
-            
         }
+        #endregion
     }
 }

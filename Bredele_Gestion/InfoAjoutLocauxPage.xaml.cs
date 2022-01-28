@@ -28,6 +28,8 @@ namespace Bredele_Gestion
             listBoxAllBox.ItemsSource = listLocaux.ListLocaux;
         }
 
+        // Intéraction du bouton Modifier qui renvoit vers la page de modification des locaux du local sélectionné dans la liste ////////////////////////////////////////
+        #region Bouton Modifier
         private void btnModifyBox_Click(object sender, RoutedEventArgs e)
         {
             if (listBoxAllBox.SelectedIndex != -1)
@@ -47,12 +49,13 @@ namespace Bredele_Gestion
                 }
                 else
                     Console.WriteLine("Erreur sélection de la box dans la liste box est NULL !!");
-                
+
             }
             else
             {
                 MessageBox.Show("Sélectionnez une ligne a modifier.", "Aucune ligne séléctionnée", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        #endregion
     }
 }
