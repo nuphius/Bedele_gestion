@@ -8,7 +8,7 @@
       d:DesignHeight="700" d:DesignWidth="800"
       Title="InfoAjoutTarifsPage">
 
-    <!-- Grid pour l'agencement de la page-->
+    <!-- Grid pour l'agencement de la page -->
     <Grid Background="#FFEEF5FD">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -40,26 +40,25 @@
 
         <!-- Liste tarifs -->
         <ListView x:Name="listBoxAllPrice"
-                  Grid.Row="1"
-                  FontWeight="Bold"
-                  FontFamily="Georgia"
-                  FontSize="12"
-                  Margin="40,0,40,0">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn 
+                Grid.Row="1"
+                FontWeight="Bold"
+                FontFamily="Georgia"
+                FontSize="12"
+                Margin="40,0,40,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn 
                                 Width="auto"
                                 Header="Nom"
                                 DisplayMemberBinding="{Binding Name}">
-                            </GridViewColumn>
-                            <GridViewColumn
+                    </GridViewColumn>
+                    <GridViewColumn
                                 Width="auto"
                                 Header="Valeur"
-                                DisplayMemberBinding="{Binding Value}">                                
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
+                                DisplayMemberBinding="{Binding Value}">
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
         </ListView>
-
     </Grid>
 </Page>

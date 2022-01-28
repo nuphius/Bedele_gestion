@@ -8,7 +8,7 @@
       d:DesignHeight="700" d:DesignWidth="800"
       Title="AdherentsPage">
     <Page.Resources>
-        <local:RadioConverter x:Key="RadioConverter" />
+        <local:RadioConverter x:Key="RadioConverter"/>
     </Page.Resources>
 
     <!-- Grid pour l'agencement de la page-->
