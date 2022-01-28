@@ -125,7 +125,7 @@
         </ListView>
         <!-- DockPanel - Légende -->
         <DockPanel VerticalAlignment="Bottom">
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" Margin="10">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" Margin="50,10,0,10">
                 <!-- Image / TextBlock - Modifier la loge -->
                 <Image Source="/Icon/modify_40.png" Height="30"/>
                 <TextBlock Text="Modifier la loge" VerticalAlignment="Center"/>
