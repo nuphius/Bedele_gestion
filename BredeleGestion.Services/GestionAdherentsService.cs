@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace BredeleGestion.Services
@@ -11,6 +12,7 @@ namespace BredeleGestion.Services
     {
         public bool birthDateFlag = false;
         public bool mailFlag = false;
+        public bool modifCustCpFlag = false;
 
         private int _civility;
         private string _errorMessage = string.Empty;
@@ -298,6 +300,19 @@ namespace BredeleGestion.Services
         {
             _errorMessage = string.Empty;
 
+            int age = 0;
+            try
+            {
+                DateTime birth = DateTime.Parse(_birthDate);
+                var ageTemps = DateTime.Now.Subtract(birth);
+                age = int.Parse(ageTemps.ToString());
+            }
+            catch (Exception ex)
+            {
+                LogTools.AddLog(LogTools.LogType.ERREUR, "Erreur de convertion d'une date en age pour calcul des 18 ans");
+            }
+            
+
             if (string.IsNullOrEmpty(_name))
             {
                 _errorMessage += "- Le champ NOM est obligatoire\n";
@@ -322,6 +337,10 @@ namespace BredeleGestion.Services
             {
                 _errorMessage += "- Le champ DATE DE NAISSANCE est obligatoire\n";
             }
+            if (age < 18)
+            {
+                _errorMessage += "- Vous devez avoir au moins 18 ans\n";
+            }
             if (string.IsNullOrEmpty(_phone))
             {
                 _errorMessage += "- Le champ TELEPHONE est obligatoire\n";
@@ -342,6 +361,9 @@ namespace BredeleGestion.Services
         /// <param name="idUser"></param>
         public void LoadUser(int idUser)
         {
+            if (idUser != 0)
+                modifCustCpFlag = true;
+
             ConnexionBddService connexionBddService = new ConnexionBddService(RequetSqlService.SELECTUSER + idUser, RequetSqlService.TABLECUST);
             List<DataRow> listUsers = connexionBddService.ExecuteRequet();
 
@@ -351,6 +373,7 @@ namespace BredeleGestion.Services
                 FirstName = user["custfirstname"].ToString();
                 Address = user["custaddress"].ToString();
                 Address2 = user["custaddress2"].ToString();
+                _idCity = (int)user["fkcityid"];
                 Cp = user["addpostal"].ToString();
                 BirthDate = String.Format("{0:dd/MM/yyyy}", user["custbirthdate"]);
                 Phone = user["custphone"].ToString();
@@ -393,11 +416,17 @@ namespace BredeleGestion.Services
         /// <returns></returns>
         public void SelectCity(string cp)
         {
+            string requet = cp;
+
+            if (modifCustCpFlag)
+            {
+                requet += " AND addid=" + _idCity.ToString();
+                modifCustCpFlag = false;
+            }
 
             _ListCity.Clear();
 
-            ConnexionBddService connexionBddService = new ConnexionBddService(RequetSqlService.SELECTCPCITY + cp, RequetSqlService.TABLECITY);
-
+            ConnexionBddService connexionBddService = new ConnexionBddService(RequetSqlService.SELECTCPCITY + requet, RequetSqlService.TABLECITY);
             List<DataRow> listCity = connexionBddService.ExecuteRequet();
 
             if (listCity != null)
