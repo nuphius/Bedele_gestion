@@ -119,7 +119,7 @@ namespace TestUnitaireBredele
             Debug.WriteLine(user.Name);
 
             user.SelectCity("68350");
-            Debug.WriteLine(user.City);
+            //Debug.WriteLine(user.City);
 
             user.BirthDate = "09/10/1984";
             Debug.WriteLine(user.BirthDate);

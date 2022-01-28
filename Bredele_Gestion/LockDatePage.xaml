@@ -5,52 +5,116 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Bredele_Gestion"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="800"
       Title="LockDatePage">
 
     <!-- Grid pour l'agencement de la page -->
     <Grid Background="#FFEEF5FD">
-        <!-- StackPanel - Mise en foirme -->
-        <StackPanel 
-            HorizontalAlignment="Center"
-            Width="250">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60px"/>
+            <RowDefinition Height="170px"/>
+            <RowDefinition Height="20px"/>
+            <RowDefinition Height="20px"/>
+            <RowDefinition Height="20px"/>
+            <RowDefinition Height="40px"/>
+            <RowDefinition Height="100px"/>            
+            <RowDefinition Height="20px"/>
+            <RowDefinition Height="20px"/>
+            <RowDefinition Height="20px"/>
+            <RowDefinition Height="20px"/>
+        </Grid.RowDefinitions>
+        
             <!-- TextBlock - Verrouillage de la loge -->
-            <TextBlock Text="Verrouiller la loge" 
-                HorizontalAlignment="Center"
-                FontWeight="Bold"
+            <TextBlock x:Name="TxtBlockBlockTitlePage"
+                Grid.Row="0"
+                Text="Verrouiller la loge"
+                FontFamily="Georgia"
                 FontSize="18"
-                FontFamily="Georgia"/>
+                FontWeight="Bold"          
+                HorizontalAlignment="Center"/>
 
-            <!-- Calendar - Affichage du calendrier -->
-            <Viewbox>
-                <Calendar x:Name="calendarLock" 
-                Margin="0,40,0,0" />
-            </Viewbox>
+            <!-- Calendar - Affichage du calendrier -->            
+            <Calendar x:Name="calendarLock"
+                Grid.Row="1"
+                Margin="20,0,20,0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"/>
 
-            <!-- TextBlock - Information verrouillage de la loge-->
-            <TextBlock Text="Pour verrouiller la loge" 
-                HorizontalAlignment="Center"
-                FontWeight="Bold"
-                FontSize="18"
-                FontFamily="Georgia"/>
-            <TextBlock Text="cliqué deux fois." 
-                HorizontalAlignment="Center"
-                FontWeight="Bold"
-                FontSize="18"
-                FontFamily="Georgia"/>
+        <!-- TextBlock - Information verrouillage de la loge-->
+            <TextBlock x:Name="TxtBlockBlockInfo1" 
+                Grid.Row="2"
+                Text="Pour verrouiller la loge"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"          
+                HorizontalAlignment="Center"/>
+            <TextBlock x:Name="TxtBlockBlockInfo2" 
+                Grid.Row="3"
+                Text="cliqué deux fois"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"          
+                HorizontalAlignment="Center"/>
+            <TextBlock x:Name="TxtBlockBlockInfo3" 
+                Grid.Row="4"
+                Text="sur verrouillé."
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"          
+                HorizontalAlignment="Center"/>
 
-            <!-- Button - Verrouiller -->
+        <!-- Button - Verrouiller -->
             <Button Style="{DynamicResource ButtonStyleCorner3}"
                 x:Name="btnCalendar"
+                Grid.Row="5"
                 Content="Verrouiller"
                 FontFamily="Georgia"
                 FontSize="12"
                 FontWeight="Bold"
-                Margin="0,20,0,0"
+                Margin="0,0,40,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Height="30"
-                Width="80" Click="btnCalendar_Click"/>
-        </StackPanel>
+                Width="80"
+                Click="btnCalendar_Click"/>
+        
+            <!-- Image - Info -->
+            <Image Source="/Icon/info_img_80.png"
+                Grid.Row="6"
+                VerticalAlignment="Center"
+                Height="80"
+                Width="80"
+                StretchDirection="Both"
+                Stretch="UniformToFill"/>
+
+            <!-- TextBlock - Information déverrouillage de la loge-->
+            <TextBlock x:Name="TxtBlockUnBlockInfo1"
+                Grid.Row="7"
+                Text="Pour déverrouiller la loge" 
+                HorizontalAlignment="Center"
+                FontWeight="Bold"
+                FontSize="12"
+                FontFamily="Georgia"/>
+            <TextBlock x:Name="TxtBlockUnBlockInfo2"
+                Grid.Row="8"
+                Text="sélectionner la date du jour" 
+                HorizontalAlignment="Center"
+                FontWeight="Bold"
+                FontSize="12"
+                FontFamily="Georgia"/>
+            <TextBlock x:Name="TxtBlockUnBlockInfo3"
+                Grid.Row="9"
+                Text="puis verrouillé, la loge" 
+                HorizontalAlignment="Center"
+                FontWeight="Bold"
+                FontSize="12"
+                FontFamily="Georgia"/>
+            <TextBlock x:Name="TxtBlockUnBlockInfo4"
+                Grid.Row="10"
+                Text="redeviendra disponible." 
+                HorizontalAlignment="Center"
+                FontWeight="Bold"
+                FontSize="12"
+                FontFamily="Georgia"/>
     </Grid>
 </Page>
