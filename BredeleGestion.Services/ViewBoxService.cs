@@ -62,7 +62,7 @@ namespace BredeleGestion.Services
             {
                 string dateLockString = string.Empty;
                 DateTime date;
-                DateTime today = DateTime.Now;
+                DateTime today = DateTime.Now.Date;
 
                 Debug.WriteLine(today.Date);
 
@@ -70,7 +70,20 @@ namespace BredeleGestion.Services
                 if (!string.IsNullOrEmpty(box[4].ToString()))
                 {
                     date = Convert.ToDateTime(box[4]);
-                    dateLockString = $"Verrouillé jusqu'au : {date.ToString("dd/MM/yyyy")}";
+
+                    if (today == date.Date)
+                    {
+                        dateLockString = "Disponible";
+
+                        connexionBddService = new ConnexionBddService(string.Format(RequetSqlService.UPDATEDATEBOXNULL, box["boxid"].ToString()), RequetSqlService.TABLEBOX);
+                        connexionBddService.InsertRequet();
+
+                    }
+                    else
+                    {
+                        dateLockString = $"Verrouillé jusqu'au : {date.ToString("dd/MM/yyyy")}";
+                    }
+
                     Debug.WriteLine(date.Date);
                 }
                 else
