@@ -7,17 +7,16 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ViewBoxPage">
-
+    
+    <!-- Grid pour l'agencement de la page -->
     <Grid Background="#FFEEF5FD">
-        <!--<List.itemconteneur style gettype listview item set property =" focusabl value false"-->
+        <!-- ListView - Conteneur -->
         <ListView x:Name="listViewBox"
                   ItemsSource="{Binding ListBox, UpdateSourceTrigger=Explicit, Mode=TwoWay}" 
                   SelectedItem="{Binding SelectedBox, UpdateSourceTrigger=PropertyChanged}"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   Margin="50">
-            <!--<ListView.ItemContainerStyle>
-                
-            </ListView.ItemContainerStyle>-->
+           
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel/>
@@ -32,6 +31,8 @@
                             BorderThickness="1" 
                             CornerRadius="10" 
                             Margin="10" Padding="5">
+           
+                        <!-- Grid - Conteneur des box à afficher -->
                         <Grid>
                             <Grid.Background>
                                 <ImageBrush ImageSource="/Icon/Bredele_logo.png" Opacity="0.1"/>
@@ -46,17 +47,21 @@
                             <StackPanel>
 
                             </StackPanel>
+                            <!-- TextBlock - Nom de la loge -->
                             <TextBlock Text="{Binding Name}" Grid.Row="0" 
                                        HorizontalAlignment="Center" 
                                        FontWeight="Bold" 
                                        FontSize="15" 
                                        Foreground="#FFDE3A3A"
-                                       TextWrapping="WrapWithOverflow"/>
+                                       TextWrapping="WrapWithOverflow"/>                            
+                            
                             <DockPanel Grid.Row="1" HorizontalAlignment="Stretch">
+                                <!-- StackPanel - Capacité de la loge -->
                                 <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" HorizontalAlignment="Left">
                                     <TextBlock Text="Capacité : " FontWeight="Bold"/>
                                     <TextBlock Text="{Binding Capacity}" />
                                 </StackPanel>
+                                <!-- StackPanel - Surface de la loge -->
                                 <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
                                     <TextBlock Text="Surface : " FontWeight="Bold"/>
                                     <TextBlock Text="{Binding Surface}" Grid.Row="2"/>
@@ -64,10 +69,12 @@
                             </DockPanel>
 
                             <DockPanel Grid.Row="2" HorizontalAlignment="Stretch" Cursor="Hand">
+                                <!-- StackPanel - Equipement de la loge -->
                                 <StackPanel DockPanel.Dock="Left" HorizontalAlignment="Left">
                                     <TextBlock Text="Equipements : " FontWeight="Bold"/>
                                     <TextBlock Text="{Binding OptionEquip}" />
                                 </StackPanel>
+                                <!-- StackPanel - Activité de la loge -->
                                 <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right">
                                     <TextBlock Text="Activités : " FontWeight="Bold"/>
                                     <TextBlock Text="{Binding OptionActiv}"/>
@@ -75,6 +82,7 @@
                             </DockPanel>
 
                             <DockPanel Grid.Row="3" HorizontalAlignment="Stretch">
+                                <!-- Image - Image cliquable pour modifier la loge -->
                                 <Image x:Name="btnModify" Source="/Icon/modify_40.png" 
                                        DockPanel.Dock="Left"
                                        HorizontalAlignment="Left"
@@ -84,24 +92,27 @@
                                        ToolTip="Modifier la loge"
                                        Tag="{Binding DateLock, Mode=OneWay}"
                                        Uid="{Binding Id, Mode=OneWay}"/>
+                                <!-- Image - Image cliquable pour afficher les réservations de la loge -->
                                 <Image x:Name="btnCalendar" Source="/Icon/calendar_40.png" 
                                        DockPanel.Dock="left"
                                        HorizontalAlignment="Center"
                                        Cursor="Hand"
                                        Margin="10,0"
+                                       ToolTip="Afficher les réservations de cette loge"
                                        Tag="{Binding DateLock, Mode=OneWay}"
-                                       Uid="{Binding Id, Mode=OneWay}"
-                                       ToolTip="Afficher les réservations de cette loge"/>
+                                       Uid="{Binding Id, Mode=OneWay}"/>
+                                <!-- Image - Image cliquable pour verrouiller la loge -->
                                 <Image x:Name="btnLock" Source="/Icon/lock_40.png" 
                                        DockPanel.Dock="Right"
                                        HorizontalAlignment="Right"
+                                       MouseDown="btnLock_MouseDown" 
                                        Cursor="Hand"
                                        Margin="10,0"
+                                       ToolTip="Verrouiller la loge jusqu'a une date"
                                        Tag="{Binding DateLock, Mode=OneWay}"
-                                       Uid="{Binding Id, Mode=OneWay}"
-                                       MouseDown="btnLock_MouseDown" 
-                                       ToolTip="Verrouiller la loge jusqu'a une date" />
+                                       Uid="{Binding Id, Mode=OneWay}"/>
                             </DockPanel>
+                            <!-- TextBlock - Date jusqu'à laquyelle la loge est indisponible -->
                             <TextBlock x:Name="txtDateLock"
                                        Text="{Binding DateLockString, Mode=OneWay}"
                                        Grid.Row="4"
@@ -112,12 +123,16 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <!-- DockPanel - Légende -->
         <DockPanel VerticalAlignment="Bottom">
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" Margin="10">
+                <!-- Image / TextBlock - Modifier la loge -->
                 <Image Source="/Icon/modify_40.png" Height="30"/>
                 <TextBlock Text="Modifier la loge" VerticalAlignment="Center"/>
+                <!-- Image / TextBlock - Afficher le planning -->
                 <Image Source="/Icon/calendar_40.png" Height="30" Margin="10,0,5,0"/>
                 <TextBlock Text="Afficher le planning" VerticalAlignment="Center"/>
+                <!-- Image / TextBlock - Verrouiller a loge -->
                 <Image Source="/Icon/lock_40.png" Height="30" Margin="10,0,5,0"/>
                 <TextBlock Text="Verrouiller la log" VerticalAlignment="Center"/>
             </StackPanel>

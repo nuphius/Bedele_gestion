@@ -11,7 +11,7 @@
         <local:RadioConverter x:Key="RadioConverter"/>
     </Page.Resources>
 
-    <!-- Grid pour l'agencement de la page-->
+    <!-- Grid pour l'agencement de la page -->
     <Grid Background="#FFEEF5FD">
         <Grid.RowDefinitions>
             <RowDefinition Height="30px"/>
@@ -22,7 +22,7 @@
             <RowDefinition Height="40px"/>            
         </Grid.RowDefinitions>
 
-        <!-- Label - Titre-->
+        <!-- Label - Titre -->
         <Label x:Name="lblAdherentTiersSearch"
                Grid.Row="0"
                Content="Adhérent et Tiers"
@@ -33,7 +33,7 @@
                HorizontalAlignment="Center"
                VerticalAlignment="Top"/>
 
-        <!-- Affichage adhérents-->
+        <!-- Affichage adhérents -->
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
             <!-- Image - Loupe-->
             <Image Source="/Icon/loupe_40.png"
@@ -43,7 +43,7 @@
                    Height="20"
                    Width="20"/>
 
-            <!-- TextBox - Recherche adhérents-->
+            <!-- TextBox - Recherche adhérents -->
             <TextBox x:Name="txtBoxNameAdherentSearch"
                      Text="{Binding NameSearch, UpdateSourceTrigger=PropertyChanged}"
                      FontFamily="Georgia"
@@ -54,9 +54,9 @@
                      VerticalAlignment="Center"/>
         </StackPanel>
 
-        <!-- Critères de recherche-->
+        <!-- Critères de recherche -->
         <StackPanel Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Left">
-            <!-- Radio Button - Sélection adhérents-->
+            <!-- Radio Button - Sélection adhérents -->
             <RadioButton x:Name="rdButtonAdherentSearch"                         
                          Content="Adhérents"
                          FontWeight="Bold"
@@ -69,9 +69,8 @@
                                      Converter={StaticResource RadioConverter},
                                      ConverterParameter=1}"/>
 
-            <!-- Radio Button - Sélection tiers-->
+            <!-- Radio Button - Sélection tiers -->
             <RadioButton x:Name="rdButtonTiersSearch"
-                         
                          Content="Tiers"
                          FontWeight="Bold"
                          FontFamily="Georgia"
@@ -83,7 +82,7 @@
                                      Converter={StaticResource RadioConverter},
                                      ConverterParameter=2}"/>
 
-            <!-- Radio Button - Sélection tous-->
+            <!-- Radio Button - Sélection tous -->
             <RadioButton x:Name="rdButtonAllSearch"
                          Content="Tous"
                          FontWeight="Bold"
@@ -96,7 +95,7 @@
                                      ConverterParameter=3}"/>
         </StackPanel>
 
-        <!-- Liste adhérents-->
+        <!-- Liste adhérents -->
         <ListBox x:Name="listBoxAdherentSearch"
                  Grid.Row="3"
                  FontWeight="Bold"
@@ -104,7 +103,7 @@
                  FontSize="12"
                  Margin="40,0,40,0"/>
         
-        <!-- Affichage adhérents-->
+        <!-- Affichage adhérents -->
         <StackPanel Orientation="Vertical" Grid.Row="4" HorizontalAlignment="Left">
             <!-- Label - Compteur adhérents-->
             <Label x:Name="lblCounterAdherentDisplay"
@@ -115,7 +114,7 @@
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"/>
 
-            <!-- Label - Compteur tiers-->
+            <!-- Label - Compteur tiers -->
             <Label x:Name="lblCounterTiersDisplay"
                    Content="{Binding NbTiers}"
                    FontFamily="Georgia"
@@ -125,7 +124,7 @@
                    VerticalAlignment="Bottom"/>
         </StackPanel>
 
-        <!-- Button - Modifier adhérents-->
+        <!-- Button - Modifier adhérents -->
         <Button Style="{DynamicResource ButtonStyleCorner3}"
                 x:Name="btnModifyAdherentSearch"
                 Grid.Row="5"
