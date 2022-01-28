@@ -13,6 +13,9 @@ namespace BredeleGestion.Services
         public const string INSERTBOOK = "INSERT INTO book(bookbegindate, bookenddate, bookbegintime, bookendtime, fkboxid, fkcustid) VALUES ('{0}', '0001-01-01', '{1}', '{2}', {3}, {4})";
         public const string TABLEBOOK = "book";
 
+        public const string SELECTBOOK = "SELECT * FROM box INNER JOIN book ON box.boxid=book.fkboxid INNER JOIN customer " +
+            "ON book.fkcustid=customer.custid WHERE boxid={0} ORDER BY bookbegindate";
+
         #endregion
 
         #region requet activitybox

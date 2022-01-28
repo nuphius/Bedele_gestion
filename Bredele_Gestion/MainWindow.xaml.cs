@@ -46,6 +46,7 @@ namespace Bredele_Gestion
         private void BtnAddTicket_Click(object sender, RoutedEventArgs e)
         {
             FrameLeft.Navigate(new AjoutReservationAdherentPage());
+            FrameRight.Navigate(new ViewBoxPage());
         }
 
         private void BtnAddBox_Click(object sender, RoutedEventArgs e)

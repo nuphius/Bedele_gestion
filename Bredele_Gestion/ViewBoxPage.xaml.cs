@@ -62,5 +62,15 @@ namespace Bredele_Gestion
                 frameLeft.Navigate(new LockDatePage(id));
             }
         }
+
+        private void btnCalendar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (int.TryParse(((Image)sender).Uid, out int id))
+            {
+                var mainWindow = Application.Current.MainWindow;
+                Frame frameRight = mainWindow.FindName("FrameRight") as Frame;
+                frameRight.Navigate(new ViewBookPage(id));
+            }
+        }
     }
 }

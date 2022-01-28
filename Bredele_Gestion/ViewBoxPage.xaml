@@ -100,7 +100,7 @@
                                        Margin="10,0"
                                        ToolTip="Afficher les réservations de cette loge"
                                        Tag="{Binding DateLock, Mode=OneWay}"
-                                       Uid="{Binding Id, Mode=OneWay}"/>
+                                       Uid="{Binding Id, Mode=OneWay}" MouseDown="btnCalendar_MouseDown"/>
                                 <!-- Image - Image cliquable pour verrouiller la loge -->
                                 <Image x:Name="btnLock" Source="/Icon/lock_40.png" 
                                        DockPanel.Dock="Right"

@@ -23,7 +23,6 @@ namespace BredeleGestion.Services
             }
         }
 
-
         private ObservableCollection<Box> _listBox = new ObservableCollection<Box>();
 
         public ObservableCollection<Box> ListBox
@@ -64,9 +63,6 @@ namespace BredeleGestion.Services
                 DateTime date;
                 DateTime today = DateTime.Now.Date;
 
-                Debug.WriteLine(today.Date);
-
-
                 if (!string.IsNullOrEmpty(box[4].ToString()))
                 {
                     date = Convert.ToDateTime(box[4]);
@@ -83,8 +79,6 @@ namespace BredeleGestion.Services
                     {
                         dateLockString = $"Verrouillé jusqu'au : {date.ToString("dd/MM/yyyy")}";
                     }
-
-                    Debug.WriteLine(date.Date);
                 }
                 else
                 {
