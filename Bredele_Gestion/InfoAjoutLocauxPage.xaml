@@ -11,10 +11,9 @@
     <!-- Grid pour l'agencement de la page-->
     <Grid Background="#FFEEF5FD">
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <!-- TextBlock - Titre Locaux Info-->
@@ -49,20 +48,30 @@
         </ListView>-->
 
 
-        <!-- Liste tarifs-->
-        <ListView x:Name="listBoxAllBox" Grid.Row="1" FontWeight="Bold" FontFamily="Georgia" FontSize="12" Margin="40,0,40,0">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="auto" Header="Nom de la salle" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
-                    <GridViewColumn Width="auto" Header="Capacité" DisplayMemberBinding="{Binding Capacity}"></GridViewColumn>
-                </GridView>
-            </ListView.View>
+        <!-- Liste des Locaux -->
+        <ListView x:Name="listBoxAllBox"
+                  Grid.Row="1"
+                  FontWeight="Bold"
+                  FontFamily="Georgia"
+                  FontSize="12"
+                  Margin="40,0,40,0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                                Width="auto"
+                                Header="Nom de la salle"
+                                DisplayMemberBinding="{Binding Name}">                                
+                            </GridViewColumn>
+                            <GridViewColumn
+                                Width="auto"
+                                Header="Capacité"
+                                DisplayMemberBinding="{Binding Capacity}">
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
         </ListView>
 
-
-
-
-
+        <!-- Button - Modifier Local Sélectionner -->
         <Button Style="{DynamicResource ButtonStyleCorner3}"
                 x:Name="btnModifyBox"
                 Grid.Row="2"
@@ -75,5 +84,6 @@
                 VerticalAlignment="top"
                 Height="30"
                 Width="80" Click="btnModifyBox_Click"/>
+        
     </Grid>
 </Page>

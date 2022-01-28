@@ -8,9 +8,8 @@
       d:DesignHeight="650" d:DesignWidth="800"
       Title="AjoutAdherentPage">
 
-    <!-- Grid pour l'agencement de la page-->
+    <!-- Grid pour l'agencement de la page -->
     <Grid Background="#FFEEF5FD">
-
         <Grid.RowDefinitions>
             <RowDefinition Height="120"/>
             <RowDefinition Height="30"/>
@@ -25,7 +24,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="40"/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -34,7 +33,7 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Label - Titre-->
+        <!-- Label - Titre -->
         <Label x:Name="lblTitleCustAdherent"
                 Grid.Row="0"
                 Grid.Column="1"
@@ -47,158 +46,164 @@
                 HorizontalAlignment="center"
                 VerticalAlignment="center"/>
 
-        <!-- ComboBox - Liste déroulente Civilité-->
+        <!-- ComboBox - Liste déroulente Civilité -->
         <Label x:Name="lblBoxCustCivility"
-               Grid.Row="1"
-               Grid.Column="1"
-               Content="Civilité"
-               FontFamily="Georgia"
-               FontSize="12"
-               FontWeight="Bold"
-               VerticalAlignment="Bottom"
-               HorizontalAlignment="Left"/>
+                Grid.Row="1"
+                Grid.Column="1"
+                Content="Civilité"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"/>
         <ComboBox x:Name="cmbBoxCustCivility"
-                  SelectedIndex="{Binding Civility, UpdateSourceTrigger=Explicit}"
-                  Height="20"
-                  Width="80"
-                  Grid.Row="1"
-                  Grid.Column="2"
-                  FontFamily="Georgia"
-                  HorizontalAlignment="Left">
-            <ComboBoxItem Content="Mme"/>
-            <ComboBoxItem Content="Mlle"/>
-            <ComboBoxItem Content="M"/>
+                SelectedIndex="{Binding Civility, UpdateSourceTrigger=Explicit}"
+                Height="20"
+                Width="80"
+                Grid.Row="1"
+                Grid.Column="2"
+                FontFamily="Georgia"
+                HorizontalAlignment="Left">
+                    <ComboBoxItem Content="Mme"/>
+                    <ComboBoxItem Content="Mlle"/>
+                    <ComboBoxItem Content="M"/>
         </ComboBox>
 
-        <!-- TextBox - Nom-->
+        <!-- Label - Nom -->
         <Label x:Name="lblBoxCustName"
-               Content="Nom"
-               Grid.Row="2"
-               Grid.Column="1"
-               FontFamily="Georgia"
-               FontSize="12"
-               FontWeight="Bold"
-               VerticalAlignment="Bottom"
-               HorizontalAlignment="Left"/>
+                Content="Nom"
+                Grid.Row="2"
+                Grid.Column="1"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"/>
+        <!-- TextBox - Nom -->
         <TextBox x:Name="txtBoxCustName"
-                 Text="{Binding Name, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
-                 Grid.Row="2"
-                 Grid.Column="2"
-                 TextWrapping="Wrap"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 MinWidth="320"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"/>
+                Text="{Binding Name, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                Grid.Row="2"
+                Grid.Column="2"
+                TextWrapping="Wrap"
+                FontFamily="Georgia"
+                FontSize="12"
+                MinWidth="320"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"/>
 
-        <!-- TextBox - Prénom-->
+        <!-- Label - Prénom -->
         <Label x:Name="lblBoxCustFirstName"
-               Content="Prénom"
-               Grid.Row="3"
-               Grid.Column="1"
-               FontFamily="Georgia"
-               FontSize="12"
-               FontWeight="Bold"
-               VerticalAlignment="Bottom"
-               HorizontalAlignment="Left"/>
+                Content="Prénom"
+                Grid.Row="3"
+                Grid.Column="1"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"/>
+        <!-- TextBox - Prénom -->
         <TextBox x:Name="txtBoxCustFirstName"
-                 Text="{Binding FirstName, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
-                 Grid.Row="3"
-                 Grid.Column="2"
-                 TextWrapping="Wrap"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 MinWidth="320"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"/>
+                Text="{Binding FirstName, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                Grid.Row="3"
+                Grid.Column="2"
+                TextWrapping="Wrap"
+                FontFamily="Georgia"
+                FontSize="12"
+                MinWidth="320"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"/>
 
-        <!-- TextBox - Adresse première ligne-->
+        <!-- Label - Adresse première ligne -->
         <Label x:Name="lblBoxCustAddress1"
-               Content="Adresse"
-               Grid.Row="4"
-               Grid.Column="1"
-               FontFamily="Georgia"
-               FontSize="12"
-               FontWeight="Bold"
-               VerticalAlignment="Bottom"
-               HorizontalAlignment="Left"/>
+                Content="Adresse"
+                Grid.Row="4"
+                Grid.Column="1"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"/>
+        <!-- TextBox - Adresse première ligne -->
         <TextBox x:Name="txtBoxCustAddress1"
-                 Text="{Binding Address, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
-                 Grid.Row="4"
-                 Grid.Column="2"
-                 TextWrapping="Wrap"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 MinWidth="320"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"/>
+                Text="{Binding Address, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                Grid.Row="4"
+                Grid.Column="2"
+                TextWrapping="Wrap"
+                FontFamily="Georgia"
+                FontSize="12"
+                MinWidth="320"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"/>
 
-        <!-- TextBox - Adresse deuxième ligne-->
+        <!-- Label - Adresse deuxième ligne -->
         <Label x:Name="lblBoxCustAddress2"
-               Content="Adresse 2 (optionel)"
-               Grid.Row="5"
-               Grid.Column="1"
-               FontFamily="Georgia"
-               FontSize="12"
-               FontWeight="Bold"
-               VerticalAlignment="Bottom"
-               HorizontalAlignment="Left"/>
+                Content="Adresse 2 (optionel)"
+                Grid.Row="5"
+                Grid.Column="1"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"/>
+        <!-- TextBox - Adresse deuxième ligne -->
         <TextBox x:Name="txtBoxCustAddress2"
-                 Text="{Binding Address2, UpdateSourceTrigger=LostFocus}"
-                 Grid.Row="5"
-                 Grid.Column="2"
-                 TextWrapping="Wrap"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 MinWidth="320"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"/>
+                Text="{Binding Address2, UpdateSourceTrigger=LostFocus}"
+                Grid.Row="5"
+                Grid.Column="2"
+                TextWrapping="Wrap"
+                FontFamily="Georgia"
+                FontSize="12"
+                MinWidth="320"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"/>
 
-        <!-- TextBox - Code Postal-->
+        <!-- Label - Code Postal -->
         <Label x:Name="lblBoxAddCP"
-               Content="Code postal"
-               Grid.Row="6"
-               Grid.Column="1"
-               FontFamily="Georgia"
-               FontSize="12"
-               FontWeight="Bold"
-               VerticalAlignment="Bottom"
-               HorizontalAlignment="Left"/>
+                Content="Code postal"
+                Grid.Row="6"
+                Grid.Column="1"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"/>
+        <!-- TextBox - Code Postal -->
         <TextBox x:Name="txtBoxAddCP"
-                 Text="{Binding Cp, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                 Grid.Row="6"
-                 Grid.Column="2"
-                 TextWrapping="Wrap"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 MinWidth="320"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"
-                 MaxLength="5"
-                 Width="80"
-                 LostFocus="txtBoxAddCP_LostFocus"/>
+                Text="{Binding Cp, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                Grid.Row="6"
+                Grid.Column="2"
+                TextWrapping="Wrap"
+                FontFamily="Georgia"
+                FontSize="12"
+                MinWidth="320"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                MaxLength="5"
+                Width="80"
+                LostFocus="txtBoxAddCP_LostFocus"/>
 
-        <!-- TextBox - Ville-->
+        <!-- Label - Ville -->
         <Label x:Name="lblBoxAddCity"
-               Content="Ville"
-               Grid.Row="7"
-               Grid.Column="1"
-               FontFamily="Georgia"
-               FontSize="12"
-               FontWeight="Bold"
-               VerticalAlignment="Bottom"
-               HorizontalAlignment="Left"/>
+                Content="Ville"
+                Grid.Row="7"
+                Grid.Column="1"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"/>
+        <!-- ComboBox - Ville -->
         <ComboBox x:Name="txtBoxAddCity"
-                 ItemsSource="{Binding ListCity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                 SelectedItem="{Binding SelectedCity}" 
-                 Grid.Row="7"
-                 Grid.Column="2"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 MinWidth="320"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"/>
-        <!--<TextBox x:Name="txtBoxAddCity"
+                ItemsSource="{Binding ListCity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                SelectedItem="{Binding SelectedCity}" 
+                Grid.Row="7"
+                Grid.Column="2"
+                FontFamily="Georgia"
+                FontSize="12"
+                MinWidth="320"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"/>
+        <!--<TexBox x:Name="txtBoxAddCity"
                  Text="{Binding City, Mode=TwoWay}"
                  Grid.Row="7"
                  Grid.Column="2"
@@ -219,111 +224,114 @@
                   Grid.Row="7" 
                   Grid.RowSpan="2"/>-->
 
-        <!-- TextBox - Date de naissance-->
+        <!-- Label - Date de naissance -->
         <Label x:Name="lblBoxCustBirthDate"
-               Content="Date de naissance"
-               Grid.Row="8"
-               Grid.Column="1"
-               FontFamily="Georgia"
-               FontSize="12"
-               FontWeight="Bold"
-               VerticalAlignment="Bottom"
-               HorizontalAlignment="Left"/>
+                Content="Date de naissance"
+                Grid.Row="8"
+                Grid.Column="1"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"/>
+        <!-- TextBox - Date de naissance -->
         <TextBox x:Name="txtBoxCustBirthDate"
-                 Text="{Binding BirthDate, UpdateSourceTrigger=Explicit}"
-                 Grid.Row="8"
-                 Grid.Column="2"
-                 TextWrapping="Wrap"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 MinWidth="320"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"
-                 LostFocus="txtBoxCustBirthDate_LostFocu"/>
+                Text="{Binding BirthDate, UpdateSourceTrigger=Explicit}"
+                Grid.Row="8"
+                Grid.Column="2"
+                TextWrapping="Wrap"
+                FontFamily="Georgia"
+                FontSize="12"
+                MinWidth="320"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                LostFocus="txtBoxCustBirthDate_LostFocu"/>
 
         <!--Text="{Binding BirthDate, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"-->
-        <!-- TextBox - Téléphone-->
+        <!-- Label - Téléphone -->
         <Label x:Name="lblBoxCustPhone"
-               Content="Téléphone"
-               Grid.Row="9"
-               Grid.Column="1"
-               FontFamily="Georgia"
-               FontSize="12"
-               FontWeight="Bold"
-               VerticalAlignment="Bottom"
-               HorizontalAlignment="Left"/>
+                Content="Téléphone"
+                Grid.Row="9"
+                Grid.Column="1"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"/>
+        <!-- TextBox - Téléphone -->
         <TextBox x:Name="txtBoxCustPhone"
-                 Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                 Grid.Row="9"
-                 Grid.Column="2"
-                 TextWrapping="Wrap"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 MinWidth="320"
-                 MaxLength="10"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"
-                 LostFocus="txtBoxCustPhone_LostFocus"/>
+                Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                Grid.Row="9"
+                Grid.Column="2"
+                TextWrapping="Wrap"
+                FontFamily="Georgia"
+                FontSize="12"
+                MinWidth="320"
+                MaxLength="10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                LostFocus="txtBoxCustPhone_LostFocus"/>
 
-        <!-- TextBox - Email-->
+        <!-- Label - Email -->
         <Label x:Name="lblBoxCustMail"
-               Content="E-mail"
-               Grid.Row="10"
-               Grid.Column="1"
-               FontFamily="Georgia"
-               FontSize="12"
-               FontWeight="Bold"
-               VerticalAlignment="Bottom"
-               HorizontalAlignment="Left"/>
+                Content="E-mail"
+                Grid.Row="10"
+                Grid.Column="1"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"/>
+        <!-- TextBox - Email -->
         <TextBox x:Name="txtBoxCustMail"
-                 Text="{Binding Mail, UpdateSourceTrigger=Explicit}"
-                 Grid.Row="10"
-                 Grid.Column="2"
-                 TextWrapping="Wrap"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 MinWidth="320"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"
-                 LostFocus="txtBoxCustMail_LostFocus"/>
+                Text="{Binding Mail, UpdateSourceTrigger=Explicit}"
+                Grid.Row="10"
+                Grid.Column="2"
+                TextWrapping="Wrap"
+                FontFamily="Georgia"
+                FontSize="12"
+                MinWidth="320"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                LostFocus="txtBoxCustMail_LostFocus"/>
 
         <!-- CheckBox - Membre de l'association-->
         <CheckBox x:Name="chkBoxCustMember"
-                  IsChecked="{Binding Adherent, UpdateSourceTrigger=Explicit}"
-                  Grid.Row="11"
-                  Grid.Column="2"
-                  Content="Adhérent"
-                  FontFamily="Georgia"
-                  FontSize="12"
-                  FontWeight="Bold"
-                  HorizontalAlignment="Left"
-                  VerticalAlignment="Center"/>
+                IsChecked="{Binding Adherent, UpdateSourceTrigger=Explicit}"
+                Grid.Row="11"
+                Grid.Column="2"
+                Content="Adhérent"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"/>
 
         <!-- StackPanel - Button-->
         <StackPanel Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <!-- Button - Supprimer-->
             <Button Style="{DynamicResource ButtonStyleCorner3}"
-                    x:Name="btnCustDel"
-                    Grid.Row="12"
-                    Content="Supprimer"                
-                    FontFamily="Georgia"
-                    FontSize="12"
-                    FontWeight="Bold"
-                    Margin="0,10,80,00"
-                    Width="80"
-                    Click="btnCustDel_Click"/>
+                x:Name="btnCustDel"
+                Grid.Row="12"
+                Content="Supprimer"                
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                Margin="0,10,80,00"
+                Width="80"
+                Click="btnCustDel_Click"/>
 
             <!-- Button - Valider-->
             <Button Style="{DynamicResource ButtonStyleCorner3}"
-                    x:Name="btnCustSub"
-                    Grid.Row="12"
-                    Content="Valider"                
-                    FontFamily="Georgia"
-                    FontSize="12"
-                    FontWeight="Bold"
-                    Margin="0,10,0,0"
-                    Width="80"
-                    Click="btnCustSub_Click"/>
+                x:Name="btnCustSub"
+                Grid.Row="12"
+                Content="Valider"                
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                Margin="0,10,0,0"
+                Width="80"
+                Click="btnCustSub_Click"/>
         </StackPanel>
 
         <!-- Label - Message si erreur-->

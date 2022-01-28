@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bredele_Gestion</name>
+    </assembly>
+    <members>
+        <member name="T:Bredele_Gestion.AdherentsPage">
+            <summary>
+            Logique d'interaction pour AdherentsPage.xaml
+            </summary>
+            <summary>
+            AdherentsPage
+            </summary>
+        </member>
+        <member name="M:Bredele_Gestion.AdherentsPage.btnModifyAdherentSearch_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Fonction qui si un nom est séléctionné dans la listView, récupère la section et
+            envoi l'Id de nom selectionné sur la page AjoutAdherentPage
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Bredele_Gestion.AdherentsPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Bredele_Gestion.RadioConverter">
+            <summary>
+            Interface de convertion des boutons Radio
+            </summary>
+        </member>
+        <member name="T:Bredele_Gestion.AjoutAdherentPage">
+            <summary>
+            Logique d'interaction pour AjoutAdherentPage.xaml
+            </summary>
+            <summary>
+            AjoutAdherentPage
+            </summary>
+        </member>
+        <member name="M:Bredele_Gestion.AjoutAdherentPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Bredele_Gestion.AjoutLocauxPage">
+            <summary>
+            Logique d'interaction pour AjoutLocauxPage.xaml
+            </summary>
+            <summary>
+            AjoutLocauxPage
+            </summary>
+        </member>
+        <member name="M:Bredele_Gestion.AjoutLocauxPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Bredele_Gestion.AjoutReservationAdherentPage">
+            <summary>
+            Logique d'interaction pour AjoutReservationAdherentPage.xaml
+            </summary>
+            <summary>
+            AjoutReservationAdherentPage
+            </summary>
+        </member>
+        <member name="M:Bredele_Gestion.AjoutReservationAdherentPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Bredele_Gestion.AjoutTarifsPage">
+            <summary>
+            Logique d'interaction pour AjoutTarifsPage.xaml
+            </summary>
+            <summary>
+            AjoutTarifsPage
+            </summary>
+        </member>
+        <member name="M:Bredele_Gestion.AjoutTarifsPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Bredele_Gestion.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:Bredele_Gestion.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Bredele_Gestion.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:Bredele_Gestion.CalendrierAffichagePage">
+            <summary>
+            Logique d'interaction pour CalendrierAffichagePage.xaml
+            </summary>
+            <summary>
+            CalendrierAffichagePage
+            </summary>
+        </member>
+        <member name="M:Bredele_Gestion.CalendrierAffichagePage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Bredele_Gestion.CalendrierLegendePage">
+            <summary>
+            Logique d'interaction pour CalendrierLegendePage.xaml
+            </summary>
+            <summary>
+            CalendrierLegendePage
+            </summary>
+        </member>
+        <member name="M:Bredele_Gestion.CalendrierLegendePage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Bredele_Gestion.InfoAjoutAdherentPage">
+            <summary>
+            Logique d'interaction pour InfoAjoutAdherentPage.xaml
+            </summary>
+            <summary>
+            InfoAjoutAdherentPage
+            </summary>
+        </member>
+        <member name="M:Bredele_Gestion.InfoAjoutAdherentPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Bredele_Gestion.InfoAjoutLocauxPage">
+            <summary>
+            Logique d'interaction pour InfoAjoutLocauxPage.xaml
+            </summary>
+            <summary>
+            InfoAjoutLocauxPage
+            </summary>
+        </member>
+        <member name="M:Bredele_Gestion.InfoAjoutLocauxPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Bredele_Gestion.InfoAjoutTarifsPage">
+            <summary>
+            Logique d'interaction pour InfoAjoutTarifsPage.xaml
+            </summary>
+            <summary>
+            InfoAjoutTarifsPage
+            </summary>
+        </member>
+        <member name="M:Bredele_Gestion.InfoAjoutTarifsPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Bredele_Gestion.LockDatePage">
+            <summary>
+            Logique d'interaction pour LockDatePage.xaml
+            </summary>
+            <summary>
+            LockDatePage
+            </summary>
+        </member>
+        <member name="M:Bredele_Gestion.LockDatePage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Bredele_Gestion.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:Bredele_Gestion.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Bredele_Gestion.ViewBoxPage">
+            <summary>
+            Logique d'interaction pour ViewBoxPage.xaml
+            </summary>
+            <summary>
+            ViewBoxPage
+            </summary>
+        </member>
+        <member name="M:Bredele_Gestion.ViewBoxPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:Bredele_Gestion.viewmodel.ViewBookViewModel.SearchName">
+            <summary>
+            proprieté de recherche de nom
+            </summary>
+        </member>
+        <member name="P:Bredele_Gestion.viewmodel.ViewBookViewModel.HoursStart">
+            <summary>
+            proprieté bindé pour l'heure de début
+            </summary>
+        </member>
+        <member name="P:Bredele_Gestion.viewmodel.ViewBookViewModel.HoursEnd">
+            <summary>
+            propriété bindé pour l'heure de fin
+            </summary>
+        </member>
+        <member name="M:Bredele_Gestion.viewmodel.ViewBookViewModel.NotifyPropertyChanged(System.String)">
+            <summary>
+            Fonction signalent le changement de valeur dans l'evenelent rattaché
+            </summary>
+            <param name="propName"></param>
+        </member>
+    </members>
+</doc>

@@ -19,8 +19,7 @@
             <RowDefinition Height="90px"/>
             <RowDefinition Height="350"/>
             <RowDefinition Height="60px"/>
-            <RowDefinition Height="40px"/>
-            <RowDefinition/>
+            <RowDefinition Height="40px"/>            
         </Grid.RowDefinitions>
 
         <!-- Label - Titre-->
@@ -58,8 +57,7 @@
         <!-- Critères de recherche-->
         <StackPanel Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Left">
             <!-- Radio Button - Sélection adhérents-->
-            <RadioButton x:Name="rdButtonAdherentSearch"
-                         
+            <RadioButton x:Name="rdButtonAdherentSearch"                         
                          Content="Adhérents"
                          FontWeight="Bold"
                          FontFamily="Georgia"
@@ -68,7 +66,8 @@
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
                          IsChecked="{Binding FilterSearchAdherent, 
-                                     Converter={StaticResource RadioConverter}, ConverterParameter=1}"/>
+                                     Converter={StaticResource RadioConverter},
+                                     ConverterParameter=1}"/>
 
             <!-- Radio Button - Sélection tiers-->
             <RadioButton x:Name="rdButtonTiersSearch"
@@ -81,7 +80,8 @@
                          HorizontalAlignment="Left"
                          VerticalAlignment="Center"
                          IsChecked="{Binding FilterSearchAdherent,
-                                     Converter={StaticResource RadioConverter}, ConverterParameter=2}"/>
+                                     Converter={StaticResource RadioConverter},
+                                     ConverterParameter=2}"/>
 
             <!-- Radio Button - Sélection tous-->
             <RadioButton x:Name="rdButtonAllSearch"
@@ -92,8 +92,8 @@
                          Margin="40,10,0,0"
                          HorizontalAlignment="Left"
                          IsChecked="{Binding FilterSearchAdherent,
-                                             Converter={StaticResource RadioConverter}, ConverterParameter=3}"/>
-
+                                     Converter={StaticResource RadioConverter},
+                                     ConverterParameter=3}"/>
         </StackPanel>
 
         <!-- Liste adhérents-->
@@ -137,6 +137,7 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Height="30"
-                Width="80" Click="btnModifyAdherentSearch_Click"/>
+                Width="80"
+                Click="btnModifyAdherentSearch_Click"/>
     </Grid>
 </Page>

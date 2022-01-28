@@ -1,0 +1,345 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BredeleGestion.Services</name>
+    </assembly>
+    <members>
+        <member name="M:BredeleGestion.Services.ConnectionController.ConnectUser(System.String,System.String)">
+            <summary>
+            Gestion de l'authentification du logiciel
+            </summary>
+            <param name="login"></param>
+            <param name="pwd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BredeleGestion.Services.ConnectionController.Load">
+            <summary>
+            Insertion dans le fichier log d'une ligne pour informer du démarrage du logiciel
+            </summary>
+        </member>
+        <member name="M:BredeleGestion.Services.ConnectionController.Close">
+            <summary>
+            Insertion dans le fichier log d'une ligne pour informer de la fermeture du logiciel
+            </summary>
+        </member>
+        <member name="M:BredeleGestion.Services.ConnexionBddService.ExecuteRequet">
+            <summary>
+            Execute une requete SQL SELECT et retourne une liste tableau des résultats en DataRow
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BredeleGestion.Services.ConnexionBddService.InsertRequet">
+            <summary>
+            Execute une requete SQL UPDATE ou DELETE et renvoi un BOOL
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:BredeleGestion.Services.GestionAdherentsService.Cp">
+            <summary>
+            Contrôle que seul des chiffres sont saisies pour le code postal
+            </summary>
+        </member>
+        <member name="P:BredeleGestion.Services.GestionAdherentsService.City">
+            <summary>
+            Gestion par un ContextData de la ville
+            </summary>
+        </member>
+        <member name="P:BredeleGestion.Services.GestionAdherentsService.BirthDate">
+            <summary>
+            Contrôle que la date de naissance est bien saisie au format jj/mm/aaaa
+            </summary>
+        </member>
+        <member name="P:BredeleGestion.Services.GestionAdherentsService.Phone">
+            <summary>
+            Contrôle que seul des chiffres sont saisies pour le téléphone
+            </summary>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionAdherentsService.CheckInfos">
+            <summary>
+            Vérification que les champs obligatoire du formulaire ne sont pas vide
+            Renvoi une chaine de caractère avec les eventuelles erreurs
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionAdherentsService.LoadUser(System.Int32)">
+            <summary>
+            Fonction de récupération des informations d'un customer dans la BDD
+            suivant un Id passé en argument
+            </summary>
+            <param name="idUser"></param>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionAdherentsService.SelectCity(System.String)">
+            <summary>
+            Fonction de récupération la ligne dans la base de donnée city
+            suivant un CP passé en argument
+            </summary>
+            <param name="cp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionAdherentsService.AddUpdateUser(System.Boolean,System.String,System.Int32)">
+            <summary>
+            Fonction d'ajout ou de modification d'un custome, retourne un bool
+            </summary>
+            <param name="adherent"></param>
+            <param name="civility"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionAdherentsService.DeleteUser(System.Int32)">
+            <summary>
+            Supprime le customer suivant l'id founir et retourne un bool
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionAdherentsService.NotifyPropertyChanged(System.String)">
+            <summary>
+            Fonction de gestion des propriétés modifiés
+            </summary>
+            <param name="propName"></param>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionAdherentsService.ConvertDate">
+            <summary>
+            Fonction de convertion de la date jj/mm/aaaa ---> aaaa-mm-jj
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionBookService.LoadActivity">
+            <summary>
+            Récupere toutes les activités de la BDD et retourne un list d'objet activity
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionLocauxService.LoadBox(System.Int32)">
+            <summary>
+            Chargement du box par l'id passé en parametre
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionLocauxService.InsertUpdateBox(System.Int32)">
+            <summary>
+            Fonction pour ajouter ou modifier les box
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionLocauxService.SendOptionBox(System.Int32,System.String,System.Collections.Generic.List{System.Int32},System.String)">
+            <summary>
+            Enregistrement des options equipment et activity box
+            </summary>
+            <param name="id"></param>
+            <param name="requetoption"></param>
+            <param name="listOption"></param>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionLocauxService.DeleteBdd(System.Int32,System.String,System.String)">
+            <summary>
+            Supprime la box passé en parametre
+            </summary>
+            <param name="id"></param>
+            <param name="requet"></param>
+            <param name="table"></param>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionLocauxService.CheckActivity(System.String,System.Boolean)">
+            <summary>
+            Ajoute ou supprime dans une liste les ID des ativitys sélectionnées
+            </summary>
+            <param name="name"></param>
+            <param name="state"></param>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionLocauxService.CheckEquipment(System.String,System.Boolean)">
+            <summary>
+            Ajoute ou supprime dans une liste les ID des équipements sélectionnées
+            </summary>
+            <param name="name"></param>
+            <param name="state"></param>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionLocauxService.LoadEquipActiv(System.String,System.String)">
+            <summary>
+            Fonction de récupération des tables equipment et activity
+            </summary>
+            <param name="requetSql"></param>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionLocauxService.CheckOnlyNumber(System.String)">
+            <summary>
+            Fonction pour vérifier si seulement des chiffres sont saisies pour certains champs
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionLocauxService.NotifyPropertyChanged(System.String)">
+            <summary>
+            Fonction de gestion des propriétés modifiés
+            </summary>
+            <param name="propName"></param>
+        </member>
+        <member name="P:BredeleGestion.Services.GestionTarifsService.NewPrice">
+            <summary>
+            proprieté NewPrice qui filtre les saisies afin de n'avoir que le bon format
+            </summary>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionTarifsService.NotifyPropertyChanged(System.String)">
+            <summary>
+            Fonction pour actualiser SI changement de valeur d'une propriété.
+            </summary>
+            <param name="propName"></param>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionTarifsService.LoadListPrice">
+            <summary>
+            Chargement de tous les tarifs dans le menu déroulant tarif
+            </summary>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionTarifsService.AddUpdatePrice(System.Int32,BredeleGestion.Services.Prices)">
+            <summary>
+            Ajouter ou modifie dans la BDD le tarif séléctionné
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BredeleGestion.Services.GestionTarifsService.DeletePrice(BredeleGestion.Services.Prices)">
+            <summary>
+            Supprime le tarif passé en parametre
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:BredeleGestion.Services.ListAdherentService.SelectCustomers(System.String)">
+            <summary>
+            Récupère dans la BDD la liste des customers et crée une list observable
+            gère égalemement la recherche par nom
+            </summary>
+            <param name="nameSearch"></param>
+        </member>
+        <member name="M:BredeleGestion.Services.ListAdherentService.CountTypeCust(System.String,System.String)">
+            <summary>
+            Compte le nombre d'adhérent et tiers
+            </summary>
+            <param name="requet"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BredeleGestion.Services.ListAdherentService.NotifyPropertyChanged(System.String)">
+            <summary>
+            Fonction signalent le changement de valeur dans l'evenelent rattaché
+            </summary>
+            <param name="propName"></param>
+        </member>
+        <member name="M:BredeleGestion.Services.ListAdherentService.ToString">
+            <summary>
+            Surcharge de la fonction ToString de l'instance pour la listview
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.DELETEBOX">
+            <summary>
+            supprimer la box suivant l'id en argument
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.UPDATEBOX">
+            <summary>
+            Mise a jour des champs d'une box avec 0->boxname 1->boxcapacity 2->boxsurface 3->where boxid
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.SELECTBOXINNEREQUIPMENT">
+            <summary>
+            Selectionne la box avec tous les jointures
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.SELECTBOXWITHID">
+            <summary>
+            Selectionne tous les champs de la table box avec l'id en parametre WHERE
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.SELECTBOX">
+            <summary>
+            Selectection de tous les champs box
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.INSERBOX">
+            <summary>
+            INSERT INTO box(boxname, boxcapacity, boxsurface)
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.SELECTBOXID">
+            <summary>
+            selectionne l'ID d'une box en fonction de son name
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.SELECTEQUIPMENTS">
+            <summary>
+            Selectionne tous les champs de la table equipment
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.SELECTACTIVITY">
+            <summary>
+            Sélctionne tous les champs de la table activité
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.SELECTALLPRICE">
+            <summary>
+            Selectionne tous les éléments de la table price
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.ADDPRICE">
+            <summary>
+            Ajouter un prix dans la BDD
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.UPDATEPRICE">
+            <summary>
+            Mettre ) jour un prix de la BDD suivant l'ID en parametre
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.TABLEPRICE">
+            <summary>
+            table price
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.SELECTALLUSERS">
+            <summary>
+            Sélectionne les utilisateurs
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.SELECTCPCITY">
+            <summary>
+            Sélectionne toutes les villes, CP et Id de la table
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.SELECTUSER">
+            <summary>
+            Selectionne le customer suivant l'id donné
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.UPDATECUST">
+            <summary>
+            Update des informations d'un utilisateur en particulier (10 parametres).
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.DELETECUST">
+            <summary>
+            Suppression d'un utilisateur en fonction de l'id (2 parametres)
+            </summary>
+        </member>
+        <member name="F:BredeleGestion.Services.RequetSqlService.TABLECUST">
+            <summary>
+            Ajouter un customer dans la table
+            </summary>
+        </member>
+        <member name="M:BredeleGestion.Services.ViewBoxService.LoadBoxBdd">
+            <summary>
+            Charge tous les informations des boxs et crée une liste d'objets Box observatable
+            </summary>
+        </member>
+        <member name="M:BredeleGestion.Services.ViewBoxService.LoadOption(System.Int32,System.String,System.String)">
+            <summary>
+            Récupère dans la BDD les options equipment et activity
+            </summary>
+            <param name="id"></param>
+            <param name="requet"></param>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
