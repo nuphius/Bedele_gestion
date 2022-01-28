@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Bredele_Gestion"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="800"
       Title="AjoutReservationAdherentPage">
 
     <!-- Grid pour l'agencement de la page -->
@@ -21,7 +21,8 @@
             <RowDefinition Height="30px"/>
             <RowDefinition Height="30px"/>
             <RowDefinition Height="30px"/>
-            <RowDefinition Height="40px"/>
+            <RowDefinition Height="35px"/>
+            <RowDefinition Height="35px"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -163,25 +164,43 @@
                 HorizontalAlignment="Stretch"                
                 Margin="0,5,40,5" />
         </DockPanel>
+        
+        <!-- ComboBox - price -->
+        <DockPanel Grid.Row="9">
+            <TextBlock Text="Tarifs : " 
+                FontFamily="Georgia"
+                FontSize="12"
+                TextWrapping="Wrap"
+                Margin="40,0,5,0"
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Center"/>
+            <ComboBox x:Name="ComboBoxPrices"
+                ItemsSource="{Binding ListPrice}"
+                SelectedItem="{Binding SelectedPrice}"
+                FontFamily="Georgia"
+                FontSize="12"
+                HorizontalAlignment="Stretch"                
+                Margin="0,5,40,5" />
+        </DockPanel>
 
         <!--</StackPanel - Tarif>-->
-        <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Stretch">
+        <StackPanel Grid.Row="10" Orientation="Horizontal" HorizontalAlignment="Stretch">
             <!-- Label - Tarif-->
             <TextBlock x:Name="TxtBlockTarifReservation"
                 Text="Tarif : "
                 FontFamily="Georgia"
-                FontSize="12"
+                FontSize="14"
                 Margin="40,0,0,0"/>
 
             <!-- Label - Montant-->
             <TextBlock x:Name="TxtBlockTarifReservationDisplay"                   
-                Text="XXXX €"
+                Text="{Binding Price, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                 FontFamily="Georgia"
-                FontSize="12"/>
+                FontSize="14"/>
         </StackPanel>
 
         <!--</StackPanel - Button>-->
-        <DockPanel Grid.Row="10" HorizontalAlignment="Stretch" Margin="40,0,40,0">
+        <DockPanel Grid.Row="11" HorizontalAlignment="Stretch" Margin="40,0,40,0">
             <!-- Button - Modifier-->
             <!--<Button Style="{DynamicResource ButtonStyleCorner3}"
                 x:Name="BtnDeleteReservation"
@@ -208,7 +227,7 @@
 
         <!-- Label - Message si erreur-->
         <TextBlock x:Name="txtReservationError"
-                Grid.Row="11"
+                Grid.Row="12"
                 Grid.Column="1"
                 FontFamily="Georgia"
                 FontSize="12"

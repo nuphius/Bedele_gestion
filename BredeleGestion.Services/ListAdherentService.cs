@@ -130,7 +130,7 @@ namespace BredeleGestion.Services
                     foreach (var cust in listCust)
                     {
                         _listCust.Add(new ListAdherentService((int)cust["custid"],
-                            cust["custname"].ToString(), cust["custfirstname"].ToString()));
+                            cust["custname"].ToString(), cust["custfirstname"].ToString(), (bool)cust["custadherent"]));
                     }
                 }
             }

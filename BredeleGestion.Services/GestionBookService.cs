@@ -34,8 +34,9 @@ namespace BredeleGestion.Services
                 try
                 {
                     int id = int.Parse(activity["activid"].ToString());
+                    decimal price = Convert.ToDecimal(activity["activincrease"]);
 
-                    _listAdherent.Add(new Activitys { Id = id, Name = activity["activname"].ToString() });
+                    _listAdherent.Add(new Activitys { Id = id, Name = activity["activname"].ToString(), PriceAtivity = price });
                 }
                 catch (Exception ex)
                 {
@@ -47,6 +48,13 @@ namespace BredeleGestion.Services
         }
         #endregion
 
+        #region LoadBoxs
+        /// <summary>
+        /// Récupération dans la BDD des Box en fonction de l'activité et bloqué ou non
+        /// </summary>
+        /// <param name="idActivity"></param>
+        /// <param name="locked"></param>
+        /// <returns></returns>
         public ObservableCollection<BoxPlace> LoadBoxs(int idActivity = 0, bool locked = false)
         {
             _listPlace.Clear();
@@ -84,8 +92,18 @@ namespace BredeleGestion.Services
             }
             return _listPlace;
         }
+        #endregion
 
-
+        #region SendBookBdd
+        /// <summary>
+        /// Envoi la réservation dans la BDD
+        /// </summary>
+        /// <param name="custId"></param>
+        /// <param name="date"></param>
+        /// <param name="hourstart"></param>
+        /// <param name="hourend"></param>
+        /// <param name="idBox"></param>
+        /// <returns></returns>
         public bool SendBookBdd(int custId, string date, string hourstart, string hourend, int idBox)
         {
             string requet = string.Format(RequetSqlService.INSERTBOOK, date, hourstart, hourend, idBox, custId);
@@ -93,12 +111,16 @@ namespace BredeleGestion.Services
             ConnexionBddService connexionBddService = new ConnexionBddService(requet, RequetSqlService.TABLEBOOK);
             return connexionBddService.InsertRequet();
         }
+        #endregion
+
+
     }
 
     public class Activitys
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public decimal PriceAtivity { get; set; }
 
         public override string ToString()
         {

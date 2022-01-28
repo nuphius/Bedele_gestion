@@ -20,11 +20,35 @@ namespace Bredele_Gestion.viewmodel
     {
         ListAdherentService adherentService = new ListAdherentService();
         GestionBookService bookService = new GestionBookService();
+        GestionTarifsService gestionPrices = new GestionTarifsService();
 
+        public ObservableCollection<Prices> ListPrice { get; set; }
+        public List<Activitys> ListActivity { get; set; }
         public ObservableCollection<ListAdherentService> ListCust { get; set; }
         public ListAdherentService SelectCust { get; set; }
+        public BoxPlace SelectPlace { get; set; }
+        readonly Regex regex = new Regex("^[0-9]{0,2}$");
+        public DateTime SelectedDate { get; set; }
 
         private Activitys _selectActivity;
+        private ObservableCollection<BoxPlace> _listBox;
+        private string _searchName;
+        private string _hoursEnd;
+        private string _hoursStart;
+        private string _price;
+        private Prices _selectedPrice;
+
+
+
+        public Prices SelectedPrice
+        {
+            get { return _selectedPrice; }
+            set
+            {
+                _selectedPrice = value;
+                CalculPrice();
+            }
+        }
 
         public Activitys SelectActivity
         {
@@ -42,19 +66,6 @@ namespace Bredele_Gestion.viewmodel
             }
         }
 
-        //public Activitys SelectActivity { get { return SelectActivity; } set { ); } }
-        public BoxPlace SelectPlace { get; set; }
-
-        readonly Regex regex = new Regex("^[0-9]{0,2}$");
-
-        public DateTime SelectedDate { get; set; }
-
-        private string _searchName;
-        private string _hoursEnd;
-        private string _hoursStart;
-
-        private ObservableCollection<BoxPlace> _listBox;
-
         public ObservableCollection<BoxPlace> ListBox
         {
             get { return _listBox; }
@@ -65,8 +76,16 @@ namespace Bredele_Gestion.viewmodel
             }
         }
 
-        // public ObservableCollection<BoxPlace> ListBox { get; set; }
-        public List<Activitys> ListActivity { get; set; }
+        public string Price
+        {
+            get { return _price; }
+            set
+            {
+                _price = value;
+
+                this.NotifyPropertyChanged(nameof(Price));
+            }
+        }
 
         #region SearchName
         /// <summary>
@@ -168,6 +187,9 @@ namespace Bredele_Gestion.viewmodel
         {
             SearchName = "";
             ListActivity = bookService.LoadActivity();
+
+            gestionPrices.LoadListPrice();
+            ListPrice = gestionPrices.PriceSelected;
         }
 
         #region CheckBook
@@ -186,7 +208,7 @@ namespace Bredele_Gestion.viewmodel
             if (SelectedDate.ToShortDateString() == "01/01/0001")
                 error += "- Vous n'avez sélectionné aucune date !\n";
             if (SelectedDate.Date < DateTime.Now.Date)
-                error += "- Vous avez sélectionné une date antérieur à aujourd'hui "+ DateTime.Now.ToShortDateString() + " !\n";
+                error += "- Vous avez sélectionné une date antérieur à aujourd'hui " + DateTime.Now.ToShortDateString() + " !\n";
             if (string.IsNullOrEmpty(HoursStart))
                 error += "- Vous n'avez pas saisie d'heure de début !\n";
             if (string.IsNullOrEmpty(HoursEnd))
@@ -237,6 +259,28 @@ namespace Bredele_Gestion.viewmodel
             }
         }
         #endregion
+
+        private void CalculPrice()
+        {
+            if (!String.IsNullOrEmpty(HoursStart) && !String.IsNullOrEmpty(HoursEnd) && SelectActivity != null)
+            {
+                try
+                {
+                    int.TryParse(HoursStart, out int hStart);
+                    int.TryParse(HoursEnd, out int hEnd);
+                    int nbHours = hEnd - hStart;
+
+                    decimal price = (_selectedPrice.Price * nbHours) * SelectActivity.PriceAtivity;
+
+                    Price = String.Format("{0:0.##}", price) + " €";
+                }
+                catch (Exception ex)
+                {
+                    LogTools.AddLog(LogTools.LogType.ERREUR, "Problème convertion des heures pour calcul tarif" + ex.Message);
+                }
+                
+            }
+        }
 
         #region NotifyPropertyChanged
         /// <summary>

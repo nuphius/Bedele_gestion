@@ -134,7 +134,7 @@ namespace BredeleGestion.Services
         #region filtre adherent
         public const string COUNTADHERENT = "SELECT count(*) AS nb FROM customer WHERE custadherent='true'";
         public const string COUNTNOADHERENT = "SELECT count(*) AS nb FROM customer WHERE custadherent='false'";
-        public const string SELECTCUSTSEARCH = "SELECT custid, custname, custfirstname FROM customer";
+        public const string SELECTCUSTSEARCH = "SELECT custid, custname, custfirstname, custadherent FROM customer";
         #endregion
 
         #region Table User
