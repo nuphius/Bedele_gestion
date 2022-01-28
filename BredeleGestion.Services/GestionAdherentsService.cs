@@ -305,11 +305,11 @@ namespace BredeleGestion.Services
             {
                 DateTime birth = DateTime.Parse(_birthDate);
                 var ageTemps = DateTime.Now.Subtract(birth);
-                age = int.Parse(ageTemps.ToString());
+                age = ageTemps.Days / 365;
             }
             catch (Exception ex)
             {
-                LogTools.AddLog(LogTools.LogType.ERREUR, "Erreur de convertion d'une date en age pour calcul des 18 ans");
+                LogTools.AddLog(LogTools.LogType.ERREUR, "Erreur de convertion d'une date en age pour calcul des 18 ans"+ex.Message);
             }
             
 
