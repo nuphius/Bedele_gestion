@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BredeleGestion.Services;
+using System.Diagnostics;
 
 namespace Bredele_Gestion
 {
@@ -21,10 +23,11 @@ namespace Bredele_Gestion
     /// </summary>
     public partial class AjoutReservationAdherentPage : Page
     {
+        ViewBookViewModel viewModel = new ViewBookViewModel();
         public AjoutReservationAdherentPage()
         {
             InitializeComponent();
-            this.DataContext = new ViewBookViewModel();
+            this.DataContext = viewModel;
         }
 
         private bool _flagTxtBoxNameReservation = true;
@@ -37,5 +40,24 @@ namespace Bredele_Gestion
                 _flagTxtBoxNameReservation = false;
             }
         }
+
+        private void BtnValidReservation_Click(object sender, RoutedEventArgs e)
+        {
+            txtReservationError.Visibility = Visibility.Hidden;
+            txtReservationError.Text = "";
+
+            string error = viewModel.CheckBook();
+
+            if (!string.IsNullOrEmpty(error))
+            {
+                txtReservationError.Visibility = Visibility.Visible;
+                txtReservationError.Text = error;
+            }
+            else
+            {
+                viewModel.FormatToSendBookBdd();
+            }
+        }
+
     }
 }

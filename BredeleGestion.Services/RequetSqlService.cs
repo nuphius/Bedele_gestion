@@ -8,6 +8,12 @@ namespace BredeleGestion.Services
 {
     public static class RequetSqlService
     {
+        #region Book
+
+        public const string INSERTBOOK = "INSERT INTO book(bookbegindate, bookenddate, bookbegintime, bookendtime, fkboxid, fkcustid) VALUES ('{0}', '0001-01-01', '{1}', '{2}', {3}, {4})";
+        public const string TABLEBOOK = "book";
+
+        #endregion
 
         #region requet activitybox
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Text.RegularExpressions;
@@ -20,7 +21,8 @@ namespace BredeleGestion.Services
         private string _address2;
         private string _cp;
         private int _idCity;
-        private string _city;
+        public City SelectedCity { get; set; }
+        private ObservableCollection<City> _ListCity = new ObservableCollection<City>();
         private string _birthDate;
         private string _phone;
         private string _mail;
@@ -123,12 +125,13 @@ namespace BredeleGestion.Services
 
                             if (_cp.Length == 5)
                             {
-                                City = SelectCity(_cp);
+                                //City = SelectCity(_cp);
+                                SelectCity(_cp);
                             }
-                            else
-                            {
-                                City = string.Empty;
-                            }
+                            //else
+                            //{
+                            //    City = string.Empty;
+                            //}
                         }
                         else
                         {
@@ -145,20 +148,33 @@ namespace BredeleGestion.Services
             }
         }
 
-        #region Gestion par un ContextData de la ville
-        /// <summary>
-        /// Gestion par un ContextData de la ville
-        /// </summary>
-        public string City
+        
+
+        public ObservableCollection<City> ListCity
         {
-            get { return _city; }
-            set
-            {
-                _city = value;
-                this.NotifyPropertyChanged(nameof(City));
+            get { return _ListCity; }
+            set 
+            { 
+                _ListCity = value;
+                this.NotifyPropertyChanged(nameof(ListCity));
             }
         }
-        #endregion
+
+
+        //#region Gestion par un ContextData de la ville
+        ///// <summary>
+        ///// Gestion par un ContextData de la ville
+        ///// </summary>
+        //public string City
+        //{
+        //    get { return _city; }
+        //    set
+        //    {
+        //        _city = value;
+        //        this.NotifyPropertyChanged(nameof(City));
+        //    }
+        //}
+        //#endregion
 
         /// <summary>
         /// Contrôle que la date de naissance est bien saisie au format jj/mm/aaaa
@@ -298,7 +314,7 @@ namespace BredeleGestion.Services
             {
                 _errorMessage += "- Le champ CODE POSTAL est obligatoire\n";
             }
-            if (string.IsNullOrEmpty(_city))
+            if (SelectedCity == null)
             {
                 _errorMessage += "- Le champ VILLE est obligatoire\n";
             }
@@ -375,27 +391,30 @@ namespace BredeleGestion.Services
         /// </summary>
         /// <param name="cp"></param>
         /// <returns></returns>
-        public string SelectCity(string cp)
+        public void SelectCity(string cp)
         {
+
+            _ListCity.Clear();
+
             ConnexionBddService connexionBddService = new ConnexionBddService(RequetSqlService.SELECTCPCITY + cp, RequetSqlService.TABLECITY);
 
             List<DataRow> listCity = connexionBddService.ExecuteRequet();
 
-            foreach (var item in listCity)
+            if (listCity != null)
             {
-                City = item["addcity"].ToString();
-
-                try
+                foreach (var item in listCity)
                 {
-                    _idCity = (int)item["addid"];
+                    try
+                    {
+                        _idCity = int.Parse(item["addid"].ToString());
+                        _ListCity.Add(new City { Id = _idCity, Name = item["addcity"].ToString() });
+                    }
+                    catch (Exception ex)
+                    {
+                        LogTools.AddLog(LogTools.LogType.ERREUR, "Impossible de convertir id de la table city en INT" + ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    LogTools.AddLog(LogTools.LogType.ERREUR, "Erreur - impossible de convertir id de la table city en INT" + ex);
-                }
-
             }
-            return City;
         }
         #endregion
 
@@ -412,6 +431,7 @@ namespace BredeleGestion.Services
             string requetCust;
             string dateConverted = ConvertDate();
 
+            _idCity = SelectedCity.Id;
 
             if (id == 0)
             {
@@ -469,5 +489,16 @@ namespace BredeleGestion.Services
             return $"{tabConvertDate[2]}-{tabConvertDate[1]}-{tabConvertDate[0]}";
         }
         #endregion
+    }
+
+    public class City
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

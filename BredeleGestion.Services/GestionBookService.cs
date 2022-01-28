@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace BredeleGestion.Services
 {
     public class GestionBookService
     {
-        private List<Activity> _listAdherent = new List<Activity>();
+        private List<Activitys> _listAdherent = new List<Activitys>();
         private List<BoxPlace> _listPlace = new List<BoxPlace>();
 
         public GestionBookService()
@@ -22,7 +23,7 @@ namespace BredeleGestion.Services
         /// Récupere toutes les activités de la BDD et retourne un list d'objet activity
         /// </summary>
         /// <returns></returns>
-        public List<Activity> LoadActivity()
+        public List<Activitys> LoadActivity()
         {
             ConnexionBddService connexionBddService = new ConnexionBddService(RequetSqlService.SELECTACTIVITY, RequetSqlService.TABLEACTIVITY);
             List<DataRow> listRstBdd = connexionBddService.ExecuteRequet();
@@ -33,7 +34,7 @@ namespace BredeleGestion.Services
                 {
                     int id = int.Parse(activity["activid"].ToString());
 
-                    _listAdherent.Add(new Activity { Id = id, Name = activity["activname"].ToString() });
+                    _listAdherent.Add(new Activitys { Id = id, Name = activity["activname"].ToString() });
                 }
                 catch (Exception ex)
                 {
@@ -66,9 +67,17 @@ namespace BredeleGestion.Services
             }
             return _listPlace.OrderBy(x => x.Place).ToList();
         }
+
+        public bool SendBookBdd(int custId, string date, string hourstart, string hourend, int idBox)
+        {
+            string requet = string.Format(RequetSqlService.INSERTBOOK, date, hourstart, hourend, idBox, custId);
+
+            ConnexionBddService connexionBddService = new ConnexionBddService(requet, RequetSqlService.TABLEBOOK);
+            return connexionBddService.InsertRequet();
+        }
     }
 
-    public class Activity
+    public class Activitys
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -86,7 +95,7 @@ namespace BredeleGestion.Services
 
         public override string ToString()
         {
-            return Place.ToString();
+            return Name.ToString();
         }
     }
 }

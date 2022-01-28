@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -15,7 +16,12 @@ namespace Bredele_Gestion.viewmodel
     public class ViewBookViewModel : INotifyPropertyChanged
     {
         ListAdherentService adherentService = new ListAdherentService();
+        GestionBookService bookService = new GestionBookService();
+
         public ObservableCollection<ListAdherentService> ListCust { get; set; }
+        public ListAdherentService SelectCust { get; set; }
+        public Activitys SelectActivity { get; set; }
+        public BoxPlace SelectPlace { get; set; }
 
         readonly Regex regex = new Regex("^[0-9]{0,2}$");
 
@@ -25,7 +31,7 @@ namespace Bredele_Gestion.viewmodel
         private string _hoursEnd;
         private string _hoursStart;
         public List<BoxPlace> ListPlaces { get; set; }
-        public List<Activity> ListActivity { get; set; }
+        public List<Activitys> ListActivity { get; set; }
 
         #region SearchName
         /// <summary>
@@ -125,10 +131,55 @@ namespace Bredele_Gestion.viewmodel
         public event PropertyChangedEventHandler PropertyChanged;
         public ViewBookViewModel()
         {
-            GestionBookService bookService = new GestionBookService();
             SearchName = "";
             ListActivity = bookService.LoadActivity();
             ListPlaces = bookService.LoadPlace();
+        }
+
+        public string CheckBook()
+        {
+            string error = string.Empty;
+
+            if (SelectCust == null)
+                error += "- Vous n'avez sélectionné aucun nom !\n";
+            if (SelectedDate.ToShortDateString() == "01/01/0001")
+                error += "- Vous n'avez sélectionné aucune date !\n";
+            if (string.IsNullOrEmpty(HoursStart))
+                error += "- Vous n'avez pas saisie d'heure de début !\n";
+            if (string.IsNullOrEmpty(HoursEnd))
+                error += "- Vous n'avez pas saisie d'heure de fin !\n";
+            if (SelectActivity == null)
+                error += "- Vous n'avez sélectionné aucune activité !\n";
+            if (SelectPlace == null)
+                error += "- Vous n'avez sélectionné aucune capacité de place !\n";
+
+            return error;
+        }
+
+        public void FormatToSendBookBdd()
+        {
+            try
+            {
+                string hourStart = HoursStart.Length == 1 ? $"0{HoursStart}:00:00" : $"{HoursStart}:00:00";
+                string hoursEnd = HoursEnd.Length == 1 ? $"0{HoursEnd}:00:00" : $"{HoursEnd}:00:00";
+
+
+                int custId = SelectCust.id;
+                string date = SelectedDate.ToString("yyyy-MM-dd");
+                
+                int activity = SelectActivity.Id;
+                int idBox = SelectPlace.Id;
+
+                if (!bookService.SendBookBdd(custId, date, hourStart, hoursEnd, idBox))
+                {
+                    LogTools.AddLog(LogTools.LogType.ERREUR, "Problème d'insertion des donnée dans la BDD Book");
+                }
+
+            }
+            catch (Exception)
+            {
+                LogTools.AddLog(LogTools.LogType.ERREUR, "Problème de convertion des variables (réservation) avant envoi à la BDD Book");
+            }
         }
 
         #region NotifyPropertyChanged

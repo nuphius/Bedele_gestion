@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BredeleGestion.Services", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BredeleGestion.Data", "BredeleGestion.Data\BredeleGestion.Data.csproj", "{06525B74-5B07-4805-A6B5-772BCDFEB248}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUnitaireBredele", "TestUnitaireBredele\TestUnitaireBredele.csproj", "{1561B666-BBD0-4FF2-B519-1F3235E44D08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestUnitaireBredele", "TestUnitaireBredele\TestUnitaireBredele.csproj", "{1561B666-BBD0-4FF2-B519-1F3235E44D08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

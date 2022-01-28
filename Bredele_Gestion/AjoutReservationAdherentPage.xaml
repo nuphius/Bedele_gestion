@@ -62,6 +62,7 @@
         <!-- ListBox - Liste adhérents-->
         <ListView x:Name="listBoxAdherentSearch"
                   ItemsSource="{Binding ListCust, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                  SelectedItem="{Binding SelectCust, UpdateSourceTrigger=PropertyChanged}"
                   Grid.Row="2"
                   FontWeight="Bold"
                   FontFamily="Georgia"
@@ -136,7 +137,7 @@
                        VerticalAlignment="Center"/>
             <ComboBox x:Name="ComboBoxActivityReservation"
                   ItemsSource="{Binding ListActivity}"
-                  SelectedItem="{Binding SelectedActivity}"
+                  SelectedItem="{Binding SelectActivity}"
                   FontFamily="Georgia"
                   FontSize="12"
                   HorizontalAlignment="Stretch"                  
@@ -144,9 +145,9 @@
             </ComboBox>
         </DockPanel>
 
-        <!-- ComboBox - Nombre de place-->
+        <!-- ComboBox - local-->
         <DockPanel Grid.Row="8">
-            <TextBlock Text="Places : " 
+            <TextBlock Text="Loges : " 
                        FontFamily="Georgia"
                        FontSize="12"
                        TextWrapping="Wrap"
@@ -155,7 +156,7 @@
                        VerticalAlignment="Center"/>
             <ComboBox x:Name="ComboBoxNbPlaceReservation"
                       ItemsSource="{Binding ListPlaces}"
-                      SelectedItem="{Binding SelectedPlace}"
+                      SelectedItem="{Binding SelectPlace}"
                       FontFamily="Georgia"
                       FontSize="12"
                       HorizontalAlignment="Stretch"                
@@ -201,7 +202,7 @@
                     HorizontalAlignment="Right"
                     Height="30"
                     Width="80"
-                    MaxWidth="80"/>
+                    MaxWidth="80" Click="BtnValidReservation_Click"/>
         </DockPanel>
 
         <!-- Label - Message si erreur-->

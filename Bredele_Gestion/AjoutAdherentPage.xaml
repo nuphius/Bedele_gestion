@@ -188,7 +188,17 @@
                FontWeight="Bold"
                VerticalAlignment="Bottom"
                HorizontalAlignment="Left"/>
-        <TextBox x:Name="txtBoxAddCity"
+        <ComboBox x:Name="txtBoxAddCity"
+                 ItemsSource="{Binding ListCity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                 SelectedItem="{Binding SelectedCity}" 
+                 Grid.Row="7"
+                 Grid.Column="2"
+                 FontFamily="Georgia"
+                 FontSize="12"
+                 MinWidth="320"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"/>
+        <!--<TextBox x:Name="txtBoxAddCity"
                  Text="{Binding City, Mode=TwoWay}"
                  Grid.Row="7"
                  Grid.Column="2"
@@ -197,8 +207,8 @@
                  FontSize="12"
                  MinWidth="320"
                  HorizontalAlignment="Left"
-                 VerticalAlignment="Center"/>
-        <ListView x:Name="ListViewCity"
+                 VerticalAlignment="Center"/>-->
+        <!--<ListView x:Name="ListViewCity"
                   Grid.Column="3"
                   d:ItemsSource="{d:SampleData ItemCount=3}" 
                   SelectionMode="Single"
@@ -207,7 +217,7 @@
                   HorizontalAlignment="Left"
                   VerticalAlignment="Top" 
                   Grid.Row="7" 
-                  Grid.RowSpan="2"/>
+                  Grid.RowSpan="2"/>-->
 
         <!-- TextBox - Date de naissance-->
         <Label x:Name="lblBoxCustBirthDate"
