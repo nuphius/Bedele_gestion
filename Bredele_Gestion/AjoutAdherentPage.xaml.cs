@@ -56,6 +56,10 @@ namespace Bredele_Gestion
                     lblCustError.Visibility = Visibility.Visible;
                 }
 
+                var mainWindow = Application.Current.MainWindow;
+                Frame frameLeft = mainWindow.FindName("FrameLeft") as Frame;
+                frameLeft.Navigate(new AdherentsPage());
+
             }
         }
         #endregion
