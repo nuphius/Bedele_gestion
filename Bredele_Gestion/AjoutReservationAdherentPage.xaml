@@ -156,7 +156,7 @@
                 HorizontalAlignment="Stretch" 
                 VerticalAlignment="Center"/>
             <ComboBox x:Name="ComboBoxNbPlaceReservation"
-                ItemsSource="{Binding ListPlaces}"
+                ItemsSource="{Binding ListBox}"
                 SelectedItem="{Binding SelectPlace}"
                 FontFamily="Georgia"
                 FontSize="12"

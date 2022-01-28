@@ -32,29 +32,46 @@ namespace BredeleGestion.Services
             set { _listBox = value; }
         }
 
-        public ViewBoxService()
+        public ViewBoxService(int idActivity = 0)
         {
-            LoadBoxBdd();
+            LoadBoxBdd(idActivity);
         }
 
         #region LoadBoxBdd
         /// <summary>
         /// Charge tous les informations des boxs et crée une liste d'objets Box observatable
         /// </summary>
-        public void LoadBoxBdd()
+        public void LoadBoxBdd(int idActivity = 0)
         {
-            ConnexionBddService connexionBddService = new ConnexionBddService(RequetSqlService.SELECTBOX, RequetSqlService.TABLEBOX);
+            ListBox.Clear();
+            string requet = string.Empty;
+
+            if (idActivity != 0)
+            {
+                requet = string.Format(RequetSqlService.SELECTBOXFROMACTIVITY, idActivity, "");
+            }
+            else
+            {
+                requet = RequetSqlService.SELECTBOX;
+            }
+
+            ConnexionBddService connexionBddService = new ConnexionBddService(requet, RequetSqlService.TABLEBOX);
             List<DataRow> listBoxBdd = connexionBddService.ExecuteRequet();
 
             foreach (DataRow box in listBoxBdd)
             {
                 string dateLockString = string.Empty;
                 DateTime date;
+                DateTime today = DateTime.Now;
+
+                Debug.WriteLine(today.Date);
+
 
                 if (!string.IsNullOrEmpty(box[4].ToString()))
                 {
                     date = Convert.ToDateTime(box[4]);
                     dateLockString = $"Verrouillé jusqu'au : {date.ToString("dd/MM/yyyy")}";
+                    Debug.WriteLine(date.Date);
                 }
                 else
                 {

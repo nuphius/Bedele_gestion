@@ -64,6 +64,11 @@ namespace BredeleGestion.Services
         public const string SELECTBOXWITHID = "SELECT * FROM box WHERE boxid={0}";
 
         /// <summary>
+        /// Selectection de tous les box ayant l'activité passé en where
+        /// </summary>
+        public const string SELECTBOXFROMACTIVITY = "SELECT * FROM box INNER JOIN activitybox " +
+            "ON boxid=activitybox.fkboxid WHERE fkactiid={0}{1}";
+        /// <summary>
         /// Selectection de tous les champs box
         /// </summary>
         public const string SELECTBOX = "SELECT * FROM box";

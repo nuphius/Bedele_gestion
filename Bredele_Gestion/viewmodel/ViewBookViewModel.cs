@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using BredeleGestion.Services;
 
 namespace Bredele_Gestion.viewmodel
@@ -20,7 +22,26 @@ namespace Bredele_Gestion.viewmodel
 
         public ObservableCollection<ListAdherentService> ListCust { get; set; }
         public ListAdherentService SelectCust { get; set; }
-        public Activitys SelectActivity { get; set; }
+
+        private Activitys _selectActivity;
+
+        public Activitys SelectActivity
+        {
+            get { return _selectActivity; }
+            set
+            {
+                _selectActivity = value;
+                ListBox = bookService.LoadBoxs(SelectActivity.Id, true);
+
+                var mainWindow = Application.Current.MainWindow;
+                Frame frameRight = mainWindow.FindName("FrameRight") as Frame;
+                frameRight.Navigate(new ViewBoxPage(SelectActivity.Id));
+
+                this.NotifyPropertyChanged(nameof(SelectActivity));
+            }
+        }
+
+        //public Activitys SelectActivity { get { return SelectActivity; } set { ); } }
         public BoxPlace SelectPlace { get; set; }
 
         readonly Regex regex = new Regex("^[0-9]{0,2}$");
@@ -30,7 +51,20 @@ namespace Bredele_Gestion.viewmodel
         private string _searchName;
         private string _hoursEnd;
         private string _hoursStart;
-        public List<BoxPlace> ListPlaces { get; set; }
+
+        private ObservableCollection<BoxPlace> _listBox;
+
+        public ObservableCollection<BoxPlace> ListBox
+        {
+            get { return _listBox; }
+            set
+            {
+                _listBox = value;
+                this.NotifyPropertyChanged(nameof(ListBox));
+            }
+        }
+
+        // public ObservableCollection<BoxPlace> ListBox { get; set; }
         public List<Activitys> ListActivity { get; set; }
 
         #region SearchName
@@ -133,7 +167,6 @@ namespace Bredele_Gestion.viewmodel
         {
             SearchName = "";
             ListActivity = bookService.LoadActivity();
-            ListPlaces = bookService.LoadPlace();
         }
 
         public string CheckBook()
@@ -166,7 +199,7 @@ namespace Bredele_Gestion.viewmodel
 
                 int custId = SelectCust.id;
                 string date = SelectedDate.ToString("yyyy-MM-dd");
-                
+
                 int activity = SelectActivity.Id;
                 int idBox = SelectPlace.Id;
 

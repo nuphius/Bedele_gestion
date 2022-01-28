@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace BredeleGestion.Services
     public class GestionBookService
     {
         private List<Activitys> _listAdherent = new List<Activitys>();
-        private List<BoxPlace> _listPlace = new List<BoxPlace>();
+        private ObservableCollection<BoxPlace> _listPlace = new ObservableCollection<BoxPlace>();
 
         public GestionBookService()
         {
@@ -46,9 +47,25 @@ namespace BredeleGestion.Services
         }
         #endregion
 
-        public List<BoxPlace> LoadPlace()
+        public ObservableCollection<BoxPlace> LoadBoxs(int idActivity = 0, bool locked = false)
         {
-            ConnexionBddService connexionBddService = new ConnexionBddService(RequetSqlService.SELECTBOX, RequetSqlService.TABLEBOX);
+            _listPlace.Clear();
+            string requet = string.Empty;
+
+            if (idActivity != 0)
+            {
+                requet = string.Format(RequetSqlService.SELECTBOXFROMACTIVITY, idActivity, "");
+                if (locked)
+                {
+                    requet = string.Format(RequetSqlService.SELECTBOXFROMACTIVITY, idActivity, " AND boxendlock IS NULL");
+                }
+            }
+            else
+            {
+                requet = RequetSqlService.SELECTBOX;
+            }
+            Debug.WriteLine(requet);
+            ConnexionBddService connexionBddService = new ConnexionBddService(requet, RequetSqlService.TABLEBOX);
             List<DataRow> listRstBdd = connexionBddService.ExecuteRequet();
 
             foreach (DataRow dataRow in listRstBdd)
@@ -58,15 +75,16 @@ namespace BredeleGestion.Services
                     int id = int.Parse(dataRow["boxid"].ToString());
                     int place = int.Parse(dataRow["boxcapacity"].ToString());
 
-                    _listPlace.Add(new BoxPlace { Id = id, Name = dataRow["boxname"].ToString(), Place = place});
+                    _listPlace.Add(new BoxPlace { Id = id, Name = dataRow["boxname"].ToString(), Place = place });
                 }
                 catch (Exception ex)
                 {
                     LogTools.AddLog(LogTools.LogType.ERREUR, "Problème de convertion des id ou place de la bdd box" + ex.Message);
                 }
             }
-            return _listPlace.OrderBy(x => x.Place).ToList();
+            return _listPlace;
         }
+
 
         public bool SendBookBdd(int custId, string date, string hourstart, string hourend, int idBox)
         {

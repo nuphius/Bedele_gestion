@@ -22,9 +22,13 @@ namespace Bredele_Gestion
     /// </summary>
     public partial class ViewBoxPage : Page
     {
-        ViewBoxService viewBox = new ViewBoxService();
-        public ViewBoxPage()
+        static private int _idActivity;
+
+        
+        public ViewBoxPage(int idActivity = 0)
         {
+            _idActivity = idActivity;
+            ViewBoxService viewBox = new ViewBoxService(_idActivity);
             InitializeComponent();
             this.DataContext = viewBox;
             //this.DataContext = new ViewBoxViewModel();
