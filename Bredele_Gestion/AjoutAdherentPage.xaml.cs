@@ -52,12 +52,13 @@ namespace Bredele_Gestion
                     else
                     {
                         lblCustError.Content = "Nouvel utilisateur ajouté !";
-
                     }
                     lblCustError.Visibility = Visibility.Visible;
                 }
 
-                txtBoxCustName.Clear();
+                
+                txtBoxCustBirthDate.Clear();
+                errorBirthDay = " Error Date";
                 var mainWindow = Application.Current.MainWindow;
                 Frame frameLeft = mainWindow.FindName("FrameLeft") as Frame;
                 frameLeft.Navigate(new AdherentsPage());

@@ -241,7 +241,7 @@ namespace Bredele_Gestion.viewmodel
             if (SelectedDate.ToShortDateString() == "01/01/0001")
                 error += "- Vous n'avez sélectionné aucune date !\n";
             if (SelectedDate.Date < DateTime.Now.Date)
-                error += "- Vous avez sélectionné une date antérieur à aujourd'hui " + DateTime.Now.ToShortDateString() + " !\n";
+                error += "- Date antérieur à aujourd'hui " + DateTime.Now.ToShortDateString() + " !\n";
             if (string.IsNullOrEmpty(HoursStart))
                 error += "- Vous n'avez pas saisie d'heure de début !\n";
             if (string.IsNullOrEmpty(HoursEnd))
