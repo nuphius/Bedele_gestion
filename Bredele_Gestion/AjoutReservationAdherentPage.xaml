@@ -196,17 +196,20 @@
             <TextBlock x:Name="TxtBlockTarifReservationDisplay"                   
                 Text="{Binding Price, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                 FontFamily="Georgia"
-                FontSize="12"/>            
+                FontSize="13"
+                FontWeight="Bold"/>            
         </DockPanel>
 
         <!-- StackPanel - Button -->
         <DockPanel Grid.Row="11" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="40,0,40,0">
+            <!-- TextBlock - Info adhérent -->
             <TextBlock x:Name="txtBlockAdherent"                   
                 Text="{Binding Adherent}"
                 Margin="0,0,0,0"
                 FontFamily="Georgia"
                 FontSize="12"
-                FontWeight="Bold"/>
+                FontWeight="Bold"
+                VerticalAlignment="Center"/>
             
             <!-- Button - Valider -->
             <Button Style="{DynamicResource ButtonStyleCorner3}"
