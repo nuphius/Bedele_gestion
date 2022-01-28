@@ -35,6 +35,8 @@ namespace Bredele_Gestion
                 gestionLocaux.LoadBox(_idBox);
         }
 
+        // Intéraction du bouton Valider la modification d'un local et message de retour ////////////////////////////////////////////////////////////////////////////////
+        #region Bouton Valider
         private void btnBoxSub_Click(object sender, RoutedEventArgs e)
         {
             txtBoxError.Visibility = Visibility.Hidden;
@@ -70,7 +72,10 @@ namespace Bredele_Gestion
                 frameLeft.Navigate(new InfoAjoutLocauxPage());
             }   
         }
+        #endregion
 
+        // Intéraction du bouton Supprimer un local et message de retour ////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Bouton Supprimer
         private void btnBoxDel_Click(object sender, RoutedEventArgs e)
         {
             if (_idBox != 0)
@@ -98,5 +103,6 @@ namespace Bredele_Gestion
                 }
             }
         }
+        #endregion
     }
 }

@@ -24,10 +24,10 @@ namespace Bredele_Gestion
             listBoxAdherentSearch.ItemsSource = cust.ListCust;
         }
 
-
+        #region Fonction du bouton Modifier
         /// <summary>
-        /// Fonction qui si un nom est séléctionné dans la listView, récupère la section et
-        /// envoi l'Id de nom selectionné sur la page AjoutAdherentPage
+        /// Fonction qui si un nom est sélectionné dans la listView, récupère la section et
+        /// envoi l'Id de nom sélectionné sur la page AjoutAdherentPage
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -49,11 +49,12 @@ namespace Bredele_Gestion
                 MessageBox.Show("Sélectionnez une ligne a modifier.", "Aucune ligne séléctionnée", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        #endregion
     }
 
-
+    #region Conversion des boutons radio
     /// <summary>
-    /// Interface de convertion des boutons Radio
+    /// Interface de conversion des boutons Radio
     /// </summary>
     public class RadioConverter : IValueConverter
     {
@@ -77,4 +78,5 @@ namespace Bredele_Gestion
             }
         }
     }
+    #endregion
 }

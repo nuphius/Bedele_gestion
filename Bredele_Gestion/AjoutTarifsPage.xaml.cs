@@ -31,6 +31,8 @@ namespace Bredele_Gestion
             priceService.LoadListPrice();
         }
 
+        // Intéraction du bouton Valider lors de l'ajout d'un nouveau tarif et message de retour ////////////////////////////////////////////////////////////////////////
+        #region Bouton Valider
         private void btnAddPriceSub_Click_1(object sender, RoutedEventArgs e)
         {
             txtPriceError.Visibility = Visibility.Hidden;
@@ -39,16 +41,19 @@ namespace Bredele_Gestion
             if (priceService.AddUpdatePrice())
             {
                 txtPriceError.Foreground = new SolidColorBrush(Colors.Green);
-                txtPriceError.Text = "La box a bien été ajouté !";
+                txtPriceError.Text = "Le nouveau tarif a bien été ajouté !";
                 txtPriceError.Visibility = Visibility.Visible;
             }
             else
             {
-                LogTools.AddLog(LogTools.LogType.ERREUR, "Problème lors je l'ajout d'un prix dans la BDD");
+                LogTools.AddLog(LogTools.LogType.ERREUR, "Problème lors je l'ajout d'un tarif dans la BDD");
             }
 
         }
+        #endregion
 
+        // Intéraction du bouton Modifier un tarif et message de retour /////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Bouton Modifier
         private void btnModPriceSub_Click(object sender, RoutedEventArgs e)
         {
             txtPriceError.Foreground = new SolidColorBrush(Colors.Red);
@@ -92,7 +97,10 @@ namespace Bredele_Gestion
             }
 
         }
+        #endregion
 
+        // Intéraction du bouton Supprimer un tarif et message de retour ////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Bouton Supprimer
         private void btnCustDel_Click(object sender, RoutedEventArgs e)
         {
             txtPriceError.Foreground = new SolidColorBrush(Colors.Red);
@@ -128,5 +136,6 @@ namespace Bredele_Gestion
                 }
             }
         }
+        #endregion
     }
 }

@@ -30,8 +30,8 @@ namespace Bredele_Gestion
             this.DataContext = viewModel;
         }
 
+        #region
         private bool _flagTxtBoxNameReservation = true;
-
         private void TxtBoxNameReservation_GotFocus(object sender, RoutedEventArgs e)
         {
             if (_flagTxtBoxNameReservation)
@@ -40,7 +40,10 @@ namespace Bredele_Gestion
                 _flagTxtBoxNameReservation = false;
             }
         }
+        #endregion
 
+        // Intéraction du bouton Valider une réservation ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Bouton Valider
         private void BtnValidReservation_Click(object sender, RoutedEventArgs e)
         {
             txtReservationError.Visibility = Visibility.Hidden;
@@ -58,6 +61,6 @@ namespace Bredele_Gestion
                 viewModel.FormatToSendBookBdd();
             }
         }
-
+        #endregion
     }
 }
