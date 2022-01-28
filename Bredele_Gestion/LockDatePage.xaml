@@ -8,38 +8,19 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LockDatePage">
 
-    <!-- Grid pour l'agencement de la page-->
     <Grid Background="#FFEEF5FD">
-        <!-- StackPanel - Mise en foirme -->
         <StackPanel 
             HorizontalAlignment="Center"
             Width="250">
-            <!-- TextBlock - Verrouillage de la loge -->
-            <TextBlock Text="Verrouiller la loge" 
-                HorizontalAlignment="Center"
-                FontWeight="Bold"
-                FontSize="18"
-                FontFamily="Georgia"/>
-
-            <!-- Calendar - Affichage du calendrier -->
+            <TextBlock Text="Verrouillage Log" 
+                       HorizontalAlignment="Center"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       FontFamily="Georgia"/>
             <Viewbox>
-                <Calendar x:Name="calendarLock" 
-                Margin="0,40,0,0" />
+            <Calendar x:Name="calendarLock" 
+                      Margin="0,40,0,0" />
             </Viewbox>
-
-            <!-- TextBlock - Information verrouillage de la loge-->
-            <TextBlock Text="Pour verrouiller la loge" 
-                HorizontalAlignment="Center"
-                FontWeight="Bold"
-                FontSize="18"
-                FontFamily="Georgia"/>
-            <TextBlock Text="cliqué deux fois." 
-                HorizontalAlignment="Center"
-                FontWeight="Bold"
-                FontSize="18"
-                FontFamily="Georgia"/>
-
-            <!-- Button - Verrouiller -->
             <Button Style="{DynamicResource ButtonStyleCorner3}"
                 x:Name="btnCalendar"
                 Content="Verrouiller"
@@ -51,6 +32,6 @@
                 VerticalAlignment="Center"
                 Height="30"
                 Width="80" Click="btnCalendar_Click"/>
-        </StackPanel>
+        </StackPanel>  
     </Grid>
 </Page>

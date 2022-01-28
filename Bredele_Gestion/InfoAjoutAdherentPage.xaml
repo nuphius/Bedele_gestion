@@ -8,7 +8,7 @@
       d:DesignHeight="700" d:DesignWidth="800"
       Title="InfoAjoutAdherentPage">
 
-    <!-- Grid pour l'agencement de la page -->
+    <!-- Grid pour l'agencement de la page-->
     <Grid Background="#FFEEF5FD">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -17,37 +17,37 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <!-- TextBlock - Info Adhérent -->
+        <!-- TextBlock - Info Adhérent-->
         <TextBlock x:Name="LblInfoComplete"
-                Grid.Row="0"
-                Text="Merci de remplir&#x0a;tous les champs"
-                FontWeight="Bold"
-                FontFamily="Georgia"
-                FontSize="16"
-                TextWrapping="WrapWithOverflow"
-                Margin="40,0,40,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"/>
+               Grid.Row="0"
+               Text="Merci de remplir&#x0a;tous les champs"
+               FontWeight="Bold"
+               FontFamily="Georgia"
+               FontSize="16"
+               TextWrapping="WrapWithOverflow"
+               Margin="40,0,40,0"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
 
-        <!-- Image - Info -->
+        <!-- Image - Info-->
         <Image Source="/Icon/info_img_80.png"
-                Grid.Row="1"
-                VerticalAlignment="Center"
-                Height="80"
-                Width="80"
-                StretchDirection="Both"
-                Stretch="UniformToFill"/>
+               Grid.Row="1"
+               VerticalAlignment="Center"
+               Height="80"
+               Width="80"
+               StretchDirection="Both"
+               Stretch="UniformToFill"/>
 
-        <!-- TextBlock - Notification Adhérent -->
+        <!-- TextBlock - Notification Adhérent-->
         <TextBlock x:Name="TxtBlockInfoAdherent"
-                Grid.Row="2"
-                Text="N'oubliez pas de cocher la case Adhérent si la cotisation a été réglé"
-                FontWeight="Bold"
-                FontFamily="Georgia"
-                FontSize="16"
-                TextWrapping="WrapWithOverflow"
-                Margin="40,0,40,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"/>
+            Grid.Row="2"
+            Text="N'oubliez pas de cocher la case Adhérent si la cotisation a été réglé"
+            FontWeight="Bold"
+            FontFamily="Georgia"
+            FontSize="16"
+            TextWrapping="WrapWithOverflow"
+            Margin="40,0,40,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
     </Grid>
 </Page>
