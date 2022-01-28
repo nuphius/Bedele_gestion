@@ -21,7 +21,7 @@
             <RowDefinition Height="30px"/>
             <RowDefinition Height="30px"/>
             <RowDefinition Height="30px"/>
-            <RowDefinition Height="35px"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="35px"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -183,43 +183,32 @@
                 Margin="0,5,40,5" />
         </DockPanel>
 
-        <!--</StackPanel - Tarif>-->
-        <DockPanel Grid.Row="10">
-            <!-- Label - Tarif-->
+        <!-- StackPanel - Tarif -->
+        <DockPanel Grid.Row="10" VerticalAlignment="Center">
+            <!-- Label - Tarif -->
             <TextBlock x:Name="TxtBlockTarifReservation"
-                Text="Tarif : "
+                Text="Montant : "
                 FontFamily="Georgia"
-                FontSize="14"
+                FontSize="12"
                 Margin="40,0,0,0"/>
 
-            <!-- Label - Montant-->
+            <!-- Label - Montant -->
             <TextBlock x:Name="TxtBlockTarifReservationDisplay"                   
                 Text="{Binding Price, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                 FontFamily="Georgia"
-                FontSize="14"/>
-            
-            
+                FontSize="12"/>            
         </DockPanel>
 
-        <!--</StackPanel - Button>-->
-        <DockPanel Grid.Row="11" HorizontalAlignment="Stretch" Margin="40,0,40,0">
+        <!-- StackPanel - Button -->
+        <DockPanel Grid.Row="11" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="40,0,40,0">
             <TextBlock x:Name="txtBlockAdherent"                   
-                       Text="{Binding Adherent}"
-                       Margin="0,0,0,0"
-                       FontFamily="Georgia"
-                       FontSize="14"/>
-            <!-- Button - Modifier-->
-            <!--<Button Style="{DynamicResource ButtonStyleCorner3}"
-                x:Name="BtnDeleteReservation"
-                Content="Supprimer"                    
+                Text="{Binding Adherent}"
+                Margin="0,0,0,0"
                 FontFamily="Georgia"
                 FontSize="12"
-                FontWeight="Bold"
-                HorizontalAlignment="Left"
-                Height="30"
-                Width="80"
-                MaxWidth="80"/>-->
-            <!-- Button - Supprimer-->
+                FontWeight="Bold"/>
+            
+            <!-- Button - Valider -->
             <Button Style="{DynamicResource ButtonStyleCorner3}"
                 x:Name="BtnValidReservation"
                 Content="Valider"
@@ -229,7 +218,8 @@
                 HorizontalAlignment="Right"
                 Height="30"
                 Width="80"
-                MaxWidth="80" Click="BtnValidReservation_Click"/>
+                MaxWidth="80"
+                Click="BtnValidReservation_Click"/>
         </DockPanel>
 
         <!-- Label - Message si erreur-->
