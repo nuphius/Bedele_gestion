@@ -25,7 +25,7 @@ namespace Bredele_Gestion.viewmodel
         public ObservableCollection<Prices> ListPrice { get; set; }
         public List<Activitys> ListActivity { get; set; }
         public ObservableCollection<ListAdherentService> ListCust { get; set; }
-        public ListAdherentService SelectCust { get; set; }
+        //public ListAdherentService SelectCust { get; set; }
         public BoxPlace SelectPlace { get; set; }
         readonly Regex regex = new Regex("^[0-9]{0,2}$");
         public DateTime SelectedDate { get; set; }
@@ -37,7 +37,40 @@ namespace Bredele_Gestion.viewmodel
         private string _hoursStart;
         private string _price;
         private Prices _selectedPrice;
+        private ListAdherentService _selectCust;
+        private string _adherent;
 
+
+
+
+        public string Adherent
+        {
+            get { return _adherent; }
+            set 
+            { 
+                _adherent = value;
+                this.NotifyPropertyChanged(nameof(Adherent));
+            }
+        }
+
+
+        public ListAdherentService SelectCust
+        {
+            get { return _selectCust; }
+            set
+            {
+                _selectCust = value;
+
+                if (SelectCust.Adherent)
+                {
+                    Adherent = "Adhérent";
+                }
+                else
+                {
+                    Adherent = "Non Adhérent !";
+                }
+            }
+        }
 
 
         public Prices SelectedPrice
@@ -278,7 +311,7 @@ namespace Bredele_Gestion.viewmodel
                 {
                     LogTools.AddLog(LogTools.LogType.ERREUR, "Problème convertion des heures pour calcul tarif" + ex.Message);
                 }
-                
+
             }
         }
 

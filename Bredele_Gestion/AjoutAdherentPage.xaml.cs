@@ -52,10 +52,12 @@ namespace Bredele_Gestion
                     else
                     {
                         lblCustError.Content = "Nouvel utilisateur ajouté !";
+
                     }
                     lblCustError.Visibility = Visibility.Visible;
                 }
 
+                txtBoxCustName.Clear();
                 var mainWindow = Application.Current.MainWindow;
                 Frame frameLeft = mainWindow.FindName("FrameLeft") as Frame;
                 frameLeft.Navigate(new AdherentsPage());
@@ -180,10 +182,10 @@ namespace Bredele_Gestion
         private void CleanTxtBox()
         {
             var mainWindow = Application.Current.MainWindow;
-            var frameRight = mainWindow.FindName("FrameRight") as Frame;
-            var frameLeft = mainWindow.FindName("FrameLeft") as Frame;
-            frameRight?.Navigate(new AjoutAdherentPage());
-            frameLeft?.Navigate(new AdherentsPage());
+            Frame frameRight = mainWindow.FindName("FrameRight") as Frame;
+            Frame frameLeft = mainWindow.FindName("FrameLeft") as Frame;
+            frameRight.Navigate(new AjoutAdherentPage());
+            frameLeft.Navigate(new AdherentsPage());
         }
         #endregion
     }

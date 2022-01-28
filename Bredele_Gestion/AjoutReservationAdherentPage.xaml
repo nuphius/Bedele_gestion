@@ -184,7 +184,7 @@
         </DockPanel>
 
         <!--</StackPanel - Tarif>-->
-        <StackPanel Grid.Row="10" Orientation="Horizontal" HorizontalAlignment="Stretch">
+        <DockPanel Grid.Row="10">
             <!-- Label - Tarif-->
             <TextBlock x:Name="TxtBlockTarifReservation"
                 Text="Tarif : "
@@ -197,10 +197,17 @@
                 Text="{Binding Price, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                 FontFamily="Georgia"
                 FontSize="14"/>
-        </StackPanel>
+            
+            
+        </DockPanel>
 
         <!--</StackPanel - Button>-->
         <DockPanel Grid.Row="11" HorizontalAlignment="Stretch" Margin="40,0,40,0">
+            <TextBlock x:Name="txtBlockAdherent"                   
+                       Text="{Binding Adherent}"
+                       Margin="0,0,0,0"
+                       FontFamily="Georgia"
+                       FontSize="14"/>
             <!-- Button - Modifier-->
             <!--<Button Style="{DynamicResource ButtonStyleCorner3}"
                 x:Name="BtnDeleteReservation"

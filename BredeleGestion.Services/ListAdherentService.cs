@@ -12,6 +12,7 @@ namespace BredeleGestion.Services
 
         public int id;
         public string Name;
+        public bool Adherent;
         private string _fisrtname;
         private bool _adherent;
         private ObservableCollection<ListAdherentService> _listCust = new ObservableCollection<ListAdherentService>();
@@ -76,6 +77,7 @@ namespace BredeleGestion.Services
         {
             this.id = id;
             Name = name ?? string.Empty;
+            Adherent = adherent;
             _fisrtname = firstname ?? string.Empty;
             _adherent = adherent;
 
