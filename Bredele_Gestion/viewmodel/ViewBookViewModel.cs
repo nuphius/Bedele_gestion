@@ -170,18 +170,29 @@ namespace Bredele_Gestion.viewmodel
             ListActivity = bookService.LoadActivity();
         }
 
+        #region CheckBook
+        /// <summary>
+        /// Vérifier la conformité des champs du formulaire
+        /// </summary>
+        /// <returns></returns>
         public string CheckBook()
         {
             string error = string.Empty;
+            int hourS = int.Parse(HoursStart);
+            int hourE = int.Parse(HoursEnd);
 
             if (SelectCust == null)
                 error += "- Vous n'avez sélectionné aucun nom !\n";
             if (SelectedDate.ToShortDateString() == "01/01/0001")
                 error += "- Vous n'avez sélectionné aucune date !\n";
+            if (SelectedDate.Date < DateTime.Now.Date)
+                error += "- Vous avez sélectionné une date antérieur à aujourd'hui "+ DateTime.Now.ToShortDateString() + " !\n";
             if (string.IsNullOrEmpty(HoursStart))
                 error += "- Vous n'avez pas saisie d'heure de début !\n";
             if (string.IsNullOrEmpty(HoursEnd))
                 error += "- Vous n'avez pas saisie d'heure de fin !\n";
+            if (hourE <= hourS)
+                error += "- Heure de fin inférieur ou égal à l'heure de début !\n";
             if (SelectActivity == null)
                 error += "- Vous n'avez sélectionné aucune activité !\n";
             if (SelectPlace == null)
@@ -189,8 +200,13 @@ namespace Bredele_Gestion.viewmodel
 
             return error;
         }
+        #endregion
 
-        public void FormatToSendBookBdd()
+        #region FormatToSendBookBdd
+        /// <summary>
+        /// Met au bon format les données du formulaire et envoi a la BDD
+        /// </summary>
+        public bool FormatToSendBookBdd()
         {
             try
             {
@@ -207,14 +223,20 @@ namespace Bredele_Gestion.viewmodel
                 if (!bookService.SendBookBdd(custId, date, hourStart, hoursEnd, idBox))
                 {
                     LogTools.AddLog(LogTools.LogType.ERREUR, "Problème d'insertion des donnée dans la BDD Book");
+                    return false;
                 }
-
+                else
+                {
+                    return true;
+                }
             }
             catch (Exception)
             {
                 LogTools.AddLog(LogTools.LogType.ERREUR, "Problème de convertion des variables (réservation) avant envoi à la BDD Book");
+                return false;
             }
         }
+        #endregion
 
         #region NotifyPropertyChanged
         /// <summary>

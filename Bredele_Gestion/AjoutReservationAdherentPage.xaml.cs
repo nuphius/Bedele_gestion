@@ -58,7 +58,13 @@ namespace Bredele_Gestion
             }
             else
             {
-                viewModel.FormatToSendBookBdd();
+                if (viewModel.FormatToSendBookBdd())
+                {
+                    txtReservationError.Visibility = Visibility.Visible;
+                    txtReservationError.Foreground = new SolidColorBrush(Colors.Green); ;
+                    txtReservationError.Text = "Réservation enregistrée";
+                }
+                
             }
         }
         #endregion
