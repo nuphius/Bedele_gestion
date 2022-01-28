@@ -10,7 +10,6 @@
 
     <!-- Grid pour l'agencement de la page-->
     <Grid Background="#FFEEF5FD">
-
         <Grid.RowDefinitions>
             <RowDefinition Height="120"/>
             <RowDefinition Height="30"/>
@@ -48,72 +47,72 @@
 
         <!-- Label - Sélectionner tarif -->
         <Label x:Name="lblSelectPrice"
-                   Grid.Row="1"
-                   Grid.Column="1"
-                   Content="Sélectionner tarif"
-                   FontFamily="Georgia"
-                   FontSize="12"
-                   FontWeight="Bold"
-                   VerticalAlignment="Bottom"
-                   HorizontalAlignment="Left"/>
+                Grid.Row="1"
+                Grid.Column="1"
+                Content="Sélectionner tarif"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"/>
 
         <!-- ComboBox - Liste déroulente Tarif -->
         <ComboBox x:Name="cmbBoxSelectPrice"
-                  ItemsSource="{Binding PriceSelected, UpdateSourceTrigger=Explicit, Mode=TwoWay}"                  
-                  Height="20"
-                  Grid.Row="1"
-                  Grid.Column="2"
-                  FontFamily="Georgia"
-                  Width="320"
-                  HorizontalAlignment="Center">
+                ItemsSource="{Binding PriceSelected, UpdateSourceTrigger=Explicit, Mode=TwoWay}"                  
+                Height="20"
+                Grid.Row="1"
+                Grid.Column="2"
+                FontFamily="Georgia"
+                Width="320"
+                HorizontalAlignment="Center">
             <!--<ComboBoxItem Content="Tarif Adhérent" IsSelected="True"/>-->
         </ComboBox>
 
         <!-- Label - Nouveau nom -->
         <Label x:Name="lblModNamePrice"
-           Content="Nouveau nom"
-           Grid.Row="2"
-           Grid.Column="1"
-           FontFamily="Georgia"
-           FontSize="12"
-           FontWeight="Bold"
-           VerticalAlignment="Bottom"
-           HorizontalAlignment="Left"/>
+                Content="Nouveau nom"
+                Grid.Row="2"
+                Grid.Column="1"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"/>
 
         <!-- TextBox - Nouveau nom -->
         <TextBox x:Name="txtBoxModNamePrice"
-                 Text="{Binding UpdateName, UpdateSourceTrigger=LostFocus}"
-                 Grid.Row="2"
-                 Grid.Column="2"
-                 TextWrapping="Wrap"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 MinWidth="320"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"/>
+                Text="{Binding UpdateName, UpdateSourceTrigger=LostFocus}"
+                Grid.Row="2"
+                Grid.Column="2"
+                TextWrapping="Wrap"
+                FontFamily="Georgia"
+                FontSize="12"
+                MinWidth="320"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"/>
 
         <!-- Label - Nouvelle valeur -->
         <Label x:Name="lblModValuePrice"
-           Content="Nouvelle valeur"
-           Grid.Row="3"
-           Grid.Column="1"
-           FontFamily="Georgia"
-           FontSize="12"
-           FontWeight="Bold"
-           VerticalAlignment="Bottom"
-           HorizontalAlignment="Left"/>
+                Content="Nouvelle valeur"
+                Grid.Row="3"
+                Grid.Column="1"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"/>
 
         <!-- TextBox - Nouvelle valeur -->
         <TextBox x:Name="txtBoxModValuePrice"
-                 Text="{Binding UpdateValue, UpdateSourceTrigger=PropertyChanged}"
-                 Grid.Row="3"
-                 Grid.Column="2"
-                 TextWrapping="Wrap"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 MinWidth="320"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"/>
+                Text="{Binding UpdateValue, UpdateSourceTrigger=PropertyChanged}"
+                Grid.Row="3"
+                Grid.Column="2"
+                TextWrapping="Wrap"
+                FontFamily="Georgia"
+                FontSize="12"
+                MinWidth="320"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"/>
 
         <!-- Button - Supprimer -->
         <Button Style="{DynamicResource ButtonStyleCorner3}"
@@ -171,49 +170,49 @@
 
         <!-- Label - Nom du tarif -->
         <Label x:Name="lblAddNamePrice"
-                   Content="Nom du tarif"
-                   Grid.Row="7"
-                   Grid.Column="1"
-                   FontFamily="Georgia"
-                   FontSize="12"
-                   FontWeight="Bold"
-                   VerticalAlignment="Bottom"
-                   HorizontalAlignment="Left"/>
+                Content="Nom du tarif"
+                Grid.Row="7"
+                Grid.Column="1"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"/>
 
         <!-- TextBox - Nom du tarif -->
         <TextBox x:Name="txtBoxAddNamePrice"
-                 Text="{Binding NameNewPrice, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
-                 Grid.Row="7"
-                 Grid.Column="2"
-                 TextWrapping="Wrap"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 MinWidth="320"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"/>
+                Text="{Binding NameNewPrice, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                Grid.Row="7"
+                Grid.Column="2"
+                TextWrapping="Wrap"
+                FontFamily="Georgia"
+                FontSize="12"
+                MinWidth="320"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"/>
 
         <!-- Label - Valeur -->
         <Label x:Name="lblAddValuePrice"
-                 Content="Valeur"
-                 Grid.Row="8"
-                 Grid.Column="1"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 FontWeight="Bold"
-                 VerticalAlignment="Bottom"
-                 HorizontalAlignment="Left"/>
+                Content="Valeur"
+                Grid.Row="8"
+                Grid.Column="1"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"/>
 
         <!-- TextBox - Valeur -->
         <TextBox x:Name="txtBoxAddValuePrice"
-                 Text="{Binding NewPrice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                 Grid.Row="8"
-                 Grid.Column="2"
-                 TextWrapping="Wrap"
-                 FontFamily="Georgia"
-                 FontSize="12"
-                 MinWidth="320"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"/>
+                Text="{Binding NewPrice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                Grid.Row="8"
+                Grid.Column="2"
+                TextWrapping="Wrap"
+                FontFamily="Georgia"
+                FontSize="12"
+                MinWidth="320"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"/>
 
         <!-- Button - Ajouter -->
         <Button Style="{DynamicResource ButtonStyleCorner3}"

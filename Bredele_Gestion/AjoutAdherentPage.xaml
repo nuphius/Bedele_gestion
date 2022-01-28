@@ -295,7 +295,7 @@
                 VerticalAlignment="Center"
                 LostFocus="txtBoxCustMail_LostFocus"/>
 
-        <!-- CheckBox - Membre de l'association-->
+        <!-- CheckBox - Membre de l'association -->
         <CheckBox x:Name="chkBoxCustMember"
                 IsChecked="{Binding Adherent, UpdateSourceTrigger=Explicit}"
                 Grid.Row="11"
@@ -307,9 +307,9 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"/>
 
-        <!-- StackPanel - Button-->
+        <!-- StackPanel - Button -->
         <StackPanel Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <!-- Button - Supprimer-->
+            <!-- Button - Supprimer -->
             <Button Style="{DynamicResource ButtonStyleCorner3}"
                 x:Name="btnCustDel"
                 Grid.Row="12"
@@ -321,7 +321,7 @@
                 Width="80"
                 Click="btnCustDel_Click"/>
 
-            <!-- Button - Valider-->
+            <!-- Button - Valider -->
             <Button Style="{DynamicResource ButtonStyleCorner3}"
                 x:Name="btnCustSub"
                 Grid.Row="12"
@@ -334,7 +334,7 @@
                 Click="btnCustSub_Click"/>
         </StackPanel>
 
-        <!-- Label - Message si erreur-->
+        <!-- Label - Message si erreur -->
         <Label x:Name="lblCustError"
                 Grid.Row="13"
                 Grid.Column="1"

@@ -8,7 +8,7 @@
       d:DesignHeight="700" d:DesignWidth="800"
       Title="AjoutReservationAdherentPage">
 
-    <!-- Grid pour l'agencement de la page-->
+    <!-- Grid pour l'agencement de la page -->
     <Grid Background="#FFEEF5FD">
         <Grid.RowDefinitions>
             <RowDefinition Height="60px"/>
@@ -25,7 +25,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- TextBlock - Titre-->
+        <!-- TextBlock - Titre -->
         <TextBlock x:Name="TxtBlockTitleReservation"
                 Grid.Row="0"
                 Text="Ajouter / Modifier Réservation"            
@@ -37,41 +37,41 @@
                 VerticalAlignment="Top"/>
 
 
-        <!-- DockPanel - Recherche adhérents-->
+        <!-- DockPanel - Recherche adhérents -->
         <DockPanel Grid.Row="1">
-            <!-- Image - Loupe-->
+            <!-- Image - Loupe -->
             <Image Source="/Icon/loupe_40.png"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Margin="40,0,10,0"
-                    Height="20"
-                    Width="20"/>
-            <!-- TextBox - Recherche adhérents-->
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="40,0,10,0"
+                Height="20"
+                Width="20"/>
+            <!-- TextBox - Recherche adhérents -->
             <TextBox x:Name="TxtBoxNameReservation"
-                    Text="{Binding SearchName, UpdateSourceTrigger=PropertyChanged}"
-                    FontFamily="Georgia"
-                    FontSize="12"
-                    TextWrapping="WrapWithOverflow"                    
-                    MinWidth="50"
-                    Margin="0,0,40,0"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center"
-                    GotFocus="TxtBoxNameReservation_GotFocus"/>
+                Text="{Binding SearchName, UpdateSourceTrigger=PropertyChanged}"
+                FontFamily="Georgia"
+                FontSize="12"
+                TextWrapping="WrapWithOverflow"                    
+                MinWidth="50"
+                Margin="0,0,40,0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                GotFocus="TxtBoxNameReservation_GotFocus"/>
         </DockPanel>
 
-        <!-- ListBox - Liste adhérents-->
+        <!-- ListBox - Liste adhérents -->
         <ListView x:Name="listBoxAdherentSearch"
-                  ItemsSource="{Binding ListCust, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                  SelectedItem="{Binding SelectCust, UpdateSourceTrigger=PropertyChanged}"
-                  Grid.Row="2"
-                  FontWeight="Bold"
-                  FontFamily="Georgia"
-                  FontSize="12"
-                  Margin="40,0,40,0"/>
+                ItemsSource="{Binding ListCust, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                SelectedItem="{Binding SelectCust, UpdateSourceTrigger=PropertyChanged}"
+                Grid.Row="2"
+                FontWeight="Bold"
+                FontFamily="Georgia"
+                FontSize="12"
+                Margin="40,0,40,0"/>
 
-        <!-- Calendar - Calendrier de réservation-->
+        <!-- Calendar - Calendrier de réservation -->
         <Calendar x:Name="CalendarReservation"
-                  SelectedDate="{Binding SelectedDate}"
+                SelectedDate="{Binding SelectedDate}"
                 Grid.Row="3"
                 Margin="20,0,20,0"
                 HorizontalAlignment="Stretch"
@@ -89,15 +89,15 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"/>
 
-        <!-- TextBox - Heure de début de la réservation-->
+        <!-- TextBox - Heure de début de la réservation -->
         <DockPanel Grid.Row="5">
             <TextBlock Text="Heure de début" 
-                       FontFamily="Georgia"
-                       FontSize="12"
-                       TextWrapping="Wrap"
-                       Margin="40,0,5,0"
-                       HorizontalAlignment="Stretch" 
-                       VerticalAlignment="Center"/>
+                FontFamily="Georgia"
+                FontSize="12"
+                TextWrapping="Wrap"
+                Margin="40,0,5,0"
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Center"/>
             <TextBox x:Name="TxtBoxHourStartReservation"
                 Text="{Binding HoursStart, UpdateSourceTrigger=PropertyChanged}"
                 FontFamily="Georgia"
@@ -107,15 +107,16 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"/>
         </DockPanel>
-        <!-- TextBox - Heure de début de la réservation-->
+        
+        <!-- TextBox - Heure de fin de la réservation -->
         <DockPanel Grid.Row="6">
             <TextBlock Text="Heure de fin" 
-                       FontFamily="Georgia"
-                       FontSize="12"
-                       TextWrapping="Wrap"
-                       Margin="40,0,5,0"
-                       HorizontalAlignment="Stretch" 
-                       VerticalAlignment="Center"/>
+                FontFamily="Georgia"
+                FontSize="12"
+                TextWrapping="Wrap"
+                Margin="40,0,5,0"
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Center"/>
             <TextBox x:Name="TxtBoxHourEndReservation"
                 Text="{Binding HoursEnd, UpdateSourceTrigger=PropertyChanged}"
                 FontFamily="Georgia"
@@ -126,87 +127,87 @@
                 VerticalAlignment="Center"/>
         </DockPanel>
 
-        <!-- ComboBox - Activité-->
+        <!-- ComboBox - Activité -->
         <DockPanel Grid.Row="7">
             <TextBlock Text="Activités : " 
-                       FontFamily="Georgia"
-                       FontSize="12"
-                       TextWrapping="Wrap"
-                       Margin="40,0,5,0"
-                       HorizontalAlignment="Stretch" 
-                       VerticalAlignment="Center"/>
+                FontFamily="Georgia"
+                FontSize="12"
+                TextWrapping="Wrap"
+                Margin="40,0,5,0"
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Center"/>
             <ComboBox x:Name="ComboBoxActivityReservation"
-                  ItemsSource="{Binding ListActivity}"
-                  SelectedItem="{Binding SelectActivity}"
-                  FontFamily="Georgia"
-                  FontSize="12"
-                  HorizontalAlignment="Stretch"                  
-                  Margin="0,5,40,5">
+                ItemsSource="{Binding ListActivity}"
+                SelectedItem="{Binding SelectActivity}"
+                FontFamily="Georgia"
+                FontSize="12"
+                HorizontalAlignment="Stretch"                  
+                Margin="0,5,40,5">
             </ComboBox>
         </DockPanel>
 
-        <!-- ComboBox - local-->
+        <!-- ComboBox - local -->
         <DockPanel Grid.Row="8">
             <TextBlock Text="Loges : " 
-                       FontFamily="Georgia"
-                       FontSize="12"
-                       TextWrapping="Wrap"
-                       Margin="40,0,5,0"
-                       HorizontalAlignment="Stretch" 
-                       VerticalAlignment="Center"/>
+                FontFamily="Georgia"
+                FontSize="12"
+                TextWrapping="Wrap"
+                Margin="40,0,5,0"
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Center"/>
             <ComboBox x:Name="ComboBoxNbPlaceReservation"
-                      ItemsSource="{Binding ListPlaces}"
-                      SelectedItem="{Binding SelectPlace}"
-                      FontFamily="Georgia"
-                      FontSize="12"
-                      HorizontalAlignment="Stretch"                
-                      Margin="0,5,40,5" />
+                ItemsSource="{Binding ListPlaces}"
+                SelectedItem="{Binding SelectPlace}"
+                FontFamily="Georgia"
+                FontSize="12"
+                HorizontalAlignment="Stretch"                
+                Margin="0,5,40,5" />
         </DockPanel>
 
         <!--</StackPanel - Tarif>-->
         <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Stretch">
             <!-- Label - Tarif-->
             <TextBlock x:Name="TxtBlockTarifReservation"
-                   Text="Tarif : "
-                   FontFamily="Georgia"
-                   FontSize="12"
-                   Margin="40,0,0,0"/>
+                Text="Tarif : "
+                FontFamily="Georgia"
+                FontSize="12"
+                Margin="40,0,0,0"/>
 
             <!-- Label - Montant-->
             <TextBlock x:Name="TxtBlockTarifReservationDisplay"                   
-                   Text="XXXX €"
-                   FontFamily="Georgia"
-                   FontSize="12"/>
+                Text="XXXX €"
+                FontFamily="Georgia"
+                FontSize="12"/>
         </StackPanel>
 
         <!--</StackPanel - Button>-->
         <DockPanel Grid.Row="10" HorizontalAlignment="Stretch" Margin="40,0,40,0">
             <!-- Button - Modifier-->
             <Button Style="{DynamicResource ButtonStyleCorner3}"
-                    x:Name="BtnDeleteReservation"
-                    Content="Supprimer"                    
-                    FontFamily="Georgia"
-                    FontSize="12"
-                    FontWeight="Bold"
-                    HorizontalAlignment="Left"
-                    Height="30"
-                    Width="80"
-                    MaxWidth="80"/>
+                x:Name="BtnDeleteReservation"
+                Content="Supprimer"                    
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                HorizontalAlignment="Left"
+                Height="30"
+                Width="80"
+                MaxWidth="80"/>
             <!-- Button - Supprimer-->
             <Button Style="{DynamicResource ButtonStyleCorner3}"
-                    x:Name="BtnValidReservation"
-                    Content="Valider"
-                    FontFamily="Georgia"
-                    FontSize="12"
-                    FontWeight="Bold"
-                    HorizontalAlignment="Right"
-                    Height="30"
-                    Width="80"
-                    MaxWidth="80" Click="BtnValidReservation_Click"/>
+                x:Name="BtnValidReservation"
+                Content="Valider"
+                FontFamily="Georgia"
+                FontSize="12"
+                FontWeight="Bold"
+                HorizontalAlignment="Right"
+                Height="30"
+                Width="80"
+                MaxWidth="80" Click="BtnValidReservation_Click"/>
         </DockPanel>
 
         <!-- Label - Message si erreur-->
-            <TextBlock x:Name="txtReservationError"
+        <TextBlock x:Name="txtReservationError"
                 Grid.Row="11"
                 Grid.Column="1"
                 FontFamily="Georgia"
@@ -217,6 +218,5 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 Visibility="Hidden" />
-        
     </Grid>
 </Page>
