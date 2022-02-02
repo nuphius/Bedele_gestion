@@ -67,7 +67,9 @@ namespace BredeleGestion.Services
                 {
                     date = Convert.ToDateTime(box[4]);
 
-                    if (today == date.Date)
+                    Debug.WriteLine($"today :{today} date lock : {date}");
+
+                    if (today >= date.Date)
                     {
                         dateLockString = "Disponible";
 

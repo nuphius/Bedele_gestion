@@ -23,9 +23,16 @@ namespace Bredele_Gestion
     public partial class MainWindow : Window
     {
         ConnectionController connectionController = new ConnectionController();
+        ConnexionBddService connexionBdd = new ConnexionBddService();
         public MainWindow()
         {
             InitializeComponent();
+
+            if (!connexionBdd.CheckDatabaseExists())
+            {
+                connexionBdd.CreateLocalDataBase();
+            }
+
             FrameLeft.Navigate(new AdherentsPage());
             FrameRight.Navigate(new ViewBoxPage());
         }

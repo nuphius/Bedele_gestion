@@ -16,6 +16,8 @@
     <None Remove="Icon\addprice_40.png" />
     <None Remove="Icon\addticket_40.png" />
     <None Remove="Icon\adduser_40.png" />
+    <None Remove="Icon\bg.ico" />
+    <None Remove="Icon\Bredele_logo.ico" />
     <None Remove="Icon\Bredele_logo.png" />
     <None Remove="Icon\calendar_40.png" />
     <None Remove="Icon\info_img.png" />
@@ -32,6 +34,7 @@
     <Resource Include="Icon\addprice_40.png" />
     <Resource Include="Icon\addticket_40.png" />
     <Resource Include="Icon\adduser_40.png" />
+    <Resource Include="Icon\bg.ico" />
     <Resource Include="Icon\Bredele_logo.png" />
     <Resource Include="Icon\calendar_40.png" />
     <Resource Include="Icon\info_img.png" />

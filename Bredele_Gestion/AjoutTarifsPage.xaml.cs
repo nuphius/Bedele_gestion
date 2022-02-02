@@ -43,6 +43,8 @@ namespace Bredele_Gestion
                 txtPriceError.Foreground = new SolidColorBrush(Colors.Green);
                 txtPriceError.Text = "Le nouveau tarif a bien été ajouté !";
                 txtPriceError.Visibility = Visibility.Visible;
+
+                RefreshFrame();
             }
             else
             {
@@ -79,6 +81,8 @@ namespace Bredele_Gestion
                             txtPriceError.Foreground = new SolidColorBrush(Colors.Green);
                             txtPriceError.Visibility = Visibility.Visible;
                             txtPriceError.Text = "Tarif modifié !";
+
+                            RefreshFrame();
                         }
                         else
                         {
@@ -128,6 +132,8 @@ namespace Bredele_Gestion
                         txtPriceError.Foreground = new SolidColorBrush(Colors.Green);
                         txtPriceError.Visibility = Visibility.Visible;
                         txtPriceError.Text = "Tarif supprimé !";
+
+                        RefreshFrame();
                     }
                 }
                 else
@@ -135,6 +141,17 @@ namespace Bredele_Gestion
                     LogTools.AddLog(LogTools.LogType.ERREUR, "Problème liste combo box vide !!");
                 }
             }
+        }
+        #endregion
+
+
+        //Actualise la frame de gauche
+        #region RefreshFrame
+        private void RefreshFrame()
+        {
+            var parent = Application.Current.MainWindow;
+            Frame frameLeft = parent.FindName("FrameLeft") as Frame;
+            frameLeft.Navigate(new InfoAjoutTarifsPage());
         }
         #endregion
     }

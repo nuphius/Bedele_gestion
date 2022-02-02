@@ -35,11 +35,14 @@ namespace BredeleGestion.Services
             set { _requeteSql = value; }
         }
 
-        public ConnexionBddService(string requeteSql, string table)
+        public ConnexionBddService(string requeteSql = "", string table ="")
         {
-            RequeteSql = requeteSql;
-            NameTable = table;
-            _rstRequete = new List<DataRow>();
+            if (!string.IsNullOrEmpty(requeteSql))
+            {
+                RequeteSql = requeteSql;
+                NameTable = table;
+                _rstRequete = new List<DataRow>();
+            }
         }
 #endregion
 
@@ -93,7 +96,7 @@ namespace BredeleGestion.Services
 
         #region InsertRequet
         /// <summary>
-        /// Execute une requete SQL UPDATE ou DELETE et renvoi un BOOL
+        /// Execute une requete SQL INSERT, UPDATE ou DELETE et renvoi un BOOL
         /// </summary>
         /// <returns></returns>
         public bool InsertRequet()
@@ -132,6 +135,66 @@ namespace BredeleGestion.Services
             }
 
             return true;
+        }
+        #endregion
+
+
+        #region Check DataBase exist
+        /// <summary>
+        /// Check si la base de donnée existe
+        /// </summary>
+        /// <param name="connectionString"></param>
+        /// <param name="databaseName"></param>
+        /// <returns></returns>
+        public bool CheckDatabaseExists()
+        {
+            using (var connection = new SqlConnection(_logConnexion))
+            {
+                using (var command = new SqlCommand($"SELECT db_id('BredeleGestionBdd')", connection))
+                {
+                    connection.Open();
+                    return (command.ExecuteScalar() != DBNull.Value);
+                }
+            }
+        }
+        #endregion
+
+        #region CreateLocalDataBase
+        /// <summary>
+        /// Création en local d'une base de donnée
+        /// </summary>
+        /// <returns></returns>
+        public bool CreateLocalDataBase()
+        {
+            string logConnection = "Server=localhost;Integrated security=SSPI;database=master";
+            bool flag = true;
+            String str;
+            SqlConnection myConn = new SqlConnection(logConnection);
+
+            str = LocalBdd.Bdd;
+
+            SqlCommand myCommand = new SqlCommand(str, myConn);
+            try
+            {   myConn.Open();
+                myCommand.ExecuteNonQuery();
+                LogTools.AddLog(LogTools.LogType.TRACE, "Création BDD local réussite !");
+                _logConnexion = logConnection;
+                //MessageBox.Show("DataBase is Created Successfully", "MyProgram", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (System.Exception ex)
+            {
+                LogTools.AddLog(LogTools.LogType.ERREUR, "Echec création d'un base de donnée local");
+                flag = false;
+                //MessageBox.Show(ex.ToString(), "MyProgram", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            finally
+            {
+                if (myConn.State == ConnectionState.Open)
+                {
+                    myConn.Close();
+                }
+            }
+            return flag;
         }
         #endregion
     }

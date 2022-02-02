@@ -232,28 +232,37 @@ namespace Bredele_Gestion.viewmodel
         /// <returns></returns>
         public string CheckBook()
         {
-            string error = string.Empty;
-            int hourS = int.Parse(HoursStart);
-            int hourE = int.Parse(HoursEnd);
+            try
+            {
+                string error = string.Empty;
+                int hourS = int.Parse(HoursStart);
+                int hourE = int.Parse(HoursEnd);
 
-            if (SelectCust == null)
-                error += "- Vous n'avez sélectionné aucun nom !\n";
-            if (SelectedDate.ToShortDateString() == "01/01/0001")
-                error += "- Vous n'avez sélectionné aucune date !\n";
-            if (SelectedDate.Date < DateTime.Now.Date)
-                error += "- Date antérieur à aujourd'hui " + DateTime.Now.ToShortDateString() + " !\n";
-            if (string.IsNullOrEmpty(HoursStart))
-                error += "- Vous n'avez pas saisie d'heure de début !\n";
-            if (string.IsNullOrEmpty(HoursEnd))
-                error += "- Vous n'avez pas saisie d'heure de fin !\n";
-            if (hourE <= hourS)
-                error += "- Heure de fin inférieur ou égal à l'heure de début !\n";
-            if (SelectActivity == null)
-                error += "- Vous n'avez sélectionné aucune activité !\n";
-            if (SelectPlace == null)
-                error += "- Vous n'avez sélectionné aucune capacité de place !\n";
+                if (SelectCust == null)
+                    error += "- Vous n'avez sélectionné aucun nom !\n";
+                if (SelectedDate.ToShortDateString() == "01/01/0001")
+                    error += "- Vous n'avez sélectionné aucune date !\n";
+                if (SelectedDate.Date < DateTime.Now.Date)
+                    error += "- Date antérieur à aujourd'hui " + DateTime.Now.ToShortDateString() + " !\n";
+                if (string.IsNullOrEmpty(HoursStart))
+                    error += "- Vous n'avez pas saisie d'heure de début !\n";
+                if (string.IsNullOrEmpty(HoursEnd))
+                    error += "- Vous n'avez pas saisie d'heure de fin !\n";
+                if (hourE <= hourS)
+                    error += "- Heure de fin inférieur ou égal à l'heure de début !\n";
+                if (SelectActivity == null)
+                    error += "- Vous n'avez sélectionné aucune activité !\n";
+                if (SelectPlace == null)
+                    error += "- Vous n'avez sélectionné aucune capacité de place !\n";
 
-            return error;
+                return error;
+            }
+            catch (Exception ex)
+            {
+                LogTools.AddLog(LogTools.LogType.ERREUR,"Problème lors du remplissage d'une réservation" + ex.Message);
+                return "Error voir log";
+            }
+            
         }
         #endregion
 

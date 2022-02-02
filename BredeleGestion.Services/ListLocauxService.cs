@@ -33,6 +33,8 @@ namespace BredeleGestion.Services
             {
                 _listLocaux.Add(new Locaux { Id = (int)row["boxid"], Name = row["boxname"].ToString(), Capacity = (int)row["boxcapacity"] });
             }
+
+            _listLocaux = new ObservableCollection<Locaux>(_listLocaux.OrderBy(x => x.Name).ToList());
         }
     }
 
