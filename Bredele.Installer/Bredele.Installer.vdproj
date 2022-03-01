@@ -50,6 +50,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -205,7 +213,7 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Bredele.Installer"
+        "ProductName" = "8:Bredele"
         "ProductCode" = "8:{E42726D5-0FED-4431-8E70-A53E1A299C9D}"
         "PackageCode" = "8:{EADDF88F-BAEC-497A-8D52-8C941EC9199D}"
         "UpgradeCode" = "8:{D1E01121-45B1-48BE-B199-C3712C41CCB1}"

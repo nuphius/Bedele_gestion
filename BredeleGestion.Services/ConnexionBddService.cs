@@ -179,13 +179,11 @@ namespace BredeleGestion.Services
                 myCommand.ExecuteNonQuery();
                 LogTools.AddLog(LogTools.LogType.TRACE, "Création BDD local réussite !");
                 _logConnexion = logConnection;
-                //MessageBox.Show("DataBase is Created Successfully", "MyProgram", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (System.Exception ex)
             {
                 LogTools.AddLog(LogTools.LogType.ERREUR, "Echec création d'un base de donnée local");
                 flag = false;
-                //MessageBox.Show(ex.ToString(), "MyProgram", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             finally
             {

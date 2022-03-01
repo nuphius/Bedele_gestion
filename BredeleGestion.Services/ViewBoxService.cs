@@ -75,7 +75,6 @@ namespace BredeleGestion.Services
 
                         connexionBddService = new ConnexionBddService(string.Format(RequetSqlService.UPDATEDATEBOXNULL, box["boxid"].ToString()), RequetSqlService.TABLEBOX);
                         connexionBddService.InsertRequet();
-
                     }
                     else
                     {
@@ -87,8 +86,6 @@ namespace BredeleGestion.Services
                     date = DateTime.MinValue;
                     dateLockString = "Disponible";  
                 }
-
-
 
                 int id = (int)box[0];
 

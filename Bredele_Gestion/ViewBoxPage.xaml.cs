@@ -46,13 +46,6 @@ namespace Bredele_Gestion
             }
         }
 
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            var a = ((Border)sender).Uid;
-            MessageBox.Show("border !!" + a);
-          
-        }
-
         private void btnLock_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (int.TryParse(((Image)sender).Uid, out int id))
